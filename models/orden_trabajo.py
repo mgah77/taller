@@ -44,7 +44,7 @@ class Taller_ot_line(models.Model):
     _description = 'lineas OT'
     _rec_names_search = ['ot_line_id.name']
 
-    ot_line_id = fields.Many2one(cmodel_name = 'taller.ot', string='lineas ot id',required=True, ondelete='cascade', index=True, copy=False)
+    ot_line_id = fields.Many2one(comodel_name = 'taller.ot', string='lineas ot id',required=True, ondelete='cascade', index=True, copy=False)
     item = fields.Many2one('product.product', string="Nombre Item")
     obs = fields.Char('Observaciones')
     serie = fields.Integer('Serie')
