@@ -35,7 +35,7 @@ class Taller_ingreso(models.Model):
     def create(self,vals):
         if vals.get('name','New')=='New':
             vals['name']=self.env['ir.sequence'].next_by_code('abr.ot') or 'New'
-        result = super(ImportTemplate,self).create(vals)
+        result = super(Taller_ingreso,self).create(vals)
         return result
 
 
