@@ -6,7 +6,7 @@ class Taller_ingreso(models.Model):
     _name = 'taller.ot'
     _description = 'Ingreso Taller'
 
-    name = fields.Char(string="Nro ",index='trigram', readonly=True, default=lambda self: _('New'), copy=False)
+    name = fields.Char(string="Nro ", readonly=True, default='New', copy=False)
 
     fecha_recep = fields.Date('Fecha de Recepcion')
     fecha_entr = fields.Date('Fecha de Entrega')
@@ -31,18 +31,17 @@ class Taller_ingreso(models.Model):
             record['user']=self.env.user.partner_id
             return
 
-    @api.model_create_multi
+    @api.model
     def create(self,vals):
-        if vals.get('name',_('New'))==_('New'):
-            vals['name']=self.env['ir.sequence'].next_by_code('abr.ot') or _('New')
-        result = super().create(vals)
+        if vals.get('name','New')=='New':
+            vals['name']=self.env['ir.sequence'].next_by_code('abr.ot') or 'New'
+        result = super(Taller_ingreso,self).create(vals)
         return result
 
 
 class Taller_ot_line(models.Model):
     _name = 'taller.ot.line'
     _description = 'lineas OT'
-    _rec_names_search = [ot_line_id.name]
 
     ot_line_id = fields.Many2one(cmodel_name = 'taller.ot', string='lineas ot id',required=True, ondelete='cascade', index=True, copy=False)
     item = fields.Many2one('product.product', string="Nombre Item")
