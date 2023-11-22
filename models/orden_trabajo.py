@@ -55,4 +55,4 @@ class Taller_ot_line(models.Model):
     obs = fields.Char('Observaciones')
     serie = fields.Integer('Serie')
     cant = fields.Integer(string = 'Cantidad', default = 1)
-    fecha_entr = fields.Date('Fecha de Entrega',compute='_compute_fecha', precompute=True, store=True)
+    fecha_entr = fields.Date('Fecha de Entrega', store=True)
