@@ -37,6 +37,20 @@ class Taller_ingreso(models.Model):
         result = super(Taller_ingreso,self).create(vals)
         return result
 
+    @api.onchange('ot_line')
+    def _compute_fecha_line(self):
+        """calcula fecha_entr al cambiar linea"""
+        for line in self.ot_line:
+            line.fecha_entr = self.fecha_entr
+        return
+
+    @api.onchange('fecha_entr')
+    def _compute_fecha_entr(self):
+        """calcula fecha_entr al cambiar fecha_entr"""
+        for line in self.ot_line:
+            line.fecha_entr = self.fecha_entr
+        return
+
 
 class Taller_ot_line(models.Model):
     _name = 'taller.ot.line'
@@ -48,9 +62,4 @@ class Taller_ot_line(models.Model):
     obs = fields.Char('Observaciones')
     serie = fields.Integer('Serie')
     cant = fields.Integer(string = 'Cantidad', default = 1)
-    fecha_entr = fields.Date('Fecha de Entrega', compute="_compute_fecha")
-
-    def _compute_fecha(self):
-        for record in self:
-            record['fecha_entr']=self.ot_line_id.fecha_entr
-            return
+    fecha_entr = fields.Date('Fecha de Entrega')
