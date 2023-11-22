@@ -8,7 +8,7 @@
 'application': "True",
 'version': "2.0",
 'data': ['security/groups.xml',
-         'security/ir.model.access.cvs',
+         'security/ir.model.access.csv',
          'views/orden_trabajo.xml'
 ],
 'depends': ['base' , 'contacts' , 'stock' , 'product']
