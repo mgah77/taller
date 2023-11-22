@@ -1,4 +1,4 @@
-from odoo import models, fields , api
+from odoo import models, fields , api , _
 
 class Taller_ingreso(models.Model):
 
@@ -38,20 +38,11 @@ class Taller_ingreso(models.Model):
         return result
 
     @api.onchange('ot_line', 'fecha_entr')
-    def _compute_fecha_line(self):
-        """Update fecha_entr in OT lines when ot_line or fecha_entr changes."""
-        for line in self.ot_line:
-            line.write({
-                'fecha_entr': self.fecha_entr
-            })
-
-    @api.onchange('fecha_entr')
-    def _compute_fecha_entr(self):
-        """Update fecha_entr in OT lines when fecha_entr changes."""
-        for line in self.ot_line:
-            line.write({
-                'fecha_entr': self.fecha_entr
-            })
+    def _compute_fecha_entrega(self):
+        for order in self:
+            for line in order.ot_line:
+                line.fecha_entr = order.fecha_entr
+        return
 
 
 class Taller_ot_line(models.Model):
@@ -64,4 +55,4 @@ class Taller_ot_line(models.Model):
     obs = fields.Char('Observaciones')
     serie = fields.Integer('Serie')
     cant = fields.Integer(string = 'Cantidad', default = 1)
-    fecha_entr = fields.Date('Fecha de Entrega')
+    fecha_entr = fields.Date('Fecha de Entrega',compute='_compute_fecha', precompute=True, store=True)
