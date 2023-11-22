@@ -1,0 +1,22 @@
+<odoo>
+
+    <record id="plan_tree" model="ir.ui.view">
+            <field name="name">Planificacion</field>
+            <field name="model">taller.ot.line</field>
+            <field name="arch" type="xml">
+                <tree string="Orden de trabajo">
+
+                                <field name ="item"/>
+                                <field name ="obs"/>
+                                <field name ="serie"/>
+                                <field name ="cant"/>
+                        
+                </tree>
+            </field>
+        </record>
+
+
+
+
+
+</odoo>

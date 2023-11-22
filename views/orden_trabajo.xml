@@ -60,26 +60,4 @@
 
 
 
-    <act_window
-     id="ot_action"
-     name="Orden de Trabajo"
-     res_model="taller.ot" />
-
-
-    <menuitem
-      id="taller_menu"
-      name="Taller"
-      parent=""
-      sequence="5" />
-
-    <menuitem
-      id="ot_menu"
-      name="Orden de Trabajo"
-      action="ot_action"
-      parent="taller_menu"
-      sequence="5" />
-
-
-
-
 </odoo>
