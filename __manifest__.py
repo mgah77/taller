@@ -10,7 +10,8 @@
 'data': ['security/groups.xml',
          'security/ir.model.access.csv',
          'views/menu.xml',
-         'views/orden_trabajo.xml'
+         'views/orden_trabajo.xml',
+         'views/planificacion.xml'
 ],
 'depends': ['base' , 'contacts' , 'stock' , 'product']
 }

@@ -26,13 +26,13 @@
   name="Orden de Trabajo"
   action="ot_action"
   parent="taller_menu"
-  sequence="5" />
+  sequence="20" />
 
   <menuitem
     id="ot_menu"
     name="Planificacion"
     action="plan_action"
     parent="taller_menu"
-    sequence="15" />
+    sequence="35" />
 
 </odoo>
