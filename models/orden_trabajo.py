@@ -10,7 +10,7 @@ class Taller_ingreso(models.Model):
 
     fecha_recep = fields.Date('Fecha de Recepcion')
     fecha_entr = fields.Date('Fecha de Entrega')
-    armador = fields.Many2one('res.partner',string='Armador')
+    armador = fields.Many2one('res.partner',string='Armador',domain="[('type', '!=', 'private'), ('company_id', 'in', (False, company_id)), ('is_company', '=', True), ('type','=','contact')]")
     nave = fields.Char('Nave')
     obs = fields.Char('Observaciones')
     ot_line = fields.One2many(comodel_name = 'taller.ot.line',inverse_name = 'ot_line_id', string = 'Lineas OT',copy=True, auto_join=True)
