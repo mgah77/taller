@@ -37,13 +37,6 @@ class Taller_ingreso(models.Model):
         result = super(Taller_ingreso,self).create(vals)
         return result
 
-    @api.onchange('ot_line', 'fecha_entr')
-    def _compute_fecha_entrega(self):
-        for order in self:
-            for line in order.ot_line:
-                line.fecha_entr = order.fecha_entr
-        return
-
 
 class Taller_ot_line(models.Model):
     _name = 'taller.ot.line'
@@ -55,4 +48,10 @@ class Taller_ot_line(models.Model):
     obs = fields.Char('Observaciones')
     serie = fields.Integer('Serie')
     cant = fields.Integer(string = 'Cantidad', default = 1)
-    fecha_entr = fields.Date('Fecha de Entrega', store=True)
+    fecha_entr = fields.Date('Fecha de Entrega', compute="_compute_fecha_entrega")
+
+
+    def _compute_fecha_entrega(self):
+        for line in self:
+            line['fecha_entr'] = line.ot_line_id.fecha_entr
+        return
