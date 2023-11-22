@@ -29,7 +29,7 @@
   sequence="20" />
 
   <menuitem
-    id="ot_menu"
+    id="plan_menu"
     name="Planificacion"
     action="plan_action"
     parent="taller_menu"
