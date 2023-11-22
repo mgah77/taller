@@ -65,8 +65,9 @@
 
                                     <field name ="name"/>
                                     <field name ="armador"/>
-                                    <field name ="fecha_entr"/>
                                     <field name ="nave"/>
+                                    <field name ="fecha_entr"/>
+
 
                     </tree>
                 </field>

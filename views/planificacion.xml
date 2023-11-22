@@ -9,8 +9,8 @@
                                 <field name ="item"/>
                                 <field name ="obs"/>
                                 <field name ="serie"/>
-                                <field name ="cant"/>
-                        
+                                <field name ="fecha_entr"/>
+
                 </tree>
             </field>
         </record>
