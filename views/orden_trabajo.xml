@@ -21,7 +21,7 @@
                         <group>
                             <field name="name" />
                             <field name="fecha_recep" />
-                            <field name="armador" domain="[('customer','=',True)]" context="{'search_default_customer':1, 'show_address': 1}" options='{"always_reload": True}'/>
+                            <field name="armador" />
                             <field name="fecha_entr" />
                             <field name="nave" />
                             <field name="obs" />
