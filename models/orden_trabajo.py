@@ -1,6 +1,5 @@
 from odoo import models, fields , api
 
-
 class Taller_ingreso(models.Model):
 
     _name = 'taller.ot'
@@ -17,9 +16,9 @@ class Taller_ingreso(models.Model):
     user = fields.Char(string = 'Recepciona', compute="_compute_user")
     user_branch = fields.Integer(string = 'Current Branch', compute="_compute_sucursal")
     contacto = fields.Many2one('res.partner', string='Contacto')
-    maniobra = fields.Boolean(string='Maniobra')
-    lugar = fields.Many2one('res.city', string='Lugar')
-    replace = fields.Boolean(string='Reemplazo')
+    maniobra = fields.Boolean(string = 'Maniobra')
+    lugar = fields.Many2one('res.city', string = 'Lugar')
+    replace = fields.Boolean(string = 'Reemplazo')
 
     def _compute_sucursal(self):
         for record in self:
@@ -44,8 +43,8 @@ class Taller_ot_line(models.Model):
     _description = 'lineas OT'
     _rec_names_search = ['ot_line_id.name']
 
-    ot_line_id = fields.Many2one(comodel_name = 'taller.ot', string='lineas ot id',required=True, ondelete='cascade', index=True, copy=False)
-    item = fields.Many2one('product.product', string="Nombre Item")
+    ot_line_id = fields.Many2one(comodel_name = 'taller.ot', string = 'lineas ot id', required=True, ondelete='cascade', index=True, copy=False)
+    item = fields.Many2one('product.product', string = "Nombre Item")
     obs = fields.Char('Observaciones')
     serie = fields.Integer('Serie')
     cant = fields.Integer(string = 'Cantidad', default = 1)
