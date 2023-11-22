@@ -13,7 +13,7 @@ class Taller_ingreso(models.Model):
     armador = fields.Many2one('res.partner',string='Armador')
     nave = fields.Char('Nave')
     obs = fields.Char('Observaciones')
-    ot_line = fields.One2many('taller.ot.line','ot_line_id', string = 'Lineas OT')
+    ot_line = fields.One2many('taller.ot.line','ot_line_id', string = 'Lineas OT',copy=True, auto_join=True)
     user = fields.Integer(string = 'Current User', compute="_compute_user")
     user_branch = fields.Integer(string = 'Current Branch', compute="_compute_sucursal")
     contacto = fields.Many2one('res.partner', string='Contacto')
@@ -43,7 +43,7 @@ class Taller_ot_line(models.Model):
     _name = 'taller.ot.line'
     _description = 'lineas OT'
 
-    ot_line_id = fields.Many2one('taller.ot', string='lineas ot id')
+    ot_line_id = fields.Many2one('taller.ot', string='lineas ot id',required=True, ondelete='cascade', index=True, copy=False)
     item = fields.Many2one('product.product', string="Nombre Item")
     obs = fields.Char('Observaciones')
     serie = fields.Integer('Serie')
