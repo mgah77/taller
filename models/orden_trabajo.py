@@ -41,14 +41,20 @@ class Taller_ingreso(models.Model):
     def _compute_fecha_line(self):
         """calcula fecha_entr al cambiar linea"""
         for line in self.ot_line:
-            line.fecha_entr = self.fecha_entr
+            fecha = self.fecha_entr
+            line.write({
+                        'fecha_entr': 'fecha'
+                    })
         return
 
     @api.onchange('fecha_entr')
     def _compute_fecha_entr(self):
         """calcula fecha_entr al cambiar fecha_entr"""
         for line in self.ot_line:
-            line.fecha_entr = self.fecha_entr
+            fecha = self.fecha_entr
+            line.write({
+                        'fecha_entr': 'fecha'
+                    })
         return
 
 
