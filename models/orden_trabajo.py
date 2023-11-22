@@ -49,9 +49,15 @@ class Taller_ot_line(models.Model):
     serie = fields.Integer('Serie')
     cant = fields.Integer(string = 'Cantidad', default = 1)
     fecha_entr = fields.Date('Fecha de Entrega', compute="_compute_fecha_entrega")
+    nave = fields.Char('Nave', compute="_compute_nave")
 
 
     def _compute_fecha_entrega(self):
         for line in self:
             line['fecha_entr'] = line.ot_line_id.fecha_entr
+        return
+
+    def _compute_nave(self):
+        for line in self:
+            line['nave'] = line.ot_line_id.nave
         return

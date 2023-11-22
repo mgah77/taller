@@ -8,7 +8,7 @@
 
                                 <field name ="item"/>
                                 <field name ="obs"/>
-                                <field name ="serie"/>
+                                <field name ="nave"/>
                                 <field name ="fecha_entr"/>
 
                 </tree>
