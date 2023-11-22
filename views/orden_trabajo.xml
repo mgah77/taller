@@ -38,7 +38,7 @@
                     <notebook>
                         <page string="Trabajos">
 
-                            <field name="ot_line ">
+                            <field name="ot_line">
                             <tree>
                                 <field name ="ot_line_id" invisible="1"/>
                                 <field name ="item"/>
