@@ -1,0 +1,85 @@
+<odoo>
+    <record id="sequence_ot" model="ir.sequence">
+      <field name="name">SeqOt</field>
+      <field name="code">abr.ot</field>
+      <field name="prefix">OT</field>
+      <field name="padding">5</field>
+      <field name="company_id" eval="False" />
+    </record>
+
+    <record id="ot_form" model="ir.ui.view">
+            <field name="name">Orden de Trabajo</field>
+            <field name="model">taller.ot</field>
+            <field name="arch" type="xml">
+                <form string="Orden de trabajo">
+                <header>
+
+                </header>
+                <sheet>
+
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="fecha_recep" />
+                            <field name="armador" domain="[('customer','=',True)]" context="{'search_default_customer':1, 'show_address': 1}" options='{"always_reload": True}'/>
+                            <field name="fecha_entr" />
+                            <field name="nave" />
+                            <field name="obs" />
+                         </group>
+                        <group>
+                            <field name="user" />
+                            <field name="contacto" />
+                            <field name="maniobra" />
+                            <field name="lugar" />
+                            <field name="replace" />
+
+                         </group>
+                    </group>
+                    <notebook>
+                        <page string="Trabajos">
+
+                            <field name="ot_line ">
+                            <tree>
+                                <field name ="ot_line_id" invisible="1"/>
+                                <field name ="item"/>
+                                <field name ="serie"/>
+                                <field name ="cant"/>
+                            </tree>
+                            </field>
+
+                        </page>
+
+                    </notebook>
+                </sheet>
+
+                </form>
+            </field>
+        </record>
+
+
+
+
+
+    <act_window
+     id="ot_action"
+     name="Orden de Trabajo"
+     res_model="taller.ot" />
+
+
+    <menuitem
+      id="taller_menu"
+      name="Taller"
+      parent=""
+      sequence="5" />
+
+    <menuitem
+      id="ot_menu"
+      name="Orden de Trabajo"
+      action="ot_action"
+      parent="taller_menu"
+      sequence="5" />
+
+
+
+
+</odoo>
