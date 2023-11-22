@@ -41,6 +41,7 @@
                             <field name="ot_line">
                             <tree editable="bottom">
                                 <field name ="item"/>
+                                <field name ="obs"/>
                                 <field name ="serie"/>
                                 <field name ="cant"/>
                             </tree>
