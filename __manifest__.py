@@ -7,6 +7,9 @@
 'license': "AGPL-3",
 'application': "True",
 'version': "2.0",
-'data': ['views/orden_trabajo.xml'],
+'data': ['security/groups.xml',
+         'security/ir.model.access.cvs',
+         'views/orden_trabajo.xml'
+],
 'depends': ['base' , 'contacts' , 'stock' , 'product']
 }

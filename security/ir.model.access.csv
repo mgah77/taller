@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_taller_ot,access.taller.ot,model_taller_ot,group_taller,1,1,1,1
+access_taller_ot_line,access.taller.ot.line,model_taller_ot_line,group_taller,1,1,1,1

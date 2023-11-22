@@ -1,0 +1,7 @@
+<odoo>
+    <record id="group_taller" model="res.groups">
+	<field name="name">Modulo Taller</field>
+    </record>
+
+
+</odoo>
