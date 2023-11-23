@@ -10,6 +10,8 @@
                                 <field name ="obs"/>
                                 <field name ="nave"/>
                                 <field name ="fecha_entr"/>
+                                <field name ="familia"/>
+                                
 
                 </tree>
             </field>
