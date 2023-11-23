@@ -55,7 +55,7 @@ class Taller_ot_line(models.Model):
                             ('segu','Equipos de seguridad'),
                             ('bco2','Banco CO2'),
                             ('text','Textil')
-    ], store=True)
+    ], store=True, compute='_compute_depto')
 
 
     def _compute_fecha_entrega(self):
