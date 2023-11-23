@@ -13,5 +13,5 @@
          'views/orden_trabajo.xml',
          'views/planificacion.xml'
 ],
-'depends': ['base' , 'contacts' , 'stock' , 'product']
+'depends': ['base' , 'contacts' , 'stock' , 'product', 'parches_insumar']
 }
