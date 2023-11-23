@@ -13,7 +13,7 @@ class Taller_ingreso(models.Model):
     nave = fields.Char('Nave')
     obs = fields.Char('Observaciones')
     ot_line = fields.One2many(comodel_name = 'taller.ot.line',inverse_name = 'ot_line_id', string = 'Lineas OT',copy=True, auto_join=True)
-    user = fields.Char(string = 'Recepciona', compute="_compute_user")
+    user = fields.Char(string = 'Recepciona')
     user_branch = fields.Integer(string = 'Current Branch', compute="_compute_sucursal")
     contacto = fields.Many2one('res.partner', string='Contacto')
     maniobra = fields.Boolean(string = 'Maniobra')
@@ -25,15 +25,12 @@ class Taller_ingreso(models.Model):
             record['user_branch']=self.env.user.property_warehouse_id
             return
 
-    def _compute_user(self):
-        for record in self:
-            record['user']=self.env.user.partner_id.name
-            return
-
+ 
     @api.model
-    def create(self,vals):
+    def create(self,vals):       
         if vals.get('name','New')=='New':
             vals['name']=self.env['ir.sequence'].next_by_code('abr.ot') or 'New'
+            vals['user']=self.env.user.partner_id.name
         result = super(Taller_ingreso,self).create(vals)
         return result
 
