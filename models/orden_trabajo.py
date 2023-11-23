@@ -47,15 +47,7 @@ class Taller_ot_line(models.Model):
     cant = fields.Integer(string = 'Cantidad', default = 1)
     fecha_entr = fields.Date('Fecha de Entrega', compute="_compute_fecha_entrega")
     nave = fields.Char('Nave', compute="_compute_nave")
-    depto = fields.Selection([
-                            ('bals','Inspeccion de balsa'),
-                            ('cont','Contenedores'),
-                            ('valv','Válvulas'),
-                            ('exti','Exintores'),
-                            ('segu','Equipos de seguridad'),
-                            ('bco2','Banco CO2'),
-                            ('text','Textil')
-    ], store=True, compute='_compute_depto', precompute=True)
+    depto = fields.Char(compute='_compute_depto', precompute=True)
 
 
     def _compute_fecha_entrega(self):
