@@ -10,7 +10,7 @@
                                 <field name ="obs"/>
                                 <field name ="nave"/>
                                 <field name ="fecha_entr"/>
-                                <field name ="familia"/>
+                                <field name ="depto"/>
                                 
 
                 </tree>
