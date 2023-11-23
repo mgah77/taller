@@ -22,8 +22,8 @@
                 <kanban>
                     <templates>
                         <t t-name="kanban-box">
-                            <div class="container">
-                                <div class="col">
+                            <div class="col">
+                                <div class="container">
                                     <div class="oe_kanban_global_click card">
                                         <div class="card-body">
                                             <field name ="nave"/>
