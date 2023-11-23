@@ -41,13 +41,21 @@ class Taller_ot_line(models.Model):
     _rec_names_search = ['ot_line_id.name']
 
     ot_line_id = fields.Many2one(comodel_name = 'taller.ot', string = 'lineas ot id', required=True, ondelete='cascade', index=True, copy=False)
-    item = fields.Many2one('product.product', string = "Nombre Item")
+    item = fields.Many2one('product.template', string = "Nombre Item")
     obs = fields.Char('Observaciones')
     serie = fields.Integer('Serie')
     cant = fields.Integer(string = 'Cantidad', default = 1)
     fecha_entr = fields.Date('Fecha de Entrega', compute="_compute_fecha_entrega")
     nave = fields.Char('Nave', compute="_compute_nave")
-    depto = fields.Char('depto', compute="_compute_depto", store=True)
+    depto = fields.Selection([
+                            ('bals','Inspeccion de balsa'),
+                            ('cont','Contenedores'),
+                            ('valv','Válvulas'),
+                            ('exti','Exintores'),
+                            ('segu','Equipos de seguridad'),
+                            ('bco2','Banco CO2'),
+                            ('text','Textil')
+    ], store=True)
 
 
     def _compute_fecha_entrega(self):
