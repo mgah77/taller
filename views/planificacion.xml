@@ -19,12 +19,13 @@
             <field name="name">Planificacion_kanban</field>
             <field name="model">taller.ot.line</field>
             <field name="arch" type="xml">
-                <kanban>
+                <kanban default_group_by="item">
                     <templates>
                         <t t-name="kanban-box">
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-sm">                                        
+                                    <div class="col-sm">          
+                                            <field name ="item"/>                              
                                             <field name ="nave"/>
                                             <br/>
                                             <field name ="fecha_entr"/>
