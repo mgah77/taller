@@ -25,6 +25,7 @@
                             <div class="oe_kanban_global_click card">
                                 <div class="card-body">
                                 <field name ="nave"/>
+                                <br/>
                                 <field name ="fecha_entr"/>
                                 </div>
                             </div>
