@@ -1,7 +1,7 @@
 <odoo>
 
     <record id="plan_tree" model="ir.ui.view">
-            <field name="name">Planificacion</field>
+            <field name="name">Planificacion_tree</field>
             <field name="model">taller.ot.line</field>
             <field name="arch" type="xml">
                 <tree string="Orden de trabajo">
@@ -15,6 +15,24 @@
             </field>
         </record>
 
+ <record id="plan_kanban" model="ir.ui.view">
+            <field name="name">Planificacion_kanban</field>
+            <field name="model">taller.ot.line</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class=oe_kanban_global_click card>
+                                <div class="card-body">
+                                <field name ="nave"/>
+                                <field name ="fecha_entr"/>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
 
 
 

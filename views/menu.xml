@@ -10,9 +10,9 @@
 
  <act_window
   id="plan_action"
-  name="Panificacion"
+  name="Planificacion"
   res_model="taller.ot.line"
-  view_mode="tree"/>
+  view_mode="tree,kanban"/>
 
 
 <menuitem
