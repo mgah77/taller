@@ -23,12 +23,12 @@
                     <templates>
                         <t t-name="kanban-box">
                             <div class="container">
-                                <div class="col-sm">
-                                    
+                                <div class="row">
+                                    <div class="col-sm">                                        
                                             <field name ="nave"/>
                                             <br/>
                                             <field name ="fecha_entr"/>
-                                        
+                                     </div>    
                                 </div>
                             </div>
                         </t>
