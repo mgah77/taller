@@ -11,7 +11,7 @@
                                 <field name ="nave"/>
                                 <field name ="fecha_entr"/>
                                 <field name ="depto"/>
-                                
+
 
                 </tree>
             </field>
@@ -21,17 +21,17 @@
             <field name="name">Planificacion_kanban</field>
             <field name="model">taller.ot.line</field>
             <field name="arch" type="xml">
-                <kanban default_group_by="depto">
+                <kanban default_group_by="depto" default_order="fecha_entr">
                     <templates>
                         <t t-name="kanban-box">
                             <div class="container">
                                 <div class="row">
-                                    <div class="col-sm">          
+                                    <div class="col-sm">
                                             <field name ="depto" invisible="1" />                              
                                             <field name ="nave"/>
                                             <br/>
                                             <field name ="fecha_entr"/>
-                                    </div>  
+                                    </div>
                                 </div>
                             </div>
                         </t>
