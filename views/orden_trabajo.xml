@@ -29,14 +29,11 @@
                         <group>
                             <field name="user" />
                             <field name="contacto" />
-
-                                <group>
-                                <field name="contacto_fono" />
-                                </group>
-                                <group>
+                                <group col="2">
+                                <field name="contacto_fono" />                                
                                 <field name="contacto_mail" />
                                 </group>
-                                          
+
                             <field name="maniobra" />
                             <field name="lugar" />
                             <field name="replace" />
