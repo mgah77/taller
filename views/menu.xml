@@ -12,7 +12,7 @@
   id="plan_action"
   name="Planificacion"
   res_model="taller.ot.line"
-  view_mode="tree, kanban"/>
+  view_mode="tree,kanban"/>
 
 
 <menuitem
