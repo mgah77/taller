@@ -32,13 +32,11 @@
                           <field name="contacto" />
                         </group>
                         <newline />
-                        <group>
                           <group>
                           <field name="contacto_fono" />
                           </group>
                           <group>
                           <field name="contacto_mail" />
-                          </group>
                         </group>
                         <newline />
                         <group>
