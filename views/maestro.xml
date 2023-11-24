@@ -1,14 +1,12 @@
 
 <odoo>
 
-  <record id="plan_tree" model="ir.ui.view">
+  <record id="maestro_depto_tree" model="ir.ui.view">
           <field name="name">Planificacion_tree</field>
           <field name="model">taller.depto.rel</field>
           <field name="arch" type="xml">
               <tree string="Orden de trabajo">
-
                               <field name ="depto"/>
-
               </tree>
           </field>
       </record>
