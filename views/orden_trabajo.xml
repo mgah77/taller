@@ -30,12 +30,16 @@
                             <field name="user" />
                             <field name="contacto" />
                                 <group col="2">
-                                <field name="contacto_fono" />                                
+                                <field name="contacto_fono" />
+                                </group>
+                                <group>
                                 <field name="contacto_mail" />
                                 </group>
-
+                            <label for="maniobra" />
                             <field name="maniobra" />
+                            <label for="lugar" />
                             <field name="lugar" />
+                            <label for="replace" />
                             <field name="replace" />
                          </group>
                     </group>
