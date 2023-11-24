@@ -6,7 +6,7 @@
           <field name="model">taller.depto.rel</field>
           <field name="arch" type="xml">
               <tree string="Orden de trabajo">
-                              <field name ="depto"/>
+                              <field name ="name"/>
               </tree>
           </field>
       </record>
