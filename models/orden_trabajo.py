@@ -16,6 +16,8 @@ class Taller_ingreso(models.Model):
     user = fields.Char(string = 'Recepciona')
     user_branch = fields.Integer(string = 'Current Branch', compute="_compute_sucursal")
     contacto = fields.Many2one('res.partner', string='Contacto')
+    contacto_fono = fields.Char('Fono')
+    contacto_mail = fields.Char('e-mail')
     maniobra = fields.Boolean(string = 'Maniobra')
     lugar = fields.Many2one('res.city', string = 'Lugar')
     replace = fields.Boolean(string = 'Reemplazo')
@@ -25,7 +27,6 @@ class Taller_ingreso(models.Model):
             record['user_branch']=self.env.user.property_warehouse_id
             return
 
-
     @api.model
     def create(self,vals):
         if vals.get('name','New')=='New':
@@ -33,6 +34,18 @@ class Taller_ingreso(models.Model):
             vals['user']=self.env.user.partner_id.name
         result = super(Taller_ingreso,self).create(vals)
         return result
+
+    @api.onchange('contacto')
+    def onchange_partner_id(self):
+        if self.contacto:
+            if self.contacto.phone:
+                self.contacto_fono = self.contacto.phone
+            elif self.contacto.mobile:
+                self.contacto_fono = self.contacto.mobile
+            self.contacto_mail = self.contacto.email
+        else:
+            self.contacto_fono = False
+            self.contacto_mail = False
 
 
 class Taller_ot_line(models.Model):

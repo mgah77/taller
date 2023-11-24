@@ -29,10 +29,17 @@
                         <group>
                             <field name="user" />
                             <field name="contacto" />
+                              <group>
+                                <group>
+                                <field name="contacto_fono" />
+                                </group>
+                                <group>
+                                <field name="contacto_mail" />
+                                </group>
+                              </group>                            
                             <field name="maniobra" />
                             <field name="lugar" />
                             <field name="replace" />
-
                          </group>
                     </group>
                     <notebook>
