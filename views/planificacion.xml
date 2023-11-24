@@ -17,30 +17,27 @@
             </field>
         </record>
 
-        <record id="plan_kanban" model="ir.ui.view">
-           <field name="name">Planificacion_kanban</field>
-           <field name="model">taller.ot.line</field>
-           <field name="arch" type="xml">
-               <kanban default_group_by="depto" group_create="False" class="o_kanban_small_column" group_delete="False" group_edit="False">
-                   <templates>
-                       <t t-name="kanban-box">
-                           <div class="container">
-                               <div class="row">
-                                   <div class="col-sm">
-                                       <field name="depto" invisible="1" />
-                                       <field name="nave"/>
-                                       <br/>
-                                       <field name="fecha_entr"/>
-                                   </div>
-                               </div>
-                           </div>
-                       </t>
-                   </templates>
-                   <group expand="0" string="Sin Agrupar">
-                       <field name="fecha_entr" widget="date_index" string="Fecha de Entrada" />
-                   </group>
-               </kanban>
-           </field>
-       </record>
+ <record id="plan_kanban" model="ir.ui.view">
+            <field name="name">Planificacion_kanban</field>
+            <field name="model">taller.ot.line</field>
+            <field name="arch" type="xml">
+                <kanban default_order="fecha_entr desc" default_group_by="depto"  group_create="False" class="o_kanban_small_column" group_delete="False" group_edit="False">
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm">
+                                            <field name ="depto" invisible="1" />
+                                            <field name ="nave"/>
+                                            <br/>
+                                            <field name ="fecha_entr" widget="date_index"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
 
 </odoo>
