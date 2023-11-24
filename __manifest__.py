@@ -10,7 +10,8 @@
 'data': ['security/groups.xml',
          'security/ir.model.access.csv',
          'views/menu.xml',
-         'views/maestro.xml',
+         'views/maestro.xml'
+         'views/product_template.xml',
          'views/orden_trabajo.xml',
          'views/planificacion.xml'
 ],
