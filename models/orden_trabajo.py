@@ -25,9 +25,9 @@ class Taller_ingreso(models.Model):
             record['user_branch']=self.env.user.property_warehouse_id
             return
 
- 
+
     @api.model
-    def create(self,vals):       
+    def create(self,vals):
         if vals.get('name','New')=='New':
             vals['name']=self.env['ir.sequence'].next_by_code('abr.ot') or 'New'
             vals['user']=self.env.user.partner_id.name
@@ -47,7 +47,7 @@ class Taller_ot_line(models.Model):
     cant = fields.Integer(string = 'Cantidad', default = 1)
     fecha_entr = fields.Date('Fecha de Entrega', compute="_compute_fecha_entrega")
     nave = fields.Char('Nave', compute="_compute_nave")
-    depto = fields.Char('depto', default='New')
+    depto = fields.Many2one('taller.depto.rel', string='depto')
 
 
     def _compute_fecha_entrega(self):
@@ -59,16 +59,8 @@ class Taller_ot_line(models.Model):
         for line in self:
             line['nave'] = line.ot_line_id.nave
         return
-    
+
     def _compute_depto(self):
         for line in self:
             line['depto'] = line.item.depto
         return
-    
-    @api.model
-    def create(self,vals):       
-        if vals.get('depto','New')=='New':
-            for line in self:
-                vals['depto'] = line.item.depto                        
-        result = super(Taller_ot_line,self).create(vals)
-        return result
