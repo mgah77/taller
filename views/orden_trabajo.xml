@@ -44,7 +44,6 @@
                                 <field name ="obs"/>
                                 <field name ="serie"/>
                                 <field name ="cant"/>
-                                <field name ="depto"/>
                             </tree>
                             </field>
 
