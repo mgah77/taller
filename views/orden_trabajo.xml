@@ -18,30 +18,33 @@
                 <sheet>
 
                     <group>
+                      <group>
+                        <field name="name" />
+                        <field name="fecha_recep" />
+                        <field name="armador" />
+                        <field name="fecha_entr" />
+                        <field name="nave" />
+                        <field name="obs" />
+                      </group>
+                      <group>
                         <group>
-                            <field name="name" />
-                            <field name="fecha_recep" />
-                            <field name="armador" />
-                            <field name="fecha_entr" />
-                            <field name="nave" />
-                            <field name="obs" />
-                         </group>
+                          <field name="user" />
+                          <field name="contacto" />
+                        </group>
                         <group>
-                            <field name="user" />
-                            <field name="contacto" />
-                                <group>
-                                <field name="contacto_fono" />
-                                </group>
-                                <group>
-                                <field name="contacto_mail" />
-                                </group>
-                            <label for="maniobra" />
-                            <field name="maniobra" />
-                            <label for="lugar" />
-                            <field name="lugar" />
-                            <label for="replace" />
-                            <field name="replace" />
-                         </group>
+                          <group>
+                          <field name="contacto_fono" />
+                          </group>
+                          <group>
+                          <field name="contacto_mail" />
+                          </group>
+                        </group>
+                        <group>
+                          <field name="maniobra" />
+                          <field name="lugar" />
+                          <field name="replace" />
+                        </group>
+                      </group>
                     </group>
                     <notebook>
                         <page string="Trabajos">
