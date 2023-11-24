@@ -29,7 +29,7 @@
                         <group>
                             <field name="user" />
                             <field name="contacto" />
-                                <group col="2">
+                                <group>
                                 <field name="contacto_fono" />
                                 </group>
                                 <group>
