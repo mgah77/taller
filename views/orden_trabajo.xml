@@ -27,10 +27,10 @@
                         <field name="obs" />
                       </group>
                       <group>
-
+                        <group>
                           <field name="user" />
                           <field name="contacto" />
-                        
+                        </group>
                         <group>
                           <group>
                           <field name="contacto_fono" />
@@ -39,6 +39,7 @@
                           <field name="contacto_mail" />
                           </group>
                         </group>
+                        <newline>
                         <group>
                           <field name="maniobra" />
                           <field name="lugar" />
