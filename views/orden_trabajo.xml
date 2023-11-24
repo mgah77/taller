@@ -39,7 +39,7 @@
                           <field name="contacto_mail" />
                           </group>
                         </group>
-                        <newline>
+                        <newline />
                         <group>
                           <field name="maniobra" />
                           <field name="lugar" />
