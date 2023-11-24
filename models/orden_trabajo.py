@@ -8,7 +8,7 @@ class Taller_ingreso(models.Model):
     name = fields.Char(string="Nro ", readonly=True, default='New', copy=False)
 
     fecha_recep = fields.Date('Fecha de Recepcion')
-    fecha_entr = fields.Date('Fecha de Entrega')
+    fecha_entr = fields.Date('Fecha de Entrega', index=True)
     armador = fields.Many2one('res.partner',string='Armador',domain="[('type', '!=', 'private'), ('is_company', '=', True), ('type','=','contact')]")
     nave = fields.Char('Nave')
     obs = fields.Char('Observaciones')
