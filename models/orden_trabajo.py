@@ -47,6 +47,13 @@ class Taller_ingreso(models.Model):
             self.contacto_fono = False
             self.contacto_mail = False
 
+    @api.onchange('ot_line')
+    def _compute_fecha(self):
+        """calcula cfu al cambiar linea"""
+        if self.fecha_entr:
+            for line in self.ot_line:
+                line.fecha_entr = self.fecha_entr
+                
 
 class Taller_ot_line(models.Model):
     _name = 'taller.ot.line'
