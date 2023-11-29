@@ -32,9 +32,7 @@ class Taller_ingreso(models.Model):
         if vals.get('name','New')=='New':
             vals['name']=self.env['ir.sequence'].next_by_code('abr.ot') or 'New'
             vals['user']=self.env.user.partner_id.name
-        result = super(Taller_ingreso,self).create(vals)
-        for line in result.ot_line:
-            line.fecha_entr = result.fecha_entr
+        result = super(Taller_ingreso,self).create(vals)        
         return result
 
     @api.onchange('contacto')
@@ -49,14 +47,8 @@ class Taller_ingreso(models.Model):
             self.contacto_fono = False
             self.contacto_mail = False
 
-    @api.onchange('ot_line')
-    def _compute_fecha(self):
-        """calcula fecha al cambiar linea"""
-        if self.fecha_entr:
-            for line in self.ot_line:
-                line.fecha_entr = self.fecha_entr
-                
 
+                
 class Taller_ot_line(models.Model):
     _name = 'taller.ot.line'
     _description = 'lineas OT'
