@@ -68,8 +68,9 @@ class Taller_ot_line(models.Model):
             line.nave = line.ot_line_id.nave
 
     def _compute_fech(self):
+        aaaa = ""
         for line in self:
-            line.fecha_entr = line.ot_line_id.fecha_entr
+            aaaa = line.ot_line_id.fecha_entr
             self.write({
-                fecha_entr : line.ot_line_id.fecha_entr
+                line.fecha_entr : aaaa
             })
