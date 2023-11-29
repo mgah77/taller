@@ -66,7 +66,7 @@ class Taller_ot_line(models.Model):
     obs = fields.Char('Observaciones')
     serie = fields.Integer('Serie')
     cant = fields.Integer(string='Cantidad', default=1)
-    fecha_entr = fields.Date('Fecha de Entrega', store=True)
+    fecha_entr = fields.Date('Fecha de Entrega', compute="_compute_fech")
     nave = fields.Char('Nave', compute="_compute_nave")
     depto = fields.Many2one('taller.depto.rel', string='Departamento', related='item.depto', store=True)
 
@@ -75,7 +75,6 @@ class Taller_ot_line(models.Model):
         for line in self:
             line.nave = line.ot_line_id.nave
 
-    @api.onchange('ot_line_id')
-    def _onchange_ot_line_id(self):
-        # Set fecha_entr when ot_line_id changes
-        self.fecha_entr = self.ot_line_id.fecha_entr
+    def _compute_fech(self):
+        for line in self:
+            line.fecha_entr = line.ot_line_id.fecha_entr
