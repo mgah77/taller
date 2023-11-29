@@ -72,5 +72,5 @@ class Taller_ot_line(models.Model):
         for line in self:
             aaaa = line.ot_line_id.fecha_entr
             self.write({
-                line.fecha_entr : aaaa
+                self.fecha_entr : aaaa
             })
