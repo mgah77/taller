@@ -69,7 +69,7 @@ class Taller_ot_line(models.Model):
 
     def _compute_fech(self):
         aaaa = ""
-        aaaa = line.ot_line_id.fecha_entr
+        aaaa = self.ot_line_id.fecha_entr
         self.write({
             self.fecha_entr : aaaa
             })
