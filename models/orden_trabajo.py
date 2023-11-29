@@ -33,6 +33,8 @@ class Taller_ingreso(models.Model):
             vals['name']=self.env['ir.sequence'].next_by_code('abr.ot') or 'New'
             vals['user']=self.env.user.partner_id.name
         result = super(Taller_ingreso,self).create(vals)
+        for line in result.ot_line:
+            line.fecha_entr = result.fecha_entr
         return result
 
     @api.onchange('contacto')
@@ -49,7 +51,7 @@ class Taller_ingreso(models.Model):
 
     @api.onchange('ot_line')
     def _compute_fecha(self):
-        """calcula cfu al cambiar linea"""
+        """calcula fecha al cambiar linea"""
         if self.fecha_entr:
             for line in self.ot_line:
                 line.fecha_entr = self.fecha_entr
@@ -72,3 +74,8 @@ class Taller_ot_line(models.Model):
     def _compute_nave(self):
         for line in self:
             line.nave = line.ot_line_id.nave
+
+    @api.onchange('ot_line_id')
+    def _onchange_ot_line_id(self):
+        # Set fecha_entr when ot_line_id changes
+        self.fecha_entr = self.ot_line_id.fecha_entr
