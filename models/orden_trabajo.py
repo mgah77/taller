@@ -54,6 +54,7 @@ class Taller_ot_line(models.Model):
     _description = 'lineas OT'
 
     ot_line_id = fields.Many2one(comodel_name='taller.ot', string='lineas ot id', required=True, ondelete='cascade', index=True, copy=False)
+    name = fields.Char(string="Nro ", readonly=True, default='New', copy=False)
     item = fields.Many2one('product.template', string="Nombre Item")
     obs = fields.Char('Observaciones')
     serie = fields.Integer('Serie')
@@ -62,14 +63,13 @@ class Taller_ot_line(models.Model):
     nave = fields.Char('Nave', compute="_compute_nave")
     depto = fields.Many2one('taller.depto.rel', string='Departamento', related='item.depto', store=True)
 
+    @api.model
+    def create(self,vals):
+        if vals.get('name','New')=='New':
+            vals['name']=self.ot_line_id.name           
+        result = super(Taller_ot_line,self).create(vals)        
+        return result
 
     def _compute_nave(self):
         for line in self:
             line.nave = line.ot_line_id.nave
-
-    def _compute_fech(self):
-        aaaa = ""
-        aaaa = self.ot_line_id.fecha_entr
-        self.write({
-            self.fecha_entr : aaaa
-            })
