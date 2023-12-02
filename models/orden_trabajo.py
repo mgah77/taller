@@ -54,7 +54,7 @@ class Taller_ot_line(models.Model):
     _description = 'lineas OT'
 
     ot_line_id = fields.Many2one(comodel_name='taller.ot', string='lineas ot id', required=True, ondelete='cascade', index=True, copy=False)
-    name = fields.Char(string="Nro ", readonly=True, default='New', copy=False)
+    name = fields.Char(string="Nro ", readonly=True, default='New')
     item = fields.Many2one('product.template', string="Nombre Item")
     obs = fields.Char('Observaciones')
     serie = fields.Integer('Serie')
@@ -66,7 +66,7 @@ class Taller_ot_line(models.Model):
     @api.model
     def create(self,vals):
         if vals.get('name','New')=='New':
-            alpha_ot = self.env['taller.ot'].search([('name','=',self.ot_line_id.name)])
+            alpha_ot = self.env['taller.ot'].search([('id','=',self.ot_line_id)])
             vals['name']=alpha_ot.name           
         result = super(Taller_ot_line,self).create(vals)        
         return result
