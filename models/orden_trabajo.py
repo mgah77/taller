@@ -54,27 +54,16 @@ class Taller_ot_line(models.Model):
     _description = 'lineas OT'
 
     ot_line_id = fields.Many2one(comodel_name='taller.ot', string='lineas ot id', required=True, ondelete='cascade', index=True, copy=False)
-    name = fields.Char(string="Nro ", default='New', compute="_compute_name", store = True)
+    name = fields.Char(string="Nro ", default='New', store = True)
     item = fields.Many2one('product.template', string="Nombre Item")
     obs = fields.Char('Observaciones')
     serie = fields.Integer('Serie')
     cant = fields.Integer(string='Cantidad', default=1)
-    fecha = fields.Date(related='ot_line_id.fecha_entr', store=True)
-    fecha_entr = fields.Date('Fecha de Entrega', compute="_compute_fech")
+    fecha = fields.Date(related='ot_line_id.fecha_entr', store=True)  
     nave = fields.Char('Nave', compute="_compute_nave")
     depto = fields.Many2one('taller.depto.rel', string='Departamento', related='item.depto', store=True)
 
     
-    def _compute_name(self):
-        alpha_ot = self.env['taller.ot'].search([('id','=',self.ot_line_id.id)])
-        self.write({
-            'name' : alpha_ot.name,
-        })
-
-    def _compute_fech(self):
-          for line in self:
-            line.fecha_entr = line.ot_line_id.fecha_entr
-
     def _compute_nave(self):
         for line in self:
             line.nave = line.ot_line_id.nave
