@@ -66,7 +66,7 @@ class Taller_ot_line(models.Model):
     @api.model
     def create(self,vals):
         if vals.get('name','New')=='New':
-            alpha_ot = self.env['tallet.ot'].search([('name','=',self.ot_line_id.name)])
+            alpha_ot = self.env['tallet.ot'].search([('id','=',active_id)])
             vals['name']=alpha_ot.name           
         result = super(Taller_ot_line,self).create(vals)        
         return result
