@@ -60,7 +60,6 @@ class Taller_ot_line(models.Model):
     serie = fields.Integer('Serie')
     cant = fields.Integer(string='Cantidad', default=1)
     fecha_entr = fields.Date('Fecha de Entrega', compute="_compute_fech")
-    fecha = fields.Many2one('taller.ot', string='fecha', related='ot_line_id.fecha_entr', store=True)
     nave = fields.Char('Nave', compute="_compute_nave")
     depto = fields.Many2one('taller.depto.rel', string='Departamento', related='item.depto', store=True)
 
