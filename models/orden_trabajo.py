@@ -72,7 +72,7 @@ class Taller_ot_line(models.Model):
 
     def _compute_fech(self):
           for line in self:
-            line.fech_entr = line.ot_line_id.fech_entr
+            line.fecha_entr = line.ot_line_id.fecha_entr
 
     def _compute_nave(self):
         for line in self:
