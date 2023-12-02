@@ -9,7 +9,6 @@
                                 <field name ="item"/>
                                 <field name ="obs"/>
                                 <field name ="nave"/>
-                                <field name ="fecha_entr"/>
                                 <field name ="fecha"/>
                                 <field name ="depto"/>
 
@@ -31,7 +30,7 @@
                                             <field name ="depto" invisible="1" />
                                             <field name ="nave"/>
                                             <br/>
-                                            <field name ="fecha_entr" widget="date_index"/>
+                                            <field name ="fecha" widget="date_index"/>
                                     </div>
                                 </div>
                             </div>
