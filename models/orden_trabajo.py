@@ -59,7 +59,7 @@ class Taller_ot_line(models.Model):
     obs = fields.Char('Observaciones')
     serie = fields.Integer('Serie')
     cant = fields.Integer(string='Cantidad', default=1)
-    fecha_entr = fields.Date(string='Fecha de Entrega',  store=True)
+    fecha_entr = fields.Date(string='Fecha de Entrega', related='ot_line_id.fech_entr', store=True)
     nave = fields.Char('Nave', compute="_compute_nave")
     depto = fields.Many2one('taller.depto.rel', string='Departamento', related='item.depto', store=True)
 
