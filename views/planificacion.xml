@@ -28,9 +28,9 @@
                                 <div class="row">
                                     <div class="col-sm">
                                             <field name ="depto" invisible="1" />
-                                            <field name ="name"/> / <field name ="nave"/>
+                                            OT : <field name ="name"/> / <field name ="nave"/>
                                             <br/>
-                                            <field name ="fecha" widget="date_index"/> (<field name ="dias"/>)
+                                            <field name ="fecha" widget="date_index"/>
                                     </div>
                                 </div>
                             </div>

@@ -62,7 +62,6 @@ class Taller_ot_line(models.Model):
     fecha = fields.Date(related='ot_line_id.fecha_entr', store=True)
     nave = fields.Char('Nave', compute="_compute_nave")
     depto = fields.Many2one('taller.depto.rel', string='Departamento', related='item.depto', store=True)
-    dias = fields.Float('dias', compute="_compute_dias")
 
 
     def _compute_nave(self):
@@ -72,7 +71,3 @@ class Taller_ot_line(models.Model):
     def _compute_ot(self):
         for line in self:
             line.name = line.ot_line_id.name
-
-    def _compute_dias(self):
-        for line in self:
-            line.dias = line.ot_line_id.fecha_entr - line.ot_line_id.fecha_recep
