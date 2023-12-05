@@ -23,6 +23,7 @@
   id="taller_maestro"
   name="Maestro"
   parent="taller_menu"
+  groups="group_taller_maestro"
   sequence="90" />
 
   <menuitem

@@ -2,6 +2,9 @@
     <record id="group_taller" model="res.groups">
 	<field name="name">Modulo Taller</field>
     </record>
+    <record id="group_taller_maestro" model="res.groups">
+	<field name="name">Modulo Taller Maestro</field>
+    </record>
 
 
 </odoo>
