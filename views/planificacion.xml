@@ -7,10 +7,11 @@
                 <tree string="Resumen" create="False" editable="bottom">
                                 <field name ="name"/>
                                 <field name ="armador"/>
-                                <field name ="nave"/>
+                                <field name ="depto" string="Detalle"/>
                                 <field name ="fecha"/>
-                                <field name ="depto"/>
-
+                                <field name ="nave"/>
+                                
+                            
 
                 </tree>
             </field>
