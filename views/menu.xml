@@ -14,6 +14,12 @@
   res_model="taller.ot.line"
   view_mode="kanban"/>
 
+<act_window
+  id="res_action"
+  name="Resumen"
+  res_model="taller.ot.line"
+  view_mode="tree"/>
+
 
 <menuitem
   id="taller_menu"
@@ -23,10 +29,32 @@
 
 <menuitem
   id="ot_menu"
-  name="Orden de Trabajo"
-  action="ot_action"
+  name="Orden de Trabajo"  
   parent="taller_menu"
   sequence="20" />
+
+  <menuitem
+    id="ot_menu_d"
+    name="Crear / Modificar"
+    action="ot_action"
+    parent="ot_menu"
+    sequence="10" />
+  
+  <menuitem
+    id="ot_menu_r"
+    name="Resumen"
+    action="res_action"
+    parent="ot_menu"
+    sequence="20" />
+
+
+
+
+
+
+
+
+
 
   <menuitem
     id="plan_menu"

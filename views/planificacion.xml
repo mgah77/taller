@@ -4,8 +4,8 @@
             <field name="name">Planificacion_tree</field>
             <field name="model">taller.ot.line</field>
             <field name="arch" type="xml">
-                <tree string="Orden de trabajo">
-
+                <tree string="Resumen">
+                                <field name ="name"/>
                                 <field name ="item"/>
                                 <field name ="obs"/>
                                 <field name ="nave"/>
