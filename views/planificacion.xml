@@ -8,7 +8,7 @@
                                 <field name ="name"/>
                                 <field name ="armador"/>
                                 <field name ="depto" string="Detalle"/>
-                                <field name ="fecha"/>
+                                <field name ="fecha_recep"/>
                                 <field name ="nave"/>
                                 
                             
