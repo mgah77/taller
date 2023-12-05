@@ -32,7 +32,7 @@ class Taller_ingreso(models.Model):
         if vals.get('name','New')=='New':
             vals['name']=self.env['ir.sequence'].next_by_code('abr.ot') or 'New'
             vals['user']=self.env.user.partner_id.name
-        result = super(Taller_ingreso,self).create(vals)        
+        result = super(Taller_ingreso,self).create(vals)
         return result
 
     @api.onchange('contacto')
@@ -48,22 +48,26 @@ class Taller_ingreso(models.Model):
             self.contacto_mail = False
 
 
-                
+
 class Taller_ot_line(models.Model):
     _name = 'taller.ot.line'
     _description = 'lineas OT'
 
     ot_line_id = fields.Many2one(comodel_name='taller.ot', string='lineas ot id', required=True, ondelete='cascade', index=True, copy=False)
-    name = fields.Char(string="Nro ", default='New', store = True)
+    name = fields.Char('OT', compute="_compute_ot")
     item = fields.Many2one('product.template', string="Nombre Item")
     obs = fields.Char('Observaciones')
     serie = fields.Integer('Serie')
     cant = fields.Integer(string='Cantidad', default=1)
-    fecha = fields.Date(related='ot_line_id.fecha_entr', store=True)  
+    fecha = fields.Date(related='ot_line_id.fecha_entr', store=True)
     nave = fields.Char('Nave', compute="_compute_nave")
     depto = fields.Many2one('taller.depto.rel', string='Departamento', related='item.depto', store=True)
 
-    
+
     def _compute_nave(self):
         for line in self:
             line.nave = line.ot_line_id.nave
+
+    def _compute_ot(self):
+        for line in self:
+            line.name = line.ot_line_id.name
