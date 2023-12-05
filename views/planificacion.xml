@@ -7,8 +7,6 @@
                 <tree string="Resumen">
                                 <field name ="name"/>
                                 <field name ="armador"/>
-                                <field name ="item"/>
-                                <field name ="obs"/>
                                 <field name ="nave"/>
                                 <field name ="fecha"/>
                                 <field name ="depto"/>
