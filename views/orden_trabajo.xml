@@ -13,7 +13,7 @@
             <field name="arch" type="xml">
                 <form string="Orden de trabajo">
                 <header> 
-                  <field name="state" widget="statusbar" />        
+                       
                 </header>
                 <sheet>
 
