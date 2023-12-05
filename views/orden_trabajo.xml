@@ -12,8 +12,8 @@
             <field name="model">taller.ot</field>
             <field name="arch" type="xml">
                 <form string="Orden de trabajo">
-                <header>
-
+                <header> 
+                  <field name="state" widget="statusbar" />        
                 </header>
                 <sheet>
 

@@ -64,6 +64,12 @@ class Taller_ot_line(models.Model):
     nave = fields.Char('Nave', compute="_compute_nave")
     depto = fields.Many2one('taller.depto.rel', string='Departamento', related='item.depto', store=True)
     armador = fields.Many2one('res.partner', string='Armador', related='ot_line_id.armador', store=True)
+    state = fields.Selection([
+        ('tall','En Taller'),
+        ('fina','Terminado'),
+        ('cert','Certificado'),
+        ('coti','Cotizado'),
+        ('fact','Facturado')],string='Status',default='tall')
 
 
     def _compute_nave(self):
