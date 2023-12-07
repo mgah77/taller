@@ -30,7 +30,7 @@
                         <t t-name="kanban-box">
                             <div class="container" >
                                 <div class="row">
-                                    <div class="col-sm" t-attf-class="{{'oe_kanban_color_' + kanban_getcolor(record.color.raw_value) }}">
+                                    <div class="col-sm" >
                                         
                           
                                             <field name ="depto" invisible="1" />
