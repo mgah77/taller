@@ -71,7 +71,7 @@ class Taller_ot_line(models.Model):
         ('cert','Certificado'),
         ('coti','Cotizado'),
         ('fact','Facturado')],string='Status',default='tall')
-    color = fields.Integer('color', compute ="_compute_color")
+    color = fields.Integer('color', compute ="_compute_dias")
     hoy = fields.Date(string="From Date", compute = "_compute_hoy")
     dias = fields.Integer(compute = "_compute_dias")
 
@@ -90,14 +90,11 @@ class Taller_ot_line(models.Model):
     def _compute_dias(self):
         for record in self:
             record.dias = abs((record.hoy - record.fecha).days)
-
-    def _compute_color(self):
-        for line in self:
-            if (line.dias > 7):
-                line.color = 4
-            elif (line.dias < 8 and line.dias > 1):
-                line.color = 3
+            if (record.dias > 7):
+                record.color = 4
+            elif (record.dias < 8 and record.dias > 1):
+                record.color = 3
             else:
-                line.color = 1
-        return
+                record.color = 1
+
 
