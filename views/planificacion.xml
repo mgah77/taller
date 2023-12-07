@@ -28,9 +28,9 @@
                 <kanban default_order="fecha" default_group_by="depto"  group_create="False" class="o_kanban_small_column" group_delete="False" group_edit="False" create="False">
                     <templates>
                         <t t-name="kanban-box">
-                            <div class="container" t-attf-class="{{'oe_kanban_color_' + kanban_getcolor(record.color.raw_value) }}">
+                            <div class="container" >
                                 <div class="row">
-                                    <div class="col-sm">
+                                    <div class="col-sm" t-attf-class="{{'oe_kanban_color_' + kanban_getcolor(record.color.raw_value) }}">
                                         
                           
                                             <field name ="depto" invisible="1" />
