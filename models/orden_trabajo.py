@@ -1,5 +1,6 @@
 from odoo import models, fields , api , _
 import datetime
+import time
 
 class Taller_ingreso(models.Model):
 
