@@ -96,5 +96,7 @@ class Taller_ot_line(models.Model):
                 record.color = 3
             else:
                 record.color = 1
+            if ((record.hoy - record.fecha).days < 1):
+                record.color = 1
 
 
