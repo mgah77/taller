@@ -24,7 +24,7 @@
             <field name="name">Planificacion_kanban</field>
             <field name="model">taller.ot.line</field>
             <field name="arch" type="xml">
-            <field name="color" invisible="1"/>
+            
                 <kanban default_order="fecha" default_group_by="depto"  group_create="False" class="o_kanban_small_column" group_delete="False" group_edit="False" create="False">
                     <templates>
                         <t t-name="kanban-box">
@@ -32,7 +32,7 @@
                                 <div class="row">
                                     <div class="col-sm" >
                                         
-                          
+                                            <field name="color" invisible="1"/>
                                             <field name ="depto" invisible="1" />
                                             <field name ="name"/> / <field name ="nave"/>
                                             <br/>
