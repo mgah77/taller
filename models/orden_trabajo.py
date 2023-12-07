@@ -71,6 +71,7 @@ class Taller_ot_line(models.Model):
         ('coti','Cotizado'),
         ('fact','Facturado')],string='Status',default='tall')
     color = fields.Integer('color', default= 2)
+    hoy = fields.Date(default=datetime.today())
 
 
     def _compute_nave(self):
