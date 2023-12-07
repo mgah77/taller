@@ -83,6 +83,6 @@ class Taller_ot_line(models.Model):
         for line in self:
             line.name = line.ot_line_id.name
 
-    def _compute_eta(self):
+    def _computet_eta(self):
         for record in self:
             record.eta = abs((record.hoy - record.fecha_recep).days)
