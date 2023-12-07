@@ -73,6 +73,7 @@ class Taller_ot_line(models.Model):
         ('fact','Facturado')],string='Status',default='tall')
     color = fields.Integer('color', default= 2)
     hoy = fields.Date(string="From Date", compute = "_compute_hoy")
+    dias = fields.Integer(compute = "_compute_dias")
 
     def _compute_nave(self):
         for line in self:
@@ -85,3 +86,7 @@ class Taller_ot_line(models.Model):
     def _compute_hoy(self):
         for record in self:
             record ['hoy'] = datetime.datetime.now ()
+
+    def _compute_dias(self):
+        for record in self:
+            record.dias = abs((record.hoy - record.fecha).days)
