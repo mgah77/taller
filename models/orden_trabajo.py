@@ -72,8 +72,7 @@ class Taller_ot_line(models.Model):
         ('coti','Cotizado'),
         ('fact','Facturado')],string='Status',default='tall')
     color = fields.Integer('color', default= 2)
-    
-
+    from_date = fields.Date(string="From Date" ,default=datetime.now())
 
     def _compute_nave(self):
         for line in self:
