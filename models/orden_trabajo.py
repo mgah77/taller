@@ -91,7 +91,7 @@ class Taller_ot_line(models.Model):
         for record in self:
             record.dias = abs((record.hoy - record.fecha).days)
             if (record.dias > 7):
-                record.color = 8
+                record.color = 7
             elif (record.dias < 8 and record.dias > 1):
                 record.color = 3
             else:
