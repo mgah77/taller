@@ -90,3 +90,14 @@ class Taller_ot_line(models.Model):
     def _compute_dias(self):
         for record in self:
             record.dias = abs((record.hoy - record.fecha).days)
+
+    def _compute_color(self):
+        for line in self:
+            if (line.dias > 7):
+                line.color = 4
+            elif (line.dias < 8 and line.dias > 1):
+                line.color = 3
+            else:
+                line.color = 1
+        return
+

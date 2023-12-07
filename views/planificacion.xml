@@ -11,7 +11,7 @@
                                 <field name ="fecha_recep"/>
                                 <field name ="nave"/>
                                 <field name="state" />   
-                                <field name="dias" />
+                                <field name="color" />
                                 
                             
 
