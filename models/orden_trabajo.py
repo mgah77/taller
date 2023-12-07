@@ -70,7 +70,7 @@ class Taller_ot_line(models.Model):
         ('cert','Certificado'),
         ('coti','Cotizado'),
         ('fact','Facturado')],string='Status',default='tall')
-    color = fields.Integer('color', default= 1)
+    color = fields.Integer('color', default= 2)
 
 
     def _compute_nave(self):
