@@ -1,5 +1,5 @@
 from odoo import models, fields , api , _
-import time
+import datetime
 
 class Taller_ingreso(models.Model):
 
@@ -72,7 +72,7 @@ class Taller_ot_line(models.Model):
         ('coti','Cotizado'),
         ('fact','Facturado')],string='Status',default='tall')
     color = fields.Integer('color', default= 2)
-    hoy = fields.Date(string="From Date", compute = "_compute_hoy")
+    hoy = fields.Date(string="From Date", default = datetime.now())
 
     def _compute_nave(self):
         for line in self:
@@ -82,6 +82,3 @@ class Taller_ot_line(models.Model):
         for line in self:
             line.name = line.ot_line_id.name
 
-    def _compute_hoy(self):
-        for record in self:
-            record ['hoy'] = datetime.datetime.now ()
