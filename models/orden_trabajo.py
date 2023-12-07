@@ -71,8 +71,6 @@ class Taller_ot_line(models.Model):
         ('coti','Cotizado'),
         ('fact','Facturado')],string='Status',default='tall')
     color = fields.Integer('color', default= 2)
-    hoy = fields.Date(string='hoy', default=datetime.today())
-    eta = fields.Integer(compute = "_compute_eta")
 
 
     def _compute_nave(self):
@@ -82,7 +80,3 @@ class Taller_ot_line(models.Model):
     def _compute_ot(self):
         for line in self:
             line.name = line.ot_line_id.name
-
-    def _computet_eta(self):
-        for record in self:
-            record.eta = abs((record.hoy - record.fecha_recep).days)
