@@ -4,16 +4,16 @@
             <field name="name">Planificacion_tree</field>
             <field name="model">taller.ot.line</field>
             <field name="arch" type="xml">
-            <field name="domain">[('branch','=','viewer')]</field>
+            <field name="name" domain="[('branch','=','viewer')]" />
                 <tree string="Resumen" create="False" editable="bottom">
                                 <field name ="name"/>
                                 <field name ="armador"/>
                                 <field name ="depto" string="Detalle"/>
                                 <field name ="fecha_recep"/>
                                 <field name ="nave"/>
-                                <field name="state" />  
+                                <field name ="state" />  
                                 <field name ="branch"/>
-                                <field name="viewer" />  
+                                <field name ="viewer" />  
                             
 
                 </tree>
