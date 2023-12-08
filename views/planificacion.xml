@@ -33,7 +33,7 @@
                                         
                                             <field name="color" invisible="1"/>
                                             <field name ="depto" invisible="1" />
-                                            <t t-if="record.warehouse_id.raw_value == record.user_warehouse.raw_value or record.user_warehouse.raw_value == 0">
+                                            <t t-if="record.branch.raw_value == record.user_warehouse.raw_value or record.user_warehouse.raw_value == 0">
                                             <field name ="name"/> | <field name ="nave"/> | <field name ="fecha" widget="date_index"/>
                                         
                                             </t>
