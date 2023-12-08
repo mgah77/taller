@@ -18,7 +18,8 @@
   id="res_action"
   name="Resumen"
   res_model="taller.ot.line"
-  view_mode="tree"/>
+  view_mode="tree"
+  domain="[('branch','=','viewer')]"/>
 
 
 <menuitem
