@@ -4,7 +4,6 @@
             <field name="name">Planificacion_tree</field>
             <field name="model">taller.ot.line</field>
             <field name="arch" type="xml">
-            <field name="name" domain="[('branch','=','viewer')]" />
                 <tree string="Resumen" create="False" editable="bottom">
                                 <field name ="name"/>
                                 <field name ="armador"/>
