@@ -5,6 +5,7 @@
             <field name="model">taller.ot.line</field>
             <field name="arch" type="xml">
                 <tree string="Resumen" create="False" editable="bottom">
+                <filter string="Viewer" domain="[('branch','=','viewer')]">
                                 <field name ="name"/>
                                 <field name ="armador"/>
                                 <field name ="depto" string="Detalle"/>
@@ -14,7 +15,7 @@
                                 <field name ="branch"/>
                                 <field name ="viewer" />  
                             
-
+                </filter>
                 </tree>
             </field>
         </record>
