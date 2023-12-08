@@ -32,7 +32,7 @@
                                         
                                             <field name="color" invisible="1"/>
                                             <field name ="depto" invisible="1" />
-                                            <field name ="name"/> | <field name ="nave"/> | <field name ="fecha" widget="date_index"/>
+                                            <field name ="name"/> | <field name ="nave"/> | <div><field name ="fecha" widget="date_index"/></div>
                                     </div>
                                 </div>
                             
