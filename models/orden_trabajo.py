@@ -76,11 +76,8 @@ class Taller_ot_line(models.Model):
     color = fields.Integer('color', compute ="_compute_dias")
     hoy = fields.Date(string="From Date", compute = "_compute_hoy")
     dias = fields.Integer(compute = "_compute_dias")
-    branch = fields.Integer(compute = "_compute_branch")
+    branch = fields.Integer()
 
-    def _compute_branch(self):
-        for line in self:
-            line.branch = line.ot_line_id.user_branch
 
     def _compute_nave(self):
         for line in self:
@@ -113,7 +110,3 @@ class Taller_ot_line(models.Model):
         for record in self:
             record['viewer']=self.env.user.property_warehouse_id
             return
-        
-    @api.model
-    def get_viewer_records(self):
-        return self.search([('branch', '=', 'viewer')])
