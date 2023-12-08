@@ -19,7 +19,7 @@
   name="Resumen"
   res_model="taller.ot.line"
   view_mode="tree"
-  domain="[('branch','=','viewer')]"/>
+  context="{'search_default_viewer': 1}"/>
 
 
 <menuitem

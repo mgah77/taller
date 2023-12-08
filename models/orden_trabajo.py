@@ -113,3 +113,7 @@ class Taller_ot_line(models.Model):
         for record in self:
             record['viewer']=self.env.user.property_warehouse_id
             return
+        
+    @api.model
+    def get_viewer_records(self):
+        return self.search([('branch', '=', 'viewer')])
