@@ -128,5 +128,7 @@ class Taller_ot_line(models.Model):
             return
 
     @api.model
-    def get_viewer_records(self):
-        return self.search([('branch', '=', 'viewer')])
+    def branch1(self):
+        for line in self:
+            line.branch_s = line.ot_line_id.user_branch
+        return
