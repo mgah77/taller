@@ -127,7 +127,6 @@ class Taller_ot_line(models.Model):
             record['viewer']=self.env.user.property_warehouse_id
             return
 
-    @api.multi
     @api.depends('ot_line_id')
     def _compute_branch1(self):
         for line in self:
