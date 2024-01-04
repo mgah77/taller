@@ -85,7 +85,7 @@ class Taller_ot_line(models.Model):
     branch = fields.Integer(compute = "_compute_branch")
     branch_s = fields.Integer(compute = "_compute_branch1", store=True)
 
-
+    @api.model
     def _compute_branch1(self):
         for line in self:
             line.branch_s = line.ot_line_id.user_branch
