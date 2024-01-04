@@ -22,6 +22,12 @@ class Taller_ingreso(models.Model):
     maniobra = fields.Boolean(string = 'Maniobra')
     lugar = fields.Many2one('res.city', string = 'Lugar')
     replace = fields.Boolean(string = 'Reemplazo')
+    viewer = fields.Integer('Current User', compute="_compute_viewer")
+
+    def _compute_viewer(self):
+        for record in self:
+            record['viewer']=self.env.user.property_warehouse_id
+            return
 
 
     def _compute_sucursal(self):
