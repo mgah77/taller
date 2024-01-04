@@ -22,8 +22,8 @@ class Taller_ingreso(models.Model):
     maniobra = fields.Boolean(string = 'Maniobra')
     lugar = fields.Many2one('res.city', string = 'Lugar')
     replace = fields.Boolean(string = 'Reemplazo')
-    
-    
+
+
     def _compute_sucursal(self):
         for record in self:
             record['user_branch']=self.env.user.property_warehouse_id
@@ -58,7 +58,7 @@ class Taller_ot_line(models.Model):
 
     ot_line_id = fields.Many2one(comodel_name='taller.ot', string='lineas ot id', required=True, ondelete='cascade', index=True, copy=False)
     name = fields.Char('OT', compute="_compute_ot")
-    item = fields.Many2one('product.template', string="Nombre Item")
+    item = fields.Many2one('product.template', string="Nombre Item", domain="[('sale_ok', '=', True)]" )
     obs = fields.Char('Observaciones')
     serie = fields.Integer('Serie')
     cant = fields.Integer(string='Cantidad', default=1)
@@ -113,7 +113,7 @@ class Taller_ot_line(models.Model):
         for record in self:
             record['viewer']=self.env.user.property_warehouse_id
             return
-        
+
     @api.model
     def get_viewer_records(self):
         return self.search([('branch', '=', 'viewer')])
