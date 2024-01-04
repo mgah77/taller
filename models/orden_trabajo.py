@@ -83,9 +83,13 @@ class Taller_ot_line(models.Model):
     hoy = fields.Date(string="From Date", compute = "_compute_hoy")
     dias = fields.Integer(compute = "_compute_dias")
     branch = fields.Integer(compute = "_compute_branch")
-    branch_s = fields.Integer(compute = "_compute_branch", store=True)
+    branch_s = fields.Integer(compute = "_compute_branch1", store=True)
 
-    @api.model
+
+    def _compute_branch1(self):
+        for line in self:
+            line.branchs = line.ot_line_id.user_branch
+
     def _compute_branch(self):
         for line in self:
             line.branch = line.ot_line_id.user_branch
