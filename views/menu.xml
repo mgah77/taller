@@ -1,11 +1,13 @@
 
 <odoo>
 
-<act_window
- id="ot_action"
- name="Orden de Trabajo"
- res_model="taller.ot"
- view_mode="tree,form"/>
+ <record id="ot_action" model="ir.actions.act_window">
+            <field name="name">Orden de Trabajo</field>
+            <field name="res_model">taller.ot</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('branch','=','viewer')]</field>
+</record>
 
 
  <act_window
