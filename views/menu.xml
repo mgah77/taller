@@ -30,8 +30,8 @@
             <field name="res_model">taller.ot.line</field>
             <field name="type">ir.actions.act_window</field>
             <field name="view_mode">tree</field>
-            <field name="domain">[('branch','=','2')]</field>
-            <field name="context">{'branch': '2'} </field>
+            <field name="domain">[('branch_s','=','2')]</field>
+            <field name="context">{'branch_s': '2'} </field>
 
 </record>
 
@@ -40,8 +40,8 @@
             <field name="res_model">taller.ot.line</field>
             <field name="type">ir.actions.act_window</field>
             <field name="view_mode">tree</field>
-            <field name="domain">[('branch','=','3')]</field>
-            <field name="context">{'branch': '3'} </field>
+            <field name="domain">[('branch_s','=','3')]</field>
+            <field name="context">{'branch_s': '3'} </field>
 </record>
 
 
