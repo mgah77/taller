@@ -5,6 +5,12 @@
     <record id="group_taller_maestro" model="res.groups">
 	<field name="name">Modulo Taller Maestro</field>
     </record>
+    <record id="group_nuble" model="res.groups">
+  <field name="name">Taller Nuble</field>
+    </record>
+    <record id="group_parvial" model="res.groups">
+  <field name="name">Taller ParVial</field>
+    </record>
 
 
 </odoo>

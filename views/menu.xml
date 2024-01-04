@@ -1,12 +1,19 @@
 
 <odoo>
 
- <record id="ot_action" model="ir.actions.act_window">
+ <record id="ot_action_pv" model="ir.actions.act_window">
             <field name="name">Orden de Trabajo</field>
             <field name="res_model">taller.ot</field>
             <field name="type">ir.actions.act_window</field>
             <field name="view_mode">tree,form</field>
-            <field name="domain">[('user_branch','=','2')]</field>
+            <field name="domain">[('user_branch','=','3')]</field>
+</record>
+<record id="ot_action_nu" model="ir.actions.act_window">
+           <field name="name">Orden de Trabajo</field>
+           <field name="res_model">taller.ot</field>
+           <field name="type">ir.actions.act_window</field>
+           <field name="view_mode">tree,form</field>
+           <field name="domain">[('user_branch','=','2')]</field>
 </record>
 
 
@@ -37,11 +44,20 @@
   sequence="20" />
 
   <menuitem
-    id="ot_menu_d"
-    name="Crear / Modificar"
-    action="ot_action"
+    id="ot_menu_d_parvial"
+    name="Crear / Modificar PV"
+    action="ot_action_pv"
     parent="ot_menu"
-    sequence="10" />
+    sequence="10"
+    groups="taller.group_parvial" />
+
+  <menuitem
+    id="ot_menu_d_nuble"
+    name="Crear / Modificar NU"
+    action="ot_action_nu"
+    parent="ot_menu"
+    sequence="11"
+    groups="taller.group_nuble" />
 
   <menuitem
     id="ot_menu_r"
