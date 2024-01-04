@@ -28,7 +28,7 @@
             <field name="res_model">taller.ot.line</field>
             <field name="type">ir.actions.act_window</field>
             <field name="view_mode">tree</field>
-            <field name="domain">[('user_branch','=','2')]</field>
+            <field name="domain">[('branch','=','2')]</field>
 </record>
 
 <record id="res_action_pv" model="ir.actions.act_window">
@@ -36,7 +36,7 @@
             <field name="res_model">taller.ot.line</field>
             <field name="type">ir.actions.act_window</field>
             <field name="view_mode">tree</field>
-            <field name="domain">[('user_branch','=','3')]</field>
+            <field name="domain">[('branch','=','3')]</field>
 </record>
 
 
@@ -77,14 +77,16 @@
     name="Resumen"
     action="res_action_pv"
     parent="ot_menu"
-    sequence="20" />
+    sequence="20"
+    groups="taller.group_parvial" />
 
   <menuitem
     id="ot_menu_r_nuble"
     name="Resumen"
     action="res_action_nu"
     parent="ot_menu"
-    sequence="21" />
+    sequence="21"
+    groups="taller.group_nuble" />
 
 
   <menuitem
