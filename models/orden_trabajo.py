@@ -88,7 +88,8 @@ class Taller_ot_line(models.Model):
 
     def _compute_branch1(self):
         for line in self:
-            line.branchs = line.ot_line_id.user_branch
+            line.branch_s = line.ot_line_id.user_branch
+        return
 
     def _compute_branch(self):
         for line in self:
