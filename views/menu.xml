@@ -6,7 +6,7 @@
             <field name="res_model">taller.ot</field>
             <field name="type">ir.actions.act_window</field>
             <field name="view_mode">tree,form</field>
-            <field name="domain">[('user_branch','=','viewer')]</field>
+            <field name="domain">[('user_branch','=','2')]</field>
 </record>
 
 
