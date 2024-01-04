@@ -1,11 +1,11 @@
 
 <odoo>
 
-<!--act_window
+<act_window
  id="ot_action"
  name="Orden de Trabajo"
  res_model="taller.ot"
- view_mode="tree,form"/ !-->
+ view_mode="tree,form"/>
 
  <record model="ir.actions.act_window" id="ot_action2">
     <field name="name">Orden de Trabajo 2</field>
@@ -38,7 +38,7 @@
 
 <menuitem
   id="ot_menu"
-  name="Orden de Trabajo"  
+  name="Orden de Trabajo"
   parent="taller_menu"
   sequence="20" />
 
@@ -48,7 +48,7 @@
     action="ot_action"
     parent="ot_menu"
     sequence="10" />
-  
+
   <menuitem
     id="ot_menu_r"
     name="Resumen"
