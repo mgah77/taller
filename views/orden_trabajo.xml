@@ -12,8 +12,8 @@
             <field name="model">taller.ot</field>
             <field name="arch" type="xml">
                 <form string="Orden de trabajo">
-                <header> 
-                       
+                <header>
+
                 </header>
                 <sheet>
 
@@ -76,6 +76,7 @@
                     <tree string="Orden de trabajo">
 
                                     <field name ="name"/>
+                                    <field name ="sucursal" attrs="{'invisible': [('viewer','=',2),('viewer','=',3)]}"/>
                                     <field name ="armador"/>
                                     <field name ="nave"/>
                                     <field name ="fecha_entr"/>
