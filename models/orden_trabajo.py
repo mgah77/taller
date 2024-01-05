@@ -31,6 +31,8 @@ class Taller_ingreso(models.Model):
                 line.sucursal = 'ñuble'
             elif line.user_branch == 3:
                 line.sucursal = 'parvial'
+            else line.sucursal = ''
+        return
 
 
     def _compute_viewer(self):
