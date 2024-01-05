@@ -42,9 +42,9 @@ class Taller_ingreso(models.Model):
             vals['name']=self.env['ir.sequence'].next_by_code('abr.ot') or 'New'
             vals['user']=self.env.user.partner_id.name
             vals['user_branch']=self.env.user.property_warehouse_id
-            if self.env.user.property_warehouse_id = 2:
+            if self.env.user.property_warehouse_id == 2:
                 vals['sucursal']='Nuble'
-            elif self.env.user.property_warehouse_id = 3:
+            elif self.env.user.property_warehouse_id == 3:
                 vals['sucursal']='ParVial'
         result = super(Taller_ingreso,self).create(vals)
         return result
