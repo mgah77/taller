@@ -69,7 +69,7 @@ class Taller_ot_line(models.Model):
     name = fields.Char('OT', compute="_compute_ot")
     item = fields.Many2one('product.template', string="Nombre Item", domain="[('sale_ok', '=', True)]" )
     obs = fields.Char('Observaciones')
-    serie = fields.Integer('Serie')
+    serie = fields.Char('Serie')
     cant = fields.Integer(string='Cantidad', default=1)
     fecha = fields.Date(related='ot_line_id.fecha_entr', store=True)
     fecha_recep = fields.Date(related='ot_line_id.fecha_recep')
