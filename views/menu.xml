@@ -57,11 +57,6 @@
             <field name="view_mode">tree</field>
 </record>
 
-
-
-
-
-
 <menuitem
   id="taller_menu"
   name="Taller"
