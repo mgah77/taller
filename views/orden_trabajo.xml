@@ -46,8 +46,8 @@
                         </group>
                       </group>
                     </group>
-                    <notebook>
-                        <page string="Trabajos" style="font-size: 25px">
+                    <notebook  style="font-size: 25px">
+                        <page string="Trabajos">
                             <field name="ot_line">
                             <tree editable="bottom">
                                 <field name ="item"/>
