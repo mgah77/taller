@@ -12,8 +12,8 @@
             <field name="model">taller.ot</field>
             <field name="arch" type="xml">
                 <form string="Orden de trabajo">
-                <header> 
-                       
+                <header>
+
                 </header>
                 <sheet>
 
@@ -74,7 +74,7 @@
                 <field name="model">taller.ot</field>
                 <field name="arch" type="xml">
                     <tree string="Orden de trabajo">
-
+                                    <field name="sucursal" attrs="{'invisible': [('user_branch','=',2),('user_branch','=',3)]}"/>
                                     <field name ="name"/>
                                     <field name ="armador"/>
                                     <field name ="nave"/>
