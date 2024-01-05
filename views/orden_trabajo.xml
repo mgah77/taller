@@ -74,7 +74,7 @@
                 <field name="model">taller.ot</field>
                 <field name="arch" type="xml">
                     <tree string="Orden de trabajo">
-
+                                    <field name ="viewer" invisible='1'/>
                                     <field name ="name"/>
                                     <field name ="sucursal" attrs="{'invisible': [('viewer','=',2),('viewer','=',3)]}"/>
                                     <field name ="armador"/>
