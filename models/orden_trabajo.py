@@ -23,17 +23,19 @@ class Taller_ingreso(models.Model):
     lugar = fields.Many2one('res.city', string = 'Lugar')
     replace = fields.Boolean(string = 'Reemplazo')
     viewer = fields.Integer('Current User', compute="_compute_viewer")
-    sucursal = fields.Char('Sucursal')
+    sucursal = fields.Char('Sucursal', compute="_compute_sucursal")
+
+    def _compute_sucursal(self):
+        for line in self:
+            if line.user_branch == 2:
+                line.sucursal = 'ñuble'
+            elif line.user_branch == 3:
+                line.sucursal = 'parvial'
+
 
     def _compute_viewer(self):
         for record in self:
             record['viewer']=self.env.user.property_warehouse_id
-            return
-
-
-    def _compute_sucursal(self):
-        for record in self:
-            record['user_branch']=self.env.user.property_warehouse_id
             return
 
     @api.model
@@ -42,10 +44,6 @@ class Taller_ingreso(models.Model):
             vals['name']=self.env['ir.sequence'].next_by_code('abr.ot') or 'New'
             vals['user']=self.env.user.partner_id.name
             vals['user_branch']=self.env.user.property_warehouse_id
-            if self.env.user.property_warehouse_id == 2:
-                vals['sucursal']='Nuble'
-            elif self.env.user.property_warehouse_id == 3:
-                vals['sucursal']='ParVial'
         result = super(Taller_ingreso,self).create(vals)
         return result
 
