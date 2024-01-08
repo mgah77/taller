@@ -43,6 +43,8 @@
                         </t>
                     </templates>
                 </kanban>
+                <sheet>
+                </sheet>
                 
             </field>
         </record>
