@@ -43,6 +43,17 @@
                         </t>
                     </templates>
                 </kanban>
+                <tree string="Resumen" create="False" editable="bottom">
+
+                                <field name ="name"/>
+                                <field name ="armador"/>
+                                <field name ="depto" string="Detalle"/>
+                                <field name ="fecha_recep"/>
+                                <field name ="nave"/>
+                                <field name ="state" />
+                                <field name ="branch" invisible="1"/>
+                                <field name ="viewer" invisible="1"/>
+                </tree>
             </field>
         </record>
 
