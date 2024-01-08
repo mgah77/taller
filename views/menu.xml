@@ -29,7 +29,7 @@
   id="plan_action"
   name="Planificacion"
   res_model="taller.ot.line"
-  view_mode="kanban"/>
+  view_mode="kanban,tree"/>
 
 <record id="res_action_nu" model="ir.actions.act_window">
             <field name="name">Resumen</field>
