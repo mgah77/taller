@@ -12,12 +12,12 @@
                 <field name="model">taller.maniobras</field>
                 <field name="arch" type="xml">
                     <tree string="Orden de trabajo">
-                                    
-                                    <field name ="name"/>
+                                    <field name ="fecha"/>
+                                    <field name ="horario"/>
                                     <field name ="sucursal" groups="taller.group_operaciones"/>
-                                    <field name ="armador"/>
                                     <field name ="nave"/>
-                                    <field name ="fecha_entr"/>
+                                    <field name ="obs"/>
+                                    
 
 
                     </tree>
