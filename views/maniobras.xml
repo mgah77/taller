@@ -11,9 +11,6 @@
                 <field name="name">Maniobras</field>
                 <field name="model">taller.maniobras</field>
                 <field name="arch" type="xml">
-                <notebook>
-                <page>
-                
                     <tree string="Maniobras" editable="bottom">
                                     <field name ="name" invisible="1"/>
                                     <field name ="sucursal" groups="taller.group_operaciones"/>
@@ -26,8 +23,6 @@
 
 
                     </tree>
-                  </page>
-                  </notebook>
                 </field>
             </record>
 
