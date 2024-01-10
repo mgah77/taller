@@ -18,6 +18,7 @@
                                     <field name ="sucursal" groups="taller.group_operaciones"/>
                                     <field name ="nave"/>
                                     <field name ="obs"/>
+                                    <field name ="estado"/>
                                     
 
 
