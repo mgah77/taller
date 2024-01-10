@@ -12,6 +12,7 @@
                 <field name="model">taller.maniobras</field>
                 <field name="arch" type="xml">
                     <tree string="Maniobras" editable="bottom">
+                                    <field name ="name" invisible="1"/>
                                     <field name ="fecha"/>
                                     <field name ="horario"/>
                                     <field name ="sucursal" groups="taller.group_operaciones"/>
