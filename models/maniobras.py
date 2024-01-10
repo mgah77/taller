@@ -13,7 +13,7 @@ class Taller_ingreso(models.Model):
         ("am","AM"),
         ("pm","PM"),
         ("ap","AM/PM"),
-        ("xc","X Confirmar")]
+        ("xc","X Confirmar")], default='xc'
     )
     nave = fields.Char('Nave')
     obs = fields.Char('Observaciones')
@@ -21,7 +21,7 @@ class Taller_ingreso(models.Model):
     estado = fields.Selection([
         ("pen","Pendiente"),
         ("rea","Realizado"),
-        ("can","Cancelado")]
+        ("can","Cancelado")], default='pen'
     )
 
     @api.model
