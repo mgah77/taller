@@ -18,7 +18,7 @@ class Taller_ingreso(models.Model):
     nave = fields.Char('Nave')
     obs = fields.Char('Observaciones')
     sucursal = fields.Char('Sucursal', compute="_compute_sucursal")
-    horario = fields.Selection([
+    estado = fields.Selection([
         ("pen","Pendiente"),
         ("rea","Realizado"),
         ("can","Cancelado")], defaut="pen"
