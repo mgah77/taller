@@ -1,0 +1,32 @@
+<odoo>
+    <record id="sequence_ot" model="ir.sequence">
+      <field name="name">SeqMa</field>
+      <field name="code">abr.ma</field>
+      <field name="prefix">M</field>
+      <field name="padding">5</field>
+      <field name="company_id" eval="False" />
+    </record>
+
+        <record id="ma_tree" model="ir.ui.view">
+                <field name="name">Maniobras</field>
+                <field name="model">taller.maniobras</field>
+                <field name="arch" type="xml">
+                    <tree string="Orden de trabajo">
+                                    
+                                    <field name ="name"/>
+                                    <field name ="sucursal" groups="taller.group_operaciones"/>
+                                    <field name ="armador"/>
+                                    <field name ="nave"/>
+                                    <field name ="fecha_entr"/>
+
+
+                    </tree>
+                </field>
+            </record>
+
+
+
+
+
+
+</odoo>

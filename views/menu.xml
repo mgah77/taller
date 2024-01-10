@@ -57,6 +57,13 @@
             <field name="view_mode">tree</field>
 </record>
 
+<record id="mani_action" model="ir.actions.act_window">
+            <field name="name">Maniobras</field>
+            <field name="res_model">taller.maniobras</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree</field>
+</record>
+
 <menuitem
   id="taller_menu"
   name="Taller"
@@ -123,6 +130,14 @@
     name="Planificacion"
     action="plan_action"
     parent="taller_menu"
-    sequence="35" />
+    sequence="30" />
+
+  <menuitem
+    id="mani_menu"
+    name="Maniobras"
+    action="mani_action"
+    parent="taller_menu"
+    sequence="40" />
+
 
 </odoo>
