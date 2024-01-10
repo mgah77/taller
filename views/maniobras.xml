@@ -11,7 +11,7 @@
                 <field name="name">Maniobras</field>
                 <field name="model">taller.maniobras</field>
                 <field name="arch" type="xml">
-                    <tree string="Orden de trabajo">
+                    <tree string="Maniobras" editable="bottom">
                                     <field name ="fecha"/>
                                     <field name ="horario"/>
                                     <field name ="sucursal" groups="taller.group_operaciones"/>
@@ -23,10 +23,5 @@
                     </tree>
                 </field>
             </record>
-
-
-
-
-
 
 </odoo>
