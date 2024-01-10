@@ -1,5 +1,5 @@
 <odoo>
-    <record id="sequence_ot" model="ir.sequence">
+    <record id="sequence_ma" model="ir.sequence">
       <field name="name">SeqMa</field>
       <field name="code">code.ma</field>
       <field name="prefix">M</field>
