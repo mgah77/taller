@@ -11,7 +11,8 @@
                 <field name="name">Maniobras</field>
                 <field name="model">taller.maniobras</field>
                 <field name="arch" type="xml">
-                <sheet>
+                <notebook>
+                <page>
                 
                     <tree string="Maniobras" editable="bottom">
                                     <field name ="name" invisible="1"/>
@@ -25,8 +26,8 @@
 
 
                     </tree>
-                  
-                  </sheet>
+                  </page>
+                  </notebook>
                 </field>
             </record>
 
