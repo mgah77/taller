@@ -13,7 +13,8 @@
          'views/maestro.xml',
          'views/product_template.xml',
          'views/orden_trabajo.xml',
-         'views/planificacion.xml'
+         'views/planificacion.xml',
+         'views/maniobras.xml'
 ],
 'depends': ['base' , 'contacts' , 'stock' , 'product', 'parches_insumar']
 }
