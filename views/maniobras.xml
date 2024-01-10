@@ -16,9 +16,9 @@
                 
                     <tree string="Maniobras" editable="bottom">
                                     <field name ="name" invisible="1"/>
-                                    <field name ="fecha"/>
-                                    <field name ="horario"/>
                                     <field name ="sucursal" groups="taller.group_operaciones"/>
+                                    <field name ="fecha"/>
+                                    <field name ="horario"/>                                   
                                     <field name ="nave"/>
                                     <field name ="obs"/>
                                     <field name ="estado"/>
