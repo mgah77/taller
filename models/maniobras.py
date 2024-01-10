@@ -27,7 +27,7 @@ class Taller_ingreso(models.Model):
     @api.model
     def create(self,vals):
         if vals.get('name','New')=='New':
-            vals['name']=self.env['ir.sequence'].next_by_code('abr.ma') or 'New'
+            vals['name']=self.env['ir.sequence'].next_by_code('code.ma') or 'New'
             vals['user_branch']=self.env.user.property_warehouse_id
         result = super(Taller_ingreso,self).create(vals)
         return result

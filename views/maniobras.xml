@@ -1,7 +1,7 @@
 <odoo>
     <record id="sequence_ot" model="ir.sequence">
       <field name="name">SeqMa</field>
-      <field name="code">abr.ma</field>
+      <field name="code">code.ma</field>
       <field name="prefix">M</field>
       <field name="padding">5</field>
       <field name="company_id" eval="False" />
