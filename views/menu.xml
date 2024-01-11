@@ -72,6 +72,14 @@
             <field name="domain">[('user_branch','=','2')]</field>
 </record>
 
+<record id="mani_action_pv" model="ir.actions.act_window">
+            <field name="name">Maniobras</field>
+            <field name="res_model">taller.maniobras</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_mode">tree</field>
+            <field name="domain">[('user_branch','=','3')]</field>
+</record>
+
 <menuitem
   id="taller_menu"
   name="Taller"
@@ -145,14 +153,25 @@
     name="Maniobras"
     action="mani_action"
     parent="taller_menu"
-    sequence="40" />
+    sequence="40"
+    groups="taller.group_operaciones"
+     />
 
   <menuitem
     id="mani_menu_nu"
     name="Maniobras"
     action="mani_action_nu"
     parent="taller_menu"
-    sequence="41" />
+    sequence="41" 
+    groups="taller.group_nuble"/>
+
+  <menuitem
+    id="mani_menu_pv"
+    name="Maniobras"
+    action="mani_action_pv"
+    parent="taller_menu"
+    sequence="42" 
+    groups="taller.group_parvial"/>
 
 
 </odoo>
