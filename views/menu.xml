@@ -70,6 +70,7 @@
             <field name="type">ir.actions.act_window</field>
             <field name="view_mode">tree</field>
             <field name="domain">[('user_branch','=','2')]</field>
+            <field name="context">{'estado': 'pen'} </field>
 </record>
 
 <record id="mani_action_pv" model="ir.actions.act_window">
