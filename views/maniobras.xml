@@ -11,6 +11,10 @@
                 <field name="name">Maniobras</field>
                 <field name="model">taller.maniobras</field>
                 <field name="arch" type="xml">
+                <search>
+                <field name="estado"/>
+                <filter string="Pendientes" name="estado" domain="[('estado', '=','pen')]"/>
+                </search>
                     <tree string="Maniobras" editable="bottom">
                                     <field name ="name" invisible="1"/>
                                     <field name ="sucursal" groups="taller.group_operaciones"/>
