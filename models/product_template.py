@@ -5,3 +5,4 @@ class ProductDepartment(models.Model):
 
     # Modifica el campo partner_id para agregar un filtro adicional
     depto = fields.Many2one('taller.depto.rel', string='Depto')
+    alias = fields.Char('Detalle')
