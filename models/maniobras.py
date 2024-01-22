@@ -23,6 +23,7 @@ class Taller_ingreso(models.Model):
         ("rea","Realizado"),
         ("can","Cancelado")], default='pen'
     )
+    lugar = fields.Many2one('taller.lugar.rel', string='Lugar')
 
     @api.model
     def create(self,vals):
