@@ -5,3 +5,10 @@ class Maestro_depto(models.Model):
     _description = 'taller deptos'
 
     name = fields.Char('depto', default='New', readonly=True)
+
+class Maestro_lugar(models.Model):
+    _name = 'taller.lugar.rel'
+    _description = 'taller lugar'
+
+    name = fields.Char('Lugar', default='Puerto Montt')
+       
