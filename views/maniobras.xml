@@ -30,7 +30,8 @@
                                     <field name ="horario"/>                                   
                                     <field name ="nave"/>
                                     <field name ="obs"/>
-                                    <field name ="estado"/>                            
+                                    <field name ="estado"/>
+                                    <field name ="lugar"/>                            
 
 
                     </tree>
