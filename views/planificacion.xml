@@ -36,9 +36,10 @@
                                             <field name ="alias" invisible="1" />                                           
                                                                                         
                                             <field name ="name"/> | <field name ="fecha" widget="date_index"/> | <field name ="nave"/>
-                                            <t t-if="record.depto == 'Equipo Seguridad'">
+                                            <t t-if="record.alias.raw_value">
                                                 <field name ="alias"/>
                                             </t>
+                                            
 
                                     </div>
                                 </div>
