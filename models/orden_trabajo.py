@@ -75,7 +75,6 @@ class Taller_ot_line(models.Model):
     fecha_recep = fields.Date(related='ot_line_id.fecha_recep')
     nave = fields.Char('Nave', compute="_compute_nave")
     depto = fields.Many2one('taller.depto.rel', string='Departamento', related='item.depto', store=True)
-    alias = fields.Many2one('product.template', string='Detalle', related='item.depto', store=True)
     armador = fields.Many2one('res.partner', string='Armador', related='ot_line_id.armador')
     state = fields.Selection([
         ('tall','En Taller'),
