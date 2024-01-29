@@ -112,7 +112,7 @@ class Taller_ot_line(models.Model):
 
     def _compute_alias(self):
         for record in self:
-            record ['alias'] = self.item.alias
+            record ['alias'] = item.alias
 
     def _compute_dias(self):
         for record in self:
