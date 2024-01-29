@@ -32,8 +32,12 @@
                                             <field name="viewer" invisible="1"/>
                                             <field name="color" invisible="1"/>
                                             <field name ="depto" invisible="1" />
-
+                                            <field name ="alias" invisible="1" />                                           
+                                                                                        
                                             <field name ="name"/> | <field name ="fecha" widget="date_index"/> | <field name ="nave"/>
+                                            <t t-if="record.depto.raw_value == 'Equipo Seguridad'">
+                                                <field name ="alias"/>
+                                            </t>
 
                                     </div>
                                 </div>
