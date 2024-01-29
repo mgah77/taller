@@ -87,7 +87,7 @@ class Taller_ot_line(models.Model):
     dias = fields.Integer(compute = "_compute_dias")
     branch = fields.Integer(compute = "_compute_branch")
     branch_s = fields.Integer(compute = "_compute_branch1", store=True)
-
+    alias = fields.Char(compute = "_compute_alias", store=True)
 
     def _compute_branch1(self):
         for line in self:
@@ -109,6 +109,10 @@ class Taller_ot_line(models.Model):
     def _compute_hoy(self):
         for record in self:
             record ['hoy'] = datetime.datetime.now ()
+
+    def _compute_alias(self):
+        for record in self:
+            record ['alias'] = self.item.alias
 
     def _compute_dias(self):
         for record in self:
