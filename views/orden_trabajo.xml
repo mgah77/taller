@@ -50,7 +50,7 @@
                         <page string="Trabajos">
                             <field name="ot_line">
                             <tree editable="bottom">
-                                <field name ="item" domain="[('detalied_type', '=', 'service')]"/>
+                                <field name ="item" domain="[('detailed_type', '=', 'service')]"/>
                                 <field name ="obs"/>
                                 <field name ="serie"/>
                                 <field name ="cant"/>
