@@ -87,7 +87,7 @@ class Taller_ot_line(models.Model):
     dias = fields.Integer(compute = "_compute_dias")
     branch = fields.Integer(compute = "_compute_branch")
     branch_s = fields.Integer(compute = "_compute_branch1", store=True)
-    alias = fields.Char(compute = "_compute_alias", store=True)
+    alias = fields.Char(compute = "_compute_alias")
 
     def _compute_branch1(self):
         for line in self:
