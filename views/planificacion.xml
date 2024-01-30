@@ -23,10 +23,11 @@
             <field name="name">Planificacion_kanban</field>
             <field name="model">taller.ot.line</field>
             <field name="arch" type="xml">       
-                <kanban default_order="fecha" default_group_by="depto"  group_create="False" class="o_kanban_small_column" group_delete="False" group_edit="False" create="False">
-                    <header>
-                        hola
-                    </header>
+                <kanban default_order="fecha" default_group_by="depto"  group_create="False" class="o_kanban_small_column" group_delete="False" group_edit="False" create="False"> 
+                    <templates>    
+                    hola
+                    </templates>    
+                    
                     <templates>                   
                         <t t-name="kanban-box">
                             <div class="container" t-if="record.branch.raw_value == record.viewer.raw_value or record.viewer.raw_value == 0" t-attf-class="{{'oe_kanban_color_' + kanban_getcolor(record.color.raw_value) }} oe_kanban_card oe_kanban_global_click oe_semantic_html_override">
