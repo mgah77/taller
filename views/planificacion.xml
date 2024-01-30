@@ -10,7 +10,7 @@
                                 <field name ="armador"/>
                                 <field name ="depto" string="Detalle"/>
                                 <field name ="alias" invisible="1"/>
-                                <field name ="fecha_recep"/>
+                                <field name ="fecha" string="Fecha Entrega"/>
                                 <field name ="nave"/>
                                 <field name ="state" />
                                 <field name ="branch" invisible="1"/>
