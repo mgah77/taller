@@ -14,7 +14,8 @@
          'views/product_template.xml',
          'views/orden_trabajo.xml',
          'views/planificacion.xml',
-         'views/maniobras.xml'
+         'views/maniobras.xml',
+         'views/plan_xls.xml'
 ],
 'depends': ['base' , 'contacts' , 'stock' , 'product', 'parches_insumar']
 }
