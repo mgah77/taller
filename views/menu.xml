@@ -83,7 +83,7 @@
 </record>
 
 <record id="wiz_xls" model="ir.actions.act_window">
-            <field name="name">XLS</field>
+            <field name="name">Ingresar fecha de panificación</field>
             <field name="res_model">taller.wiz.plan2xls</field>
             <field name="type">ir.actions.act_window</field>
             <field name="view_mode">form</field>
