@@ -1,0 +1,20 @@
+<odoo>
+
+<record id="wiz_xls_form" model="ir.ui.view">
+            <field name="name">wiz.xls.form</field>
+            <field name="res_model">taller.wiz.plan2xls</field>
+            <field name="arch" type="xml">
+
+            <form string="wiz">
+            <group string="Fecha">
+            <field name="fecha" >
+            </group>
+            <footer>
+            <button string="Cancel" class="oe_link" special="cancel" />
+            </footer>
+            </form>
+
+            </field>
+</record>
+
+</odoo>
