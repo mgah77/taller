@@ -176,4 +176,12 @@
     groups="taller.group_parvial"/>
 
 
+  <menuitem
+    id="plan_xls_menu_pv"
+    name="Exportar XLS"
+    action="wizard_xls"
+    parent="plan_menu"
+    sequence="40" 
+    groups="taller.group_parvial"/>
+
 </odoo>
