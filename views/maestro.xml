@@ -6,7 +6,7 @@
           <field name="model">taller.depto.rel</field>
           <field name="arch" type="xml">
               <tree string="Orden de trabajo">
-                              <field name ="name"/>
+                  <field name ="name"/>
               </tree>
           </field>
       </record>
@@ -26,11 +26,11 @@
   groups="group_taller_maestro"
   sequence="90" />
 
-  <menuitem
+<menuitem
     id="depto_menu"
     name="Deptos"
     action="depto_action"
     parent="taller_maestro"
-    sequence="15" />
+    sequence="15" />  
 
 </odoo>
