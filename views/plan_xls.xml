@@ -7,7 +7,7 @@
 
             <form string="wiz">
             <group string="Fecha">
-            <field name="fecha" >
+            <field name="fecha" />
             </group>
             <footer>
             <button string="Cancel" class="oe_link" special="cancel" />
