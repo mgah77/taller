@@ -88,6 +88,9 @@ class Taller_ot_line(models.Model):
     branch = fields.Integer(compute = "_compute_branch")
     branch_s = fields.Integer(compute = "_compute_branch1", store=True)
     alias = fields.Char(compute = "_compute_alias")
+    sucursal = fields.Selection([
+        ('2','Ñuble'),
+        ('3','Par Vial')],string='Sucursal')
 
     def _compute_branch1(self):
         for line in self:
@@ -138,4 +141,10 @@ class Taller_ot_line(models.Model):
     def _compute_branch1(self):
         for line in self:
             line.branch_s = line.ot_line_id.user_branch
+            if line.branch_s == 2:
+                line.sucursal = '2'
+            elif line.branch_s == 3:
+                line.sucursal = '3'
         return
+
+    
