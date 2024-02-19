@@ -87,7 +87,7 @@
             <field name="res_model">taller.wiz.plan2xls</field>
             <field name="type">ir.actions.act_window</field>
             <field name="view_mode">form</field>
-            <field name="view_id" ref="wiz_xls_form" />
+            <field name="view_id" ref="wizard_form" />
             <field name="target">new</field>
 </record>
 
