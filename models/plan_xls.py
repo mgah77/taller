@@ -17,20 +17,3 @@ class taller_plan2xls(models.TransientModel):
     _description = "Export plan to xls"
 
     fecha = fields.Date()
-
-    def export_xls(self):
-        data = {
-            'ids': self.ids,
-            'model': self._name,
-            'fecha': self.fecha,
-
-        }
-        return {
-            'type': 'ir.actions.report',
-            'data': {'model': 'taller.wiz.plan2xls',
-                     'options': json.dumps(data, default=date_utils.json_default),
-                     'output_format': 'xlsx',
-                     'report_name': 'Current Stock History',
-                     },
-            'report_type': 'stock_xlsx'
-        }
