@@ -39,7 +39,9 @@ class taller_plan2xls(models.TransientModel):
         lines = []
         categ_id = data.mapped('id')
         if categ_id:
-            categ_products = self.env['taller.ot.line'].search([('tall', 'in', state)])
+            categ_products = self.env['product.product'].search([('categ_id', 'in', categ_id)])
+        else:
+            categ_products = self.env['product.product'].search([])
         for obj in categ_products:
             sale_value = 0
             purchase_value = 0
