@@ -152,7 +152,8 @@
 
   <menuitem
     id="plan_menu"
-    name="Planificacion"   
+    name="Planificacion"
+    action="plan_action"
     parent="taller_menu"
     sequence="30" />
 
@@ -188,12 +189,5 @@
     parent="plan_menu"
     sequence="40" 
     groups="taller.group_parvial"/>
-
-    <menuitem
-    id="plan_menu_plan"
-    name="Planificacion"
-    action="plan_action"
-    parent="plan_menu"
-    sequence="10" />
 
 </odoo>
