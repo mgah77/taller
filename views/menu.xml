@@ -82,13 +82,6 @@
             <field name="context">{'estado': 'pen'} </field>
 </record>
 
-<record id="wiz_xls_pv" model="ir.actions.act_window">
-            <field name="name">XLS</field>
-           
-            <field name="type">ir.actions.act_window</field>
-            <field name="view_mode">form</field>
-</record>
-
 <menuitem
   id="taller_menu"
   name="Taller"
@@ -182,10 +175,11 @@
     sequence="42" 
     groups="taller.group_parvial"/>
 
+
   <menuitem
     id="plan_xls_menu_pv"
     name="Exportar XLS"
-    action="wiz_xls_pv"
+    action="wizard_xls"
     parent="plan_menu"
     sequence="40" 
     groups="taller.group_parvial"/>
