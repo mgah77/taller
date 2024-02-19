@@ -9,14 +9,13 @@
 'version': "2.0",
 'data': ['security/groups.xml',
          'security/ir.model.access.csv',
-         'views/plan_xls.xml',
          'views/menu.xml',
          'views/maestro.xml',
          'views/product_template.xml',
          'views/orden_trabajo.xml',
          'views/planificacion.xml',
-         'views/maniobras.xml'
-         
+         'views/maniobras.xml',
+         'views/plan_xls.xml'
 ],
 'depends': ['base' , 'contacts' , 'stock' , 'product', 'parches_insumar']
 }
