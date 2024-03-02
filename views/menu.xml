@@ -73,6 +73,7 @@
             <field name="context">{'estado': 'pen'} </field>
 </record>
 
+
 <record id="mani_action_pv" model="ir.actions.act_window">
             <field name="name">Maniobras</field>
             <field name="res_model">taller.maniobras</field>
@@ -150,6 +151,7 @@
     parent="taller_menu"
     sequence="30" />
 
+
   <menuitem
     id="mani_menu"
     name="Maniobras"
@@ -164,7 +166,7 @@
     name="Maniobras"
     action="mani_action_nu"
     parent="taller_menu"
-    sequence="41" 
+    sequence="41"
     groups="taller.group_nuble"/>
 
   <menuitem
@@ -172,7 +174,7 @@
     name="Maniobras"
     action="mani_action_pv"
     parent="taller_menu"
-    sequence="42" 
+    sequence="42"
     groups="taller.group_parvial"/>
 
 

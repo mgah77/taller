@@ -65,7 +65,7 @@ class Taller_ot_line(models.Model):
     _name = 'taller.ot.line'
     _description = 'lineas OT'
 
-    ot_line_id = fields.Many2one(comodel_name='taller.ot', string='lineas ot id', required=True, ondelete='cascade', index=True, copy=False)
+    ot_line_id = fields.Many2one('taller.ot', string='lineas ot id', required=True, ondelete='cascade', index=True, copy=False)
     name = fields.Char('OT', compute="_compute_ot")
     item = fields.Many2one('product.template', string="Nombre Item", domain="[('sale_ok', '=', True)]" )
     obs = fields.Char('Observaciones')
@@ -146,5 +146,3 @@ class Taller_ot_line(models.Model):
             elif line.branch_s == 3:
                 line.sucursal = '3'
         return
-
-    
