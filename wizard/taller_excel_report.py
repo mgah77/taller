@@ -41,7 +41,8 @@ class ExcelWizard(models.TransientModel):
    def get_xlsx_report(self, data, response):
         partners = self.env['taller.ot.line'].search([('state','=','tall')])
         balsas = partners.search([('depto.name','=','Inspeccion Balsas'),('branch','=','viewer')], order="fecha asc")
-        conten = partners.search([('depto.name','=','Contenedores'),('branch_s','=','viewer')], order="fecha asc")
+        conten = partners.search([('depto.name','=','Contenedores'),('branch','=','viewer')], order="fecha asc")
+        valvul = partners.search([('depto.name','=','Valvulas'),('branch','=','viewer')], order="fecha asc")
 
         # Create Excel workbook and worksheet
         output = io.BytesIO()
@@ -54,8 +55,11 @@ class ExcelWizard(models.TransientModel):
 
         # Write headers
         worksheet.merge_range(1, 13, 2, 19, 'PLANIFICACION DIARIA', format0)
-        worksheet.merge_range(3, 1, 3, 3, 'INSPECCION DE BALSA', format1)
-        worksheet.merge_range(3, 5, 3, 6, 'CONTENEDORES', format1)
+        worksheet.merge_range(3, 1, 3, 3, 'Inspeccion de balsa', format1)
+        worksheet.merge_range(3, 5, 3, 6, 'Contenedores', format1)
+        worksheet.merge_range(3, 8, 3, 9, 'Válvulas', format1)
+        worksheet.merge_range(3, 11, 3, 14, 'Extintores', format1)
+
         headers = ['Name', 'Item', 'Depto','Nave','Armador','Fecha','Dias ','Balsas']
         for col, header in enumerate(headers, start=7):
             worksheet.write(10, col, header)
@@ -69,15 +73,19 @@ class ExcelWizard(models.TransientModel):
         for row, conten in enumerate(conten, start=4):
             worksheet.write(row, 5, conten.name)
             worksheet.write(row, 6, conten.nave)
+        
+        for row, valvul in enumerate(valvul, start=4):
+            worksheet.write(row, 8, valvul.name)
+            worksheet.write(row, 9, valvul.nave)
 
-        for row, partner in enumerate(partners, start=11):
-            worksheet.write(row, 10, partner.name)
-            worksheet.write(row, 11, partner.item.name)
-            worksheet.write(row, 12, partner.depto.name)
-            worksheet.write(row, 13, partner.nave)
-            worksheet.write(row, 14, partner.armador.name)
-            worksheet.write(row, 15, partner.fecha)
-            worksheet.write(row, 16, partner.dias)
+        #for row, partner in enumerate(partners, start=11):
+         #   worksheet.write(row, 10, partner.name)
+          #  worksheet.write(row, 11, partner.item.name)
+           # worksheet.write(row, 12, partner.depto.name)
+            #worksheet.write(row, 13, partner.nave)
+         #   worksheet.write(row, 14, partner.armador.name)
+          #  worksheet.write(row, 15, partner.fecha)
+           # worksheet.write(row, 16, partner.dias)
 
         
 
