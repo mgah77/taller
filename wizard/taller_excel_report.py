@@ -72,37 +72,37 @@ class ExcelWizard(models.TransientModel):
          #   worksheet.write(10, col, header)
 
         # Write data
-        for row, balsas in enumerate(balsas, start=4):
+        for row, balsas in enumerate(balsas, start=5):
             worksheet.write(row, 1, balsas.name)
             worksheet.write(row, 2, str(balsas.fecha.strftime("%d-%m-%Y")))
             worksheet.write(row, 3, balsas.nave)
 
-        for row, conten in enumerate(conten, start=4):
+        for row, conten in enumerate(conten, start=5):
             worksheet.write(row, 5, conten.name)
             worksheet.write(row, 6, conten.nave)
         
-        for row, valvul in enumerate(valvul, start=4):
+        for row, valvul in enumerate(valvul, start=5):
             worksheet.write(row, 8, valvul.name)
             worksheet.write(row, 9, valvul.nave)
 
-        for row, extint in enumerate(extint, start=4):
+        for row, extint in enumerate(extint, start=5):
             worksheet.write(row, 11, extint.name)
             worksheet.write(row, 12, str(extint.fecha.strftime("%d-%m-%Y")))
             worksheet.write(row, 13, extint.nave)
             worksheet.write(row, 14, extint.obs)
 
-        for row, seguri in enumerate(seguri, start=4):
+        for row, seguri in enumerate(seguri, start=5):
             worksheet.write(row, 16, seguri.name)
             worksheet.write(row, 17, str(seguri.fecha.strftime("%d-%m-%Y")))
             worksheet.write(row, 18, seguri.nave)
             worksheet.write(row, 19, seguri.item.alias)
 
-        for row, bcoco2 in enumerate(bcoco2, start=4):
+        for row, bcoco2 in enumerate(bcoco2, start=5):
             worksheet.write(row, 21, bcoco2.name)
             worksheet.write(row, 22, str(bcoco2.fecha.strftime("%d-%m-%Y")))
             worksheet.write(row, 23, bcoco2.nave)        
 
-        for row, textil in enumerate(textil, start=4):
+        for row, textil in enumerate(textil, start=5):
             worksheet.write(row, 25, textil.name)
             worksheet.write(row, 26, textil.nave)
             worksheet.write(row, 27, str(textil.fecha.strftime("%d-%m-%Y")))
@@ -120,7 +120,9 @@ class ExcelWizard(models.TransientModel):
           #  worksheet.write(row, 15, partner.fecha)
            # worksheet.write(row, 16, partner.dias)
 
-        
+        for i, col in enumerate(df.columns):
+            width = max(df[col].apply(lambda x: len(str(x))).max(), len(col))
+            worksheet.set_column(i, i, width)
 
         # Close workbook
         workbook.close()
