@@ -120,10 +120,6 @@ class ExcelWizard(models.TransientModel):
           #  worksheet.write(row, 15, partner.fecha)
            # worksheet.write(row, 16, partner.dias)
 
-        for i, col in enumerate(df.columns):
-            width = max(df[col].apply(lambda x: len(str(x))).max(), len(col))
-            worksheet.set_column(i, i, width)
-
         # Close workbook
         workbook.close()
 
