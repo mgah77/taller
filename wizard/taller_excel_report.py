@@ -108,7 +108,7 @@ class ExcelWizard(models.TransientModel):
             worksheet.write(row, 27, textil.fecha)
             worksheet.write(row, 28, textil.cant) 
             worksheet.write(row, 29, textil.item.alias)  
-            worksheet.write(row, 30, textil.sucursal)  
+            worksheet.write(row, 30, textil.branch_s)  
 
 
         #for row, partner in enumerate(partners, start=11):
