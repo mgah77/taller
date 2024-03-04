@@ -41,7 +41,7 @@ class ExcelWizard(models.TransientModel):
    def get_xlsx_report(self, data, response):
         partners = self.env['taller.ot.line'].search([('state','=','tall')])
         balsas = partners.search([('depto.name','=','Inspeccion Balsas'),('branch','=','viewer')], order="fecha asc")
-        conten = partners.search([('depto.name','=','Contenedores'),('branch','=','viewer')], order="fecha asc")
+        conten = partners.search([('depto.name','=','Contenedores'),('branch_s','=','viewer')], order="fecha asc")
 
         # Create Excel workbook and worksheet
         output = io.BytesIO()
