@@ -40,7 +40,7 @@ class ExcelWizard(models.TransientModel):
        }
    def get_xlsx_report(self, data, response):
         partners = self.env['taller.ot.line'].search([('state','=','tall')])
-        balsas = self.env['taller.ot.line'].search([('depto.name','=','Inspeccion Balsas'),('branch_s','=','viewer')], order="fecha asc")
+        balsas = self.env['taller.ot.line'].search([('depto.name','=','Inspeccion Balsas'),('branch','=','viewer')], order="fecha asc")
 
         # Create Excel workbook and worksheet
         output = io.BytesIO()
@@ -49,12 +49,9 @@ class ExcelWizard(models.TransientModel):
 
         # Formatos
         format0 = workbook.add_format({'font_size': 20, 'align': 'center', 'bold': True})
-        format1 = workbook.add_format({'font_size': 14, 'align': 'center', 'bold': True})
 
         # Write headers
-        worksheet.merge_range(1, 13, 2, 19, 'PLANIFICACION DIARIA', format0)
-        worksheet.merge_range(3, 2, 3, 4, 'PLANIFICACION DIARIA', format0)
-
+        worksheet.merge_range(1, 13, 2, 19, 'Planificación', format0)
         headers = ['Name', 'Item', 'Depto','Nave','Armador','Fecha','Dias ','Balsas']
         for col, header in enumerate(headers, start=7):
             worksheet.write(10, col, header)
@@ -69,10 +66,10 @@ class ExcelWizard(models.TransientModel):
             worksheet.write(row, 15, partner.fecha)
             worksheet.write(row, 16, partner.dias)
 
-        for row, balsas in enumerate(balsas, start=4):
-            worksheet.write(row, 2, balsas.name)
-            worksheet.write(row, 3, balsas.fecha)
-            worksheet.write(row, 4, balsas.nave)
+        for row, balsas in enumerate(balsas, start=12):
+            worksheet.write(row, 17, balsas.name)
+            worksheet.write(row, 18, balsas.fecha)
+            worksheet.write(row, 19, balsas.nave)
 
         # Close workbook
         workbook.close()
