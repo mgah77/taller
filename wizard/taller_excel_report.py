@@ -76,7 +76,6 @@ class ExcelWizard(models.TransientModel):
             worksheet.write(row, 1, balsas.name)
             worksheet.write(row, 2, str(balsas.fecha.strftime("%d-%m-%Y")))
             worksheet.write(row, 3, balsas.nave)
-        worksheet.setcolumn(2,2,75)
 
         for row, conten in enumerate(conten, start=5):
             worksheet.write(row, 5, conten.name)
