@@ -74,7 +74,7 @@ class ExcelWizard(models.TransientModel):
         # Write data
         for row, balsas in enumerate(balsas, start=4):
             worksheet.write(row, 1, balsas.name)
-            worksheet.write(row, 2, balsas.fecha)
+            worksheet.write(row, 2, str(balsas.fecha.strftime("%Y-%m-%d")))
             worksheet.write(row, 3, balsas.nave)
 
         for row, conten in enumerate(conten, start=4):
