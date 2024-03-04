@@ -18,12 +18,20 @@ class ExcelWizard(models.TransientModel):
    end_date = fields.Datetime(string="End Date",
                               default=datetime.datetime.now(),
                               required=True)
+   view = fields.Integer('Current User', compute="_compute_viewer")
+
+   def _compute_viewer(self):
+        for record in self:
+            record['view']=self.env.user.property_warehouse_id
+            return
+
    def print_xlsx(self):
        if self.start_date > self.end_date:
            raise ValidationError('Start Date must be less than End Date')
        data = {
            'start_date': self.start_date,
            'end_date': self.end_date,
+           'view'=self.view,
        }
        current_date = datetime.datetime.now().date()
        current_date_string = current_date.strftime("%Y-%m-%d")
@@ -40,7 +48,7 @@ class ExcelWizard(models.TransientModel):
        }
    def get_xlsx_report(self, data, response):
         partners = self.env['taller.ot.line'].search([('state','=','tall')])
-        balsas = self.env['taller.ot.line'].search([('depto.name','=','Inspeccion Balsas'),('branch','=','viewer')], order="fecha asc")
+        balsas = self.env['taller.ot.line'].search([('depto.name','=','Inspeccion Balsas'),('branch','=',self.view)], order="fecha asc")
 
         # Create Excel workbook and worksheet
         output = io.BytesIO()
