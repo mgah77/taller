@@ -49,6 +49,7 @@ class ExcelWizard(models.TransientModel):
 
         # Formatos
         format0 = workbook.add_format({'font_size': 20, 'align': 'center', 'bold': True})
+        format1 = workbook.add_format({'font_size': 14, 'align': 'center', 'bold': True})
 
         # Write headers
         worksheet.merge_range(1, 13, 2, 19, 'Planificación', format0)
@@ -57,6 +58,11 @@ class ExcelWizard(models.TransientModel):
             worksheet.write(10, col, header)
 
         # Write data
+        for row, balsas in enumerate(balsas, start=3):
+            worksheet.write(row, 1, balsas.name)
+            worksheet.write(row, 2, balsas.fecha)
+            worksheet.write(row, 3, balsas.nave)
+
         for row, partner in enumerate(partners, start=11):
             worksheet.write(row, 10, partner.name)
             worksheet.write(row, 11, partner.item.name)
@@ -66,10 +72,7 @@ class ExcelWizard(models.TransientModel):
             worksheet.write(row, 15, partner.fecha)
             worksheet.write(row, 16, partner.dias)
 
-        for row, balsas in enumerate(balsas, start=12):
-            worksheet.write(row, 17, balsas.name)
-            worksheet.write(row, 18, balsas.fecha)
-            worksheet.write(row, 19, balsas.nave)
+        
 
         # Close workbook
         workbook.close()
