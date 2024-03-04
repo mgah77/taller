@@ -40,32 +40,36 @@ class ExcelWizard(models.TransientModel):
        }
    def get_xlsx_report(self, data, response):
         partners = self.env['taller.ot.line'].search([('state','=','tall')])
-        balsas = self.env['taller.ot.line'].search([('depto.name','=','Inspeccion Balsas')])
+        balsas = self.env['taller.ot.line'].search([('depto.name','=','Inspeccion Balsas')], order="fecha desc")
 
         # Create Excel workbook and worksheet
         output = io.BytesIO()
         workbook = xlsxwriter.Workbook(output)
         worksheet = workbook.add_worksheet()
 
+        # Formatos
+        format0 = workbook.add_format({'font_size': 20, 'align': 'center', 'bold': True})
+
         # Write headers
+        worksheet.merge_range(13, 1, 19, 2, 'Planificación', format0)
         headers = ['Name', 'Item', 'Depto','Nave','Armador','Fecha','Dias ','Balsas']
         for col, header in enumerate(headers):
-            worksheet.write(0, col, header)
+            worksheet.write(10, col, header)
 
         # Write data
-        for row, partner in enumerate(partners, start=1):
-            worksheet.write(row, 0, partner.name)
-            worksheet.write(row, 1, partner.item.name)
-            worksheet.write(row, 2, partner.depto.name)
-            worksheet.write(row, 3, partner.nave)
-            worksheet.write(row, 4, partner.armador.name)
-            worksheet.write(row, 5, partner.fecha)
-            worksheet.write(row, 6, partner.dias)
+        for row, partner in enumerate(partners, start=11):
+            worksheet.write(row, 10, partner.name)
+            worksheet.write(row, 11, partner.item.name)
+            worksheet.write(row, 12, partner.depto.name)
+            worksheet.write(row, 13, partner.nave)
+            worksheet.write(row, 14, partner.armador.name)
+            worksheet.write(row, 15, partner.fecha)
+            worksheet.write(row, 16, partner.dias)
 
-        for row, balsas in enumerate(balsas, start=1):
-            worksheet.write(row, 7, balsas.name)
-            worksheet.write(row, 8, balsas.fecha)
-            worksheet.write(row, 9, balsas.nave)
+        for row, balsas in enumerate(balsas, start=12):
+            worksheet.write(row, 17, balsas.name)
+            worksheet.write(row, 18, balsas.fecha)
+            worksheet.write(row, 19, balsas.nave)
 
         # Close workbook
         workbook.close()
