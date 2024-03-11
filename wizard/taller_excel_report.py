@@ -92,11 +92,12 @@ class ExcelWizard(models.TransientModel):
             worksheet.write(row, 1, balsas.name)
             worksheet.write(row, 2, str(balsas.fecha.strftime("%d-%m-%y")))
             worksheet.write(row, 3, balsas.nave)
-            worksheet.write(row, 4, '')
-            
+            worksheet.write(row, 4, "")
+
         for row, conten in enumerate(conten, start=5):
             worksheet.write(row, 5, conten.name)
             worksheet.write(row, 6, conten.nave)
+            worksheet.write(row, 7, " ")
         
         for row, valvul in enumerate(valvul, start=5):
             worksheet.write(row, 8, valvul.name)
