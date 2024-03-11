@@ -90,9 +90,9 @@ class ExcelWizard(models.TransientModel):
         worksheet.merge_range(3, 21, 3, 23, 'Banco CO2', format1)
         worksheet.merge_range(3, 25, 3, 30, 'Textil', format1)
 
-        #headers = ['Name', 'Item', 'Depto','Nave','Armador','Fecha','Dias ','Balsas']
-        #for col, header in enumerate(headers, start=7):
-         #   worksheet.write(10, col, header)
+        headers = ['numero', 'fecha_ent', 'glosa','','numero','glosa','','numero','glosa','','numero','fecha_ent','glosa','obs']
+        for col, header in enumerate(headers, start=1):
+            worksheet.write(4, col, header)
 
         # Write data
         for row, balsas in enumerate(balsas, start=5):
