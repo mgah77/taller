@@ -70,6 +70,13 @@ class ExcelWizard(models.TransientModel):
         worksheet.set_column_pixels(18, 19, 100)
         worksheet.set_column_pixels(23, 23, 100)
         worksheet.set_column_pixels(26, 26, 100)
+        #espacio
+        worksheet.set_column_pixels(4, 4, 20)
+        worksheet.set_column_pixels(7, 7, 20)
+        worksheet.set_column_pixels(10, 10, 20)
+        worksheet.set_column_pixels(15, 15, 20)
+        worksheet.set_column_pixels(20, 20, 20)
+        worksheet.set_column_pixels(24, 24, 20)
 
 
 
@@ -92,7 +99,7 @@ class ExcelWizard(models.TransientModel):
             worksheet.write(row, 1, balsas.name)
             worksheet.write(row, 2, str(balsas.fecha.strftime("%d-%m-%y")))
             worksheet.write(row, 3, balsas.nave)
-            worksheet.write(row, 4, "")
+            worksheet.write(row, 4, " ")
 
         for row, conten in enumerate(conten, start=5):
             worksheet.write(row, 5, conten.name)
@@ -102,12 +109,14 @@ class ExcelWizard(models.TransientModel):
         for row, valvul in enumerate(valvul, start=5):
             worksheet.write(row, 8, valvul.name)
             worksheet.write(row, 9, valvul.nave)
+            worksheet.write(row, 10, " ")
 
         for row, extint in enumerate(extint, start=5):
             worksheet.write(row, 11, extint.name)
             worksheet.write(row, 12, str(extint.fecha.strftime("%d-%m-%y")))
             worksheet.write(row, 13, extint.nave)
             worksheet.write(row, 14, extint.obs)
+            worksheet.write(row, 15, " ")
 
         for row, seguri in enumerate(seguri, start=5):
             worksheet.write(row, 16, seguri.name)
@@ -118,7 +127,8 @@ class ExcelWizard(models.TransientModel):
         for row, bcoco2 in enumerate(bcoco2, start=5):
             worksheet.write(row, 21, bcoco2.name)
             worksheet.write(row, 22, str(bcoco2.fecha.strftime("%d-%m-%y")))
-            worksheet.write(row, 23, bcoco2.nave)        
+            worksheet.write(row, 23, bcoco2.nave)     
+            worksheet.write(row, 24, " ")   
 
         for row, textil in enumerate(textil, start=5):
             worksheet.write(row, 25, textil.name)
