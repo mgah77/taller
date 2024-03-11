@@ -58,10 +58,10 @@ class ExcelWizard(models.TransientModel):
         format1 = workbook.add_format({'font_size': 11, 'align': 'center', 'bold': True})
         
         #fechas
-        worksheet.set_column_pixels(2, 2, 75)
-        worksheet.set_column_pixels(12, 12, 75)
-        worksheet.set_column_pixels(17, 17, 75)
-        worksheet.set_column_pixels(22, 22, 75)
+        worksheet.set_column_pixels(2, 2, 60)
+        worksheet.set_column_pixels(12, 12, 60)
+        worksheet.set_column_pixels(17, 17, 60)
+        worksheet.set_column_pixels(22, 22, 60)
         #nombres
         worksheet.set_column_pixels(3, 3, 100)
         worksheet.set_column_pixels(6, 6, 100)
@@ -92,7 +92,8 @@ class ExcelWizard(models.TransientModel):
             worksheet.write(row, 1, balsas.name)
             worksheet.write(row, 2, str(balsas.fecha.strftime("%d-%m-%y")))
             worksheet.write(row, 3, balsas.nave)
-
+            worksheet.write(row, 4, '')
+            
         for row, conten in enumerate(conten, start=5):
             worksheet.write(row, 5, conten.name)
             worksheet.write(row, 6, conten.nave)
@@ -103,25 +104,25 @@ class ExcelWizard(models.TransientModel):
 
         for row, extint in enumerate(extint, start=5):
             worksheet.write(row, 11, extint.name)
-            worksheet.write(row, 12, str(extint.fecha.strftime("%d-%m-%Y")))
+            worksheet.write(row, 12, str(extint.fecha.strftime("%d-%m-%y")))
             worksheet.write(row, 13, extint.nave)
             worksheet.write(row, 14, extint.obs)
 
         for row, seguri in enumerate(seguri, start=5):
             worksheet.write(row, 16, seguri.name)
-            worksheet.write(row, 17, str(seguri.fecha.strftime("%d-%m-%Y")))
+            worksheet.write(row, 17, str(seguri.fecha.strftime("%d-%m-%y")))
             worksheet.write(row, 18, seguri.nave)
             worksheet.write(row, 19, seguri.item.alias)
 
         for row, bcoco2 in enumerate(bcoco2, start=5):
             worksheet.write(row, 21, bcoco2.name)
-            worksheet.write(row, 22, str(bcoco2.fecha.strftime("%d-%m-%Y")))
+            worksheet.write(row, 22, str(bcoco2.fecha.strftime("%d-%m-%y")))
             worksheet.write(row, 23, bcoco2.nave)        
 
         for row, textil in enumerate(textil, start=5):
             worksheet.write(row, 25, textil.name)
             worksheet.write(row, 26, textil.nave)
-            worksheet.write(row, 27, str(textil.fecha.strftime("%d-%m-%Y")))
+            worksheet.write(row, 27, str(textil.fecha.strftime("%d-%m-%y")))
             worksheet.write(row, 28, textil.cant) 
             worksheet.write(row, 29, textil.item.alias)  
             worksheet.write(row, 30, textil.branch_s)  
