@@ -57,6 +57,9 @@ class ExcelWizard(models.TransientModel):
         format0 = workbook.add_format({'font_size': 20, 'align': 'center', 'bold': True})
         format1 = workbook.add_format({'font_size': 11, 'align': 'center', 'bold': True})
         formatmin = workbook.add_format({'font_size': 8, 'align': 'center', 'bold': False})
+        format2 = workbook.add_format({'font_size': 10, 'bold': False})
+
+        format2.set_border(2)
 
         #colores
                
@@ -100,7 +103,7 @@ class ExcelWizard(models.TransientModel):
 
         headers = ['numero', 'fecha_ent', 'glosa','','numero','glosa','','numero','glosa','','numero','fecha_ent','glosa','obs','','numero','fecha_ent','glosa','detalle','','numero','fecha_ent','glosa','','numero','glosa','fecha_ent','cantidad','detalle','local']
         for col, header in enumerate(headers, start=1):
-            worksheet.write(4, col, header)
+            worksheet.write(4, col, header, formatmin)
 
         # Write data
         for row, balsas in enumerate(balsas, start=5):
