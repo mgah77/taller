@@ -56,8 +56,22 @@ class ExcelWizard(models.TransientModel):
         # Formatos
         format0 = workbook.add_format({'font_size': 20, 'align': 'center', 'bold': True})
         format1 = workbook.add_format({'font_size': 11, 'align': 'center', 'bold': True})
-
+        
+        #fechas
         worksheet.set_column_pixels(2, 2, 75)
+        worksheet.set_column_pixels(12, 12, 75)
+        worksheet.set_column_pixels(17, 17, 75)
+        worksheet.set_column_pixels(22, 22, 75)
+        #nombres
+        worksheet.set_column_pixels(3, 3, 100)
+        worksheet.set_column_pixels(6, 6, 100)
+        worksheet.set_column_pixels(9, 9, 100)
+        worksheet.set_column_pixels(13, 13, 100)
+        worksheet.set_column_pixels(18, 19, 100)
+        worksheet.set_column_pixels(23, 23, 100)
+        worksheet.set_column_pixels(26, 26, 100)
+
+
 
         # Write headers
         worksheet.merge_range(1, 13, 2, 19, 'PLANIFICACION DIARIA', format0)
@@ -76,7 +90,7 @@ class ExcelWizard(models.TransientModel):
         # Write data
         for row, balsas in enumerate(balsas, start=5):
             worksheet.write(row, 1, balsas.name)
-            worksheet.write(row, 2, str(balsas.fecha.strftime("%d-%m-%Y")))
+            worksheet.write(row, 2, str(balsas.fecha.strftime("%d-%m-%y")))
             worksheet.write(row, 3, balsas.nave)
 
         for row, conten in enumerate(conten, start=5):
