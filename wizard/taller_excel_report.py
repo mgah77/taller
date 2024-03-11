@@ -56,6 +56,7 @@ class ExcelWizard(models.TransientModel):
         # Formatos
         format0 = workbook.add_format({'font_size': 20, 'align': 'center', 'bold': True})
         format1 = workbook.add_format({'font_size': 11, 'align': 'center', 'bold': True})
+        formatmin = workbook.add_format({'font_size': 8, 'align': 'center', 'bold': False})
         
         #fechas
         worksheet.set_column_pixels(2, 2, 60)
@@ -90,7 +91,7 @@ class ExcelWizard(models.TransientModel):
         worksheet.merge_range(3, 21, 3, 23, 'Banco CO2', format1)
         worksheet.merge_range(3, 25, 3, 30, 'Textil', format1)
 
-        headers = ['numero', 'fecha_ent', 'glosa','','numero','glosa','','numero','glosa','','numero','fecha_ent','glosa','obs']
+        headers = ['numero', 'fecha_ent', 'glosa','','numero','glosa','','numero','glosa','','numero','fecha_ent','glosa','obs','','numero','fecha_ent','glosa','detalle','','numero','fecha_ent','glosa','','numero','glosa','fecha_ent','cantidad','detalle','local']
         for col, header in enumerate(headers, start=1):
             worksheet.write(4, col, header)
 
