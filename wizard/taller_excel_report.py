@@ -59,7 +59,7 @@ class ExcelWizard(models.TransientModel):
         formatmin = workbook.add_format({'font_size': 8, 'align': 'center', 'bold': False})
         format2 = workbook.add_format({'font_size': 10, 'bold': False})
 
-        format2.set_border(2)
+        format2.set_border(1)
 
         #colores
                
@@ -113,41 +113,41 @@ class ExcelWizard(models.TransientModel):
             worksheet.write(row, 4, " ")
 
         for row, conten in enumerate(conten, start=5):
-            worksheet.write(row, 5, conten.name)
-            worksheet.write(row, 6, conten.nave)
+            worksheet.write(row, 5, conten.name, format2)
+            worksheet.write(row, 6, conten.nave, format2)
             worksheet.write(row, 7, " ")
         
         for row, valvul in enumerate(valvul, start=5):
-            worksheet.write(row, 8, valvul.name)
-            worksheet.write(row, 9, valvul.nave)
+            worksheet.write(row, 8, valvul.name, format2)
+            worksheet.write(row, 9, valvul.nave, format2)
             worksheet.write(row, 10, " ")
 
         for row, extint in enumerate(extint, start=5):
-            worksheet.write(row, 11, extint.name)
-            worksheet.write(row, 12, str(extint.fecha.strftime("%d-%m-%y")))
-            worksheet.write(row, 13, extint.nave)
-            worksheet.write(row, 14, extint.obs)
+            worksheet.write(row, 11, extint.name, format2)
+            worksheet.write(row, 12, str(extint.fecha.strftime("%d-%m-%y")), format2)
+            worksheet.write(row, 13, extint.nave, format2)
+            worksheet.write(row, 14, extint.obs, format2)
             worksheet.write(row, 15, " ")
 
         for row, seguri in enumerate(seguri, start=5):
-            worksheet.write(row, 16, seguri.name)
-            worksheet.write(row, 17, str(seguri.fecha.strftime("%d-%m-%y")))
-            worksheet.write(row, 18, seguri.nave)
-            worksheet.write(row, 19, seguri.item.alias)
+            worksheet.write(row, 16, seguri.name, format2)
+            worksheet.write(row, 17, str(seguri.fecha.strftime("%d-%m-%y")), format2)
+            worksheet.write(row, 18, seguri.nave, format2)
+            worksheet.write(row, 19, seguri.item.alias, format2)
 
         for row, bcoco2 in enumerate(bcoco2, start=5):
-            worksheet.write(row, 21, bcoco2.name)
-            worksheet.write(row, 22, str(bcoco2.fecha.strftime("%d-%m-%y")))
-            worksheet.write(row, 23, bcoco2.nave)     
+            worksheet.write(row, 21, bcoco2.name, format2)
+            worksheet.write(row, 22, str(bcoco2.fecha.strftime("%d-%m-%y")), format2)
+            worksheet.write(row, 23, bcoco2.nave, format2)     
             worksheet.write(row, 24, " ")   
 
         for row, textil in enumerate(textil, start=5):
-            worksheet.write(row, 25, textil.name)
-            worksheet.write(row, 26, textil.nave)
-            worksheet.write(row, 27, str(textil.fecha.strftime("%d-%m-%y")))
-            worksheet.write(row, 28, textil.cant) 
-            worksheet.write(row, 29, textil.item.alias)  
-            worksheet.write(row, 30, textil.branch_s)  
+            worksheet.write(row, 25, textil.name, format2)
+            worksheet.write(row, 26, textil.nave, format2)
+            worksheet.write(row, 27, str(textil.fecha.strftime("%d-%m-%y")), format2)
+            worksheet.write(row, 28, textil.cant, format2) 
+            worksheet.write(row, 29, textil.item.alias, format2)  
+            worksheet.write(row, 30, textil.branch_s, format2)  
 
 
         #for row, partner in enumerate(partners, start=11):
