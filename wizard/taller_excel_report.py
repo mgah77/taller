@@ -57,6 +57,8 @@ class ExcelWizard(models.TransientModel):
         format0 = workbook.add_format({'font_size': 20, 'align': 'center', 'bold': True})
         format1 = workbook.add_format({'font_size': 11, 'align': 'center', 'bold': True})
 
+        worksheet.setcolumn(2,2,75)
+
         # Write headers
         worksheet.merge_range(1, 13, 2, 19, 'PLANIFICACION DIARIA', format0)
         worksheet.merge_range(3, 1, 3, 3, 'Inspeccion de balsa', format1)
