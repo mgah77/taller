@@ -66,8 +66,11 @@ class ExcelWizard(models.TransientModel):
         color_format0 = workbook.add_format()       
         color_format0.set_bg_color('#FFFFFF')
         green = workbook.add_format({'font_size': 11, 'bold': False})
-        green.set_bg_color('#B4C6E7')
+        green.set_bg_color('green')
         green.set_border(1)
+        red = workbook.add_format({'font_size': 11, 'bold': False})
+        red.set_bg_color('red')
+        red.set_border(1)
 
         #fechas
         worksheet.set_column_pixels(2, 2, 62)
