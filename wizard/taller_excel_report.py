@@ -58,7 +58,6 @@ class ExcelWizard(models.TransientModel):
         format1 = workbook.add_format({'font_size': 11, 'align': 'center', 'bold': True})
         formatmin = workbook.add_format({'font_size': 8, 'align': 'center', 'bold': False})
         format2 = workbook.add_format({'font_size': 11, 'bold': False})
-
         format2.set_border(1)
 
         #colores
@@ -66,13 +65,16 @@ class ExcelWizard(models.TransientModel):
         format1.set_bg_color('#B4C6E7')
         color_format0 = workbook.add_format()       
         color_format0.set_bg_color('#FFFFFF')
-
+        green = workbook.add_format({'font_size': 11, 'bold': False})
+        green.set_bg_color('#B4C6E7')
+        green.set_border(1)
 
         #fechas
-        worksheet.set_column_pixels(2, 2, 60)
-        worksheet.set_column_pixels(12, 12, 60)
-        worksheet.set_column_pixels(17, 17, 60)
-        worksheet.set_column_pixels(22, 22, 60)
+        worksheet.set_column_pixels(2, 2, 62)
+        worksheet.set_column_pixels(12, 12, 62)
+        worksheet.set_column_pixels(17, 17, 62)
+        worksheet.set_column_pixels(22, 22, 62)
+        worksheet.set_column_pixels(27, 27, 62)
         #nombres
         worksheet.set_column_pixels(3, 3, 100)
         worksheet.set_column_pixels(6, 6, 100)
@@ -82,12 +84,12 @@ class ExcelWizard(models.TransientModel):
         worksheet.set_column_pixels(23, 23, 100)
         worksheet.set_column_pixels(26, 26, 100)
         #espacio
-        worksheet.set_column_pixels(4, 4, 20 )
-        worksheet.set_column_pixels(7, 7, 20)
-        worksheet.set_column_pixels(10, 10, 20)
-        worksheet.set_column_pixels(15, 15, 20)
-        worksheet.set_column_pixels(20, 20, 20)
-        worksheet.set_column_pixels(24, 24, 20)
+        worksheet.set_column_pixels(4, 4, 18 )
+        worksheet.set_column_pixels(7, 7, 18)
+        worksheet.set_column_pixels(10, 10, 18)
+        worksheet.set_column_pixels(15, 15, 18)
+        worksheet.set_column_pixels(20, 20, 18)
+        worksheet.set_column_pixels(24, 24, 18)
 
 
 
@@ -108,7 +110,7 @@ class ExcelWizard(models.TransientModel):
         # Write data
         for row, balsas in enumerate(balsas, start=5):
             if balsas.color == 10:
-                worksheet.write(row, 1, balsas.name, formatmin)
+                worksheet.write(row, 1, balsas.name, green)
             else:
                 worksheet.write(row, 1, balsas.name, format2)
             worksheet.write(row, 2, str(balsas.fecha.strftime("%d-%m-%y")), format2)
