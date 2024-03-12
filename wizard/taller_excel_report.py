@@ -117,7 +117,7 @@ class ExcelWizard(models.TransientModel):
         for row, balsas in enumerate(balsas, start=5):
             if balsas.color == 10:
                 worksheet.write(row, 1, balsas.name, green)
-            elif balsa.color == 1:
+            elif balsas.color == 1:
                 worksheet.write(row, 1, balsas.name, red)
             else:
                 worksheet.write(row, 1, balsas.name, yellow)
