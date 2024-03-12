@@ -126,9 +126,9 @@ class ExcelWizard(models.TransientModel):
             worksheet.write(row, 4, " ")
 
         for row, conten in enumerate(conten, start=5):
-            if balsas.color == 10:
+            if conten.color == 10:
                 worksheet.write(row, 5, conten.name, green)
-            elif balsas.color == 1:
+            elif conten.color == 1:
                 worksheet.write(row, 5, conten.name, red)
             else:
                 worksheet.write(row, 5, conten.name, yellow)
@@ -136,9 +136,9 @@ class ExcelWizard(models.TransientModel):
             worksheet.write(row, 7, " ")
         
         for row, valvul in enumerate(valvul, start=5):
-            if balsas.color == 10:
+            if valvul.color == 10:
                 worksheet.write(row, 8, valvul.name, green)
-            elif balsas.color == 1:
+            elif valvul.color == 1:
                 worksheet.write(row, 8, valvul.name, red)
             else:
                 worksheet.write(row, 8, valvul.name, yellow)
@@ -146,9 +146,9 @@ class ExcelWizard(models.TransientModel):
             worksheet.write(row, 10, " ")
 
         for row, extint in enumerate(extint, start=5):
-            if balsas.color == 10:
+            if extint.color == 10:
                 worksheet.write(row, 11, extint.name, green)
-            elif balsas.color == 1:
+            elif extint.color == 1:
                 worksheet.write(row, 11, extint.name, red)
             else:
                 worksheet.write(row, 11, extint.name, yellow)
@@ -158,9 +158,9 @@ class ExcelWizard(models.TransientModel):
             worksheet.write(row, 15, " ")
 
         for row, seguri in enumerate(seguri, start=5):
-            if balsas.color == 10:
+            if seguri.color == 10:
                 worksheet.write(row, 16, seguri.name, green)
-            elif balsas.color == 1:
+            elif seguri.color == 1:
                 worksheet.write(row, 16, seguri.name, red)
             else:
                 worksheet.write(row, 16, seguri.name, yellow)
@@ -170,9 +170,9 @@ class ExcelWizard(models.TransientModel):
             worksheet.write(row, 20, " ")
 
         for row, bcoco2 in enumerate(bcoco2, start=5):
-            if balsas.color == 10:
+            if bcoco2.color == 10:
                 worksheet.write(row, 21, bcoco2.name, green)
-            elif balsas.color == 1:
+            elif bcoco2.color == 1:
                 worksheet.write(row, 21, bcoco2.name, red)
             else:
                 worksheet.write(row, 21, bcoco2.name, yellow)
@@ -181,9 +181,9 @@ class ExcelWizard(models.TransientModel):
             worksheet.write(row, 24, " ")   
 
         for row, textil in enumerate(textil, start=5):
-            if balsas.color == 10:
+            if textil.color == 10:
                 worksheet.write(row, 25, textil.name, green)
-            elif balsas.color == 1:
+            elif textil.color == 1:
                 worksheet.write(row, 25, textil.name, red)
             else:
                 worksheet.write(row, 25, textil.name, yellow)
