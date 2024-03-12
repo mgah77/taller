@@ -190,8 +190,11 @@ class ExcelWizard(models.TransientModel):
             worksheet.write(row, 26, textil.nave, format2)
             worksheet.write(row, 27, str(textil.fecha.strftime("%d-%m-%y")), format2)
             worksheet.write(row, 28, textil.cant, format2) 
-            worksheet.write(row, 29, textil.item.alias, format2)  
-            worksheet.write(row, 30, textil.branch_s, format2)  
+            worksheet.write(row, 29, textil.item.alias, format2)
+            if textil.branch_s == 3:
+                worksheet.write(row, 30, 'ParVial', format2)  
+            elif textil.branch_s == 2:
+                worksheet.write(row, 30, 'Ñuble', format2)    
 
 
         #for row, partner in enumerate(partners, start=11):
