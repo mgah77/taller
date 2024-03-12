@@ -57,7 +57,7 @@ class ExcelWizard(models.TransientModel):
         format0 = workbook.add_format({'font_size': 20, 'align': 'center', 'bold': True})
         format1 = workbook.add_format({'font_size': 11, 'align': 'center', 'bold': True})
         formatmin = workbook.add_format({'font_size': 8, 'align': 'center', 'bold': False})
-        format2 = workbook.add_format({'font_size': 10, 'bold': False})
+        format2 = workbook.add_format({'font_size': 11, 'bold': False})
 
         format2.set_border(1)
 
