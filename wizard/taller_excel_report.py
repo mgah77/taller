@@ -66,11 +66,14 @@ class ExcelWizard(models.TransientModel):
         color_format0 = workbook.add_format()       
         color_format0.set_bg_color('#FFFFFF')
         green = workbook.add_format({'font_size': 11, 'bold': False})
-        green.set_bg_color('#00FF00')
+        green.set_bg_color('#00EE00')
         green.set_border(1)
         red = workbook.add_format({'font_size': 11, 'bold': False})
-        red.set_bg_color('red')
+        red.set_bg_color('#FF0000')
         red.set_border(1)
+        yellow = workbook.add_format({'font_size': 11, 'bold': False})
+        yellow.set_bg_color('#FFFF00')
+        yellow.set_border(1)
 
         #fechas
         worksheet.set_column_pixels(2, 2, 62)
@@ -114,8 +117,10 @@ class ExcelWizard(models.TransientModel):
         for row, balsas in enumerate(balsas, start=5):
             if balsas.color == 10:
                 worksheet.write(row, 1, balsas.name, green)
+            elif balsa.color == 1:
+                worksheet.write(row, 1, balsas.name, red)
             else:
-                worksheet.write(row, 1, balsas.name, format2)
+                worksheet.write(row, 1, balsas.name, yellow)
             worksheet.write(row, 2, str(balsas.fecha.strftime("%d-%m-%y")), format2)
             worksheet.write(row, 3, balsas.nave, format2)
             worksheet.write(row, 4, " ")
