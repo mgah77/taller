@@ -66,7 +66,7 @@ class ExcelWizard(models.TransientModel):
         color_format0 = workbook.add_format()       
         color_format0.set_bg_color('#FFFFFF')
         green = workbook.add_format({'font_size': 11, 'bold': False})
-        green.set_bg_color('green')
+        green.set_bg_color('#00FF00')
         green.set_border(1)
         red = workbook.add_format({'font_size': 11, 'bold': False})
         red.set_bg_color('red')
