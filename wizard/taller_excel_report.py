@@ -107,7 +107,10 @@ class ExcelWizard(models.TransientModel):
 
         # Write data
         for row, balsas in enumerate(balsas, start=5):
-            worksheet.write(row, 1, balsas.name, format2)
+            if balsas.color = 10:
+                worksheet.write(row, 1, balsas.name, formatmin)
+            else:
+                worksheet.write(row, 1, balsas.name, format2)
             worksheet.write(row, 2, str(balsas.fecha.strftime("%d-%m-%y")), format2)
             worksheet.write(row, 3, balsas.nave, format2)
             worksheet.write(row, 4, " ")
