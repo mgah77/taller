@@ -118,18 +118,23 @@ class ExcelWizard(models.TransientModel):
             worksheet.write(4, col, header, formatmin)
 
         # Write data
-        for row, balsas in enumerate(balsas, start=5):
-            if balsas.branch_s != suc:
-                continue
-            if balsas.color == 10:
-                worksheet.write(row, 1, balsas.name, green)
-            elif balsas.color == 1:
-                worksheet.write(row, 1, balsas.name, red)
-            else:
-                worksheet.write(row, 1, balsas.name, yellow)
-            worksheet.write(row, 2, str(balsas.fecha.strftime("%d-%m-%y")), format2)
-            worksheet.write(row, 3, balsas.nave, format2)
-            worksheet.write(row, 4, " ")    
+        row = 5  # Inicializamos el índice del bucle
+
+        for balsa in balsas:
+            if balsa.branch_s == suc:
+                if balsa.color == 10:
+                    worksheet.write(row, 1, balsa.name, green)
+                elif balsa.color == 1:
+                    worksheet.write(row, 1, balsa.name, red)
+                else:
+                    worksheet.write(row, 1, balsa.name, yellow)
+                
+                worksheet.write(row, 2, str(balsa.fecha.strftime("%d-%m-%y")), format2)
+                worksheet.write(row, 3, balsa.nave, format2)
+                worksheet.write(row, 4, " ")
+
+                # Incrementamos el índice del bucle solo si se escribieron datos
+                row += 1
                 
 
 
