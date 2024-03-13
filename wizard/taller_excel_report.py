@@ -73,7 +73,7 @@ class ExcelWizard(models.TransientModel):
         green.set_bg_color('#00EE00')
         green.set_border(1)
         red = workbook.add_format({'font_size': 11, 'bold': False})
-        red.set_bg_color('#AA0000')
+        red.set_bg_color('#FF1111')
         red.set_border(1)
         yellow = workbook.add_format({'font_size': 11, 'bold': False})
         yellow.set_bg_color('#FFFF00')
@@ -101,7 +101,7 @@ class ExcelWizard(models.TransientModel):
         worksheet.set_column_pixels(20, 20, 18)
         worksheet.set_column_pixels(24, 24, 18)
 
-
+        worksheet.set_column_pixels(28, 28, 65)    
 
         # Write headers
         worksheet.merge_range(1, 13, 2, 19, 'PLANIFICACION DIARIA', format0)
