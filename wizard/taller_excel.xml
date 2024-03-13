@@ -25,6 +25,6 @@
        <field name="view_mode">form</field>
        <field name="target">new</field>
    </record>
-   <menuitem id="excel_reprort" name="Taller Excel Report"
+   <menuitem id="excel_reprort" name="Planificacion XLS"
               parent="taller.taller_menu" action="taller_action_xlsx_repoort" sequence="80" />
 </odoo>
