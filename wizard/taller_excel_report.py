@@ -50,7 +50,7 @@ class ExcelWizard(models.TransientModel):
         seguri = partners.search([('depto.name','=','Equipo Seguridad'),('branch','=','viewer')], order="fecha asc")
         bcoco2 = partners.search([('depto.name','=','Banco CO2'),('branch','=','viewer')], order="fecha asc")
         textil = partners.search([('depto.name','=','Textil'),('branch','=','viewer')], order="fecha asc")
-        suc = self.env.user.property_warehouse_id
+        suc = self.env.user.property_warehouse_id.id
 
         # Create Excel workbook and worksheet
         output = io.BytesIO()
@@ -73,7 +73,7 @@ class ExcelWizard(models.TransientModel):
         green.set_bg_color('#00EE00')
         green.set_border(1)
         red = workbook.add_format({'font_size': 11, 'bold': False})
-        red.set_bg_color('#DD0000')
+        red.set_bg_color('#CC0000')
         red.set_border(1)
         yellow = workbook.add_format({'font_size': 11, 'bold': False})
         yellow.set_bg_color('#FFFF00')
