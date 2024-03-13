@@ -119,18 +119,19 @@ class ExcelWizard(models.TransientModel):
 
         # Write data
         for row, balsas in enumerate(balsas, start=5):
-            if balsas.branch_s == suc:
-                if balsas.color == 10:
-                    worksheet.write(row, 1, balsas.name, green)
-                elif balsas.color == 1:
-                    worksheet.write(row, 1, balsas.name, red)
-                else:
-                    worksheet.write(row, 1, balsas.name, yellow)
-                worksheet.write(row, 2, str(balsas.fecha.strftime("%d-%m-%y")), format2)
-                worksheet.write(row, 3, balsas.nave, format2)
-                worksheet.write(row, 4, " ")
+            if balsas.branch_s != suc:
+                continue
+            if balsas.color == 10:
+                worksheet.write(row, 1, balsas.name, green)
+            elif balsas.color == 1:
+                worksheet.write(row, 1, balsas.name, red)
             else:
-                row = row - 1
+                worksheet.write(row, 1, balsas.name, yellow)
+            worksheet.write(row, 2, str(balsas.fecha.strftime("%d-%m-%y")), format2)
+            worksheet.write(row, 3, balsas.nave, format2)
+            worksheet.write(row, 4, " ")    
+                
+
 
         for row, conten in enumerate(conten, start=5):
             if conten.color == 10:
