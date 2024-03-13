@@ -129,6 +129,8 @@ class ExcelWizard(models.TransientModel):
                 worksheet.write(row, 2, str(balsas.fecha.strftime("%d-%m-%y")), format2)
                 worksheet.write(row, 3, balsas.nave, format2)
                 worksheet.write(row, 4, " ")
+            else:
+                row = row - 1
 
         for row, conten in enumerate(conten, start=5):
             if conten.color == 10:
@@ -201,7 +203,6 @@ class ExcelWizard(models.TransientModel):
             elif textil.branch_s == 2:
                 worksheet.write(row, 30, 'Ñuble', format2)    
 
-        worksheet.write(1, 1, str(suc), format2)
         #for row, partner in enumerate(partners, start=11):
          #   worksheet.write(row, 10, partner.name)
           #  worksheet.write(row, 11, partner.item.name)
