@@ -18,12 +18,15 @@ class ExcelWizard(models.TransientModel):
    end_date = fields.Datetime(string="End Date",
                               default=datetime.datetime.now(),
                               required=True)
+   user = fields.Integer()
+   
    def print_xlsx(self):
        if self.start_date > self.end_date:
            raise ValidationError('Start Date must be less than End Date')
        data = {
            'start_date': self.start_date,
            'end_date': self.end_date,
+           'user': self.env.user.partner_id.id,
        }
        current_date = datetime.datetime.now().date()
        current_date_string = current_date.strftime("%Y-%m-%d")
