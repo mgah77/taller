@@ -78,9 +78,7 @@ class ExcelWizard(models.TransientModel):
         yellow = workbook.add_format({'font_size': 11, 'bold': False})
         yellow.set_bg_color('#FFFF00')
         yellow.set_border(1)
-
-
-        worksheet.write(1, 1, suc)
+        
         #fechas
         worksheet.set_column_pixels(2, 2, 62)
         worksheet.set_column_pixels(12, 12, 62)
@@ -202,7 +200,7 @@ class ExcelWizard(models.TransientModel):
             elif textil.branch_s == 2:
                 worksheet.write(row, 30, 'Ñuble', format2)    
 
-
+        worksheet.write(1, 1, suc, format2)
         #for row, partner in enumerate(partners, start=11):
          #   worksheet.write(row, 10, partner.name)
           #  worksheet.write(row, 11, partner.item.name)
