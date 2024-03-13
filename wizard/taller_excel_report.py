@@ -50,7 +50,7 @@ class ExcelWizard(models.TransientModel):
         seguri = partners.search([('depto.name','=','Equipo Seguridad'),('branch','=','viewer')], order="fecha asc")
         bcoco2 = partners.search([('depto.name','=','Banco CO2'),('branch','=','viewer')], order="fecha asc")
         textil = partners.search([('depto.name','=','Textil'),('branch','=','viewer')], order="fecha asc")
-        suc = data.user
+        suc = self.user.id
 
         # Create Excel workbook and worksheet
         output = io.BytesIO()
