@@ -79,6 +79,8 @@ class ExcelWizard(models.TransientModel):
         yellow.set_bg_color('#FFFF00')
         yellow.set_border(1)
 
+
+        worksheet.write(1, 1, suc)
         #fechas
         worksheet.set_column_pixels(2, 2, 62)
         worksheet.set_column_pixels(12, 12, 62)
