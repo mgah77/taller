@@ -73,7 +73,7 @@ class ExcelWizard(models.TransientModel):
         green.set_bg_color('#00EE00')
         green.set_border(1)
         red = workbook.add_format({'font_size': 11, 'bold': False})
-        red.set_bg_color('#CC0000')
+        red.set_bg_color('#AA0000')
         red.set_border(1)
         yellow = workbook.add_format({'font_size': 11, 'bold': False})
         yellow.set_bg_color('#FFFF00')
@@ -119,7 +119,6 @@ class ExcelWizard(models.TransientModel):
 
         # Write data
         row = 5  # Inicializamos el índice del bucle
-
         for balsa in balsas:
             if balsa.branch_s == suc:
                 if balsa.color == 10:
@@ -127,88 +126,111 @@ class ExcelWizard(models.TransientModel):
                 elif balsa.color == 1:
                     worksheet.write(row, 1, balsa.name, red)
                 else:
-                    worksheet.write(row, 1, balsa.name, yellow)
-                
+                    worksheet.write(row, 1, balsa.name, yellow)                
                 worksheet.write(row, 2, str(balsa.fecha.strftime("%d-%m-%y")), format2)
                 worksheet.write(row, 3, balsa.nave, format2)
                 worksheet.write(row, 4, " ")
-
-                # Incrementamos el índice del bucle solo si se escribieron datos
+                row += 1               
+        row = 5
+        for conte in conten:
+            if conte.branch_s == suc:
+                if conte.color == 10:
+                    worksheet.write(row, 5, conte.name, green)
+                elif conte.color == 1:
+                    worksheet.write(row, 5, conte.name, red)
+                else:
+                    worksheet.write(row, 5, conte.name, yellow)
+                worksheet.write(row, 6, conte.nave, format2)
+                worksheet.write(row, 7, " ")
                 row += 1
-                
-
-
-        for row, conten in enumerate(conten, start=5):
-            if conten.color == 10:
-                worksheet.write(row, 5, conten.name, green)
-            elif conten.color == 1:
-                worksheet.write(row, 5, conten.name, red)
+        row = 5        
+        for valvu in valvul:
+            if valvu.branch_s == suc:
+                if valvu.color == 10:
+                    worksheet.write(row, 8, valvu.name, green)
+                elif valvu.color == 1:
+                    worksheet.write(row, 8, valvu.name, red)
+                else:
+                    worksheet.write(row, 8, valvu.name, yellow)
+                worksheet.write(row, 9, valvu.nave, format2)
+                worksheet.write(row, 10, " ")
+                row += 1
+        row = 5
+        for extin in extint:
+            if extin.branch_s == suc:
+                if extin.color == 10:
+                    worksheet.write(row, 11, extin.name, green)
+                elif extin.color == 1:
+                    worksheet.write(row, 11, extin.name, red)
+                else:
+                    worksheet.write(row, 11, extin.name, yellow)
+                worksheet.write(row, 12, str(extin.fecha.strftime("%d-%m-%y")), format2)
+                worksheet.write(row, 13, extin.nave, format2)
+                worksheet.write(row, 14, extin.obs, format2)
+                worksheet.write(row, 15, " ")
+                row += 1
+        row = 5        
+        for segur in seguri:
+            if segur.branch_s == suc:
+                if segur.color == 10:
+                    worksheet.write(row, 16, segur.name, green)
+                elif segur.color == 1:
+                    worksheet.write(row, 16, segur.name, red)
+                else:
+                    worksheet.write(row, 16, segur.name, yellow)
+                worksheet.write(row, 17, str(segur.fecha.strftime("%d-%m-%y")), format2)
+                worksheet.write(row, 18, segur.nave, format2)
+                worksheet.write(row, 19, segur.item.alias, format2)
+                worksheet.write(row, 20, " ")
+                row += 1
+        row = 5
+        for bcoco in bcoco2:
+            if bcoco.branch_s == suc:
+                if bcoco.color == 10:
+                    worksheet.write(row, 21, bcoco.name, green)
+                elif bcoco.color == 1:
+                    worksheet.write(row, 21, bcoco.name, red)
+                else:
+                    worksheet.write(row, 21, bcoco.name, yellow)
+                worksheet.write(row, 22, str(bcoco.fecha.strftime("%d-%m-%y")), format2)
+                worksheet.write(row, 23, bcoco.nave, format2)     
+                worksheet.write(row, 24, " ") 
+                row += 1  
+        row = 5
+        for texti in textil:
+            if suc == 2:
+                if texti.branch_s == suc:
+                    if texti.color == 10:
+                        worksheet.write(row, 25, texti.name, green)
+                    elif texti.color == 1:
+                        worksheet.write(row, 25, texti.name, red)
+                    else:
+                        worksheet.write(row, 25, texti.name, yellow)
+                    worksheet.write(row, 26, texti.nave, format2)
+                    worksheet.write(row, 27, str(texti.fecha.strftime("%d-%m-%y")), format2)
+                    worksheet.write(row, 28, texti.cant, format2) 
+                    worksheet.write(row, 29, texti.item.alias, format2)
+                    if texti.branch_s == 3:
+                        worksheet.write(row, 30, 'ParVial', format2)  
+                    elif texti.branch_s == 2:
+                        worksheet.write(row, 30, 'Ñuble', format2)    
+                    row += 1
             else:
-                worksheet.write(row, 5, conten.name, yellow)
-            worksheet.write(row, 6, conten.nave, format2)
-            worksheet.write(row, 7, " ")
-        
-        for row, valvul in enumerate(valvul, start=5):
-            if valvul.color == 10:
-                worksheet.write(row, 8, valvul.name, green)
-            elif valvul.color == 1:
-                worksheet.write(row, 8, valvul.name, red)
-            else:
-                worksheet.write(row, 8, valvul.name, yellow)
-            worksheet.write(row, 9, valvul.nave, format2)
-            worksheet.write(row, 10, " ")
-
-        for row, extint in enumerate(extint, start=5):
-            if extint.color == 10:
-                worksheet.write(row, 11, extint.name, green)
-            elif extint.color == 1:
-                worksheet.write(row, 11, extint.name, red)
-            else:
-                worksheet.write(row, 11, extint.name, yellow)
-            worksheet.write(row, 12, str(extint.fecha.strftime("%d-%m-%y")), format2)
-            worksheet.write(row, 13, extint.nave, format2)
-            worksheet.write(row, 14, extint.obs, format2)
-            worksheet.write(row, 15, " ")
-
-        for row, seguri in enumerate(seguri, start=5):
-            if seguri.color == 10:
-                worksheet.write(row, 16, seguri.name, green)
-            elif seguri.color == 1:
-                worksheet.write(row, 16, seguri.name, red)
-            else:
-                worksheet.write(row, 16, seguri.name, yellow)
-            worksheet.write(row, 17, str(seguri.fecha.strftime("%d-%m-%y")), format2)
-            worksheet.write(row, 18, seguri.nave, format2)
-            worksheet.write(row, 19, seguri.item.alias, format2)
-            worksheet.write(row, 20, " ")
-
-        for row, bcoco2 in enumerate(bcoco2, start=5):
-            if bcoco2.color == 10:
-                worksheet.write(row, 21, bcoco2.name, green)
-            elif bcoco2.color == 1:
-                worksheet.write(row, 21, bcoco2.name, red)
-            else:
-                worksheet.write(row, 21, bcoco2.name, yellow)
-            worksheet.write(row, 22, str(bcoco2.fecha.strftime("%d-%m-%y")), format2)
-            worksheet.write(row, 23, bcoco2.nave, format2)     
-            worksheet.write(row, 24, " ")   
-
-        for row, textil in enumerate(textil, start=5):
-            if textil.color == 10:
-                worksheet.write(row, 25, textil.name, green)
-            elif textil.color == 1:
-                worksheet.write(row, 25, textil.name, red)
-            else:
-                worksheet.write(row, 25, textil.name, yellow)
-            worksheet.write(row, 26, textil.nave, format2)
-            worksheet.write(row, 27, str(textil.fecha.strftime("%d-%m-%y")), format2)
-            worksheet.write(row, 28, textil.cant, format2) 
-            worksheet.write(row, 29, textil.item.alias, format2)
-            if textil.branch_s == 3:
-                worksheet.write(row, 30, 'ParVial', format2)  
-            elif textil.branch_s == 2:
-                worksheet.write(row, 30, 'Ñuble', format2)    
-
+                if texti.color == 10:
+                    worksheet.write(row, 25, texti.name, green)
+                elif texti.color == 1:
+                    worksheet.write(row, 25, texti.name, red)
+                else:
+                    worksheet.write(row, 25, texti.name, yellow)
+                worksheet.write(row, 26, texti.nave, format2)
+                worksheet.write(row, 27, str(texti.fecha.strftime("%d-%m-%y")), format2)
+                worksheet.write(row, 28, texti.cant, format2) 
+                worksheet.write(row, 29, texti.item.alias, format2)
+                if texti.branch_s == 3:
+                    worksheet.write(row, 30, 'ParVial', format2)  
+                elif texti.branch_s == 2:
+                    worksheet.write(row, 30, 'Ñuble', format2) 
+                row += 1
         #for row, partner in enumerate(partners, start=11):
          #   worksheet.write(row, 10, partner.name)
           #  worksheet.write(row, 11, partner.item.name)
