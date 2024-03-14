@@ -107,7 +107,7 @@ class ExcelWizard(models.TransientModel):
         worksheet.set_column_pixels(27, 27, 65)    
 
         # Write headers
-        worksheet.merge_range(1, 13, 2, 19, 'PLANIFICACION DIARIA' + self.hoy, format0)
+        worksheet.merge_range(1, 13, 2, 19, 'PLANIFICACION DIARIA', format0)
         worksheet.merge_range(3, 1, 3, 3, 'Inspeccion de balsa', format1)
         worksheet.merge_range(3, 5, 3, 6, 'Contenedores', format1)
         worksheet.merge_range(3, 8, 3, 9, 'Válvulas', format1)
