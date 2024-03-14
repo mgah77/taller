@@ -19,6 +19,9 @@ class ExcelWizard(models.TransientModel):
                               default=datetime.datetime.now(),
                               required=True)
    user = fields.Integer()
+   hoy = fields.Datetime(string="Hoy",
+                              default=datetime.datetime.now(),
+                              required=True)
    
    def print_xlsx(self):
        if self.start_date > self.end_date:
@@ -82,29 +85,29 @@ class ExcelWizard(models.TransientModel):
         #fechas
         worksheet.set_column_pixels(2, 2, 62)
         worksheet.set_column_pixels(12, 12, 62)
-        worksheet.set_column_pixels(17, 17, 62)
-        worksheet.set_column_pixels(22, 22, 62)
-        worksheet.set_column_pixels(27, 27, 62)
+        worksheet.set_column_pixels(16, 16, 62)
+        worksheet.set_column_pixels(21, 21, 62)
+        worksheet.set_column_pixels(26, 26, 62)
         #nombres
         worksheet.set_column_pixels(3, 3, 100)
         worksheet.set_column_pixels(6, 6, 100)
         worksheet.set_column_pixels(9, 9, 100)
         worksheet.set_column_pixels(13, 13, 100)
-        worksheet.set_column_pixels(18, 19, 100)
-        worksheet.set_column_pixels(23, 23, 100)
-        worksheet.set_column_pixels(26, 26, 100)
+        worksheet.set_column_pixels(17, 18, 100)
+        worksheet.set_column_pixels(22, 22, 100)
+        worksheet.set_column_pixels(25, 25, 100)
         #espacio
         worksheet.set_column_pixels(4, 4, 18 )
         worksheet.set_column_pixels(7, 7, 18)
         worksheet.set_column_pixels(10, 10, 18)
-        worksheet.set_column_pixels(15, 15, 18)
-        worksheet.set_column_pixels(20, 20, 18)
-        worksheet.set_column_pixels(24, 24, 18)
+        worksheet.set_column_pixels(14, 14, 18)
+        worksheet.set_column_pixels(19, 19, 18)
+        worksheet.set_column_pixels(23, 23, 18)
 
-        worksheet.set_column_pixels(28, 28, 65)    
+        worksheet.set_column_pixels(27, 27, 65)    
 
         # Write headers
-        worksheet.merge_range(1, 13, 2, 19, 'PLANIFICACION DIARIA', format0)
+        worksheet.merge_range(1, 13, 2, 19, 'PLANIFICACION DIARIA' + self.hoy, format0)
         worksheet.merge_range(3, 1, 3, 3, 'Inspeccion de balsa', format1)
         worksheet.merge_range(3, 5, 3, 6, 'Contenedores', format1)
         worksheet.merge_range(3, 8, 3, 9, 'Válvulas', format1)
@@ -166,70 +169,69 @@ class ExcelWizard(models.TransientModel):
                     worksheet.write(row, 11, extin.name, yellow)
                 worksheet.write(row, 12, str(extin.fecha.strftime("%d-%m-%y")), format2)
                 worksheet.write(row, 13, extin.nave, format2)
-                worksheet.write(row, 14, extin.obs, format2)
-                worksheet.write(row, 15, " ")
+                worksheet.write(row, 14, " ")
                 row += 1
         row = 5        
         for segur in seguri:
             if segur.branch_s == suc:
                 if segur.color == 10:
-                    worksheet.write(row, 16, segur.name, green)
+                    worksheet.write(row, 15, segur.name, green)
                 elif segur.color == 1:
-                    worksheet.write(row, 16, segur.name, red)
+                    worksheet.write(row, 15, segur.name, red)
                 else:
-                    worksheet.write(row, 16, segur.name, yellow)
-                worksheet.write(row, 17, str(segur.fecha.strftime("%d-%m-%y")), format2)
-                worksheet.write(row, 18, segur.nave, format2)
-                worksheet.write(row, 19, segur.item.alias, format2)
-                worksheet.write(row, 20, " ")
+                    worksheet.write(row, 15, segur.name, yellow)
+                worksheet.write(row, 16, str(segur.fecha.strftime("%d-%m-%y")), format2)
+                worksheet.write(row, 17, segur.nave, format2)
+                worksheet.write(row, 18, segur.item.alias, format2)
+                worksheet.write(row, 19, " ")
                 row += 1
         row = 5
         for bcoco in bcoco2:
             if bcoco.branch_s == suc:
                 if bcoco.color == 10:
-                    worksheet.write(row, 21, bcoco.name, green)
+                    worksheet.write(row, 20, bcoco.name, green)
                 elif bcoco.color == 1:
-                    worksheet.write(row, 21, bcoco.name, red)
+                    worksheet.write(row, 20, bcoco.name, red)
                 else:
-                    worksheet.write(row, 21, bcoco.name, yellow)
-                worksheet.write(row, 22, str(bcoco.fecha.strftime("%d-%m-%y")), format2)
-                worksheet.write(row, 23, bcoco.nave, format2)     
-                worksheet.write(row, 24, " ") 
+                    worksheet.write(row, 20, bcoco.name, yellow)
+                worksheet.write(row, 21, str(bcoco.fecha.strftime("%d-%m-%y")), format2)
+                worksheet.write(row, 22, bcoco.nave, format2)     
+                worksheet.write(row, 23, " ") 
                 row += 1  
         row = 5
         for texti in textil:
             if suc == 2:
                 if texti.branch_s == suc:
                     if texti.color == 10:
-                        worksheet.write(row, 25, texti.name, green)
+                        worksheet.write(row, 24, texti.name, green)
                     elif texti.color == 1:
-                        worksheet.write(row, 25, texti.name, red)
+                        worksheet.write(row, 24, texti.name, red)
                     else:
-                        worksheet.write(row, 25, texti.name, yellow)
-                    worksheet.write(row, 26, texti.nave, format2)
-                    worksheet.write(row, 27, str(texti.fecha.strftime("%d-%m-%y")), format2)
-                    worksheet.write(row, 28, texti.cant, format2) 
-                    worksheet.write(row, 29, texti.item.alias, format2)
+                        worksheet.write(row, 24, texti.name, yellow)
+                    worksheet.write(row, 25, texti.nave, format2)
+                    worksheet.write(row, 26, str(texti.fecha.strftime("%d-%m-%y")), format2)
+                    worksheet.write(row, 27, texti.cant, format2) 
+                    worksheet.write(row, 28, texti.item.alias, format2)
                     if texti.branch_s == 3:
-                        worksheet.write(row, 30, 'ParVial', format2)  
+                        worksheet.write(row, 29, 'ParVial', format2)  
                     elif texti.branch_s == 2:
-                        worksheet.write(row, 30, 'Ñuble', format2)    
+                        worksheet.write(row, 29, 'Ñuble', format2)    
                     row += 1
             else:
                 if texti.color == 10:
-                    worksheet.write(row, 25, texti.name, green)
+                    worksheet.write(row, 24, texti.name, green)
                 elif texti.color == 1:
-                    worksheet.write(row, 25, texti.name, red)
+                    worksheet.write(row, 24, texti.name, red)
                 else:
-                    worksheet.write(row, 25, texti.name, yellow)
-                worksheet.write(row, 26, texti.nave, format2)
-                worksheet.write(row, 27, str(texti.fecha.strftime("%d-%m-%y")), format2)
-                worksheet.write(row, 28, texti.cant, format2) 
-                worksheet.write(row, 29, texti.item.alias, format2)
+                    worksheet.write(row, 24, texti.name, yellow)
+                worksheet.write(row, 25, texti.nave, format2)
+                worksheet.write(row, 26, str(texti.fecha.strftime("%d-%m-%y")), format2)
+                worksheet.write(row, 27, texti.cant, format2) 
+                worksheet.write(row, 28, texti.item.alias, format2)
                 if texti.branch_s == 3:
-                    worksheet.write(row, 30, 'ParVial', format2)  
+                    worksheet.write(row, 29, 'ParVial', format2)  
                 elif texti.branch_s == 2:
-                    worksheet.write(row, 30, 'Ñuble', format2) 
+                    worksheet.write(row, 29, 'Ñuble', format2) 
                 row += 1
         #for row, partner in enumerate(partners, start=11):
          #   worksheet.write(row, 10, partner.name)
