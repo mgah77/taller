@@ -54,7 +54,7 @@ class ExcelWizard(models.TransientModel):
         bcoco2 = partners.search([('depto.name','=','Banco CO2'),('branch','=','viewer')], order="fecha asc")
         textil = partners.search([('depto.name','=','Textil'),('branch','=','viewer')], order="fecha asc")
         suc = self.env.user.property_warehouse_id.id
-
+        
         # Create Excel workbook and worksheet
         output = io.BytesIO()
         workbook = xlsxwriter.Workbook(output)
