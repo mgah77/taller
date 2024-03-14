@@ -111,12 +111,12 @@ class ExcelWizard(models.TransientModel):
         worksheet.merge_range(3, 1, 3, 3, 'Inspeccion de balsa', format1)
         worksheet.merge_range(3, 5, 3, 6, 'Contenedores', format1)
         worksheet.merge_range(3, 8, 3, 9, 'Válvulas', format1)
-        worksheet.merge_range(3, 11, 3, 14, 'Extintores', format1)
-        worksheet.merge_range(3, 16, 3, 19, 'Equipo Seguridad', format1)
-        worksheet.merge_range(3, 21, 3, 23, 'Banco CO2', format1)
-        worksheet.merge_range(3, 25, 3, 30, 'Textil', format1)
+        worksheet.merge_range(3, 11, 3, 13, 'Extintores', format1)
+        worksheet.merge_range(3, 15, 3, 18, 'Equipo Seguridad', format1)
+        worksheet.merge_range(3, 20, 3, 22, 'Banco CO2', format1)
+        worksheet.merge_range(3, 24, 3, 29, 'Textil', format1)
 
-        headers = ['numero', 'fecha_ent', 'glosa','','numero','glosa','','numero','glosa','','numero','fecha_ent','glosa','obs','','numero','fecha_ent','glosa','detalle','','numero','fecha_ent','glosa','','numero','glosa','fecha_ent','cantidad','detalle','local']
+        headers = ['numero', 'fecha_ent', 'glosa','','numero','glosa','','numero','glosa','','numero','fecha_ent','glosa','','numero','fecha_ent','glosa','detalle','','numero','fecha_ent','glosa','','numero','glosa','fecha_ent','cantidad','detalle','local']
         for col, header in enumerate(headers, start=1):
             worksheet.write(4, col, header, formatmin)
 
