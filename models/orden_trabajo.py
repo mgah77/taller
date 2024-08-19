@@ -24,16 +24,17 @@ class Taller_ingreso(models.Model):
     replace = fields.Boolean(string = 'Reemplazo')
     viewer = fields.Integer('Current User', compute="_compute_viewer")
     sucursal = fields.Char('Sucursal', compute="_compute_sucursal")
-    sucursel = fields.Selection([('nuble','Ñuble'),('parvial','Par Vial')],string='Sucursal')
+    sucursel = fields.Selection([('2','Ñuble'),('3','Par Vial')],string='Sucursal')
 
     def _compute_sucursal(self):
         for line in self:
+            if line.sucursel:
+                line.user_branch = line.sucursel
             if line.user_branch == 2:
                 line.sucursal = 'Ñuble'
             elif line.user_branch == 3:
                 line.sucursal = 'Par Vial'
-            else:
-                line.sucursal = line.sucursel
+            
 
 
     def _compute_viewer(self):
