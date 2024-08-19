@@ -27,15 +27,12 @@ class Taller_ingreso(models.Model):
     sucursel = fields.Selection([('2','Ñuble'),('3','Par Vial')],string='Sucursal')
 
     def _compute_sucursal(self):
-        for line in self:
-            if line.sucursel:
-                line.user_branch = line.sucursel
+        for line in self:            
             if line.user_branch == 2:
                 line.sucursal = 'Ñuble'
             elif line.user_branch == 3:
                 line.sucursal = 'Par Vial'
             
-
 
     def _compute_viewer(self):
         for record in self:
@@ -50,6 +47,18 @@ class Taller_ingreso(models.Model):
             vals['user_branch']=self.env.user.property_warehouse_id
         result = super(Taller_ingreso,self).create(vals)
         return result
+
+    @api.onchange('sucursel')
+    def onchange_sucursel(self):
+        if self.sucursel:
+            for line in self:            
+                if line.sucursel == 2:
+                    line.sucursal = 'Ñuble'
+                    line.user_branch = '2'
+                elif line.sucursel == 3:
+                    line.sucursal = 'Par Vial'
+                    line.user_branch = '3'
+
 
     @api.onchange('contacto')
     def onchange_partner_id(self):
