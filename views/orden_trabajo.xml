@@ -31,7 +31,7 @@
                           <field name="user" />
                         </group>
                         <group>
-                          <field name="sucursal" />
+                          <field name ="sucursal" groups="taller.group_operaciones"/>
                         </group>
                         <newline />
                         <group>

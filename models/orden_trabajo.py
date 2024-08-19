@@ -23,7 +23,7 @@ class Taller_ingreso(models.Model):
     lugar = fields.Many2one('res.city', string = 'Lugar')
     replace = fields.Boolean(string = 'Reemplazo')
     viewer = fields.Integer('Current User', compute="_compute_viewer")
-    sucursal = fields.Char('Sucursal', compute="_compute_sucursal", store=True, readonly=False)
+    sucursal = fields.Char('Sucursal', compute="_compute_sucursal")
 
     def _compute_sucursal(self):
         for line in self:
