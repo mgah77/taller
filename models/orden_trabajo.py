@@ -51,13 +51,14 @@ class Taller_ingreso(models.Model):
     @api.onchange('sucursel')
     def onchange_sucursel(self):
         if self.sucursel:
-            for line in self:            
-                if line.sucursel == 2:
-                    line.sucursal = 'Ñuble'
-                    line.user_branch = '2'
-                elif line.sucursel == 3:
-                    line.sucursal = 'Par Vial'
-                    line.user_branch = '3'
+            for record in self:            
+                if record.sucursel == 2:
+                    record['sucursal'] = 'Ñuble'
+                    record['user_branch'] = '2'
+                elif record.sucursel == 3:
+                    record['sucursal'] = 'Par Vial'
+                    record['user_branch'] = '3'
+        return
 
 
     @api.onchange('contacto')
