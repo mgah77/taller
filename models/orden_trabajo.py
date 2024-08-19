@@ -15,7 +15,7 @@ class Taller_ingreso(models.Model):
     obs = fields.Char('Observaciones')
     ot_line = fields.One2many(comodel_name = 'taller.ot.line',inverse_name = 'ot_line_id', string = 'Lineas OT',copy=True, auto_join=True)
     user = fields.Char(string = 'Recepciona', default='Sala de Ventas')
-    user_branch = fields.Integer(string = 'Current Branch')
+    user_branch = fields.Integer(string = 'Current Branch', default='3')
     contacto = fields.Many2one('res.partner', string='Contacto')
     contacto_fono = fields.Char('Fono')
     contacto_mail = fields.Char('e-mail')
@@ -23,7 +23,7 @@ class Taller_ingreso(models.Model):
     lugar = fields.Many2one('res.city', string = 'Lugar')
     replace = fields.Boolean(string = 'Reemplazo')
     viewer = fields.Integer('Current User', compute="_compute_viewer")
-    sucursal = fields.Char('Sucursal', compute="_compute_sucursal")
+    sucursal = fields.Char('Sucursal', compute="_compute_sucursal", store=True, readonly=False)
 
     def _compute_sucursal(self):
         for line in self:

@@ -29,6 +29,12 @@
                       <group>
                         <group>
                           <field name="user" />
+                        </group>
+                        <group>
+                          <field name="sucursal" />
+                        </group>
+                        <newline />
+                        <group>
                           <field name="contacto" />
                         </group>
                         <newline />
