@@ -44,7 +44,7 @@ class Taller_ingreso(models.Model):
         if vals.get('name','Nuevo')=='Nuevo':
             vals['name']=self.env['ir.sequence'].next_by_code('abr.ot') or 'Nuevo'
             vals['user']=self.env.user.partner_id.name
-            if (self.env.user.property_warehouse_id == 2)or(self.env.user.property_warehouse_id == 3):
+            if (self.env.user.property_warehouse_id == '2')or(self.env.user.property_warehouse_id == '3'):
                 vals['user_branch']=self.env.user.property_warehouse_id
             else:
                 vals['user_branch']=self.sucursel
