@@ -14,7 +14,7 @@ class Taller_ingreso(models.Model):
     nave = fields.Char('Nave')
     obs = fields.Char('Observaciones')
     ot_line = fields.One2many(comodel_name = 'taller.ot.line',inverse_name = 'ot_line_id', string = 'Lineas OT',copy=True, auto_join=True)
-    user = fields.Char(string = 'Recepciona')
+    user = fields.Char(string = 'Recepciona', default='Sala de Ventas')
     user_branch = fields.Integer(string = 'Current Branch')
     contacto = fields.Many2one('res.partner', string='Contacto')
     contacto_fono = fields.Char('Fono')
