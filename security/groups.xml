@@ -6,13 +6,13 @@
 	<field name="name">Modulo Taller Maestro</field>
     </record>
     <record id="group_nuble" model="res.groups">
-  <field name="name">Taller Nuble</field>
+  <field name="name">Taller menus Nuble</field>
     </record>
     <record id="group_parvial" model="res.groups">
-  <field name="name">Taller ParVial</field>
+  <field name="name">Taller menus ParVial</field>
     </record>
     <record id="group_operaciones" model="res.groups">
-    <field name="name">Taller Operaciones</field>
+    <field name="name">Taller menus Operaciones</field>
     </record>
 
 </odoo>
