@@ -6,7 +6,7 @@ class Taller_ingreso(models.Model):
     _name = 'taller.ot'
     _description = 'Ingreso Taller'
 
-    name = fields.Char(string="Nro ", readonly=True, default='New', copy=False)
+    name = fields.Char(string="Nro ", readonly=True, default='Nuevo', copy=False)
 
     fecha_recep = fields.Date('Fecha de Recepción', default=fields.Date.context_today)
     fecha_entr = fields.Date('Fecha de Entrega', index=True)
@@ -40,8 +40,8 @@ class Taller_ingreso(models.Model):
 
     @api.model
     def create(self,vals):
-        if vals.get('name','New')=='New':
-            vals['name']=self.env['ir.sequence'].next_by_code('abr.ot') or 'New'
+        if vals.get('name','Nuevo')=='Nuevo':
+            vals['name']=self.env['ir.sequence'].next_by_code('abr.ot') or 'Nuevo'
             vals['user']=self.env.user.partner_id.name
             vals['user_branch']=self.env.user.property_warehouse_id
         result = super(Taller_ingreso,self).create(vals)
