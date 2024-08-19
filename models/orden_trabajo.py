@@ -24,7 +24,7 @@ class Taller_ingreso(models.Model):
     replace = fields.Boolean(string = 'Reemplazo')
     viewer = fields.Integer('Current User', compute="_compute_viewer")
     sucursal = fields.Char('Sucursal', compute="_compute_sucursal")
-    sucursel = fields.Selection([('2','Ñuble'),('3','Par Vial')],string='Sucursal')
+    sucursel = fields.Selection([('2','Ñuble'),('3','Par Vial')],string='Sucursal',default='2')
 
     def _compute_sucursal(self):
         for line in self:            
@@ -44,21 +44,12 @@ class Taller_ingreso(models.Model):
         if vals.get('name','Nuevo')=='Nuevo':
             vals['name']=self.env['ir.sequence'].next_by_code('abr.ot') or 'Nuevo'
             vals['user']=self.env.user.partner_id.name
-            vals['user_branch']=self.env.user.property_warehouse_id
+            if (self.env.user.property_warehouse_id == 2)or(self.env.user.property_warehouse_id == 3):
+                vals['user_branch']=self.env.user.property_warehouse_id
+            else:
+                vals['user_branch']=self.sucursel
         result = super(Taller_ingreso,self).create(vals)
         return result
-
-    @api.onchange('sucursel')
-    def onchange_sucursel(self):
-        if self.sucursel:
-            for record in self:            
-                if record.sucursel == 2:
-                    record['sucursal'] = 'Ñuble'
-                    record['user_branch'] = '2'
-                elif record.sucursel == 3:
-                    record['sucursal'] = 'Par Vial'
-                    record['user_branch'] = '3'
-        return
 
 
     @api.onchange('contacto')
