@@ -32,6 +32,8 @@ class Taller_ingreso(models.Model):
                 line.sucursal = 'Ñuble'
             elif line.user_branch == 3:
                 line.sucursal = 'Par Vial'
+            else
+                line.sucursal = line.sucursel
 
 
     def _compute_viewer(self):
