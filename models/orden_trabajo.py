@@ -32,7 +32,7 @@ class Taller_ingreso(models.Model):
                 line.sucursal = 'Ñuble'
             elif line.user_branch == 3:
                 line.sucursal = 'Par Vial'
-            else
+            else:
                 line.sucursal = line.sucursel
 
 
