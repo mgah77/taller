@@ -11,7 +11,7 @@
             <field name="name">Orden de Trabajo</field>
             <field name="model">taller.ot</field>
             <field name="arch" type="xml">
-                <form string="Orden de trabajo">
+                <form string="Orden de trabajo" delete="false">
                 <header>
 
                 </header>
@@ -78,7 +78,7 @@
                 <field name="name">Ordenes de Trabajo</field>
                 <field name="model">taller.ot</field>
                 <field name="arch" type="xml">
-                    <tree string="Orden de trabajo">
+                    <tree string="Orden de trabajo" delete="false">
                                     <field name ="viewer" invisible='1'/>
                                     <field name ="name"/>
                                     <field name ="sucursel" groups="taller.group_operaciones"/>
