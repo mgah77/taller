@@ -142,7 +142,7 @@ class Taller_ot_line(models.Model):
             record['viewer']=self.env.user.property_warehouse_id
             return
 
-    @api.depends('ot_line_id')
+    @api.onchange('ot_line_id')
     def _compute_branch1(self):
         for line in self:
             line.branch_s = line.ot_line_id.sucursel
