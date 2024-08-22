@@ -81,7 +81,7 @@
                     <tree string="Orden de trabajo">
                                     <field name ="viewer" invisible='1'/>
                                     <field name ="name"/>
-                                    <field name ="sucursal" groups="taller.group_operaciones"/>
+                                    <field name ="sucursel" groups="taller.group_operaciones"/>
                                     <field name ="armador"/>
                                     <field name ="nave"/>
                                     <field name ="fecha_entr"/>
