@@ -6,16 +6,16 @@
             <field name="res_model">taller.ot</field>
             <field name="type">ir.actions.act_window</field>
             <field name="view_mode">tree,form</field>
-            <field name="domain">[('user_branch','=','3')]</field>
-             <field name="context">{'user_branch': '3'} </field>
+            <field name="domain">[('sucursel','=','3')]</field>
+             <field name="context">{'sucursel': '3'} </field>
 </record>
 <record id="ot_action_nu" model="ir.actions.act_window">
            <field name="name">Orden de Trabajo</field>
            <field name="res_model">taller.ot</field>
            <field name="type">ir.actions.act_window</field>
            <field name="view_mode">tree,form</field>
-           <field name="domain">[('user_branch','=','2')]</field>
-           <field name="context">{'user_branch': '2'} </field>
+           <field name="domain">[('sucursel','=','2')]</field>
+           <field name="context">{'sucursel': '2'} </field>
 </record>
 
 <record id="ot_action_op" model="ir.actions.act_window">
@@ -23,7 +23,7 @@
            <field name="res_model">taller.ot</field>
            <field name="type">ir.actions.act_window</field>
            <field name="view_mode">tree,form</field>
-           <field name="domain">['|', ('user_branch', '=', '2'), ('user_branch', '=', '3')]</field>
+           <field name="domain">['|', ('sucursel', '=', '2'), ('sucursel', '=', '3')]</field>
 </record>
 
  <act_window
