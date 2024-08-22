@@ -3,7 +3,7 @@
 
   <record id="access_taller_ot_operaciones" model="ir.model.access">
     <field name="name">access.taller.ot.operaciones</field>
-    <field name="model_id" ref="taller.model_taller_ot"/>
+    <field name="model_id" ref="taller.access_taller_ot"/>
     <field name="group_id" ref="taller.group_operaciones"/>
     <field name="perm_read" eval="True"/>
     <field name="perm_write" eval="True"/>
@@ -13,7 +13,7 @@
 
   <record id="access_taller_ot_user" model="ir.model.access">
     <field name="name">access.taller.ot.user</field>
-    <field name="model_id" ref="taller.model_taller_ot"/>
+    <field name="model_id" ref="taller.access_taller_ot"/>
     <field name="group_id" ref="base.group_user"/> <!-- Grupo de usuarios estándar -->
     <field name="perm_read" eval="1"/>
     <field name="perm_write" eval="1"/>
