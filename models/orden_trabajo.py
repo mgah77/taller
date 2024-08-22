@@ -104,7 +104,7 @@ class Taller_ot_line(models.Model):
 
     def _compute_branch(self):
         for line in self:
-            line.branch = line.ot_line_id.user_branch
+            line.branch = line.ot_line_id.sucursel
 
     def _compute_nave(self):
         for line in self:
