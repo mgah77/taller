@@ -62,7 +62,7 @@
             <field name="name">Maniobras</field>
             <field name="res_model">taller.maniobras</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="domain">['|', ('user_branch', '=', '2'), ('user_branch', '=', '3')]</field>
+            <field name="domain">['|', ('sucursel', '=', '2'), ('sucursel', '=', '3')]</field>
             <field name="context">{'estado': 'pen'} </field>
             <field name="view_mode">tree</field>
 </record>
@@ -72,7 +72,7 @@
             <field name="res_model">taller.maniobras</field>
             <field name="type">ir.actions.act_window</field>
             <field name="view_mode">tree</field>
-            <field name="domain">[('user_branch','=','2')]</field>
+            <field name="domain">[('sucursel','=','2')]</field>
             <field name="context">{'estado': 'pen'} </field>
 </record>
 
@@ -82,7 +82,7 @@
             <field name="res_model">taller.maniobras</field>
             <field name="type">ir.actions.act_window</field>
             <field name="view_mode">tree</field>
-            <field name="domain">[('user_branch','=','3')]</field>
+            <field name="domain">[('sucursel','=','3')]</field>
             <field name="context">{'estado': 'pen'} </field>
 </record>
 
