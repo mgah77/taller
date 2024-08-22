@@ -1,6 +1,27 @@
 
 <odoo>
 
+  <record id="access_taller_ot_operaciones" model="ir.model.access">
+    <field name="name">access.taller.ot.operaciones</field>
+    <field name="model_id" ref="taller.model_taller_ot"/>
+    <field name="group_id" ref="taller.group_operaciones"/>
+    <field name="perm_read" eval="True"/>
+    <field name="perm_write" eval="True"/>
+    <field name="perm_create" eval="True"/>
+    <field name="perm_unlink" eval="True"/> <!-- Permiso para eliminar -->
+  </record>
+
+  <record id="access_taller_ot_user" model="ir.model.access">
+    <field name="name">access.taller.ot.user</field>
+    <field name="model_id" ref="taller.model_taller_ot"/>
+    <field name="group_id" ref="base.group_user"/> <!-- Grupo de usuarios estándar -->
+    <field name="perm_read" eval="1"/>
+    <field name="perm_write" eval="1"/>
+    <field name="perm_create" eval="1"/>
+    <field name="perm_unlink" eval="0"/> <!-- Sin permiso para eliminar registros -->
+  </record>
+
+
  <record id="ot_action_pv" model="ir.actions.act_window">
             <field name="name">Orden de Trabajo</field>
             <field name="res_model">taller.ot</field>
