@@ -99,12 +99,12 @@ class Taller_ot_line(models.Model):
 
     def _compute_branch1(self):
         for line in self:
-            line.branch_s = line.ot_line_id.user_branch
+            line.branch_s = line.ot_line_id.sucursel
         return
 
     def _compute_branch(self):
         for line in self:
-            line.branch = line.ot_line_id.user_branch
+            line.branch = line.ot_line_id.sucursel
 
     def _compute_nave(self):
         for line in self:
@@ -145,7 +145,7 @@ class Taller_ot_line(models.Model):
     @api.depends('ot_line_id')
     def _compute_branch1(self):
         for line in self:
-            line.branch_s = line.ot_line_id.user_branch
+            line.branch_s = line.ot_line_id.sucursel
             if line.branch_s == 2:
                 line.sucursal = '2'
             elif line.branch_s == 3:
