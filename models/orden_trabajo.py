@@ -28,9 +28,9 @@ class Taller_ingreso(models.Model):
 
     def _compute_sucursal(self):
         for line in self:            
-            if line.sucursel == 2:
+            if line.user_branch == 2:
                 line.sucursal = 'Ñuble'
-            elif line.sucursel == 3:
+            elif line.user_branch == 3:
                 line.sucursal = 'Par Vial'
             
 
