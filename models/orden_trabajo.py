@@ -45,8 +45,11 @@ class Taller_ingreso(models.Model):
             vals['name']=self.env['ir.sequence'].next_by_code('abr.ot') or 'Nuevo'
             vals['user']=self.env.user.partner_id.name
             vals['user_branch']=self.env.user.property_warehouse_id
-            if self.env.user.property_warehouse_id != 0 :
-                vals['sucursel']=self.env.user.property_warehouse_id
+            warehouse_id = str(self.env.user.property_warehouse_id)  # Convertimos a string para comparar
+            if warehouse_id in ['2', '3']:
+                vals['sucursel'] = warehouse_id
+            else:
+                vals['sucursel'] = '2' 
         result = super(Taller_ingreso,self).create(vals)
         return result
 
