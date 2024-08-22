@@ -14,8 +14,8 @@
                                 <field name ="fecha" string="Fecha Entrega"/>
                                 <field name ="nave"/>
                                 <field name ="state" />
-                                <field name ="branch" />
-                                <field name ="branch_s" />
+                                <field name ="branch" invisible="1"/>
+                                <field name ="branch_s" invisible="1"/>
                                 <field name ="viewer" invisible="1"/>
                 </tree>
             </field>
