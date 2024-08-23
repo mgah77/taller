@@ -70,6 +70,10 @@ class Taller_ingreso(models.Model):
             self.contacto_fono = False
             self.contacto_mail = False
 
+    def guardar(self):
+        self.write({})
+        return True
+
 
 
 class Taller_ot_line(models.Model):

@@ -68,7 +68,9 @@
 
                     </notebook>
                 </sheet>
-
+                <div class="oe_button_box oe_form_buttons">
+                  <button name="guardar" string="Guardar Cambios" type="object" class="oe_highlight"/>
+                </div>
                 </form>
             </field>
         </record>
