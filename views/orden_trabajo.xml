@@ -68,6 +68,12 @@
 
                     </notebook>
                 </sheet>
+                <style>
+                      .oe_button_box.oe_form_buttons {
+                          text-align: right;
+                          margin-top: 20px;
+                      }
+                </style>
                 <div class="oe_button_box oe_form_buttons">
                   <button name="guardar" string="Guardar Cambios" type="object" class="oe_highlight"/>
                 </div>
