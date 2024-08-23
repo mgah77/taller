@@ -69,7 +69,7 @@
                     </notebook>
                     <style>
                       .oe_button_box.oe_form_buttons {
-                          text-align: right;
+                          text-align: left;
                           margin-top: 20px;
                       }
                 </style>
