@@ -44,7 +44,8 @@
   id="plan_action_nu"
   name="Planificacion"
   res_model="taller.ot.line"
-  view_mode="kanban"/>
+  view_mode="kanban"
+  domain="[('ot_line_id.sucursel','=','2')]"/>
 
 
 <record id="res_action_nu" model="ir.actions.act_window">
