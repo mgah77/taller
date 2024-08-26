@@ -168,7 +168,7 @@
     action="plan_action"
     parent="taller_menu"
     sequence="30"
-    groups="taller.group_nuble, taller.group_parvial" />
+    groups="taller.group_nuble,taller.group_parvial" />
 
   <menuitem
     id="plan_menu_pv"
