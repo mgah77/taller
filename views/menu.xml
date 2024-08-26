@@ -37,14 +37,14 @@
 
 <act_window
   id="plan_action_pv"
-  name="Planificacion"
+  name="Planificacion Par Vial"
   res_model="taller.ot.line"
   view_mode="kanban"
   domain="[('ot_line_id.sucursel','=','3')]"/>
 
   <act_window
   id="plan_action_nu"
-  name="Planificacion"
+  name="Planificacion Ñuble"
   res_model="taller.ot.line"
   view_mode="kanban"
   domain="[('ot_line_id.sucursel','=','2')]"/>
@@ -120,7 +120,7 @@
   id="plan_menu"
   name="Planificación"
   parent="taller_menu"
-  sequence="31"
+  sequence="25"
   groups="taller.group_operaciones" />
 
   <menuitem
