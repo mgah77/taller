@@ -27,6 +27,8 @@
            <field name="domain">['|', ('sucursel', '=', '2'), ('sucursel', '=', '3')]</field>
 </record>
 
+
+
  <act_window
   id="plan_action"
   name="Planificacion"
@@ -115,6 +117,13 @@
   sequence="20" />
 
   <menuitem
+  id="plan_menu"
+  name="Planificación"
+  parent="taller_menu"
+  sequence="31"
+  groups="taller.group_operaciones" />
+
+  <menuitem
     id="ot_menu_d_parvial"
     name="Crear / Modificar"
     action="ot_action_pv"
@@ -165,7 +174,7 @@
 
 
   <menuitem
-    id="plan_menu"
+    id="plani_menu"
     name="Planificacion"
     action="plan_action"
     parent="taller_menu"
@@ -173,18 +182,18 @@
     groups="taller.group_nuble,taller.group_parvial" />
 
   <menuitem
-    id="plan_menu_pv"
+    id="plani_menu_pv"
     name="Planificacion Parvial"
     action="plan_action_pv"
-    parent="taller_menu"
+    parent="plan_menu"
     sequence="32"
     groups="taller.group_operaciones" />
 
   <menuitem
-    id="plan_menu_nu"
+    id="plani_menu_nu"
     name="Planificacion Ñuble"
     action="plan_action_nu"
-    parent="taller_menu"
+    parent="plan_menu"
     sequence="34"
     groups="taller.group_operaciones" />  
 
