@@ -37,7 +37,8 @@
   id="plan_action_pv"
   name="Planificacion"
   res_model="taller.ot.line"
-  view_mode="kanban"/>
+  view_mode="kanban"
+  domain="[('ot_line_id.sucursel','=','3')]"/>
 
   <act_window
   id="plan_action_nu"
