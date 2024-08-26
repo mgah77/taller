@@ -33,6 +33,19 @@
   res_model="taller.ot.line"
   view_mode="kanban"/>
 
+<act_window
+  id="plan_action_pv"
+  name="Planificacion"
+  res_model="taller.ot.line"
+  view_mode="kanban"/>
+
+  <act_window
+  id="plan_action_nu"
+  name="Planificacion"
+  res_model="taller.ot.line"
+  view_mode="kanban"/>
+
+
 <record id="res_action_nu" model="ir.actions.act_window">
             <field name="name">Resumen</field>
             <field name="res_model">taller.ot.line</field>
@@ -129,7 +142,8 @@
     action="res_action_pv"
     parent="ot_menu"
     sequence="20"
-    groups="taller.group_parvial" />
+    groups="taller.group_parvial"
+     />
 
   <menuitem
     id="ot_menu_r_nuble"
@@ -153,7 +167,24 @@
     name="Planificacion"
     action="plan_action"
     parent="taller_menu"
-    sequence="30" />
+    sequence="30"
+    groups="taller.group_nuble, taller.group_parvial" />
+
+  <menuitem
+    id="plan_menu_pv"
+    name="Planificacion Parvial"
+    action="plan_action_pv"
+    parent="taller_menu"
+    sequence="32"
+    groups="taller.group_operaciones" />
+
+  <menuitem
+    id="plan_menu_nu"
+    name="Planificacion Ñuble"
+    action="plan_action_nu"
+    parent="taller_menu"
+    sequence="34"
+    groups="taller.group_operaciones" />  
 
 
   <menuitem
