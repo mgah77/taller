@@ -26,11 +26,13 @@ class Taller_ingreso(models.Model):
     sucursal = fields.Char('Sucursal', compute="_compute_sucursal")
     sucursel = fields.Selection([('2','Ñuble'),('3','Par Vial')],string='Sucursal',default='2')
     state = fields.Selection([
+        ('borr','Borrador'),
         ('tall','En Taller'),        
         ('cert','Certificado'),
+        ('entr','Entregado'),
         ('coti','Cotizado'),
-        ('fact','Facturado'),
-        ('fina','Terminado')],string='Status',default='tall')
+        ('fact','Facturado')
+        ],string='Status',default='tall')
 
     def _compute_sucursal(self):
         for line in self:            
