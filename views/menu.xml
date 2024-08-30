@@ -82,14 +82,14 @@
             <field name="type">ir.actions.act_window</field>
             <field name="domain">['|', ('user_branch', '=', '2'), ('user_branch', '=', '3')]</field>
             <field name="context">{'estado': 'pen'} </field>
-            <field name="view_mode">tree</field>
+            <field name="view_mode">tree,form</field>
 </record>
 
 <record id="mani_action_nu" model="ir.actions.act_window">
             <field name="name">Maniobras</field>
             <field name="res_model">taller.maniobras</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="view_mode">tree</field>
+            <field name="view_mode">tree,form</field>
             <field name="domain">[('user_branch','=','2')]</field>
             <field name="context">{'estado': 'pen'} </field>
 </record>
@@ -99,7 +99,7 @@
             <field name="name">Maniobras</field>
             <field name="res_model">taller.maniobras</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="view_mode">tree</field>
+            <field name="view_mode">tree,form</field>
             <field name="domain">[('user_branch','=','3')]</field>
             <field name="context">{'estado': 'pen'} </field>
 </record>
