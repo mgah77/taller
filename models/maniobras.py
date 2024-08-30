@@ -61,8 +61,7 @@ class Taller_ingreso(models.Model):
                 'show_as': 'busy',
                 'description': self.obs,
                 'active': 'True',
-                'start_date' : '',
-                'end_date' : '',
+                'start_date' : '',                
                 'allday': 'False',
                 'start': datet,
                 'stop' : dafin
