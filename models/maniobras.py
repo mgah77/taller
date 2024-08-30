@@ -7,6 +7,7 @@ class Taller_ingreso(models.Model):
     _description = 'Maniobras Taller'
 
     name = fields.Char(string="Nro ", readonly=True, default='New', copy=False)
+    armador = fields.Many2one('res.partner',string='Armador',domain="[('type', '!=', 'private'), ('is_company', '=', True), ('type','=','contact')]")
     user_branch = fields.Integer(string = 'Current Branch',default='2')
     fecha = fields.Date('Fecha', index=True)
     horario = fields.Selection([
@@ -24,7 +25,8 @@ class Taller_ingreso(models.Model):
         ("can","Cancelado")], default='pen'
     )
     lugar = fields.Many2one('taller.lugar.rel', string='Lugar')
-
+    equipo = fields.Many2many('res.partner',string='Equipo')
+    
     @api.model
     def create(self,vals):
         if vals.get('name','New')=='New':
