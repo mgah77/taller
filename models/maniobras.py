@@ -51,18 +51,18 @@ class Taller_ingreso(models.Model):
     @api.multi   
     def calendario(self):
         if self.armador:
-            for line in self:
-                vals = {
-                    'create_uid': self.user_id,
-                    'name': self.name + ' ' + self.nave,
-                    'location': self.lugar.name,
-                    'privacy': 'public',
-                    'show_as': 'busy',
-                    'description': self.obs,
-                    'active': 'True',
-                    'allday': 'False',
-                    'start': datetime.datetime.combine(self.fecha, datetime.time(9, 0)),
-                    'duration' : '4'
-                }
-                self.env['calendar.event'].create(vals)
+            datet = datetime.datetime.combine(self.fecha, datetime.time(9, 0))                          
+            vals = {
+                'create_uid': self.user_id,
+                'name': self.name + ' ' + self.nave,
+                'location': self.lugar.name,
+                'privacy': 'public',
+                'show_as': 'busy',
+                'description': self.obs,
+                'active': 'True',
+                'allday': 'False',
+                'start': datet,
+                'duration' : '4'    
+            }
+            self.env['calendar.event'].create(vals)    
         return  
