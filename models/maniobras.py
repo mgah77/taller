@@ -7,7 +7,7 @@ class Taller_ingreso(models.Model):
     _description = 'Maniobras Taller'
 
     name = fields.Char(string="Nro ", readonly=True, default='New', copy=False)
-    user_branch = fields.Integer(string = 'Current Branch')
+    user_branch = fields.Integer(string = 'Current Branch',default='2')
     fecha = fields.Date('Fecha', index=True)
     horario = fields.Selection([
         ("am","AM"),
@@ -28,8 +28,10 @@ class Taller_ingreso(models.Model):
     @api.model
     def create(self,vals):
         if vals.get('name','New')=='New':
-            vals['name']=self.env['ir.sequence'].next_by_code('abr.ot') or 'New'            
-            vals['user_branch']=self.env.user.property_warehouse_id
+            vals['name']=self.env['ir.sequence'].next_by_code('abr.ot') or 'New' 
+            warehouse_id = str(self.env.user.property_warehouse_id.id)  # Convertimos a string para comparar
+            if warehouse_id in ['2', '3']:
+                vals['user_branch'] = warehouse_id   
         result = super(Taller_ingreso,self).create(vals)
         return result
 
