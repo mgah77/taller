@@ -53,7 +53,7 @@ class Taller_ingreso(models.Model):
         if self.armador:
             datet = datetime.datetime.combine(self.fecha, datetime.time(9, 0))                          
             vals = {
-                'user_id': self.create_uid,
+                'user_id': self.create_uid.id,
                 'name': self.name + ' ' + self.nave,
                 'location': self.lugar.name,
                 'privacy': 'public',
