@@ -41,7 +41,7 @@
                       </group>
                       <group>
                           <field name="lugar" />     
-                          <field name ="equipo"/>
+                          <field name ="equipo" widget="many2many_tags"/>
                           <field name="obs" />
                       </group>                        
                     </group>
