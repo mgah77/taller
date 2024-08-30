@@ -6,7 +6,7 @@
                 <field name="name">Maniobras_tree</field>
                 <field name="model">taller.maniobras</field>
                 <field name="arch" type="xml">
-                    <tree string="Maniobras" editable="bottom">
+                    <tree string="Maniobras">
                                     <field name ="name" invisible="1"/>
                                     <field name ="sucursal" groups="taller.group_operaciones"/>
                                     <field name ="fecha" widget="date"/>
