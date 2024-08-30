@@ -24,6 +24,15 @@ class Taller_ingreso(models.Model):
         ("can","Cancelado")], default='pen'
     )
     lugar = fields.Many2one('taller.lugar.rel', string='Lugar')
+
+    @api.model
+    def create(self,vals):
+        if vals.get('name','New')=='New':
+            vals['name']=self.env['ir.sequence'].next_by_code('abr.ot') or 'New'            
+            vals['user_branch']=self.env.user.property_warehouse_id
+        result = super(Taller_ingreso,self).create(vals)
+        return result
+
     
     def _compute_sucursal(self):
         for line in self:
