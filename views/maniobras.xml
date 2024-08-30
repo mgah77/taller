@@ -1,22 +1,5 @@
 <odoo>
-    <record id="sequence_ma" model="ir.sequence">
-      <field name="name">SeqMa</field>
-      <field name="code">code.ma</field>
-      <field name="prefix">M</field>
-      <field name="padding">5</field>
-      <field name="company_id" eval="False" />
-    </record>
 
-    <record id="ma_search" model="ir.ui.view">
-        <field name="name">maniobras.search</field>
-        <field name="model">taller.maniobras</field>
-        <field name="arch" type="xml">
-            <search>   
-                <field name="estado"/>
-                <filter string="Pendientes" name="estado" domain="[('estado', '=','pen')]"/>
-            </search>
-        </field>
-    </record>
 
 
         <record id="ma_tree" model="ir.ui.view">
@@ -31,8 +14,7 @@
                                     <field name ="nave"/>
                                     <field name ="obs"/>
                                     <field name ="estado"/>
-                                    <field name ="lugar"/>                            
-
+                                    <field name ="lugar"/>       
 
                     </tree>
                 </field>
