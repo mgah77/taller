@@ -25,7 +25,7 @@ class Taller_ingreso(models.Model):
         ("can","Cancelado")], default='pen'
     )
     lugar = fields.Many2one('taller.lugar.rel', string='Lugar')
-    equipo = fields.Many2many('res.partner',string='Equipo' , domain="[('parner_share', '=', False)]")
+    equipo = fields.Many2many('res.partner',string='Equipo' , domain="[('partner_share', '=', False)]")
 
     @api.model
     def create(self,vals):
