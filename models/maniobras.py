@@ -12,8 +12,8 @@ class Taller_ingreso(models.Model):
     horario = fields.Selection([
         ("am","AM"),
         ("pm","PM"),
-        ("ap","AM/PM"),
-        ("xc","X Confirmar")], default='xc'
+        ("ap","AM/PM")
+        ], default='xc'
     )
     nave = fields.Char('Nave')
     obs = fields.Char('Observaciones')
@@ -24,15 +24,6 @@ class Taller_ingreso(models.Model):
         ("can","Cancelado")], default='pen'
     )
     lugar = fields.Many2one('taller.lugar.rel', string='Lugar')
-
-    @api.model
-    def create(self,vals):
-        if vals.get('name','New')=='New':
-            vals['name']='OK'
-            vals['user_branch']=self.env.user.property_warehouse_id
-        result = super(Taller_ingreso,self).create(vals)
-        return result
-
     
     def _compute_sucursal(self):
         for line in self:
