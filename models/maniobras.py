@@ -51,7 +51,8 @@ class Taller_ingreso(models.Model):
    
     def calendario(self):
         if self.armador:
-            datet = datetime.datetime.combine(self.fecha, datetime.time(9, 0))                          
+            datet = datetime.datetime.combine(self.fecha, datetime.time(9, 0))   
+            dafin = datetime.datetime.combine(self.fecha, datetime.time(13, 0))                      
             vals = {
                 'user_id': self.create_uid.id,
                 'name': self.name + ' ' + self.nave,
@@ -62,7 +63,7 @@ class Taller_ingreso(models.Model):
                 'active': 'True',
                 'allday': 'False',
                 'start': datet,
-                'duration' : '4'    
+                'stop' : dafin
             }
             self.env['calendar.event'].create(vals)    
         return  
