@@ -63,8 +63,7 @@ class Taller_ingreso(models.Model):
                 'description': self.obs,
                 'active': 'True', 
                 'start': datet,
-                'stop' : dafin,
-                'duration' : '0'
+                'stop' : dafin               
                 
             }
             self.env['calendar.event'].create(vals)    
