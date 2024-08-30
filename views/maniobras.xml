@@ -38,7 +38,7 @@
                 </field>
             </record>
 
-        <record id="ot_form" model="ir.ui.view">
+        <record id="ma_form" model="ir.ui.view">
             <field name="name">Maniobras</field>
             <field name="model">taller.maniobras</field>
             <field name="arch" type="xml">
