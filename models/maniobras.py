@@ -26,7 +26,7 @@ class Taller_ingreso(models.Model):
     )
     lugar = fields.Many2one('taller.lugar.rel', string='Lugar')
     equipo = fields.Many2many('res.partner',string='Equipo')
-    
+
     @api.model
     def create(self,vals):
         if vals.get('name','New')=='New':
@@ -44,3 +44,7 @@ class Taller_ingreso(models.Model):
                 line.sucursal = 'Ñuble'
             elif line.user_branch == 3:
                 line.sucursal = 'Par Vial'    
+
+    def guardar(self):
+        self.write({})
+        return True    
