@@ -1,7 +1,7 @@
 from odoo import models, fields , api , _
 import datetime
 
-class Taller_ingreso(models.Model):
+class Taller_maniobras(models.Model):
 
     _name = 'taller.maniobras'
     _description = 'Maniobras Taller'
@@ -50,6 +50,7 @@ class Taller_ingreso(models.Model):
 
    
     def calendario(self):
+        nombre = self.name + ' ' + self.nave
         if self.armador:
             if self.horario == 'am':
                 datet = datetime.datetime.combine(self.fecha, datetime.time(13, 0))   
@@ -59,18 +60,21 @@ class Taller_ingreso(models.Model):
                 dafin = datetime.datetime.combine(self.fecha, datetime.time(22, 0))
             elif self.horario == 'ap':
                 datet = datetime.datetime.combine(self.fecha, datetime.time(13, 0))   
-                dafin = datetime.datetime.combine(self.fecha, datetime.time(22, 0))                            
+                dafin = datetime.datetime.combine(self.fecha, datetime.time(22, 0))
+            # Obtener los IDs de los usuarios del campo equipo
+            attendees = [(4, user.id) for user in self.equipo]                            
             vals = {
                 'user_id': self.create_uid.id,
                 'allday': False,
-                'name': self.name + ' ' + self.nave,
+                'name': nombre,
                 'location': self.lugar.name,
                 'privacy': 'public',
                 'show_as': 'busy',
                 'description': self.obs,
                 'active': True, 
                 'start': datet,
-                'stop' : dafin 
+                'stop' : dafin,
+                'attendee_ids': attendees
             }
-            self.env['calendar.event'].create(vals)    
+            self.env['calendar.event'].create(vals)            
         return  
