@@ -67,7 +67,7 @@ class Taller_maniobras(models.Model):
                 attendee = self.env['calendar.attendee'].create({
                     'partner_id': partner.id,
                     'event_id': False,  # Se establece a False porque el evento aún no existe
-                    'state': 'needs-action',
+                    'state': 'needsAction',
                 })
                 attendees.append(attendee.id)                           
             vals = {
