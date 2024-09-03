@@ -34,7 +34,7 @@ class Taller_maniobras(models.Model):
             warehouse_id = str(self.env.user.property_warehouse_id.id)  # Convertimos a string para comparar
             if warehouse_id in ['2', '3']:
                 vals['user_branch'] = warehouse_id   
-        result = super(Taller_ingreso,self).create(vals)
+        result = super(Taller_maniobras,self).create(vals)
         return result
 
     
