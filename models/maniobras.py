@@ -62,7 +62,14 @@ class Taller_maniobras(models.Model):
                 datet = datetime.datetime.combine(self.fecha, datetime.time(13, 0))   
                 dafin = datetime.datetime.combine(self.fecha, datetime.time(22, 0))
             # Obtener los IDs de los usuarios del campo equipo
-            attendees = [(4, user.id) for user in self.equipo]                            
+            attendees = []
+            for user in self.equipo:
+                attendee = self.env['calendar.attendee'].create({
+                    'partner_id': user.partner_id.id,
+                    'event_id': False,  # Se establece a False porque el evento aún no existe
+                    'state': 'needs-action',
+                })
+                attendees.append(attendee.id)                           
             vals = {
                 'user_id': self.create_uid.id,
                 'allday': False,
@@ -74,7 +81,11 @@ class Taller_maniobras(models.Model):
                 'active': True, 
                 'start': datet,
                 'stop' : dafin,
-                'attendee_ids': attendees
+                'attendee_ids': [(6, 0, attendees)],  # Asignar los asistentes al evento
             }
-            self.env['calendar.event'].create(vals)            
+            event = self.env['calendar.event'].create(vals)
+            # Actualizar los asistentes con el ID del evento recién creado
+            for attendee in event.attendee_ids:
+                attendee.write({'event_id': event.id})
+                self.env['calendar.event'].create(vals)            
         return  
