@@ -60,17 +60,10 @@ class Taller_maniobras(models.Model):
                 dafin = datetime.datetime.combine(self.fecha, datetime.time(22, 0))
             elif self.horario == 'ap':
                 datet = datetime.datetime.combine(self.fecha, datetime.time(13, 0))   
-                dafin = datetime.datetime.combine(self.fecha, datetime.time(22, 0))
-            # Obtener los IDs de los usuarios del campo equipo
-            attendees = []
-            for partner in self.equipo:
-                attendee = self.env['calendar.attendee'].create({
-                    'partner_id': partner.id,
-                    'event_id': False,  # Se establece a False porque el evento aún no existe
-                    'state': 'needsAction',
-                })
-                attendees.append(attendee.id)                           
-            vals = {
+                dafin = datetime.datetime.combine(self.fecha, datetime.time(22, 0))                            
+
+            # Crear el evento primero
+            event_vals = {
                 'user_id': self.create_uid.id,
                 'allday': False,
                 'name': nombre,
@@ -78,14 +71,17 @@ class Taller_maniobras(models.Model):
                 'privacy': 'public',
                 'show_as': 'busy',
                 'description': self.obs,
-                'active': True, 
+                'active': True,
                 'start': datet,
-                'stop' : dafin,
-                'attendee_ids': [(6, 0, attendees)],  # Asignar los asistentes al evento
+                'stop': dafin,
             }
-            event = self.env['calendar.event'].create(vals)
-            # Actualizar los asistentes con el ID del evento recién creado
-            for attendee in event.attendee_ids:
-                attendee.write({'event_id': event.id})
-                self.env['calendar.event'].create(vals)            
-        return  
+            event = self.env['calendar.event'].create(event_vals)
+            
+            # Crear asistentes para cada partner en el campo equipo, ahora que el evento ya existe
+            for partner in self.equipo:
+                self.env['calendar.attendee'].create({
+                    'partner_id': partner.id,  # Usar directamente partner.id porque es un res.partner
+                    'event_id': event.id,  # Asociar el asistente con el evento creado
+                    'state': 'needsAction',
+                })
+        return
