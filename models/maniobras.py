@@ -51,8 +51,15 @@ class Taller_ingreso(models.Model):
    
     def calendario(self):
         if self.armador:
-            datet = datetime.datetime.combine(self.fecha, datetime.time(13, 0))   
-            dafin = datetime.datetime.combine(self.fecha, datetime.time(17, 0))                      
+            if self.horario == 'am':
+                datet = datetime.datetime.combine(self.fecha, datetime.time(13, 0))   
+                dafin = datetime.datetime.combine(self.fecha, datetime.time(17, 0))
+            elif self.horario == 'pm':
+                datet = datetime.datetime.combine(self.fecha, datetime.time(18, 0))   
+                dafin = datetime.datetime.combine(self.fecha, datetime.time(22, 0))
+            elif self.horario == 'ap':
+                datet = datetime.datetime.combine(self.fecha, datetime.time(13, 0))   
+                dafin = datetime.datetime.combine(self.fecha, datetime.time(22, 0))                            
             vals = {
                 'user_id': self.create_uid.id,
                 'allday': False,
