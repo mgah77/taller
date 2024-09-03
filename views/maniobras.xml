@@ -29,9 +29,11 @@
                   
                 </header>
                 <sheet>
-                    <newline /><newline />
+                    
                     <group style="border: 3px solid">
+                    
                       <group>
+                      <newline /><newline />
                         <field name="name" invisible="1"/>                        
                         <field name="armador" />                        
                         <field name="nave" />
