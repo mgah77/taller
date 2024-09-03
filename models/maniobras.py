@@ -55,13 +55,13 @@ class Taller_ingreso(models.Model):
             dafin = datetime.datetime.combine(self.fecha, datetime.time(13, 0))                      
             vals = {
                 'user_id': self.create_uid.id,
-                'allday': 'False',
+                'allday': False,
                 'name': self.name + ' ' + self.nave,
                 'location': self.lugar.name,
                 'privacy': 'public',
                 'show_as': 'busy',
                 'description': self.obs,
-                'active': 'True', 
+                'active': True, 
                 'start': datet,
                 'stop' : dafin               
                 
