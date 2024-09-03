@@ -33,7 +33,7 @@
                     <group style="border: 3px solid">
                     
                       <group>
-                      <newline /><newline />
+                      <br /><br />
                         <field name="name" invisible="1"/>                        
                         <field name="armador" />                        
                         <field name="nave" />
