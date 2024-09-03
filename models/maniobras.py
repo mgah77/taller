@@ -63,9 +63,9 @@ class Taller_maniobras(models.Model):
                 dafin = datetime.datetime.combine(self.fecha, datetime.time(22, 0))
             # Obtener los IDs de los usuarios del campo equipo
             attendees = []
-            for user in self.equipo:
+            for partner in self.equipo:
                 attendee = self.env['calendar.attendee'].create({
-                    'partner_id': user.partner_id.id,
+                    'partner_id': partner.id,
                     'event_id': False,  # Se establece a False porque el evento aún no existe
                     'state': 'needs-action',
                 })
