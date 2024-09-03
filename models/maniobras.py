@@ -77,11 +77,17 @@ class Taller_maniobras(models.Model):
             }
             event = self.env['calendar.event'].create(event_vals)
             
-            # Crear asistentes para cada partner en el campo equipo, ahora que el evento ya existe
-            for partner in self.equipo:
-                self.env['calendar.attendee'].create({
-                    'partner_id': partner.id,  # Usar directamente partner.id porque es un res.partner
-                    'event_id': event.id,  # Asociar el asistente con el evento creado
-                    'state': 'needsAction',
-                })
+            if event:
+                # Crear asistentes y asegurarse de que se asocien correctamente al evento
+                attendees = []
+                for partner in self.equipo:
+                    attendee = self.env['calendar.attendee'].create({
+                        'partner_id': partner.id,
+                        'event_id': event.id,
+                        'state': 'needs-action',
+                    })
+                    attendees.append(attendee.partner_id.id)
+                
+                # Actualizar la relación Many2many manualmente
+                event.write({'partner_ids': [(6, 0, attendees)]})
         return
