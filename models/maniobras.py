@@ -16,7 +16,7 @@ class Taller_ingreso(models.Model):
         ("ap","AM/PM")
         ], default='xc'
     )
-    nave = fields.Char('Nave')
+    nave = fields.Char('Nave', default='MN ')
     obs = fields.Char('Observaciones')
     sucursal = fields.Char('Sucursal', compute="_compute_sucursal")
     estado = fields.Selection([
@@ -70,8 +70,7 @@ class Taller_ingreso(models.Model):
                 'description': self.obs,
                 'active': True, 
                 'start': datet,
-                'stop' : dafin               
-                
+                'stop' : dafin 
             }
             self.env['calendar.event'].create(vals)    
         return  
