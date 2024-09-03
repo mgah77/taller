@@ -42,9 +42,10 @@
                         <field name="horario" />
                       </group>
                       <group>
+                      <br /><br />
                           <field name="lugar" />     
                           <field name ="equipo" widget="many2many_tags"/>
-                          <field name="obs" />
+                          <field name="obs" placeholder="Ingrese las observaciones aquí..." />
                       </group>                        
                     </group>
                     

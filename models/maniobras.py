@@ -17,7 +17,7 @@ class Taller_maniobras(models.Model):
         ], default='xc'
     )
     nave = fields.Char('Nave', default='MN ')
-    obs = fields.Char('Observaciones')
+    obs = fields.Text('Observaciones')
     sucursal = fields.Char('Sucursal', compute="_compute_sucursal")
     estado = fields.Selection([
         ("pen","Pendiente"),
@@ -60,7 +60,9 @@ class Taller_maniobras(models.Model):
                 dafin = datetime.datetime.combine(self.fecha, datetime.time(22, 0))
             elif self.horario == 'ap':
                 datet = datetime.datetime.combine(self.fecha, datetime.time(13, 0))   
-                dafin = datetime.datetime.combine(self.fecha, datetime.time(22, 0))                            
+                dafin = datetime.datetime.combine(self.fecha, datetime.time(22, 0))      
+
+            observaciones_html = self.obs.replace('\n', '<br/>')  # Convertir saltos de línea en <br/>                      
 
             # Crear el evento primero
             event_vals = {
@@ -70,7 +72,7 @@ class Taller_maniobras(models.Model):
                 'location': self.lugar.name,
                 'privacy': 'public',
                 'show_as': 'busy',
-                'description': self.obs,
+                'description': observaciones_html,
                 'active': True,
                 'start': datet,
                 'stop': dafin,
