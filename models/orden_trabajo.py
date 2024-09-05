@@ -20,7 +20,7 @@ class Taller_ingreso(models.Model):
     contacto_fono = fields.Char('Fono')
     contacto_mail = fields.Char('e-mail')
     maniobra = fields.Boolean(string = 'Maniobra')
-    lugar = fields.Many2one('res.city', string = 'Lugar')
+    lugar = fields.Many2one('taller.lugar.rel', string = 'Lugar')
     replace = fields.Boolean(string = 'Reemplazo')
     viewer = fields.Integer('Current User', compute="_compute_viewer")
     sucursal = fields.Char('Sucursal', compute="_compute_sucursal")
