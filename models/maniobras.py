@@ -26,14 +26,18 @@ class Taller_maniobras(models.Model):
     )
     lugar = fields.Many2one('taller.lugar.rel', string='Lugar')
     equipo = fields.Many2many('res.partner',string='Equipo' , domain="[('partner_share', '=', False)]")
+    user = fields.Char(string = 'Recepciona', default='Sala de Ventas')
+    sucursel = fields.Selection([('2','Ñuble'),('3','Par Vial')],string='Sucursal',default='2')
 
     @api.model
     def create(self,vals):
         if vals.get('name','New')=='New':
             vals['name']=self.env['ir.sequence'].next_by_code('abr.ot') or 'New' 
+            vals['user']=self.env.user.partner_id.name
+            vals['user_branch'] = self.env.user.property_warehouse_id
             warehouse_id = str(self.env.user.property_warehouse_id.id)  # Convertimos a string para comparar
-            if warehouse_id in ['2', '3']:
-                vals['user_branch'] = warehouse_id   
+            if warehouse_id in ['2', '3']:                
+                vals['sucursel'] = warehouse_id   
         result = super(Taller_maniobras,self).create(vals)
         return result
 
@@ -92,4 +96,17 @@ class Taller_maniobras(models.Model):
                 
                 # Actualizar la relación Many2many manualmente
                 event.write({'partner_ids': [(6, 0, attendees)]})
+            ot_vals = {
+                'armador': self.armador,
+                'user_branch': self.user_branch,
+                'name': self.name,
+                'location': self.lugar,
+                'nave': self.nave,
+                'user': self.user,
+                'obs': observaciones_html,
+                'sucursel': self.sucursel,
+                'fecha_recep': self.fecha,
+                'stop': dafin,
+            }
+            
         return

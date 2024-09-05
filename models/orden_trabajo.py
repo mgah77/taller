@@ -12,7 +12,7 @@ class Taller_ingreso(models.Model):
     fecha_entr = fields.Date('Fecha de Entrega', index=True)
     armador = fields.Many2one('res.partner',string='Armador',domain="[('type', '!=', 'private'), ('is_company', '=', True), ('type','=','contact')]")
     nave = fields.Char('Nave',default='MN ')
-    obs = fields.Char('Observaciones')
+    obs = fields.Html('Observaciones')
     ot_line = fields.One2many(comodel_name = 'taller.ot.line',inverse_name = 'ot_line_id', string = 'Lineas OT',copy=True, auto_join=True)
     user = fields.Char(string = 'Recepciona', default='Sala de Ventas')
     user_branch = fields.Integer(string = 'Current Branch', default='3')
