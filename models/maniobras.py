@@ -84,19 +84,6 @@ class Taller_maniobras(models.Model):
             }
             event = self.env['calendar.event'].create(event_vals)
             
-            if event:
-                # Crear asistentes y asegurarse de que se asocien correctamente al evento
-                attendees = []
-                for partner in self.equipo:
-                    attendee = self.env['calendar.attendee'].create({
-                        'partner_id': partner.id,
-                        'event_id': event.id,
-                        'state': 'needsAction',
-                    })
-                    attendees.append(attendee.partner_id.id)
-                
-                # Actualizar la relación Many2many manualmente
-                event.write({'partner_ids': [(6, 0, attendees)]})
             ot_vals = {
                 'armador': self.armador.id,
                 'user_branch': self.user_branch,
@@ -111,6 +98,27 @@ class Taller_maniobras(models.Model):
                 'maniobra' : True
             }
             self.env['taller.ot'].create(ot_vals)
+            
+            if event:
+                # Crear asistentes y asegurarse de que se asocien correctamente al evento
+                attendees = []
+                for partner in self.equipo:
+                    attendee = self.env['calendar.attendee'].create({
+                        'partner_id': partner.id,
+                        'event_id': event.id,
+                        'state': 'needsAction',
+                    })
+                    attendees.append(attendee.partner_id.id)
+                
+                # Actualizar la relación Many2many manualmente
+                event.write({'partner_ids': [(6, 0, attendees)]})
+
+                # Actualizar el campo Many2many en el modelo 'taller.ot'
+                ot = self.env['taller.ot'].search([('name', '=', self.name)], limit=1)
+                if ot:
+                    ot.event_ids = [(4, event.id)]  # Añade el evento al campo Many2many 'event_ids'
+
+            
         return
 
     def new_calendario(self):
@@ -156,5 +164,11 @@ class Taller_maniobras(models.Model):
                     attendees.append(attendee.partner_id.id)
                 
                 # Actualizar la relación Many2many manualmente
-                event.write({'partner_ids': [(6, 0, attendees)]})            
+                event.write({'partner_ids': [(6, 0, attendees)]})   
+
+                # Actualizar el campo Many2many en el modelo 'taller.ot'
+                ot = self.env['taller.ot'].search([('name', '=', self.name)], limit=1)
+                if ot:
+                    ot.event_ids = [(4, event.id)]  # Añade el evento al campo Many2many 'event_ids'
+         
         return
