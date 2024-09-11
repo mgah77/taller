@@ -109,5 +109,5 @@ class Taller_maniobras(models.Model):
                 'state': 'borr',
                 'maniobra' : True
             }
-            self.env['taller.ot'].create(vals)
+            self.env['taller.ot'].create(ot_vals)
         return
