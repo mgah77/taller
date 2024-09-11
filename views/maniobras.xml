@@ -56,8 +56,8 @@
                       }
                 </style>
                 <div class="oe_button_box oe_form_buttons">
-                  <button name="guardar" string="Guardar Cambios" type="object" class="oe_highlight"/>
-                  <button name="calendario" string="Guardar calendario" type="object" class="oe_highlight"/>
+                  
+                  <button name="calendario" string="Agendar Maniobra" type="object" class="oe_highlight"/>
                 </div>
                 </sheet>
                 
