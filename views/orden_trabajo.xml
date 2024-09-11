@@ -94,6 +94,7 @@
                                     <field name ="armador"/>
                                     <field name ="nave"/>
                                     <field name ="fecha_entr"/>
+                                    <field name ="state"/>
 
 
                     </tree>
