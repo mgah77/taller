@@ -24,5 +24,5 @@
     ],
 },
 
-'depends': ['base' , 'contacts' , 'stock' , 'product', 'parches_insumar']
+'depends': ['base' , 'contacts' , 'stock' , 'product', 'parches_insumar','calendar']
 }
