@@ -47,10 +47,7 @@
                         <newline />
                         <group>
                           <field name="maniobra" />
-                          <field name="event_ids" widget="many2many_tags" >
-                          <tree>
-                              <field name="start"/>
-                          </tree>
+                          <field name="event_ids" widget="many2many_tags" options="{'no_create_edit': True}" >                         
                         </field>  
                           <field name="lugar" />
                           <field name="replace" />
