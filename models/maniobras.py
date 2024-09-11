@@ -102,7 +102,7 @@ class Taller_maniobras(models.Model):
                 'name': self.name,
                 'lugar': self.lugar,
                 'nave': self.nave,
-                'user': self.user.id,
+                'user': self.user,
                 'obs': observaciones_html,
                 'sucursel': self.sucursel,
                 'fecha_recep': self.fecha,
