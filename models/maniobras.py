@@ -54,6 +54,7 @@ class Taller_maniobras(models.Model):
 
    
     def calendario(self):
+        self.write({})
         nombre = self.name + ' ' + self.nave
         if self.armador:
             if self.horario == 'am':
