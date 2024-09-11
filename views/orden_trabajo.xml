@@ -47,7 +47,7 @@
                         <newline />
                         <group>
                           <field name="maniobra" />
-                          <field name="event_ids" widget="many2many_tags" domain="[('name', 'ilike', 'name' + '%')]"/>
+                          <field name="event_ids" widget="many2many_tags" domain="[('name', 'ilike', '%' + 'name' + '%')]"/>
                           
                           <field name="lugar" />
                           <field name="replace" />
