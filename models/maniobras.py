@@ -106,7 +106,8 @@ class Taller_maniobras(models.Model):
                 'obs': observaciones_html,
                 'sucursel': self.sucursel,
                 'fecha_recep': self.fecha,
-                'stop': dafin,
+                'state': 'borr',
+                'maniobra' : True
             }
-            
+            self.env['taller.ot'].create(vals)
         return
