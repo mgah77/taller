@@ -7,7 +7,7 @@
                 <field name="model">taller.maniobras</field>
                 <field name="arch" type="xml">
                     <tree string="Maniobras">
-                                    <field name ="name" invisible="1"/>
+                                    <field name ="name"/>
                                     <field name ="sucursal" groups="taller.group_operaciones"/>
                                     <field name ="fecha" widget="date"/>
                                     <field name ="horario"/>                                   
@@ -57,7 +57,9 @@
                 </style>
                 <div class="oe_button_box oe_form_buttons">
                   
-                  <button name="calendario" string="Agendar Maniobra" type="object" class="oe_highlight"/>
+                  <button name="calendario" string="Agendar Maniobra" type="object" class="oe_highlight" attrs="{'invisible':[('name','!=','New')]}"/>
+                  <button name="new_calendario" string="Agendar nueva Maniobra" type="object" class="oe_highlight" attrs="{'invisible':[('name','==','New')]}"/>
+
                 </div>
                 </sheet>
                 

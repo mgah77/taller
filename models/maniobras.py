@@ -112,3 +112,49 @@ class Taller_maniobras(models.Model):
             }
             self.env['taller.ot'].create(ot_vals)
         return
+
+    def new_calendario(self):
+        self.write({})
+        nombre = self.name + ' ' + self.nave
+        if self.armador:
+            if self.horario == 'am':
+                datet = datetime.datetime.combine(self.fecha, datetime.time(13, 0))   
+                dafin = datetime.datetime.combine(self.fecha, datetime.time(17, 0))
+            elif self.horario == 'pm':
+                datet = datetime.datetime.combine(self.fecha, datetime.time(18, 0))   
+                dafin = datetime.datetime.combine(self.fecha, datetime.time(22, 0))
+            elif self.horario == 'ap':
+                datet = datetime.datetime.combine(self.fecha, datetime.time(13, 0))   
+                dafin = datetime.datetime.combine(self.fecha, datetime.time(22, 0))      
+
+            observaciones_html = self.obs.replace('\n', '<br/>')  # Convertir saltos de línea en <br/>                      
+
+            # Crear el evento primero
+            event_vals = {
+                'user_id': self.create_uid.id,
+                'allday': False,
+                'name': nombre,
+                'location': self.lugar.name,
+                'privacy': 'public',
+                'show_as': 'busy',
+                'description': observaciones_html,
+                'active': True,
+                'start': datet,
+                'stop': dafin,
+            }
+            event = self.env['calendar.event'].create(event_vals)
+            
+            if event:
+                # Crear asistentes y asegurarse de que se asocien correctamente al evento
+                attendees = []
+                for partner in self.equipo:
+                    attendee = self.env['calendar.attendee'].create({
+                        'partner_id': partner.id,
+                        'event_id': event.id,
+                        'state': 'needsAction',
+                    })
+                    attendees.append(attendee.partner_id.id)
+                
+                # Actualizar la relación Many2many manualmente
+                event.write({'partner_ids': [(6, 0, attendees)]})            
+        return
