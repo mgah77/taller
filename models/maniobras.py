@@ -97,12 +97,12 @@ class Taller_maniobras(models.Model):
                 # Actualizar la relación Many2many manualmente
                 event.write({'partner_ids': [(6, 0, attendees)]})
             ot_vals = {
-                'armador': self.armador,
+                'armador': self.armador.id,
                 'user_branch': self.user_branch,
                 'name': self.name,
                 'lugar': self.lugar,
                 'nave': self.nave,
-                'user': self.user,
+                'user': self.user.id,
                 'obs': observaciones_html,
                 'sucursel': self.sucursel,
                 'fecha_recep': self.fecha,
