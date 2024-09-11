@@ -50,11 +50,8 @@
                           <field name="event_ids" widget="many2many_tags">
                             <tree>
                               <field name="name"/>
+                              <field name="start"/>
                             </tree>
-                            <form>                            
-                              <field name="name"/>
-                              <field name="start"/>                            
-                            </form>
                           </field>
 
                           <field name="lugar" />
