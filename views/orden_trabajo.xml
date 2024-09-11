@@ -87,7 +87,7 @@
                 <field name="name">Ordenes de Trabajo</field>
                 <field name="model">taller.ot</field>
                 <field name="arch" type="xml">
-                    <tree string="Orden de trabajo" delete="false">
+                    <tree string="Orden de trabajo" delete="false" decoration-info="state == 'borr'">
                                     <field name ="viewer" invisible='1'/>
                                     <field name ="name"/>
                                     <field name ="sucursel" groups="taller.group_operaciones"/>
