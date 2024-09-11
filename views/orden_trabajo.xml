@@ -47,7 +47,16 @@
                         <newline />
                         <group>
                           <field name="maniobra" />
-                          <field name="event_ids" widget="many2many_tags"/>
+                          <field name="event_ids" widget="many2many_tags">
+                            <tree>
+                              <field name="name"/>
+                            </tree>
+                            <form>                            
+                              <field name="name"/>
+                              <field name="start"/>                            
+                            </form>
+                          </field>
+
                           <field name="lugar" />
                           <field name="replace" />
                         </group>
