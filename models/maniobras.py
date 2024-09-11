@@ -100,7 +100,7 @@ class Taller_maniobras(models.Model):
                 'armador': self.armador,
                 'user_branch': self.user_branch,
                 'name': self.name,
-                'location': self.lugar,
+                'lugar': self.lugar,
                 'nave': self.nave,
                 'user': self.user,
                 'obs': observaciones_html,
