@@ -193,7 +193,12 @@
     parent="plan_menu"
     sequence="34"
     groups="taller.group_operaciones" />  
-
+  
+  <menuitem
+    id="taller_mani"
+    name="Maniobras"
+    parent="taller_menu"
+    sequence="42"/>
 
   <menuitem
     id="mani_menu"
@@ -220,10 +225,6 @@
     sequence="47"
     groups="taller.group_parvial"/>
 
-  <menuitem
-    id="taller_mani"
-    name="Maniobras"
-    parent="taller_menu"
-    sequence="42"/>
+
 
 </odoo>
