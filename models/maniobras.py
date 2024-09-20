@@ -44,9 +44,9 @@ class Taller_maniobras(models.Model):
     
     def _compute_sucursal(self):
         for line in self:
-            if line.sucursel == 2:
+            if line.sucursel == '2':
                 line.sucursal = 'Ñuble'
-            elif line.sucursel == 3:
+            elif line.sucursel == '3':
                 line.sucursal = 'Par Vial'    
 
     def guardar(self):
