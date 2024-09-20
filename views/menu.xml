@@ -199,8 +199,8 @@
     id="mani_menu"
     name="Maniobras"
     action="mani_action"
-    parent="taller_menu"
-    sequence="40"
+    parent="taller_mani"
+    sequence="45"
     groups="taller.group_operaciones"
      />
 
@@ -208,17 +208,22 @@
     id="mani_menu_nu"
     name="Maniobras"
     action="mani_action_nu"
-    parent="taller_menu"
-    sequence="41"
+    parent="taller_mani"
+    sequence="46"
     groups="taller.group_nuble"/>
 
   <menuitem
     id="mani_menu_pv"
     name="Maniobras"
     action="mani_action_pv"
-    parent="taller_menu"
-    sequence="42"
+    parent="taller_mani"
+    sequence="47"
     groups="taller.group_parvial"/>
 
+  <menuitem
+    id="taller_mani"
+    name="Maniobras"
+    parent="taller_menu"
+    sequence="42"/>
 
 </odoo>
