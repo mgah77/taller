@@ -76,7 +76,7 @@
                       }
                 </style>
                 <div class="oe_button_box oe_form_buttons">
-                  <button name="guardar" string="Ingresar" type="object" class="oe_highlight"/>
+                  <button name="guardar" string="Ingresar ot a taller" type="object" class="oe_highlight"/>
                 </div>
                 </sheet>
                 
