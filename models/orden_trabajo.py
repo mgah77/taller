@@ -74,7 +74,7 @@ class Taller_ingreso(models.Model):
             self.contacto_mail = False
 
     def guardar(self):
-        if self.ot_line:
+        if self.ot_line and self.fecha_entr:
             self.state = 'tall'
             self.write({})
             return True
