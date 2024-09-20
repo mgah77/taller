@@ -18,7 +18,7 @@ class Taller_maniobras(models.Model):
     )
     nave = fields.Char('Nave', default='MN ')
     obs = fields.Text('Observaciones')
-    sucursal = fields.Char('Sucursal')
+    sucursal = fields.Char('Sucursal', compute="_compute_sucursal")
     estado = fields.Selection([
         ("pen","Pendiente"),
         ("rea","Realizado"),
@@ -44,9 +44,9 @@ class Taller_maniobras(models.Model):
     
     def _compute_sucursal(self):
         for line in self:
-            if line.user_branch == 2:
+            if line.sucursel == 2:
                 line.sucursal = 'Ñuble'
-            elif line.user_branch == 3:
+            elif line.sucursel == 3:
                 line.sucursal = 'Par Vial'    
 
     def guardar(self):
