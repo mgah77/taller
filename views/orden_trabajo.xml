@@ -51,8 +51,9 @@
                         </field>  
                           <field name="lugar" />
                           <field name="replace" />
-                          <field name="reobs" />
+                         
                         </group>
+                         <field name="reobs" />
                       </group>
                     </group>
                     <notebook>
