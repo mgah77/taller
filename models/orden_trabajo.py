@@ -23,6 +23,7 @@ class Taller_ingreso(models.Model):
     event_ids = fields.Many2many('calendar.event',string="Maniobras")
     lugar = fields.Many2one('taller.lugar.rel', string = 'Lugar')
     replace = fields.Boolean(string = 'Reemplazo')
+    reobs = fields.Html('Observaciones')
     viewer = fields.Integer('Current User', compute="_compute_viewer")
     sucursal = fields.Char('Sucursal', compute="_compute_sucursal")
     sucursel = fields.Selection([('2','Ñuble'),('3','Par Vial')],string='Sucursal',default='2')
