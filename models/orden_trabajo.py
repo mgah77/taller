@@ -1,4 +1,5 @@
 from odoo import models, fields , api , _
+from odoo.exceptions import ValidationError
 import datetime
 
 class Taller_ingreso(models.Model):
@@ -75,10 +76,17 @@ class Taller_ingreso(models.Model):
             self.contacto_mail = False
 
     def guardar(self):
-        if self.ot_line and self.fecha_entr:
-            self.state = 'tall'
-            self.write({})
-            return True
+    # Validar si los campos están llenos
+        if not self.ot_line:
+            raise ValidationError("Falta ingresar trabajos.")
+        
+        if not self.fecha_entr:
+            raise ValidationError("Falta ingresar la fecha de entrega.")
+        
+        # Si ambos campos están presentes, cambiar el estado
+        self.state = 'tall'
+        self.write({})
+        return True
 
 
 
