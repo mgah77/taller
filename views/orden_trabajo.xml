@@ -59,8 +59,8 @@
                     <notebook>
                         <page string="Trabajos">
                             <field name="ot_line">
-                            <tree editable="bottom" create="false">
-                                <field name ="item" domain="[('detailed_type', '=', 'service')]"/>
+                            <tree editable="bottom">
+                                <field name ="item" domain="[('detailed_type', '=', 'service')]" options="{'no_create': True}"/>
                                 <field name ="obs"/>
                                 <field name ="serie"/>
                                 <field name ="cant"/>
