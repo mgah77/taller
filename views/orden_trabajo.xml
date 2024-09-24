@@ -53,7 +53,7 @@
                           <field name="replace" />
                          
                         </group>
-                         <field name="reobs" placeholder="Ingrese equipos a entregar como reemplazo..." />
+                         <field name="reobs" placeholder="Ingrese equipos a entregar como reemplazo..." attrs="{'invisible': [('replace', '=', False)]}" />
                       </group>
                     </group>
                     <notebook>
