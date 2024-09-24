@@ -53,7 +53,7 @@
                           <field name="replace" />
                          
                         </group>
-                         <field name="reobs" />
+                         <field name="reobs" placeholder="Ingrese equipos a entregar como reemplazo..." />
                       </group>
                     </group>
                     <notebook>
