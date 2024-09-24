@@ -51,6 +51,7 @@
                         </field>  
                           <field name="lugar" />
                           <field name="replace" />
+                          <field name="reobs" />
                         </group>
                       </group>
                     </group>
