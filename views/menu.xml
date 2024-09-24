@@ -205,7 +205,7 @@
     name="Calendario"
     action="calendar.action_calendar_event"
     parent="taller_mani"
-    sequence="43"
+    sequence="48"
      />
 
 
