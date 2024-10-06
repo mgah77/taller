@@ -91,7 +91,7 @@ class Taller_ingreso(models.Model):
                 rec.state = 'tall'
         return True
     
-    @api.onchange('ot_line')
+    @api.onchange('ot_line.state')
     def _onchange_state(self):
         for order in self:
             if order.state != 'cert':
