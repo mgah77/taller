@@ -65,7 +65,7 @@
                                 <field name ="serie"/>
                                 <field name ="cant"/>
                                 <field name ="depto"/>
-                                <field name ="state" attrs="{'invisible': [('ot_line_id.state', '=', 'borr')]}"/>
+                                <field name ="state" attrs="{'invisible': [('state', '=', 'borr')]}"/>
                             </tree>
                             </field>
 
