@@ -35,7 +35,7 @@ class Taller_ingreso(models.Model):
         ('entr','Entregado'),
         ('coti','Cotizado'),
         ('fact','Facturado')
-        ],string='Status',default='tall')
+        ],string='Status',default='borr')
 
     def _compute_sucursal(self):
         for line in self:            
