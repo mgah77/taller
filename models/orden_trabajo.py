@@ -86,6 +86,9 @@ class Taller_ingreso(models.Model):
         # Si ambos campos están presentes, cambiar el estado
         self.state = 'tall'
         self.write({})
+        for rec in self.ot_line:
+            if rec.status == 'borr':
+                rec.status = 'tall'
         return True
 
 
