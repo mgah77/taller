@@ -26,6 +26,8 @@
             <field name="model">taller.ot.line</field>
             <field name="arch" type="xml">       
                 <kanban default_order="fecha" default_group_by="depto"  group_create="False" class="o_kanban_small_column" group_delete="False" group_edit="False" create="True"> 
+                    <!-- Aquí aplicamos el filtro -->
+                    <field name="domain">[('ot_line_id.state', '=', 'tall')]</field>
                     <templates>    
                     <t>
                          <span>hola</span> 
