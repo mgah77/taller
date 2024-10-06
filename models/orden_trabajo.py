@@ -106,11 +106,12 @@ class Taller_ot_line(models.Model):
     depto = fields.Many2one('taller.depto.rel', string='Departamento', related='item.depto', store=True)
     armador = fields.Many2one('res.partner', string='Armador', related='ot_line_id.armador')
     state = fields.Selection([
-        ('tall','En Taller'),
-        ('fina','Terminado'),
+        ('borr','Borrador'),
+        ('tall','En Taller'),        
         ('cert','Certificado'),
+        ('entr','Entregado'),
         ('coti','Cotizado'),
-        ('fact','Facturado')],string='Status',default='tall')
+        ('fact','Facturado')],string='Status',default='borr')
     color = fields.Integer('color', compute ="_compute_dias")
     hoy = fields.Date(string="From Date", compute = "_compute_hoy")
     dias = fields.Integer(compute = "_compute_dias")
