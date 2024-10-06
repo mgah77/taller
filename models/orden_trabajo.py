@@ -87,8 +87,8 @@ class Taller_ingreso(models.Model):
         self.state = 'tall'
         self.write({})
         for rec in self.ot_line:
-            if rec.status == 'borr':
-                rec.status = 'tall'
+            if rec.state == 'borr':
+                rec.state = 'tall'
         return True
 
 
