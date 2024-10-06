@@ -90,7 +90,14 @@ class Taller_ingreso(models.Model):
             if rec.state == 'borr':
                 rec.state = 'tall'
         return True
-
+    
+    @api.onchange('ot_line')
+    def _onchange_state(self):
+        for order in self:
+            if order.state != 'cert':
+                return
+        self.state = 'cert'
+        return
 
 
 class Taller_ot_line(models.Model):
@@ -183,3 +190,5 @@ class Taller_ot_line(models.Model):
             elif line.branch_s == 3:
                 line.sucursal = '3'
         return
+
+    
