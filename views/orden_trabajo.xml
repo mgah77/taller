@@ -21,7 +21,7 @@
                       <group>
                         <field name="name" />
                         <field name="fecha_recep" />
-                        <field name="armador" />
+                        <field name="armador" options="{'no_create': True}"/>
                         <field name="fecha_entr" />
                         <field name="nave" />
                         <field name="obs" />
@@ -35,7 +35,7 @@
                         </group>
                         <newline />
                         <group>
-                          <field name="contacto" />
+                          <field name="contacto" options="{'no_create': True}"/>
                         </group>
                         <newline />
                           <group>
