@@ -91,12 +91,7 @@ class Taller_ingreso(models.Model):
                 rec.state = 'tall'
         return True
 
-    def _onchange_state(self):
-        for order in self:
-            if order.state != 'cert':
-                return
-        self.state = 'cert'
-        return
+
 
 
 class Taller_ot_line(models.Model):
