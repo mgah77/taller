@@ -7,7 +7,7 @@ class Taller_maniobras(models.Model):
     _description = 'Maniobras Taller'
 
     name = fields.Char(string="Nro ", readonly=True, default='New', copy=False)
-    armador = fields.Many2one('res.partner',string='Armador',domain="[('type', '!=', 'private'), ('is_company', '=', True), ('type','=','contact')]")
+    armador = fields.Many2one('res.partner',string='Armador',domain="[('type', '!=', 'private'), ('is_company', '=', True), ('type','=','contact'), ('is_customer','=',True)]")
     user_branch = fields.Integer(string = 'Current Branch',default='2')
     fecha = fields.Date('Fecha', index=True)
     horario = fields.Selection([

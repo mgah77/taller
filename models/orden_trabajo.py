@@ -111,7 +111,7 @@ class Taller_ot_line(models.Model):
         ('cert','Certificado'),
         ('entr','Entregado'),
         ('coti','Cotizado'),
-        ('fact','Facturado')],string='Status',default='borr')
+        ('fact','Facturado')], string='Estado', default='borr')
     color = fields.Integer('color', compute ="_compute_dias")
     hoy = fields.Date(string="From Date", compute = "_compute_hoy")
     dias = fields.Integer(compute = "_compute_dias")

@@ -35,7 +35,7 @@
                       <group>
                       <br /><br />
                         <field name="name" invisible="1"/>                        
-                        <field name="armador" />                        
+                        <field name="armador" options="{'no_create': True}"/>                        
                         <field name="nave" />
                         <newline /><newline />
                         <field name="fecha" />
