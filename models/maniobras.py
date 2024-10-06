@@ -67,6 +67,8 @@ class Taller_maniobras(models.Model):
                 datet = datetime.datetime.combine(self.fecha, datetime.time(13, 0))   
                 dafin = datetime.datetime.combine(self.fecha, datetime.time(22, 0))      
 
+            if not self.obs:
+                self.obs = ' '
             observaciones_html = self.obs.replace('\n', '<br/>')  # Convertir saltos de línea en <br/>                      
 
             # Crear el evento primero
