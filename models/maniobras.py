@@ -17,7 +17,7 @@ class Taller_maniobras(models.Model):
         ("ap","AM/PM")
         ], required=True
     )
-    nave = fields.Char('Nave', default='MN ')
+    nave = fields.Char('Nave', required=True)
     obs = fields.Text('Observaciones',default=' ')
     sucursal = fields.Char('Sucursal', compute="_compute_sucursal")
     estado = fields.Selection([
@@ -55,13 +55,6 @@ class Taller_maniobras(models.Model):
 
    
     def calendario(self):
-        
-        if not self.nave:
-            raise ValidationError("Falta ingresar nombre embarcación.")           
-        if self.nave == 'MN ':
-            raise ValidationError("Falta ingresar nombre embarcación.")             
-        if not self.equipo:
-            raise ValidationError("Falta ingresar equipo de trabajo.")            
 
         self.write({})
         nombre = self.name + ' ' + self.nave
@@ -77,7 +70,7 @@ class Taller_maniobras(models.Model):
                 dafin = datetime.datetime.combine(self.fecha, datetime.time(22, 0))      
 
             if not self.obs:
-                self.obs = '\n'
+                self.obs = ' '
             observaciones_html = (self.obs or '').replace('\n', '<br/>')  # Asegúrate de que sea una cadena vacía si es False
 
             # Crear el evento primer
