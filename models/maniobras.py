@@ -87,7 +87,7 @@ class Taller_maniobras(models.Model):
                 self.obs = '\n'
             observaciones_html = (self.obs or '').replace('\n', '<br/>')  # Asegúrate de que sea una cadena vacía si es False
 
-            # Crear el evento primero
+            # Crear el evento primer
             event_vals = {
                 'user_id': self.create_uid.id,
                 'allday': False,
