@@ -46,7 +46,7 @@ class ExcelWizard(models.TransientModel):
        }
    def get_xlsx_report(self, data, response):
         partners = self.env['taller.ot.line'].search([('state','=','tall')])
-        balsas = partners.search([('depto.name','=','Inspeccion Balsas'),('sucursal','=','viewer')], order="fecha asc")
+        balsas = partners.search([('depto.name','=','Inspeccion Balsas')], order="fecha asc")
         conten = partners.search([('depto.name','=','Contenedores'),('branch','=','viewer')], order="fecha asc")
         valvul = partners.search([('depto.name','=','Valvulas'),('branch','=','viewer')], order="fecha asc")
         extint = partners.search([('depto.name','=','Extintores'),('branch','=','viewer')], order="fecha asc")
@@ -123,7 +123,7 @@ class ExcelWizard(models.TransientModel):
         # Write data
         row = 5  # Inicializamos el índice del bucle
         for balsa in balsas:
-            if balsa.branch_s == suc:
+            if balsa.sucursal == suc:
                 if balsa.color == 10:
                     worksheet.write(row, 1, balsa.name, green)
                 elif balsa.color == 1:
