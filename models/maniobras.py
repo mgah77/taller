@@ -85,7 +85,7 @@ class Taller_maniobras(models.Model):
 
             if not self.obs:
                 self.obs = '\n'
-            observaciones_html = self.obs.replace('\n', '<br/>')  # Convertir saltos de línea en <br/>                      
+            observaciones_html = (self.obs or '').replace('\n', '<br/>')  # Asegúrate de que sea una cadena vacía si es False
 
             # Crear el evento primero
             event_vals = {
