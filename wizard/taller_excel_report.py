@@ -45,13 +45,13 @@ class ExcelWizard(models.TransientModel):
            'report_type': 'xlsx',
        }
    def get_xlsx_report(self, data, response):
-        partners = self.env['taller.ot.line'].search([('state','=','tall')])
+        partners = self.env['taller.ot.line'].search(['|',('state', '=', 'tall'),('state', '=', 'cert')])
         balsas = partners.search([('depto.name','=','Inspeccion Balsas'),('branch','=','viewer')], order="fecha asc")
         conten = partners.search([('depto.name','=','Contenedores'),('branch','=','viewer')], order="fecha asc")
         valvul = partners.search([('depto.name','=','Valvulas'),('branch','=','viewer')], order="fecha asc")
         extint = partners.search([('depto.name','=','Extintores'),('branch','=','viewer')], order="fecha asc")
-        seguri = partners.search([('depto.name','=','Equipo Seguridad'),('branch','=','viewer')], order="fecha asc")
-        bcoco2 = partners.search([('depto.name','=','Banco CO2'),('branch','=','viewer')], order="fecha asc")
+        seguri = partners.search([('depto.name','=','Equipo Seguridad'),('branch_s','=','viewer')], order="fecha asc")
+        bcoco2 = partners.search([('depto.name','=','Banco CO2'),('branch_s','=','viewer')], order="fecha asc")
         textil = partners.search([('depto.name','=','Textil'),('branch','=','viewer')], order="fecha asc")
         suc = self.env.user.property_warehouse_id.id
         
