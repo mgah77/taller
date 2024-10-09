@@ -56,26 +56,19 @@ class Taller_maniobras(models.Model):
    
     def calendario(self):
         if not self.armador:
-            raise ValidationError("Falta ingresar Armador.")
-            return
+            raise ValidationError("Falta ingresar Armador.")            
         if not self.nave:
-            raise ValidationError("Falta ingresar nombre embarcación.")
-            return
+            raise ValidationError("Falta ingresar nombre embarcación.")           
         if self.nave == 'MN ':
-            raise ValidationError("Falta ingresar nombre embarcación.")
-            return
+            raise ValidationError("Falta ingresar nombre embarcación.")            
         if not self.fecha:
-            raise ValidationError("Falta ingresar fecha de la maniobra.")
-            return
+            raise ValidationError("Falta ingresar fecha de la maniobra.")            
         if not self.horario:
-            raise ValidationError("Falta ingresar horario.")
-            return
+            raise ValidationError("Falta ingresar horario.")            
         if not self.lugar:
-            raise ValidationError("Falta ingresar lugar de la maniobra.")
-            return
+            raise ValidationError("Falta ingresar lugar de la maniobra.")            
         if not self.equipo:
-            raise ValidationError("Falta ingresar equipo de trabajo.")
-            return
+            raise ValidationError("Falta ingresar equipo de trabajo.")            
 
         self.write({})
         nombre = self.name + ' ' + self.nave
@@ -91,7 +84,7 @@ class Taller_maniobras(models.Model):
                 dafin = datetime.datetime.combine(self.fecha, datetime.time(22, 0))      
 
             if not self.obs:
-                self.obs = ' '
+                self.obs = '\n'
             observaciones_html = self.obs.replace('\n', '<br/>')  # Convertir saltos de línea en <br/>                      
 
             # Crear el evento primero
@@ -142,7 +135,6 @@ class Taller_maniobras(models.Model):
                 ot = self.env['taller.ot'].search([('name', '=', self.name)], limit=1)
                 if ot:
                     ot.event_ids = [(4, event.id)]  # Añade el evento al campo Many2many 'event_ids'
-
             
         return
 
