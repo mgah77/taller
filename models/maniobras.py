@@ -1,4 +1,5 @@
 from odoo import models, fields , api , _
+from odoo.exceptions import ValidationError
 import datetime
 
 class Taller_maniobras(models.Model):
@@ -54,6 +55,28 @@ class Taller_maniobras(models.Model):
 
    
     def calendario(self):
+        if not self.armador:
+            raise ValidationError("Falta ingresar Armador.")
+        
+        if not self.nave:
+            raise ValidationError("Falta ingresar nombre embarcación.")
+        
+        if self.nave == 'MN ':
+            raise ValidationError("Falta ingresar nombre embarcación.")
+        
+        if not self.fecha:
+            raise ValidationError("Falta ingresar fecha de la maniobra.")
+        
+        if not self.horario:
+            raise ValidationError("Falta ingresar horario.")
+        
+        if not self.lugar:
+            raise ValidationError("Falta ingresar lugar de la maniobra.")
+
+        if not self.equipo:
+            raise ValidationError("Falta ingresar equipo de trabajo.")
+                
+
         self.write({})
         nombre = self.name + ' ' + self.nave
         if self.armador:
