@@ -15,7 +15,7 @@ class Taller_maniobras(models.Model):
         ("am","AM"),
         ("pm","PM"),
         ("ap","AM/PM")
-        ], default='xc'
+        ]
     )
     nave = fields.Char('Nave', default='MN ')
     obs = fields.Text('Observaciones')
