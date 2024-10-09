@@ -8,14 +8,14 @@ class Taller_maniobras(models.Model):
     _description = 'Maniobras Taller'
 
     name = fields.Char(string="Nro ", readonly=True, default='New', copy=False)
-    armador = fields.Many2one('res.partner',string='Armador',domain="[('type', '!=', 'private'), ('is_company', '=', True), ('type','=','contact'), ('is_customer','=',True)]")
+    armador = fields.Many2one('res.partner',string='Armador',domain="[('type', '!=', 'private'), ('is_company', '=', True), ('type','=','contact'), ('is_customer','=',True)]", required=True)
     user_branch = fields.Integer(string = 'Current Branch',default='2')
-    fecha = fields.Date('Fecha', index=True)
+    fecha = fields.Date('Fecha', index=True, required=True)
     horario = fields.Selection([
         ("am","AM"),
         ("pm","PM"),
         ("ap","AM/PM")
-        ]
+        ], required=True
     )
     nave = fields.Char('Nave', default='MN ')
     obs = fields.Text('Observaciones',default=' ')
@@ -25,7 +25,7 @@ class Taller_maniobras(models.Model):
         ("rea","Realizado"),
         ("can","Cancelado")], default='pen'
     )
-    lugar = fields.Many2one('taller.lugar.rel', string='Lugar')
+    lugar = fields.Many2one('taller.lugar.rel', string='Lugar', required=True)
     equipo = fields.Many2many('res.partner',string='Equipo' , domain="[('partner_share', '=', False)]")
     user = fields.Char(string = 'Recepciona', default='Sala de Ventas')
     sucursel = fields.Selection([('2','Ñuble'),('3','Par Vial')],string='Sucursal',default='2')
@@ -82,8 +82,6 @@ class Taller_maniobras(models.Model):
             elif self.horario == 'ap':
                 datet = datetime.datetime.combine(self.fecha, datetime.time(13, 0))   
                 dafin = datetime.datetime.combine(self.fecha, datetime.time(22, 0))      
-            else:
-                raise ValidationError("Horario no válido.")
 
             if not self.obs:
                 self.obs = '\n'
