@@ -82,6 +82,8 @@ class Taller_maniobras(models.Model):
             elif self.horario == 'ap':
                 datet = datetime.datetime.combine(self.fecha, datetime.time(13, 0))   
                 dafin = datetime.datetime.combine(self.fecha, datetime.time(22, 0))      
+            else:
+                raise ValidationError("Horario no válido.")
 
             if not self.obs:
                 self.obs = '\n'
