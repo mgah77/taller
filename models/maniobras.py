@@ -57,25 +57,25 @@ class Taller_maniobras(models.Model):
     def calendario(self):
         if not self.armador:
             raise ValidationError("Falta ingresar Armador.")
-        
+            return
         if not self.nave:
             raise ValidationError("Falta ingresar nombre embarcación.")
-        
+            return
         if self.nave == 'MN ':
             raise ValidationError("Falta ingresar nombre embarcación.")
-        
+            return
         if not self.fecha:
             raise ValidationError("Falta ingresar fecha de la maniobra.")
-        
+            return
         if not self.horario:
             raise ValidationError("Falta ingresar horario.")
-        
+            return
         if not self.lugar:
             raise ValidationError("Falta ingresar lugar de la maniobra.")
-
+            return
         if not self.equipo:
             raise ValidationError("Falta ingresar equipo de trabajo.")
-                
+            return
 
         self.write({})
         nombre = self.name + ' ' + self.nave
