@@ -26,7 +26,7 @@ class Taller_maniobras(models.Model):
         ("can","Cancelado")], default='pen'
     )
     lugar = fields.Many2one('taller.lugar.rel', string='Lugar', required=True)
-    equipo = fields.Many2many('res.partner',string='Equipo' , domain="[('partner_share', '=', False)]")
+    equipo = fields.Many2many('res.partner',string='Equipo' , domain="[('partner_share', '=', False)]", required=True)
     user = fields.Char(string = 'Recepciona', default='Sala de Ventas')
     sucursel = fields.Selection([('2','Ñuble'),('3','Par Vial')],string='Sucursal',default='2')
 
@@ -55,18 +55,11 @@ class Taller_maniobras(models.Model):
 
    
     def calendario(self):
-        if not self.armador:
-            raise ValidationError("Falta ingresar Armador.")            
+        
         if not self.nave:
             raise ValidationError("Falta ingresar nombre embarcación.")           
         if self.nave == 'MN ':
-            raise ValidationError("Falta ingresar nombre embarcación.")            
-        if not self.fecha:
-            raise ValidationError("Falta ingresar fecha de la maniobra.")            
-        if not self.horario:
-            raise ValidationError("Falta ingresar horario.")            
-        if not self.lugar:
-            raise ValidationError("Falta ingresar lugar de la maniobra.")            
+            raise ValidationError("Falta ingresar nombre embarcación.")             
         if not self.equipo:
             raise ValidationError("Falta ingresar equipo de trabajo.")            
 
