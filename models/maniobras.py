@@ -18,7 +18,7 @@ class Taller_maniobras(models.Model):
         ]
     )
     nave = fields.Char('Nave', default='MN ')
-    obs = fields.Text('Observaciones')
+    obs = fields.Text('Observaciones',default=' ')
     sucursal = fields.Char('Sucursal', compute="_compute_sucursal")
     estado = fields.Selection([
         ("pen","Pendiente"),
