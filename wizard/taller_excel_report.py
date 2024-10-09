@@ -123,7 +123,7 @@ class ExcelWizard(models.TransientModel):
         # Write data
         row = 5  # Inicializamos el índice del bucle
         for balsa in balsas:
-            if balsa.sucursal == suc:
+            if balsa.branch_s == suc:
                 if balsa.color == 10:
                     worksheet.write(row, 1, balsa.name, green)
                 elif balsa.color == 1:
