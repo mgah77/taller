@@ -31,7 +31,7 @@ class Taller_maniobras(models.Model):
     sucursel = fields.Selection([('2','Ñuble'),('3','Par Vial')],string='Sucursal',default='2')
 
     ot_check = fields.Boolean()
-    old_ot = fields.Many2one('taller.ot', string="OT")
+    old_ot = fields.Many2one('taller.ot', string="N° OT")
 
     @api.model
     def create(self,vals):
