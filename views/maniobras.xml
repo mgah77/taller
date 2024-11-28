@@ -39,7 +39,7 @@
                         </group>
                         <newline />
                         <group><field name="ot_check" string="Usar OT existente"/></group>
-                        <group><field name="old_ot" attrs="{'invisible': [('ot_check', '=', False)]}" domain="[('armador', '=', 'self.armador.id')]"/></group>
+                        <group><field name="old_ot" attrs="{'invisible': [('ot_check', '=', False)]}" domain="[('armador', '=', 'armador')]"/></group>
                         <newline />
                         <group><field name="nave"  /></group>
                         <newline /><newline />

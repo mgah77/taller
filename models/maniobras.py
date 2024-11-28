@@ -44,6 +44,10 @@ class Taller_maniobras(models.Model):
                 vals['sucursel'] = warehouse_id   
         result = super(Taller_maniobras,self).create(vals)
         return result
+    
+    @api.onchange('armador')
+    def _onchange_armador(self):
+        self.old_ot = False  # Limpia el valor de old_ot si cambia armador
 
     
     def _compute_sucursal(self):
