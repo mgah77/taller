@@ -32,7 +32,7 @@
                     <group style="border: 3px solid">
                     
                       <group>
-                      <br /><br />
+                     
                         <group>
                         <field name="name" invisible="1"/>                        
                         <field name="armador" options="{'no_create': True}"/>
@@ -41,7 +41,7 @@
                         <group><field name="ot_check"/></group>
                         <group><field name="old_ot"/></group>
                         <newline />
-                        <field name="nave"  />
+                        <group><field name="nave"  /></group>
                         <newline /><newline />
                         <group>
                         <field name="fecha" />
