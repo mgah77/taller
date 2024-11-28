@@ -36,8 +36,8 @@
                         <field name="name" invisible="1"/>                        
                         <field name="armador" options="{'no_create': True}"/>
                         <newline />
-                        <group><field name="ot_check"/><group>
-                        <group><field name="old_ot"/><group>
+                        <group><field name="ot_check"/></group>
+                        <group><field name="old_ot"/></group>
                         <newline />
                         <field name="nave"  />
                         <newline /><newline />
