@@ -30,6 +30,9 @@ class Taller_maniobras(models.Model):
     user = fields.Char(string = 'Recepciona', default='Sala de Ventas')
     sucursel = fields.Selection([('2','Ñuble'),('3','Par Vial')],string='Sucursal',default='2')
 
+    ot_check = fields.Boolean()
+    old_ot = fields.Many2one('taller.ot', string="OT")
+
     @api.model
     def create(self,vals):
         if vals.get('name','New')=='New':
