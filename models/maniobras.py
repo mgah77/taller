@@ -35,6 +35,9 @@ class Taller_maniobras(models.Model):
 
     @api.model
     def create(self,vals):
+        if self.ot_check and self.old_ot:
+            vals['name'] = self.old_ot.name
+
         if vals.get('name','New')=='New':
             vals['name']=self.env['ir.sequence'].next_by_code('abr.ot') or 'New' 
             vals['user']=self.env.user.partner_id.name
