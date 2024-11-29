@@ -37,8 +37,12 @@ class Taller_maniobras(models.Model):
     def create(self,vals):
         if self.ot_check and self.old_ot:
             vals['name'] = self.old_ot.name
-
-        if vals.get('name','New')=='New':
+            vals['user']=self.env.user.partner_id.name
+            vals['user_branch'] = self.env.user.property_warehouse_id
+            warehouse_id = str(self.env.user.property_warehouse_id.id)  # Convertimos a string para comparar
+            if warehouse_id in ['2', '3']:                
+                vals['sucursel'] = warehouse_id   
+        else:
             vals['name']=self.env['ir.sequence'].next_by_code('abr.ot') or 'New' 
             vals['user']=self.env.user.partner_id.name
             vals['user_branch'] = self.env.user.property_warehouse_id
@@ -62,7 +66,7 @@ class Taller_maniobras(models.Model):
 
     def guardar(self):
         self.write({})
-
+a
    
     def calendario(self):
 
