@@ -66,7 +66,7 @@ class Taller_maniobras(models.Model):
 
     def guardar(self):
         self.write({})
-a
+
    
     def calendario(self):
 
