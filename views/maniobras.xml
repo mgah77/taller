@@ -65,9 +65,9 @@
                 </style>
                 <div class="oe_button_box oe_form_buttons">
                   
-                  <button name="calendario" string="Agendar Maniobra" type="object" class="oe_highlight" attrs="{'invisible': ['|', ('name', '!=', 'New'), ('check_ot', '=', True)]}"/>
-                  <button name="new_calendario" string="Agendar nueva Maniobra" type="object" class="oe_highlight" attrs="{'invisible': ['|', ('name', '==', 'New'), ('check_ot', '=', True)]}"/>
-                  <button name="new_calendario" string="Agendar nueva Maniobra" type="object" class="oe_highlight" attrs="{'invisible': ('check_ot', '=', False)}"/>
+                  <button name="calendario" string="Agendar Maniobra" type="object" class="oe_highlight" attrs="{'invisible': ['|', ('name', '!=', 'New'), ('ot_check', '=', True)]}"/>
+                  <button name="new_calendario" string="Agendar nueva Maniobra" type="object" class="oe_highlight" attrs="{'invisible': ['|', ('name', '==', 'New'), ('ot_check', '=', True)]}"/>
+                  <button name="new_calendario" string="Agendar nueva Maniobra" type="object" class="oe_highlight" attrs="{'invisible': ('ot_check', '=', False)}"/>
                 </div>
                 </sheet>
                 
