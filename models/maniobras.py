@@ -69,7 +69,8 @@ class Taller_maniobras(models.Model):
 
    
     def calendario(self):
-
+        if self.ot_check and self.old_ot:
+            self.name = self.old_ot.name
         self.write({})
         nombre = self.name + ' ' + self.nave
         if self.armador:
@@ -139,6 +140,8 @@ class Taller_maniobras(models.Model):
         return
 
     def new_calendario(self):
+        if self.ot_check and self.old_ot:
+            self.name = self.old_ot.name
         self.write({})
         nombre = self.name + ' ' + self.nave
         if self.armador:
