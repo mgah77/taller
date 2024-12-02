@@ -45,7 +45,7 @@
                         <newline /><newline />
                         <group>
                         <field name="fecha" />
-                        <field name="horario" placeholder="AM / PM"/>
+                        <field name="horario" placeholder="Elegir horario"/>
                         </group>
                       </group>
                       <group>
