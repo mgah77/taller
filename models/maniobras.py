@@ -102,21 +102,21 @@ class Taller_maniobras(models.Model):
                 'stop': dafin,
             }
             event = self.env['calendar.event'].create(event_vals)
-            
-            ot_vals = {
-                'armador': self.armador.id,
-                'user_branch': self.user_branch,
-                'name': self.name,
-                'lugar': self.lugar.id,
-                'nave': self.nave,
-                'user': self.user,
-                'obs': observaciones_html,
-                'sucursel': self.sucursel,
-                'fecha_recep': self.fecha,
-                'state': 'borr',
-                'maniobra' : True
-            }
-            self.env['taller.ot'].create(ot_vals)
+            if self.ot_check == False:
+                ot_vals = {
+                    'armador': self.armador.id,
+                    'user_branch': self.user_branch,
+                    'name': self.name,
+                    'lugar': self.lugar.id,
+                    'nave': self.nave,
+                    'user': self.user,
+                    'obs': observaciones_html,
+                    'sucursel': self.sucursel,
+                    'fecha_recep': self.fecha,
+                    'state': 'borr',
+                    'maniobra' : True
+                }
+                self.env['taller.ot'].create(ot_vals)
             
             if event:
                 # Crear asistentes y asegurarse de que se asocien correctamente al evento
