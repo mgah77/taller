@@ -213,7 +213,7 @@ class Taller_ot_line(models.Model):
         return super(Taller_ot_line, self).write(vals)
     
     @api.depends('ot_line_id','state')
-    def _compute_state(self):
+    def state(self):
         for line in self:
             if line.state != 'entr':
                 return
