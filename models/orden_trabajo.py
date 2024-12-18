@@ -217,5 +217,4 @@ class Taller_ot_line(models.Model):
         for line in self:
             if line.state != 'entr':
                 return
-        line.ot_line_id.state = 'entr'
-        
+            line.ot_line_id.write({'state': 'entr'})
