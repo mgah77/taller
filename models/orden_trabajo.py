@@ -205,7 +205,10 @@ class Taller_ot_line(models.Model):
             return        
     
     def write(self, vals):
+        # Validar si el estado está cambiando
         if 'state' in vals:
-            vals['state_old'] = self.state  # Guarda el estado actual antes de cambiarlo
+            for record in self:
+                # Si está cambiando, guardar el estado actual como state_old
+                vals['state_old'] = record.state
         return super(Taller_ot_line, self).write(vals)
     
