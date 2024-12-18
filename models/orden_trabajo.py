@@ -195,8 +195,11 @@ class Taller_ot_line(models.Model):
     @api.onchange('state')
     def onchange_state(self):
         if self.state == 'cert' and self.state_old != 'tall':
-            raise ValidationError("Mal estado.")
+            raise ValidationError("No puede volver a ese estado.")
+            return
         else:
             self.state_old = self.state
+            self.write({})
+
         
     
