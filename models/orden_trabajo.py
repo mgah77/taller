@@ -92,17 +92,6 @@ class Taller_ingreso(models.Model):
                 rec.state_old = 'tall'
         return True
     
-    @api.depends('ot_line')
-    def estadoentregado(self):
-        for rec in self:
-            for line in rec:
-                if line.state != 'entr':
-                return
-        rec.state = 'entr'
-        return
-
-
-
 
 class Taller_ot_line(models.Model):
     _name = 'taller.ot.line'
