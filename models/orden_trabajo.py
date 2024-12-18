@@ -203,10 +203,9 @@ class Taller_ot_line(models.Model):
         elif self.state == 'tall' and self.state_old not in ['borr', 'tall']:
             raise ValidationError("3No puede volver a ese estado.")
             return        
-        else:
-            self.write({'state_old': self.state})
-        return    
-
-
-        
+    
+    def write(self, vals):
+    if 'state' in vals:
+        vals['state_old'] = self.state  # Guarda el estado actual antes de cambiarlo
+    return super(taller.ot.line, self).write(vals)
     
