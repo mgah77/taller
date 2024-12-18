@@ -212,3 +212,10 @@ class Taller_ot_line(models.Model):
                 vals['state_old'] = record.state
         return super(Taller_ot_line, self).write(vals)
     
+    @api.depends('ot_line_id','state')
+    def _compute_state(self):
+        for line in self:
+            if line.state != 'entr':
+                return
+        line.ot_line_id.state = 'entr'
+        
