@@ -197,10 +197,10 @@ class Taller_ot_line(models.Model):
         if self.state == 'cert' and self.state_old != 'tall':
             raise ValidationError("No puede volver a ese estado.")
             return
-        elif self.state == 'borr':
+        elif self.state == 'borr' and self.state_old != 'borr':
             raise ValidationError("No puede volver a ese estado.")
             return
-        elif self.state == 'tall':
+        elif self.state == 'tall' and self.state_old != 'borr':
             raise ValidationError("No puede volver a ese estado.")
             return        
         else:
