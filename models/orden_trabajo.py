@@ -194,14 +194,14 @@ class Taller_ot_line(models.Model):
 
     @api.onchange('state')
     def onchange_state(self):
-        if self.state == 'cert' and self.state_old not in ['tall', 'cert']:
-            raise ValidationError("1No puede volver a ese estado.")
+        if self.state == 'cert' and self.state_old not in ['tall']:
+            raise ValidationError("No deberia volver a Certificado, por favor descarte los cambios.")
             return
         elif self.state == 'borr' and self.state_old != 'borr':
-            raise ValidationError("2No puede volver a ese estado.")
+            raise ValidationError("No deberia volver a Borrador, por favor descarte los cambios.")
             return
         elif self.state == 'tall' and self.state_old not in ['borr', 'tall']:
-            raise ValidationError("3No puede volver a ese estado.")
+            raise ValidationError("No deberia volver a Taller, por favor descarte los cambios.")
             return        
     
     def write(self, vals):
