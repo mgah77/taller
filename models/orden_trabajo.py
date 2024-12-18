@@ -89,6 +89,7 @@ class Taller_ingreso(models.Model):
         for rec in self.ot_line:
             if rec.state == 'borr':
                 rec.state = 'tall'
+                rec.state_old = 'tall'
         return True
 
 
@@ -193,9 +194,9 @@ class Taller_ot_line(models.Model):
 
     @api.onchange('state')
     def onchange_state(self):
-        if self.state == 'tall' and self.state_old != 'borr':
+        if self.state == 'cert' and self.state_old != 'tall':
             raise ValidationError("Mal estado.")
         else:
             self.state_old = self.state
-        return
+        
     
