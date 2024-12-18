@@ -116,6 +116,12 @@ class Taller_ot_line(models.Model):
         ('entr','Entregado'),
         ('coti','Cotizado'),
         ('fact','Facturado')], string='Estado', default='borr')
+    state_old = fields.Selection([
+        ('borr','Borrador'),
+        ('tall','En Taller'),        
+        ('cert','Certificado'),
+        ('entr','Entregado'),
+        ('coti','Cotizado')], string='Estado', default='borr')
     color = fields.Integer('color', compute ="_compute_dias")
     hoy = fields.Date(string="From Date", compute = "_compute_hoy")
     dias = fields.Integer(compute = "_compute_dias")
@@ -184,5 +190,10 @@ class Taller_ot_line(models.Model):
             elif line.branch_s == 3:
                 line.sucursal = '3'
         return
+
+    @api.onchange('state')
+    def onchange_state(self):
+        if self.state == 'tall' and self.state_old != 'borr':
+            raise ValidationError("Mal estado.")
 
     
