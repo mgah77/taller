@@ -122,7 +122,7 @@ class Taller_ot_line(models.Model):
         ('tall','En Taller'),        
         ('cert','Certificado'),
         ('entr','Entregado'),
-        ('coti','Cotizado')], string='Estado')
+        ('coti','Cotizado')], string='Estado', default='borr')
     color = fields.Integer('color', compute ="_compute_dias")
     hoy = fields.Date(string="From Date", compute = "_compute_hoy")
     dias = fields.Integer(compute = "_compute_dias")
@@ -194,14 +194,14 @@ class Taller_ot_line(models.Model):
 
     @api.onchange('state')
     def onchange_state(self):
-        if self.state == 'cert' and self.state_old != 'tall':
-            raise ValidationError("No puede volver a ese estado.")
+        if self.state == 'cert' and self.state_old not in ['tall', 'cert']:
+            raise ValidationError("1No puede volver a ese estado.")
             return
         elif self.state == 'borr' and self.state_old != 'borr':
-            raise ValidationError("No puede volver a ese estado.")
+            raise ValidationError("2No puede volver a ese estado.")
             return
-        elif self.state == 'tall' and self.state_old != 'borr':
-            raise ValidationError("No puede volver a ese estado.")
+        elif self.state == 'tall' and self.state_old not in ['borr', 'tall']:
+            raise ValidationError("3No puede volver a ese estado.")
             return        
         else:
             self.write({'state_old': self.state})
