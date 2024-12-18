@@ -92,6 +92,7 @@ class Taller_ingreso(models.Model):
                 rec.state_old = 'tall'
         return True
     
+    @api.depends('ot_line')
     def estadoentregado(self):
         for rec in self:
             for line in rec:
