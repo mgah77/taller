@@ -91,6 +91,14 @@ class Taller_ingreso(models.Model):
                 rec.state = 'tall'
                 rec.state_old = 'tall'
         return True
+    
+    def estadoentregado(self):
+        for rec in self:
+            for line in rec:
+                if line.state != 'entr':
+                return
+            rec.state = 'entr'
+        return
 
 
 
@@ -212,10 +220,3 @@ class Taller_ot_line(models.Model):
                 vals['state_old'] = record.state
         return super(Taller_ot_line, self).write(vals)
     
-    @api.depends('ot_line_id','state')
-    def estadoentregado(self):
-        for line in self:
-            if line.state != 'entr':
-                return
-            line.ot_line_id.write({'state': 'entr'})
-        return
