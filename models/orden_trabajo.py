@@ -204,7 +204,7 @@ class Taller_ot_line(models.Model):
             raise ValidationError("No puede volver a ese estado.")
             return        
         else:
-            self.state_old = self.state
+            self.write({'state_old': self.state})
         return    
 
 
