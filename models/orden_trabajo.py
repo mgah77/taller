@@ -97,7 +97,7 @@ class Taller_ingreso(models.Model):
             for line in rec:
                 if line.state != 'entr':
                 return
-            rec.state = 'entr'
+        rec.state = 'entr'
         return
 
 
