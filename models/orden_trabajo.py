@@ -195,5 +195,7 @@ class Taller_ot_line(models.Model):
     def onchange_state(self):
         if self.state == 'tall' and self.state_old != 'borr':
             raise ValidationError("Mal estado.")
-
+        else:
+            self.state_old = self.state
+        return
     
