@@ -62,6 +62,15 @@ class Taller_ingreso(models.Model):
         result = super(Taller_ingreso,self).create(vals)
         return result
 
+    @api.depends('ot_line')
+    def _compute_state(self):
+        for rec in self:
+            for line in rec.ot_line:
+                if line.state != 'entr':
+                    return
+            rec.state = 'entr'
+        return
+
 
     @api.onchange('contacto')
     def onchange_partner_id(self):
