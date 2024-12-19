@@ -35,7 +35,7 @@ class Taller_ingreso(models.Model):
         ('entr','Entregado'),
         ('coti','Cotizado'),
         ('fact','Facturado')
-        ],string='Status',default='borr')
+        ],string='Status',default='borr',store=True)
 
     def _compute_sucursal(self):
         for line in self:            
@@ -61,15 +61,6 @@ class Taller_ingreso(models.Model):
                 vals['sucursel'] = warehouse_id
         result = super(Taller_ingreso,self).create(vals)
         return result
-
-    @api.depends('ot_line')
-    def _compute_state(self):
-        for rec in self:
-            for line in rec.ot_line:
-                if line.state != 'entr':
-                    return
-            rec.state = 'entr'
-        return
 
 
     @api.onchange('contacto')
@@ -218,4 +209,20 @@ class Taller_ot_line(models.Model):
                 # Si está cambiando, guardar el estado actual como state_old
                 vals['state_old'] = record.state
         return super(Taller_ot_line, self).write(vals)
-    
+
+    @api.depends('state')
+    def _compute_parent_state(self):
+        # Iterar sobre cada registro de taller.ot.line
+        for line in self:
+            # Si la línea tiene un padre
+            if line.ot_line_id:
+                # Obtener todas las líneas asociadas al mismo padre
+                sibling_lines = line.ot_line_id.ot_line
+
+                # Verificar si todas las líneas tienen state='entr'
+                if all(sibling.state == 'entr' for sibling in sibling_lines):
+                    # Si todas tienen 'entr', actualizar el padre
+                    line.ot_line_id.write({'state': 'entr'})
+                else:
+                    # Opcional: Si no todas tienen 'entr', establecer otro estado o dejarlo sin cambios
+                    pass
