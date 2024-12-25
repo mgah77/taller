@@ -92,6 +92,9 @@ class Taller_ingreso(models.Model):
                 rec.state_old = 'tall'
         return True
     
+    def entregar(self):
+        return
+    
 
 class Taller_ot_line(models.Model):
     _name = 'taller.ot.line'

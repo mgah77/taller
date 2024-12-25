@@ -78,8 +78,9 @@
                           margin-top: 20px;
                       }
                 </style>
-                <div class="oe_button_box oe_form_buttons">
+                <div class="oe_button_box oe_form_buttons" style="display: flex; justify-content: space-between;">
                   <button name="guardar" string="Ingresar trabajos a taller" type="object" class="oe_highlight"/>
+                  <button name="entregar" string="Cerrar OT" type="object" class="oe_highlight"/>
                 </div>
                 </sheet>
                 
