@@ -79,8 +79,8 @@
                       }
                 </style>
                 <div class="oe_button_box oe_form_buttons" style="display: flex; justify-content: space-between;">
-                  <button name="guardar" string="Ingresar trabajos a taller" type="object" class="oe_highlight"/>
-                  <button name="entregar" string="Cerrar OT" type="object" class="oe_highlight"/>
+                  <button name="guardar" string="Ingresar trabajos a taller" type="object" class="oe_highlight" attrs="{'invisible': [('state', 'in', ['entr', 'coti', 'fact'])]}"/>
+                  <button name="entregar" string="Cerrar OT" type="object" class="oe_highlight" attrs="{'invisible': [('state', 'in', ['entr', 'coti', 'fact'])]}"/>
                 </div>
                 </sheet>
                 

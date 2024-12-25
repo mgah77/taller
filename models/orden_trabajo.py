@@ -93,6 +93,9 @@ class Taller_ingreso(models.Model):
         return True
     
     def entregar(self):
+        for rec in self:
+            if all(line.state == 'entr' for line in rec.ot_line):
+                rec.state = 'entr'
         return
     
 
