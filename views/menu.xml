@@ -98,7 +98,8 @@
             <field name="res_model">taller.maniobras</field>
             <field name="type">ir.actions.act_window</field>
             <field name="view_mode">tree,form</field>
-            <field name="domain">['|',('fecha', '>=', (context_today() - timedelta(days=5)).strftime('%Y-%m-%d')),('user_branch','=','3')]</field>            
+            <!--field name="domain">['|',('fecha', '>=', (context_today() - timedelta(days=5)).strftime('%Y-%m-%d')),('user_branch','=','3')]</field!-->
+            <field name="domain">[('user_branch','=','3')]</field>            
 </record>
 
 <menuitem
