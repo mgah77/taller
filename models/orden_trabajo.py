@@ -31,7 +31,7 @@ class Taller_ingreso(models.Model):
     state = fields.Selection([
         ('borr','Borrador'),
         ('tall','En Taller'),        
-        ('cert','Certificado'),
+        ('cert','Certificacion'),
         ('entr','Entregado'),
         ('coti','Cotizado'),
         ('fact','Facturado')
