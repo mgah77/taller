@@ -107,7 +107,7 @@ class Taller_ot_line(models.Model):
 
     ot_line_id = fields.Many2one('taller.ot', string='lineas ot id', required=True, ondelete='cascade', index=True, copy=False)
     name = fields.Char('OT', compute="_compute_ot")
-    item = fields.Many2one('product.template', string="Nombre Item", domain="[('sale_ok', '=', True)]" )
+    item = fields.Many2one('product.template', string="Nombre Item", domain="[('sale_ok', '=', True)]", required=True )
     obs = fields.Char('Observaciones')
     serie = fields.Char('Serie')
     cant = fields.Integer(string='Cantidad', default=1)
