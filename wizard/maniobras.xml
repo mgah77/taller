@@ -12,7 +12,7 @@
                         </group>
                         <newline />
                         <group><field name="ot_check" string="Usar OT existente"/></group>
-                        <group><field name="old_ot" attrs="{'invisible': [('ot_check', '=', False)]}" domain="[('armador', '=', armador)]"/></group>
+                        <group><field name="old_ot" attrs="{'invisible': [('ot_check', '=', False)]}" domain="[('armador', '=', armador)]" options="{'no_create': True}"/></group>
                         <newline />
                         <group><field name="nave" placeholder="ej. MN Camahueto" /></group>
                         <newline /><newline />
@@ -25,7 +25,7 @@
                       <br /><br />
                           <field name ="sucursel" groups="taller.group_operaciones"/>
                           <field name="lugar" />     
-                          <field name ="equipo" widget="many2many_tags" domain="[('taller', '=', True)]"/>
+                          <field name ="equipo" widget="many2many_tags" domain="[('taller', '=', True)]" options="{'no_create': True}"/>
                           <field name="obs" placeholder="Ingrese las observaciones aquí..." />
                       </group>             
                     <field name="user_branch" invisible="1"/>
