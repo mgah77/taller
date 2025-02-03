@@ -16,11 +16,15 @@ class WizardManiobras(models.TransientModel):
     obs = fields.Text('Observaciones', default=' ')
     lugar = fields.Many2one('taller.lugar.rel', string='Lugar', required=True)
     equipo = fields.Many2many('res.partner', string='Equipo', domain="[('partner_share', '=', False)]", required=True)
+    ot_check = fields.Boolean(string="Usar OT existente")
+    old_ot = fields.Many2one('taller.ot', string="N° OT", domain="[('armador', '=', armador)]")
+    user_branch = fields.Integer(string='Current Branch', default=lambda self: self.env.user.property_warehouse_id.id)
 
     def confirmar_maniobra(self):
-        """Crea el evento en el calendario sin almacenar un registro en la BD."""
+        """Crea el evento en el calendario y genera una OT en taller.ot o usa una existente."""
         self.ensure_one()
-        nombre = self.nave
+        nombre = (self.old_ot.name if self.ot_check and self.old_ot else self.env['ir.sequence'].next_by_code('abr.ot') or 'Nuevo') + ' ' + self.nave
+        
         if self.horario == 'am':
             datet = datetime.datetime.combine(self.fecha, datetime.time(13, 0))   
             dafin = datetime.datetime.combine(self.fecha, datetime.time(17, 0))
@@ -48,4 +52,22 @@ class WizardManiobras(models.TransientModel):
         attendees = [(0, 0, {'partner_id': partner.id, 'state': 'needsAction'}) for partner in self.equipo]
         event.write({'partner_ids': [(6, 0, self.equipo.ids)]})
         
+        if self.ot_check and self.old_ot:
+            ot = self.old_ot
+        else:
+            ot_vals = {
+                'armador': self.armador.id,
+                'name': nombre.split(' ')[0],
+                'lugar': self.lugar.id,
+                'nave': self.nave,
+                'user': self.env.user.partner_id.name,
+                'obs': (self.obs or '').replace('\n', '<br/>'),
+                'fecha_recep': self.fecha,
+                'state': 'borr',
+                'maniobra': True,
+                'user_branch': self.user_branch,
+            }
+            ot = self.env['taller.ot'].create(ot_vals)
+        
+        ot.write({'event_ids': [(4, event.id)]})
         return {'type': 'ir.actions.act_window_close'}
