@@ -1,0 +1,23 @@
+<odoo>
+    <record id="view_wizard_maniobras_form" model="ir.ui.view">
+        <field name="name">wizard.maniobras.form</field>
+        <field name="model">taller.maniobras.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Agendar Maniobra">
+                <group>
+                    <field name="armador" options="{'no_create': True}"/>
+                    <field name="nave" placeholder="ej. MN Camahueto"/>
+                    <field name="fecha"/>
+                    <field name="horario" placeholder="Elegir horario"/>
+                    <field name="lugar"/>
+                    <field name="equipo" widget="many2many_tags"/>
+                    <field name="obs" placeholder="Ingrese las observaciones aquí..."/>
+                </group>
+                <footer>
+                    <button name="confirmar_maniobra" string="Confirmar" type="object" class="oe_highlight"/>
+                    <button string="Cancelar" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
