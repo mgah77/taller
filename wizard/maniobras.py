@@ -19,11 +19,13 @@ class WizardManiobras(models.TransientModel):
     ot_check = fields.Boolean(string="Usar OT existente")
     old_ot = fields.Many2one('taller.ot', string="N° OT", domain="[('armador', '=', armador)]")
     user_branch = fields.Integer(string='Current Branch', default=lambda self: self.env.user.property_warehouse_id.id)
+    sucursel = fields.Selection([('2', 'Ñuble'), ('3', 'Par Vial')], string='Sucursal', default=lambda self: str(self.env.user.property_warehouse_id.id))
 
     @api.onchange('old_ot')
     def _onchange_old_ot(self):
         if self.ot_check and self.old_ot:
             self.nave = self.old_ot.nave
+            self.sucursel = self.old_ot.sucursel
 
     @api.onchange('armador')
     def _onchange_armador(self):
@@ -75,6 +77,7 @@ class WizardManiobras(models.TransientModel):
                 'state': 'borr',
                 'maniobra': True,
                 'user_branch': self.user_branch,
+                'sucursel': self.sucursel,
             }
             ot = self.env['taller.ot'].create(ot_vals)
         
