@@ -39,6 +39,8 @@ class WizardManiobras(models.TransientModel):
     @api.onchange('armador')
     def _onchange_armador(self):
         self.old_ot = False
+        self.nave = False
+        self.ot_check = False
 
     def confirmar_maniobra(self):
         """Crea el evento en el calendario y genera una OT en taller.ot o usa una existente."""
