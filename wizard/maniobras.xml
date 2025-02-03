@@ -4,6 +4,7 @@
         <field name="model">taller.maniobras.wizard</field>
         <field name="arch" type="xml">
             <form string="Agendar Maniobra">
+            <sheet>
                 <group style="border: 3px solid">
                     <group>                     
                         <group>                                         
@@ -33,6 +34,7 @@
                     <button name="confirmar_maniobra" string="Confirmar" type="object" class="oe_highlight"/>
                     <button string="Cancelar" class="btn-secondary" special="cancel"/>
                 </footer>
+                </sheet>
             </form>
         </field>
     </record>
