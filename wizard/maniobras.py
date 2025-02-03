@@ -20,6 +20,15 @@ class WizardManiobras(models.TransientModel):
     old_ot = fields.Many2one('taller.ot', string="N° OT", domain="[('armador', '=', armador)]")
     user_branch = fields.Integer(string='Current Branch', default=lambda self: self.env.user.property_warehouse_id.id)
 
+    @api.onchange('old_ot')
+    def _onchange_old_ot(self):
+        if self.ot_check and self.old_ot:
+            self.nave = self.old_ot.nave
+
+    @api.onchange('armador')
+    def _onchange_armador(self):
+        self.old_ot = False
+
     def confirmar_maniobra(self):
         """Crea el evento en el calendario y genera una OT en taller.ot o usa una existente."""
         self.ensure_one()
