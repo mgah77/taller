@@ -102,6 +102,13 @@
             <field name="domain">[('user_branch','=','3')]</field>            
 </record>
 
+<record id="action_wizard_maniobras" model="ir.actions.act_window">
+    <field name="name">Agendar Maniobra</field>
+    <field name="res_model">taller.maniobras.wizard</field>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+</record>
+
 <menuitem
   id="taller_menu"
   name="Taller"
@@ -212,8 +219,8 @@
 
   <menuitem
     id="mani_menu"
-    name="Maniobras"
-    action="mani_action"
+    name="Agendar Maniobra"
+    action="action_wizard_maniobras"
     parent="taller_mani"
     sequence="45"
     groups="taller.group_operaciones"
