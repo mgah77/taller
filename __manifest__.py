@@ -17,6 +17,7 @@
          'views/maniobras.xml',
          'views/maestro.xml',
          'wizard/taller_excel.xml',
+         'wizard/maniobras.xml',
 ],
 'assets': {
     "web.assets_backend": [
