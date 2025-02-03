@@ -18,8 +18,17 @@ class WizardManiobras(models.TransientModel):
     equipo = fields.Many2many('res.partner', string='Equipo', domain="[('partner_share', '=', False)]", required=True)
     ot_check = fields.Boolean(string="Usar OT existente")
     old_ot = fields.Many2one('taller.ot', string="N° OT", domain="[('armador', '=', armador)]")
-    user_branch = fields.Integer(string='Current Branch', default=lambda self: self.env.user.property_warehouse_id.id)
-    sucursel = fields.Selection([('2', 'Ñuble'), ('3', 'Par Vial')], string='Sucursal', default=lambda self: str(self.env.user.property_warehouse_id.id))
+    user_branch = fields.Integer(string='Current Branch', default=2)
+    sucursel = fields.Selection([('2', 'Ñuble'), ('3', 'Par Vial')], string='Sucursal', default='2')
+
+    @api.model
+    def default_get(self, fields):
+        res = super(WizardManiobras, self).default_get(fields)
+        user = self.env.user
+        warehouse_id = user.property_warehouse_id.id
+        if warehouse_id:
+            res['sucursel'] = str(warehouse_id)
+        return res
 
     @api.onchange('old_ot')
     def _onchange_old_ot(self):
