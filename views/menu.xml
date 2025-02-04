@@ -198,6 +198,7 @@
     action="action_wizard_maniobras"
     parent="taller_mani"
     sequence="45"
+    groups="taller.group_taller"
      />
 
 
