@@ -26,7 +26,11 @@
             <field name="name">Planificacion_kanban</field>
             <field name="model">taller.ot.line</field>
             <field name="arch" type="xml">       
-                <kanban default_order="fecha" default_group_by="depto"  group_create="False" class="o_kanban_small_column" group_delete="False" group_edit="False" create="True" domain="[('state', '=', 'tall')]"> 
+                Yes, you can apply the same principle to the domain attribute in your Kanban view definition.  Just like in the Python code, you'll use the in operator.
+
+XML
+
+<kanban default_order="fecha" default_group_by="depto" group_create="False" class="o_kanban_small_column" group_delete="False" group_edit="False" create="True" domain="[('state', 'in', ['tall', 'cert'])]">
                    <templates>    
                     <t>
                          <span>hola</span> 
