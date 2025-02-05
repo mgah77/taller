@@ -183,14 +183,6 @@
     parent="taller_menu"
     sequence="42"/>
 
-  <menuitem
-    id="calen_menu"
-    name="Calendario"
-    action="calendar.action_calendar_event"
-    parent="taller_mani"
-    sequence="48"
-     />
-
 
   <menuitem
     id="mani_menu"
@@ -200,8 +192,5 @@
     sequence="45"
     groups="taller.group_taller"
      />
-
-
-
 
 </odoo>

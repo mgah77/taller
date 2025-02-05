@@ -75,5 +75,12 @@
             </field>
         </record>
 
-
+  <menuitem
+    id="calen_menu"
+    name="Calendario"
+    action="calendar.action_calendar_event"
+    parent="taller_mani"
+    sequence="48"
+     />
+     
 </odoo>
