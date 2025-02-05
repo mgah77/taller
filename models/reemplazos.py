@@ -3,14 +3,15 @@ class EntregaEquipos(models.Model):
     _description = 'Entrega de Equipos de Reemplazo'
 
     name = fields.Char(string='Número de Entrega', required=True, copy=False, readonly=True, default='Nuevo')
-    partner_id = fields.Many2one('res.partner', string='Cliente', required=True)
-    ot_name = fields.Char(string='Orden de Trabajo', required=True)  # Ahora es un campo Char
+    armador = fields.Many2one('res.partner', string='Cliente', required=True)
+    ot_name = fields.Many2one('taller.ot', string="N° OT", domain="[('armador', '=', armador)]")
     fecha_entrega = fields.Date(string='Fecha de Entrega', required=True)
     fecha_devolucion = fields.Date(string='Fecha de Devolución')
     line_ids = fields.One2many('entrega.equipos.line', 'entrega_id', string='Equipos Entregados')
     state = fields.Selection([
         ('borrador', 'Borrador'),
-        ('entregado', 'Entregado')
+        ('entregado', 'Entregado'),
+        ('devuelto', 'Devuelto')
     ], string='Estado', default='borrador')
 
     @api.model

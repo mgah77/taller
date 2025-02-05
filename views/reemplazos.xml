@@ -16,8 +16,8 @@
             <sheet>
                 <group>
                     <field name="name" readonly="1"/>
-                    <field name="partner_id"/>
-                    <field name="ot_id"/>
+                    <field name="armador"/>
+                    <field name="ot_name"/>
                     <field name="fecha_entrega"/>
                     <field name="fecha_devolucion"/>
                     <field name="state" readonly="1"/>
@@ -28,7 +28,7 @@
                             <tree editable="bottom">
                                 <field name="product_id"/>
                                 <field name="cantidad"/>
-                                <field name="state"/>
+                                <field name="state" readonly="1"/>
                             </tree>
                         </field>
                     </page>
@@ -44,7 +44,7 @@
     <field name="arch" type="xml">
         <tree string="Entrega de Equipos">
             <field name="name"/>
-            <field name="partner_id"/>
+            <field name="armador"/>
             <field name="ot_id"/>
             <field name="fecha_entrega"/>
             <field name="state"/>
