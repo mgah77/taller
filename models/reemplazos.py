@@ -4,12 +4,7 @@ class EntregaEquipos(models.Model):
 
     name = fields.Char(string='Número de Entrega', required=True, copy=False, readonly=True, default='Nuevo')
     partner_id = fields.Many2one('res.partner', string='Cliente', required=True)
-    ot_id = fields.Many2one(
-        'taller.ot',
-        string='Orden de Trabajo',
-        domain="[('partner_id', '=', partner_id)]",  # Filtra las OT según el cliente seleccionado
-        required=True
-    )
+    ot_name = fields.Char(string='Orden de Trabajo', required=True)  # Ahora es un campo Char
     fecha_entrega = fields.Date(string='Fecha de Entrega', required=True)
     fecha_devolucion = fields.Date(string='Fecha de Devolución')
     line_ids = fields.One2many('entrega.equipos.line', 'entrega_id', string='Equipos Entregados')
