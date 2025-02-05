@@ -6,5 +6,3 @@ access_taller_maniobras,access.taller.maniobras,model_taller_maniobras,group_tal
 access_taller_lugar_rel,access.taller.lugar.rel,model_taller_lugar_rel,group_taller,1,1,1,1
 access_taller_xlsx_wizard,access_taller_xlsx_wizard,model_taller_xlsx_wizard,group_taller,1,1,1,1
 access_taller_maniobras_wizard,access.taller.maniobras.wizard,model_taller_maniobras_wizard,group_taller,1,1,1,1
-access_entrega_equipos,access.entrega.equipos,model_entrega_equipos,group_taller,1,1,1,1
-access_entrega_equipos_line,access.entrega.equipos.line,model_entrega_equipos_line,group_taller,1,1,1,1

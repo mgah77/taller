@@ -17,7 +17,6 @@
          'views/maniobras.xml',
          'views/maestro.xml',
          'views/partner.xml',
-         'views/reemplazos.xml',
          'wizard/taller_excel.xml',
          'wizard/maniobras.xml',
 ],
