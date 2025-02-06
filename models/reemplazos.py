@@ -22,7 +22,7 @@ class EntregaEquipos(models.Model):
         return super(EntregaEquipos, self).create(vals)
 
     def action_print_entregas(self):
-        return self.env.ref('entrega_equipos.action_report_entrega_equipos').report_action(self)
+        return self.env.ref('taller.action_report_entrega_equipos').report_action(self)
 
 class EntregaEquiposLine(models.Model):
     _name = 'entrega.equipos.line'

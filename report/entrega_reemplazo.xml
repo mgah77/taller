@@ -5,10 +5,10 @@
         string="Informe de Entrega de Equipos"
         model="entrega.equipos"
         report_type="qweb-pdf"
-        file="entrega_equipos.report_entrega_equipos"
-        name="entrega_equipos.report_entrega_equipos"
+        file="taller.report_entrega_equipos"
+        name="taller.report_entrega_equipos"
     />
-    
+
     <template id="report_entrega_equipos">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="doc">
