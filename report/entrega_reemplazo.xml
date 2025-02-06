@@ -15,21 +15,22 @@
                 <div class="header">
                     <div class="o_clean_header">
                         <div class="row"> 
-                            <div class="col-5">
+                            <div class="col-8">
                                 <div>a
                                 </div>
                             </div>
-                            <div class="col-4">
-                                <div style="border:3px solid black; text-align:center; font-size:20px; padding-bottom:0px">
-                                    <h5><strong>Número de Entrega:</strong><br/><t t-esc="doc.name"/></h5>
+                            <div class="col-3">
+                                <div style="border:2px solid black; text-align:center; font-size:20px; padding-bottom:0px">
+                                    <br/><h5><strong>Número de Entrega:</strong><br/><t t-esc="doc.name"/></h5><br/><br/>
                                 </div>
                             </div>
                         </div>
                     </div> 
                 </div>
                 <div class="page">
-                    <h3>Entrega de Equipos de Reemplazo</h3>
-                    
+                    <div style="text-align:center;">
+                        <h3>Entrega de Equipos de Reemplazo</h3>
+                    </div>
                     <p><strong>Cliente:</strong> <t t-esc="doc.armador.name"/></p>
                     <p><strong>Orden de Trabajo:</strong> <t t-esc="doc.ot_id.name"/></p>
                     <p><strong>Fecha de Entrega:</strong> <t t-esc="doc.fecha_entrega"/></p>
