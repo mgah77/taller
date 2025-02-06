@@ -10,11 +10,11 @@
     />
 
     <template id="report_entrega_equipos">
-        <t t-call="web.html_container">
+        <t t-call="web.basic_layout">
             <t t-foreach="docs" t-as="doc">
                 <div class="page">
                     <div class="col-5"> 
-                    <div>
+                    <div>a
                     </div>
                         <div style="border:3px solid black; text-align:center; font-siza:20px; padding-bottom:0px">
                             <h4><strong>Número de Entrega:</strong><br/><t t-esc="doc.name"/></h4>
@@ -34,14 +34,12 @@
                             <tr>
                                 <th>Producto</th>
                                 <th>Cantidad</th>
-                                <th>Estado</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr t-foreach="doc.line_ids" t-as="line">
                                 <td><t t-esc="line.product_id.name"/></td>
                                 <td><t t-esc="line.cantidad"/></td>
-                                <td><t t-esc="line.state"/></td>
                             </tr>
                         </tbody>
                     </table>
