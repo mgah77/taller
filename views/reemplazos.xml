@@ -1,3 +1,4 @@
+<odoo>
 <record id="seq_entrega_equipos" model="ir.sequence">
     <field name="name">Secuencia Entrega Equipos</field>
     <field name="code">entrega.equipos</field>
@@ -63,3 +64,4 @@
     parent="menu_entrega_equipos_root"
     action="action_entrega_equipos"
     sequence="20"/>
+</odoo>
