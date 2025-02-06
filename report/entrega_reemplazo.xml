@@ -12,7 +12,7 @@
     <template id="report_entrega_equipos">
         <t t-call="web.basic_layout">
             <t t-foreach="docs" t-as="doc">
-                <div class="page">
+                <div>
                     <div class="row"> 
                         <div>a
                         </div>
