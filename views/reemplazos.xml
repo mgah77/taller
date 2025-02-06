@@ -27,7 +27,7 @@
                             <tree editable="bottom">
                                 <field name="product_id"/>
                                 <field name="cantidad"/>
-                                <field name="state"/>
+                                <field name="state" readonly="1" />
                             </tree>
                         </field>
                     </page>
