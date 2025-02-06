@@ -32,9 +32,9 @@
                         </field>
                     </page>
                 </notebook>
-                  <footer>
+                  <div class="oe_button_box oe_form_buttons" style="display: flex; justify-content: space-between;">
                    <button name="action_print_entregas" string="Imprimir Informe" type="object" class="btn-primary"/>
-                </footer>
+                </div>
             </sheet>
         </form>
     </field>
