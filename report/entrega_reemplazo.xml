@@ -12,15 +12,20 @@
     <template id="report_entrega_equipos">
         <t t-call="web.basic_layout">
             <t t-foreach="docs" t-as="doc">
-                <div>
-                    <div class="row"> 
-                        <div>a
+                <div class="header">
+                    <div class="o_clean_header">
+                        <div class="row"> 
+                            <div>a
+                            </div>
+                            <div class="col-6">
+                                <div style="border:3px solid black; text-align:center; font-size:20px; padding-bottom:0px">
+                                    <h5><strong>Número de Entrega:</strong><br/><t t-esc="doc.name"/></h5>
+                                </div>
+                            </div>
                         </div>
-                        <div style="border:3px solid black; text-align:center; font-size:20px; padding-bottom:0px">
-                            <h5><strong>Número de Entrega:</strong><br/><t t-esc="doc.name"/></h5>
-                        </div>
-                    </div>
-
+                    </div> 
+                </div>
+                <div class="page">
                     <h3>Entrega de Equipos de Reemplazo</h3>
                     
                     <p><strong>Cliente:</strong> <t t-esc="doc.armador.name"/></p>
