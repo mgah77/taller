@@ -13,15 +13,15 @@
         <t t-call="web.basic_layout">
             <t t-foreach="docs" t-as="doc">
                 <div class="page">
-                    <div class="col-5"> 
-                    <div>a
-                    </div>
-                        <div style="border:3px solid black; text-align:center; font-siza:20px; padding-bottom:0px">
-                            <h4><strong>Número de Entrega:</strong><br/><t t-esc="doc.name"/></h4>
+                    <div class="row"> 
+                        <div>a
+                        </div>
+                        <div style="border:3px solid black; text-align:center; font-size:20px; padding-bottom:0px">
+                            <h5><strong>Número de Entrega:</strong><br/><t t-esc="doc.name"/></h5>
                         </div>
                     </div>
 
-                    <h2>Entrega de Equipos de Reemplazo</h2>
+                    <h3>Entrega de Equipos de Reemplazo</h3>
                     
                     <p><strong>Cliente:</strong> <t t-esc="doc.armador.name"/></p>
                     <p><strong>Orden de Trabajo:</strong> <t t-esc="doc.ot_id.name"/></p>
