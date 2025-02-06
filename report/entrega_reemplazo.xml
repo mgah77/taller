@@ -1,0 +1,43 @@
+<odoo>
+    <template id="report_entrega_equipos">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <div class="page">
+                    <h2>Informe de Entrega de Equipos</h2>
+                    <p><strong>Número de Entrega:</strong> <t t-esc="doc.name"/></p>
+                    <p><strong>Cliente:</strong> <t t-esc="doc.armador.name"/></p>
+                    <p><strong>Orden de Trabajo:</strong> <t t-esc="doc.ot_id.name"/></p>
+                    <p><strong>Fecha de Entrega:</strong> <t t-esc="doc.fecha_entrega"/></p>
+                    <p><strong>Fecha de Devolución:</strong> <t t-esc="doc.fecha_devolucion"/></p>
+
+                    <h3>Equipos Entregados</h3>
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th>Producto</th>
+                                <th>Cantidad</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="doc.line_ids" t-as="line">
+                                <td><t t-esc="line.product_id.name"/></td>
+                                <td><t t-esc="line.cantidad"/></td>
+                                <td><t t-esc="line.state"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <report
+        id="action_report_entrega_equipos"
+        string="Informe de Entrega de Equipos"
+        model="entrega.equipos"
+        report_type="qweb-pdf"
+        file="entrega_equipos.report_entrega_equipos"
+        name="entrega_equipos.report_entrega_equipos"
+    />
+</odoo>

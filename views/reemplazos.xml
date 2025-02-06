@@ -32,6 +32,9 @@
                         </field>
                     </page>
                 </notebook>
+                  <footer>
+            <button name="action_print_report" string="Imprimir Informe" type="object" class="btn-primary"/>
+        </footer>
             </sheet>
         </form>
     </field>
@@ -57,7 +60,7 @@
     <field name="view_mode">tree,form</field>
 </record>
 
-<menuitem id="menu_entrega_equipos_root" name="Reemplazos" parent="taller_menu" sequence="10"/>
+<menuitem id="menu_entrega_equipos_root" name="Reemplazos" parent="taller_menu" sequence="44"/>
 
 <menuitem id="menu_entrega_equipos"
     name="Gestión de Entregas"

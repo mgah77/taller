@@ -18,6 +18,7 @@
          'views/maestro.xml',
          'views/partner.xml',
          'views/reemplazos.xml',
+         'report/entrega_reemplazo.xml',
          'wizard/taller_excel.xml',
          'wizard/maniobras.xml',
 ],
