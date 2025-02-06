@@ -20,8 +20,8 @@ class EntregaEquipos(models.Model):
         if vals.get('name', 'Nuevo') == 'Nuevo':
             vals['name'] = self.env['ir.sequence'].next_by_code('entrega.equipos') or 'Nuevo'
         return super(EntregaEquipos, self).create(vals)
-        
-    def action_print_report(self):
+
+    def action_print_entregas(self):
         return self.env.ref('entrega_equipos.action_report_entrega_equipos').report_action(self)
 
 class EntregaEquiposLine(models.Model):
