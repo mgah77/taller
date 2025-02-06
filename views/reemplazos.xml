@@ -43,14 +43,10 @@
 <record id="view_entrega_equipos_tree" model="ir.ui.view">
     <field name="name">entrega.equipos.tree</field>
     <field name="model">entrega.equipos</field>
-    <field name="arch" type="xml">
-        <div class="col-5"> 
-            <div style="border:3px solid black; text-align:center; font-siza:20px; padding-bottom:0px">
-                <h6><field name="name"/></h6>
-            </div>
-        </div>
+    <field name="arch" type="xml">   
+                   
         <tree string="Entrega de Equipos">
-            
+            <field name="name"/>
             <field name="armador"/>
             <field name="ot_id"/>
             <field name="fecha_entrega"/>

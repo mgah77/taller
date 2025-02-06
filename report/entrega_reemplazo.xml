@@ -13,8 +13,14 @@
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="doc">
                 <div class="page">
-                    <h2>Informe de Entrega de Equipos</h2>
-                    <p><strong>Número de Entrega:</strong> <t t-esc="doc.name"/></p>
+                    <div class="col-5"> 
+                        <div style="border:3px solid black; text-align:center; font-siza:20px; padding-bottom:0px">
+                            <h6><strong>Número de Entrega:</strong> <t t-esc="doc.name"/></h6>
+                        </div>
+                    </div>
+
+                    <h2>Entrega de Equipos de Reemplazo</h2>
+                    
                     <p><strong>Cliente:</strong> <t t-esc="doc.armador.name"/></p>
                     <p><strong>Orden de Trabajo:</strong> <t t-esc="doc.ot_id.name"/></p>
                     <p><strong>Fecha de Entrega:</strong> <t t-esc="doc.fecha_entrega"/></p>
