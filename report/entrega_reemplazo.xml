@@ -14,8 +14,10 @@
             <t t-foreach="docs" t-as="doc">
                 <div class="page">
                     <div class="col-5"> 
+                    <div>
+                    </div>
                         <div style="border:3px solid black; text-align:center; font-siza:20px; padding-bottom:0px">
-                            <h6><strong>Número de Entrega:</strong> <t t-esc="doc.name"/></h6>
+                            <h4><strong>Número de Entrega:</strong><br/><t t-esc="doc.name"/></h4>
                         </div>
                     </div>
 
