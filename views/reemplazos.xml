@@ -20,6 +20,7 @@
                     <field name="fecha_entrega"/>
                     <field name="fecha_devolucion"/>
                     <field name="state" readonly="1"/>
+                    <field name="sucursel" invisible="1"/>
                 </group>
                 <notebook>
                     <page string="Equipos Entregados">
