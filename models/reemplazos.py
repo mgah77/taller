@@ -14,12 +14,22 @@ class EntregaEquipos(models.Model):
         ('borrador', 'Borrador'),
         ('entregado', 'Entregado')
     ], string='Estado', default='borrador')
+    sucursel = fields.Selection([('2','Ñuble'),('3','Par Vial')],string='Sucursal',default='2')
 
     @api.model
     def create(self, vals):
         if vals.get('name', 'Nuevo') == 'Nuevo':
             vals['name'] = self.env['ir.sequence'].next_by_code('entrega.equipos') or 'Nuevo'
         return super(EntregaEquipos, self).create(vals)
+
+    @api.model
+    def default_get(self, fields):
+        res = super(EntregaEquipos, self).default_get(fields)
+        user = self.env.user
+        warehouse_id = user.property_warehouse_id.id
+        if warehouse_id:
+            res['sucursel'] = str(warehouse_id)
+        return res    
 
     def action_print_entregas(self):
         return self.env.ref('taller.action_report_entrega_equipos').report_action(self)
@@ -31,7 +41,7 @@ class EntregaEquiposLine(models.Model):
     product_id = fields.Many2one(
         'product.product', 
         string='Producto', 
-        domain=[('exchange_ok', '=', True)],
+        domain="[('exchange_ok', '=', True), ('product_tmpl_id.sucursal', '=', parent.sucursel), ('qty_available', '>', 0)]",
         required=True
     )
     cantidad = fields.Float(string='Cantidad', required=True, default=1)

@@ -16,7 +16,10 @@
                     <div class="o_clean_header">
                         <div class="row"> 
                             <div class="col-8">
-                                <div>a
+                                <div>
+                                    <!--img src="/taller/static/src/img/logo.png" style="width: 200px; height: 100px;"/><br/!-->
+                                    <p>COMERCIALIZADORA INSUMAR SPA.</p><br/>
+
                                 </div>
                             </div>
                             <div class="col-3">
