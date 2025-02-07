@@ -37,6 +37,7 @@ class EntregaEquiposLine(models.Model):
     cantidad = fields.Float(string='Cantidad', required=True, default=1)
     entrega_id = fields.Many2one('entrega.equipos', string='Entrega')
     state = fields.Selection([
+        ('na', ' '),
         ('no_devuelto', 'No Devuelto'),
         ('devuelto', 'Devuelto')
-    ], string='Estado', default='no_devuelto')
+    ], string='Estado', default='na')
