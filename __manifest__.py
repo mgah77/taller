@@ -26,6 +26,9 @@
     "web.assets_backend": [
         'taller/static/src/js/action_manager.js',
     ],
+     'web.report_assets_common': [
+        'taller/static/src/img/logo.png',
+    ],
 },
 
 'depends': ['base' , 'contacts' , 'stock' , 'product', 'parches_insumar','calendar']
