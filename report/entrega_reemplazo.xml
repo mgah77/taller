@@ -17,7 +17,7 @@
                         <div class="row"> 
                             <div class="col-9">
                                 <div>
-                                    <img t-att-src="'/taller/static/src/img/logo.png'" style="width: 250px; height: 90px;"/><br/>
+                                    <img t-att-src="'/taller/static/src/img/logo.png'" style="height: 80px;"/><br/>
                                     <p>COMERCIALIZADORA INSUMAR SPA.</p><br/>
 
                                 </div>
