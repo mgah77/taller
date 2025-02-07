@@ -17,7 +17,7 @@
                         <div class="row"> 
                             <div class="col-9">
                                 <div>
-                                    <img t-att-src="'/taller/static/src/img/logo.png'" style="width: 250px; height: 100px;"/><br/>
+                                    <img t-att-src="'/taller/static/src/img/logo.png'" style="width: 250px; height: 90px;"/><br/>
                                     <p>COMERCIALIZADORA INSUMAR SPA.</p><br/>
 
                                 </div>
@@ -34,10 +34,12 @@
                     <div style="text-align:center;">
                         <h4>Entrega de Equipos de Reemplazo</h4>
                     </div>
-                    <p><strong>Cliente:</strong> <t t-esc="doc.armador.name"/></p>
-                    <p><strong>Orden de Trabajo:</strong> <t t-esc="doc.ot_id.name"/></p>
-                    <p><strong>Fecha de Entrega:</strong> <t t-esc="doc.fecha_entrega"/></p>
-                    <p><strong>Fecha de Devolución:</strong> <t t-esc="doc.fecha_devolucion"/></p>
+                    <div class="col-11" style="border:1px solid black; font-size:10px; padding-bottom:0px">
+                        <p><strong>Cliente:</strong> <t t-esc="doc.armador.name"/></p>
+                        <p><strong>Orden de Trabajo:</strong> <t t-esc="doc.ot_id.name"/></p>
+                        <p><strong>Fecha de Entrega:</strong> <t t-esc="doc.fecha_entrega"/></p>
+                        <p><strong>Fecha de Devolución:</strong> <t t-esc="doc.fecha_devolucion"/></p>
+                    </div>
                     <div style="text-align:center;">
                         <h4>Equipos Entregados</h4>
                     </div>
