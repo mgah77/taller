@@ -12,10 +12,10 @@
     <template id="report_entrega_equipos">
         <t t-call="web.basic_layout">
             <t t-set="sucursel" t-value="suc"/>
-            |<t t-if="suc == 2">
+            <t t-if="suc == 2">
                 <t t-set="sucursal" t-value="'Ñuble 190'"/>
             </t>
-            |<t t-elif="suc == 3">
+            <t t-elif="suc == 3">
                 <t t-set="sucursal" t-value="'Parvial'"/>
             </t>
             <t t-foreach="docs" t-as="doc">
