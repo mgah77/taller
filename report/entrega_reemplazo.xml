@@ -26,7 +26,7 @@
                                 <div style="font-size:15px; padding-bottom:0px; line-height: 1;">
                                     <img t-att-src="'/taller/static/src/img/logo.png'" style="height: 70px;"/><br/>
                                     <p style="margin: 0; padding: 0;">COMERCIALIZADORA INSUMAR SPA.</p>
-                                    <p>Sucursal: <t t-esc="sucursal"/></p>
+                                    <p style="margin: 0; padding: 0;">Sucursal: <t t-esc="sucursal"/></p>
                                     <p>Puerto Montt</p>
                                 </div>
                             </div>
@@ -42,11 +42,11 @@
                     <div style="text-align:center;">
                         <h4>Entrega de Equipos de Reemplazo</h4>
                     </div>
-                    <div class="col-12" style="border:1px solid black; font-size:12px; padding-bottom:0px">
-                        <p><strong>Cliente:</strong> <t t-esc="doc.armador.name"/></p>
-                        <p><strong>Orden de Trabajo:</strong> <t t-esc="doc.ot_id.name"/></p>
-                        <p><strong>Fecha de Entrega:</strong> <t t-esc="doc.fecha_entrega" t-options='{"widget": "date", "format": "dd-MM-yyyy"}'/></p>
-                        <p><strong>Fecha de Devolución:</strong> <t t-esc="doc.fecha_devolucion" t-options='{"widget": "date", "format": "dd-MM-yyyy"}'/></p>
+                    <div class="col-12" style="border:1px solid black; font-size:12px; padding-bottom:10px">
+                        <p style="margin: 0; padding: 0;"><strong>Cliente:</strong> <t t-esc="doc.armador.name"/></p>
+                        <p style="margin: 0; padding: 0;"><strong>Orden de Trabajo:</strong> <t t-esc="doc.ot_id.name"/></p>
+                        <p style="margin: 0; padding: 0;"><strong>Fecha de Entrega:</strong> <t t-esc="doc.fecha_entrega" t-options='{"widget": "date", "format": "dd-MM-yyyy"}'/></p>
+                        <p style="margin: 0; padding: 0;"><strong>Fecha de Devolución:</strong> <t t-esc="doc.fecha_devolucion" t-options='{"widget": "date", "format": "dd-MM-yyyy"}'/></p>
                     </div>
                     <div style="text-align:center;">
                         <h4>Equipos Entregados</h4>
