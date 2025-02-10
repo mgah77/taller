@@ -13,10 +13,10 @@
         <t t-call="web.basic_layout">
             <t t-foreach="docs" t-as="doc">
                 <t t-set="sucursel" t-value="doc.sucursel"/>
-                <t t-if="sucursel == 2">
+                <t t-if="sucursel == '2'">
                     <t t-set="sucursal" t-value="'Ñuble 190'"/>
                 </t>
-                <t t-elif="sucursel == 3">
+                <t t-elif="sucursel == '3'">
                     <t t-set="sucursal" t-value="'Parvial'"/>
                 </t>
                 <div class="header">
