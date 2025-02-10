@@ -46,10 +46,10 @@
                         </group>
                         <newline />
                         <group>
-                          <field name="maniobra" />
+                          <field name="maniobra" readonly="1"/>
                           <field name="event_ids" widget="many2many_tags" options="{'no_create_edit': True}" >                         
                         </field>  
-                          <field name="lugar" />
+                          <field name="lugar" options="{'no_create': True}"/>
                           <field name="replace" />
                          
                         </group>

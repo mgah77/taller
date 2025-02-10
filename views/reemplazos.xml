@@ -12,15 +12,17 @@
     <field name="model">entrega.equipos</field>
     <field name="arch" type="xml">
         <form string="Entrega de Equipos">
+            <header>
+                  <field name="state" widget="statusbar" />
+            </header>
             <sheet>
                 <group>
                     <field name="name" readonly="1"/>
-                    <field name="armador"/>
+                    <field name="armador"  options="{'no_create': True}"/>
                     <field name="ot_id"/>
                     <field name="fecha_entrega"/>
-                    <field name="fecha_devolucion"/>
-                    <field name="state" readonly="1"/>
-                    <field name="sucursel" />
+                    <field name="fecha_devolucion"/>                
+                    <field name="sucursel" groups="taller.group_operaciones"/>
                 </group>
                 <notebook>
                     <page string="Equipos Entregados">
