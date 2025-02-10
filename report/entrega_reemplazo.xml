@@ -23,9 +23,9 @@
                     <div class="o_clean_header">
                         <div class="row"> 
                             <div class="col-9">
-                                <div style="font-size:15px; padding-bottom:0px">
+                                <div style="font-size:15px; padding-bottom:0px; line-height: 1;">
                                     <img t-att-src="'/taller/static/src/img/logo.png'" style="height: 70px;"/><br/>
-                                    <p>COMERCIALIZADORA INSUMAR SPA.</p>
+                                    <p style="margin: 0; padding: 0;">COMERCIALIZADORA INSUMAR SPA.</p>
                                     <p>Sucursal: <t t-esc="sucursal"/></p>
                                     <p>Puerto Montt</p>
                                 </div>
