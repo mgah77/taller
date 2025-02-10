@@ -11,6 +11,13 @@
 
     <template id="report_entrega_equipos">
         <t t-call="web.basic_layout">
+            <t t-set="sucursel" t-value="suc"/>
+            |<t t-if="suc = 2">
+                <t t-set="sucursal" t-value="Ñuble 190<br/>Puerto Montt"/>
+            </t>
+            |<t t-elif="suc = 3">
+                <t t-set="sucursal" t-value="Parvial<br/>Puerto Montt"/>
+            </t>
             <t t-foreach="docs" t-as="doc">
                 <div class="header">
                     <div class="o_clean_header">
@@ -19,6 +26,7 @@
                                 <div>
                                     <img t-att-src="'/taller/static/src/img/logo.png'" style="height: 70px;"/><br/>
                                     <p>COMERCIALIZADORA INSUMAR SPA.</p><br/>
+                                    <p><strong>Sucursal:</strong> <t t-esc="sucursal"/></p>
 
                                 </div>
                             </div>
