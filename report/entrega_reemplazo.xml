@@ -44,12 +44,15 @@
                     </div>
                     <div class="col-12" style="border:1px solid black; font-size:12px; padding-bottom:10px">
                         <p style="margin: 0; padding: 0;"><strong>Cliente:</strong> <t t-esc="doc.armador.name"/></p>
+                        <p style="margin: 0; padding: 0;"><strong>RUT:</strong> <t t-esc="doc.armador.document_number"/></p>
+                        <p style="margin: 0; padding: 0;"><strong>Glosa : </strong> <t t-esc="doc.ot_id.nave"/></p>
                         <p style="margin: 0; padding: 0;"><strong>Orden de Trabajo:</strong> <t t-esc="doc.ot_id.name"/></p>
                         <p style="margin: 0; padding: 0;"><strong>Fecha de Entrega:</strong> <t t-esc="doc.fecha_entrega" t-options='{"widget": "date", "format": "dd-MM-yyyy"}'/></p>
                         <p style="margin: 0; padding: 0;"><strong>Fecha de Devolución:</strong> <t t-esc="doc.fecha_devolucion" t-options='{"widget": "date", "format": "dd-MM-yyyy"}'/></p>
                     </div>
                     <div style="text-align:center;">
-                        <h4>Equipos Entregados</h4>
+
+                        <br/><h5>Equipos Entregados</h5>
                     </div>
                     <table class="table table-condensed">
                         <thead>
