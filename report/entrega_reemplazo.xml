@@ -25,8 +25,8 @@
                             <div class="col-9">
                                 <div>
                                     <img t-att-src="'/taller/static/src/img/logo.png'" style="height: 70px;"/><br/>
-                                    <p>COMERCIALIZADORA INSUMAR SPA.</p><br/>
-                                    <p>Sucursal: <t t-esc="sucursal"/></p><br/>
+                                    <p>COMERCIALIZADORA INSUMAR SPA.</p>
+                                    <p>Sucursal: <t t-esc="sucursal"/></p>
                                     <p>Puerto Montt</p>
 
                                 </div>
