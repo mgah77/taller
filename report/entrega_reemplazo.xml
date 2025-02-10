@@ -23,7 +23,7 @@
                     <div class="o_clean_header">
                         <div class="row"> 
                             <div class="col-9">
-                                <div style="font-size:20px">
+                                <div style="font-size:15px; padding-bottom:0px">
                                     <img t-att-src="'/taller/static/src/img/logo.png'" style="height: 70px;"/><br/>
                                     <p>COMERCIALIZADORA INSUMAR SPA.</p>
                                     <p>Sucursal: <t t-esc="sucursal"/></p>
