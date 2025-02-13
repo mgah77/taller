@@ -59,6 +59,7 @@ class EntregaEquiposLine(models.Model):
         ('no_devuelto', 'No Devuelto'),
         ('devuelto', 'Devuelto')
     ], string='Estado', default='no_devuelto')
+    
 
     @api.depends()
     def _compute_warehouse_location_id(self):
