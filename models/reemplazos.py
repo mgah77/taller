@@ -1,4 +1,7 @@
 from odoo import models, fields, api
+import logging
+
+
 
 class EntregaEquipos(models.Model):
     _name = 'entrega.equipos'
@@ -60,7 +63,8 @@ class EntregaEquiposLine(models.Model):
         ('devuelto', 'Devuelto')
     ], string='Estado', default='no_devuelto')
     
-
+    _logger = logging.getLogger(__name__)
+    
     @api.depends()
     def _compute_warehouse_location_id(self):
         for record in self:
@@ -68,6 +72,4 @@ class EntregaEquiposLine(models.Model):
             warehouse = user.property_warehouse_id
             location = warehouse.lot_stock_id if warehouse else False
             record.warehouse_location_id = location.id if location else False
-            print("Usuario:", user.name)
-            print("Almacén:", warehouse.name if warehouse else "Ninguno")
-            print("Ubicación:", location.name if location else "Ninguna")
+            _logger.info(f"Usuario: {user.name}, Almacén: {warehouse.name if warehouse else 'Ninguno'}, Ubicación: {location.name if location else 'Ninguna'}")
