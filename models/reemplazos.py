@@ -49,7 +49,7 @@ class EntregaEquiposLine(models.Model):
     product_id = fields.Many2one(
         'product.product',
         string='Producto',
-        domain="[('exchange_ok', '=', True), ('qty_available', '>', 0), ('stock_quant_ids.location_id', '=', warehouse_location_id)]",
+        domain="[('exchange_ok', '=', True), ('stock_quant_ids.location_id', '=', warehouse_location_id)]",
         required=True,
     )
 
