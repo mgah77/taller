@@ -10,7 +10,7 @@ class EntregaEquipos(models.Model):
     armador = fields.Many2one('res.partner', string='Armador',domain="[('type', '!=', 'private'), ('is_company', '=', True), ('type','=','contact'), ('is_customer','=',True)]",required=True)
     ot_id = fields.Many2one('taller.ot', string='Orden de Trabajo', domain="[('armador', '=', armador)]", required=True)
     fecha_entrega = fields.Date(string='Fecha de Entrega', required=True)
-    fecha_devolucion = fields.Date(string='Fecha de Devolución')
+    fecha_devolucion = fields.Date(string='Fecha de Devolución', required=True)
     line_ids = fields.One2many('entrega.equipos.line', 'entrega_id', string='Equipos Entregados')
     state = fields.Selection([
         ('borrador', 'Borrador'),
@@ -56,6 +56,16 @@ class EntregaEquipos(models.Model):
 
         # Generar el reporte
         return self.env.ref('taller.action_report_entrega_equipos').report_action(self)
+
+    # Validación para la fecha de devolución
+    @api.constrains('fecha_entrega', 'fecha_devolucion')
+    def _check_fecha_devolucion(self):
+        for record in self:
+            if record.fecha_devolucion and record.fecha_entrega:
+                if record.fecha_devolucion < record.fecha_entrega:
+                    raise ValidationError(
+                        "La fecha de devolución no puede ser menor que la fecha de entrega."
+                    )
 
 class EntregaEquiposLine(models.Model):
     _name = 'entrega.equipos.line'
