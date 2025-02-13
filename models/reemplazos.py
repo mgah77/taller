@@ -41,7 +41,6 @@ class EntregaEquiposLine(models.Model):
     product_id = fields.Many2one(
         'product.product', 
         string='Producto', 
-        domain="[('exchange_ok', '=', True), ('qty_available', '>', 0), ('stock_quant_ids.location_id', 'in', [user.property_warehouse_id.lot_stock_id.id])]",
         required=True
     )
     cantidad = fields.Float(string='Cantidad', required=True, default=1)
@@ -51,3 +50,12 @@ class EntregaEquiposLine(models.Model):
         ('no_devuelto', 'No Devuelto'),
         ('devuelto', 'Devuelto')
     ], string='Estado', default='na')
+
+    @api.onchange('entrega_id')
+    def _onchange_entrega_id(self):
+        if self.entrega_id:
+            warehouse = self.env.user.property_warehouse_id.lot_stock_id
+            domain = [('exchange_ok', '=', True)]
+            if warehouse:
+                domain.append(('stock_quant_ids.location_id', '=', warehouse.id))
+            return {'domain': {'product_id': domain}}
