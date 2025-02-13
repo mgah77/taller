@@ -38,19 +38,19 @@ class EntregaEquipos(models.Model):
         if self.ot_id:
             # Obtener el contenido actual del campo reobs
             observaciones_actuales = self.ot_id.reobs or ""
-            
-            # Crear un enlace HTML al registro de la entrega
+
+                # Crear un enlace HTML al registro de la entrega
             enlace_entrega = (
                 f'<a href="/web#id={self.id}&model=entrega.equipos&view_type=form">'
                 f'Número de entrega: {self.name}</a>'
             )
             
-            # Agregar el enlace al contenido existente
+            # Agregar el número de entrega al contenido existente
             nueva_observacion = f"{observaciones_actuales}{enlace_entrega}<br>"
             
             # Actualizar el campo reobs y establecer replace en True
             self.ot_id.write({
-                'reobs': nueva_observacion,  # Agrega el enlace de la entrega
+                'reobs': nueva_observacion,  # Agrega el número de entrega
                 'replace': True  # Establece replace en True
             })
 
