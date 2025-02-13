@@ -51,10 +51,10 @@ class EntregaEquiposLine(models.Model):
         ('devuelto', 'Devuelto')
     ], string='Estado', default='na')
 
-    @api.onchange('entrega_id')
-    def _onchange_entrega_id(self):
+    @api.depends('entrega_id')
+    def _compute_product_domain(self):
         """ Filtra los productos con stock en la bodega asignada al usuario. """
-        if self.entrega_id:
+        for record in self:
             warehouse = self.env.user.property_warehouse_id.lot_stock_id
             domain = [('exchange_ok', '=', True)]
             if warehouse:
@@ -62,6 +62,7 @@ class EntregaEquiposLine(models.Model):
                     ('location_id', '=', warehouse.id),
                     ('quantity', '>', 0)
                 ]).mapped('product_id').ids
-                domain.append(('id', 'in', product_ids))
+                if product_ids:
+                    domain.append(('id', 'in', product_ids))
 
-            return {'domain': {'product_id': domain}}
+            record.product_domain = str(domain)
