@@ -84,6 +84,34 @@ class EntregaEquiposLine(models.Model):
                     # Si no hay valor de sucursel, dejar el campo vacío
                     record.warehouse_location_id = False
 
+    @api.onchange('product_id', 'cantidad')
+    def _onchange_cantidad_stock(self):
+        for record in self:
+            if record.product_id and record.warehouse_location_id and record.cantidad > 0:
+                # Obtener la cantidad disponible en stock para el producto y la ubicación
+                stock_quant = self.env['stock.quant'].search([
+                    ('product_id', '=', record.product_id.id),
+                    ('location_id', '=', record.warehouse_location_id.id),
+                ], limit=1)
+
+                if stock_quant and record.cantidad > stock_quant.quantity:
+                    # Mostrar un mensaje de advertencia en la interfaz
+                    return {
+                        'warning': {
+                            'title': "Stock insuficiente",
+                            'message': f"No hay suficiente stock para el producto {record.product_id.name}. "
+                                       f"Cantidad disponible: {stock_quant.quantity}",
+                        }
+                    }
+                elif not stock_quant:
+                    # Mostrar un mensaje de advertencia si no hay stock
+                    return {
+                        'warning': {
+                            'title': "Stock no encontrado",
+                            'message': f"No se encontró stock para el producto {record.product_id.name} en la ubicación seleccionada.",
+                        }
+                    }
+
     @api.constrains('cantidad', 'product_id', 'warehouse_location_id')
     def _check_cantidad_stock(self):
         for record in self:
