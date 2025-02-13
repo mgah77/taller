@@ -34,6 +34,21 @@ class EntregaEquipos(models.Model):
         return res    
 
     def action_print_entregas(self):
+        # Escribir el número de entrega en el campo reobs de la orden de trabajo
+        if self.ot_id:
+            # Obtener el contenido actual del campo reobs
+            observaciones_actuales = self.ot_id.reobs or ""
+            
+            # Agregar el número de entrega al contenido existente
+            nueva_observacion = f"{observaciones_actuales}<br>Número de entrega: {self.name}"
+            
+            # Actualizar el campo reobs y establecer replace en True
+            self.ot_id.write({
+                'reobs': nueva_observacion,  # Agrega el número de entrega
+                'replace': True  # Establece replace en True
+            })
+
+        # Generar el reporte
         return self.env.ref('taller.action_report_entrega_equipos').report_action(self)
 
 class EntregaEquiposLine(models.Model):
