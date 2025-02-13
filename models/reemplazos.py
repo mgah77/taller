@@ -41,28 +41,12 @@ class EntregaEquiposLine(models.Model):
     product_id = fields.Many2one(
         'product.product', 
         string='Producto', 
+        domain="[('exchange_ok', '=', True), ('qty_available', '>', 0), ('stock_quant_ids.location_id', 'in', [user.property_warehouse_id.lot_stock_id])]",
         required=True
     )
     cantidad = fields.Float(string='Cantidad', required=True, default=1)
     entrega_id = fields.Many2one('entrega.equipos', string='Entrega')
     state = fields.Selection([
-        ('na', ' '),
         ('no_devuelto', 'No Devuelto'),
         ('devuelto', 'Devuelto')
-    ], string='Estado', default='na')
-
-    @api.depends('entrega_id')
-    def _compute_product_domain(self):
-        """ Filtra los productos con stock en la bodega asignada al usuario. """
-        for record in self:
-            warehouse = self.env.user.property_warehouse_id.lot_stock_id
-            domain = [('exchange_ok', '=', True)]
-            if warehouse:
-                product_ids = self.env['stock.quant'].search([
-                    ('location_id', '=', warehouse.id),
-                    ('quantity', '>', 0)
-                ]).mapped('product_id').ids
-                if product_ids:
-                    domain.append(('id', 'in', product_ids))
-
-            record.product_domain = str(domain)
+    ], string='Estado', default='no_devuelto')
