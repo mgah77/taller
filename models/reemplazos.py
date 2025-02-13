@@ -1,4 +1,5 @@
 from odoo import models, fields, api
+from odoo.exceptions import ValidationError
 
 
 class EntregaEquipos(models.Model):
@@ -39,21 +40,19 @@ class EntregaEquiposLine(models.Model):
     _name = 'entrega.equipos.line'
     _description = 'Línea de Entrega de Equipos'
 
-    warehouse_location_id = fields.Many2one(
-        'stock.location',
-        string='Ubicación del almacén',
-        compute='_compute_warehouse_location_id',
-        store=False,  # No es necesario almacenarlo en la base de datos
-    )
-
     product_id = fields.Many2one(
         'product.product',
         string='Producto',
         domain="[('exchange_ok', '=', True), ('qty_available', '>', 0), ('stock_quant_ids.location_id', '=', warehouse_location_id)]",
         required=True,
     )
-
     cantidad = fields.Float(string='Cantidad', required=True, default=1)
+    warehouse_location_id = fields.Many2one(
+        'stock.location',
+        string='Ubicación del almacén',
+        compute='_compute_warehouse_location_id',
+        store=False,
+    )
     entrega_id = fields.Many2one('entrega.equipos', string='Entrega')
     state = fields.Selection([
         ('no_devuelto', 'No Devuelto'),
@@ -84,3 +83,23 @@ class EntregaEquiposLine(models.Model):
                 else:
                     # Si no hay valor de sucursel, dejar el campo vacío
                     record.warehouse_location_id = False
+
+    @api.constrains('cantidad', 'product_id', 'warehouse_location_id')
+    def _check_cantidad_stock(self):
+        for record in self:
+            if record.product_id and record.warehouse_location_id and record.cantidad > 0:
+                # Obtener la cantidad disponible en stock para el producto y la ubicación
+                stock_quant = self.env['stock.quant'].search([
+                    ('product_id', '=', record.product_id.id),
+                    ('location_id', '=', record.warehouse_location_id.id),
+                ], limit=1)
+
+                if stock_quant and record.cantidad > stock_quant.quantity:
+                    raise ValidationError(
+                        f"No hay suficiente stock para el producto {record.product_id.name}. "
+                        f"Cantidad disponible: {stock_quant.quantity}"
+                    )
+                elif not stock_quant:
+                    raise ValidationError(
+                        f"No se encontró stock para el producto {record.product_id.name} en la ubicación seleccionada."
+                    )
