@@ -41,7 +41,7 @@ class EntregaEquiposLine(models.Model):
     product_id = fields.Many2one(
         'product.product', 
         string='Producto', 
-        domain="[('exchange_ok', '=', True), ('qty_available', '>', 0), ('stock_quant_ids.location_id', 'in', [user.property_warehouse_id.lot_stock_id])]",
+        domain="[('exchange_ok', '=', True), ('qty_available', '>', 0), ('stock_quant_ids.location_id', '=', [user.property_warehouse_id.lot_stock_id])]",
         required=True
     )
     cantidad = fields.Float(string='Cantidad', required=True, default=1)
