@@ -1,5 +1,6 @@
 from odoo import models, fields, api
 import logging
+_logger = logging.getLogger(__name__)
 
 
 
@@ -61,10 +62,8 @@ class EntregaEquiposLine(models.Model):
     state = fields.Selection([
         ('no_devuelto', 'No Devuelto'),
         ('devuelto', 'Devuelto')
-    ], string='Estado', default='no_devuelto')
-    
-    _logger = logging.getLogger(__name__)
-    
+    ], string='Estado', default='no_devuelto')    
+
     @api.depends()
     def _compute_warehouse_location_id(self):
         for record in self:
