@@ -46,7 +46,6 @@ class EntregaEquiposLine(models.Model):
         store=False,  # No es necesario almacenarlo en la base de datos
     )
 
-    # Campo product_id con dominio dinámico
     product_id = fields.Many2one(
         'product.product',
         string='Producto',
@@ -59,10 +58,17 @@ class EntregaEquiposLine(models.Model):
     state = fields.Selection([
         ('no_devuelto', 'No Devuelto'),
         ('devuelto', 'Devuelto')
-    ], string='Estado', default='no_devuelto')    
+    ], string='Estado', default='no_devuelto')
 
-    # Método para calcular el location_id
     @api.depends('entrega_id.armador')
     def _compute_warehouse_location_id(self):
         for record in self:
-            record.warehouse_location_id = self.env.user.property_warehouse_id.lot_stock_id.id
+            user = self.env.user
+            warehouse = user.property_warehouse_id
+
+            if warehouse:
+                # Si el usuario tiene una bodega asignada, usamos su ubicación de stock
+                record.warehouse_location_id = warehouse.lot_stock_id.id
+            else:
+                # Si el usuario no tiene bodega, usamos el valor de sucursel como location_id
+                record.warehouse_location_id = int(record.entrega_id.sucursel) if record.entrega_id.sucursel else False
