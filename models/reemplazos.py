@@ -33,29 +33,29 @@ class EntregaEquipos(models.Model):
             res['sucursel'] = str(warehouse_id)
         return res    
 
-def action_print_entregas(self):
-    # Escribir el número de entrega en el campo reobs de la orden de trabajo
-    if self.ot_id:
-        # Obtener el contenido actual del campo reobs
-        observaciones_actuales = self.ot_id.reobs or ""
-        
-        # Crear un enlace HTML al registro de la entrega
-        enlace_entrega = (
-            f'<a href="/web#id={self.id}&model=entrega.equipos&view_type=form">'
-            f'Número de entrega: {self.name}</a>'
-        )
-        
-        # Agregar el enlace al contenido existente
-        nueva_observacion = f"{observaciones_actuales}{enlace_entrega}<br>"
-        
-        # Actualizar el campo reobs y establecer replace en True
-        self.ot_id.write({
-            'reobs': nueva_observacion,  # Agrega el enlace de la entrega
-            'replace': True  # Establece replace en True
-        })
+    def action_print_entregas(self):
+        # Escribir el número de entrega en el campo reobs de la orden de trabajo
+        if self.ot_id:
+            # Obtener el contenido actual del campo reobs
+            observaciones_actuales = self.ot_id.reobs or ""
+            
+            # Crear un enlace HTML al registro de la entrega
+            enlace_entrega = (
+                f'<a href="/web#id={self.id}&model=entrega.equipos&view_type=form">'
+                f'Número de entrega: {self.name}</a>'
+            )
+            
+            # Agregar el enlace al contenido existente
+            nueva_observacion = f"{observaciones_actuales}{enlace_entrega}<br>"
+            
+            # Actualizar el campo reobs y establecer replace en True
+            self.ot_id.write({
+                'reobs': nueva_observacion,  # Agrega el enlace de la entrega
+                'replace': True  # Establece replace en True
+            })
 
-    # Generar el reporte
-    return self.env.ref('taller.action_report_entrega_equipos').report_action(self)
+        # Generar el reporte
+        return self.env.ref('taller.action_report_entrega_equipos').report_action(self)
 
 class EntregaEquiposLine(models.Model):
     _name = 'entrega.equipos.line'
