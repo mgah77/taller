@@ -38,15 +38,31 @@ class EntregaEquiposLine(models.Model):
     _name = 'entrega.equipos.line'
     _description = 'Línea de Entrega de Equipos'
 
-    product_id = fields.Many2one(
-        'product.product', 
-        string='Producto', 
-        domain="[('exchange_ok', '=', True), ('qty_available', '>', 0), ('stock_quant_ids.location_id', '=', user.property_warehouse_id.lot_stock_id.id)]",
-        required=True
+    warehouse_location_id = fields.Many2one(
+        'stock.location',
+        string='Ubicación del almacén',
+        compute='_compute_warehouse_location_id',
+        store=False,  # No es necesario almacenarlo en la base de datos
     )
+
+    # Campo product_id con dominio dinámico
+    product_id = fields.Many2one(
+        'product.product',
+        string='Producto',
+        domain="[('exchange_ok', '=', True), ('qty_available', '>', 0), ('stock_quant_ids.location_id', '=', warehouse_location_id)]",
+        required=True,
+    )
+
     cantidad = fields.Float(string='Cantidad', required=True, default=1)
     entrega_id = fields.Many2one('entrega.equipos', string='Entrega')
     state = fields.Selection([
         ('no_devuelto', 'No Devuelto'),
         ('devuelto', 'Devuelto')
     ], string='Estado', default='no_devuelto')
+
+    
+    # Método para calcular el location_id
+    @api.depends()
+    def _compute_warehouse_location_id(self):
+        for record in self:
+            record.warehouse_location_id = self.env.user.property_warehouse_id.lot_stock_id.id
