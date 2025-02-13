@@ -49,7 +49,7 @@ class EntregaEquiposLine(models.Model):
     product_id = fields.Many2one(
         'product.product',
         string='Producto',
-        domain="[('exchange_ok', '=', True), ('qty_available', '>', 0)]",
+        domain="[('exchange_ok', '=', True), ('qty_available', '>', 0), ('stock_quant_ids.location_id', '=', warehouse_location_id)]",
         required=True,
     )
 
@@ -60,9 +60,13 @@ class EntregaEquiposLine(models.Model):
         ('devuelto', 'Devuelto')
     ], string='Estado', default='no_devuelto')
 
-    
-    # Método para calcular el location_id
     @api.depends()
     def _compute_warehouse_location_id(self):
         for record in self:
-            record.warehouse_location_id = self.env.user.property_warehouse_id.lot_stock_id.id
+            user = self.env.user
+            warehouse = user.property_warehouse_id
+            location = warehouse.lot_stock_id if warehouse else False
+            record.warehouse_location_id = location.id if location else False
+            print("Usuario:", user.name)
+            print("Almacén:", warehouse.name if warehouse else "Ninguno")
+            print("Ubicación:", location.name if location else "Ninguna")
