@@ -16,8 +16,7 @@
                   <field name="state" widget="statusbar" />
             </header>
             <sheet>
-                <group>
-                    <field name="warehouse_location_id" invisible="1"/>
+                <group>                    
                     <field name="name" readonly="1"/>
                     <field name="armador"  options="{'no_create': True}"/>
                     <field name="ot_id"/>
@@ -29,6 +28,7 @@
                     <page string="Equipos Entregados">
                         <field name="line_ids">
                             <tree editable="bottom">
+                                <field name="warehouse_location_id" invisible="1"/>
                                 <field name="product_id"/>
                                 <field name="cantidad"/>
                                 <field name="state" readonly="1" />
