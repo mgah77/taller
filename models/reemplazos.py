@@ -53,9 +53,15 @@ class EntregaEquiposLine(models.Model):
 
     @api.onchange('entrega_id')
     def _onchange_entrega_id(self):
+        """ Filtra los productos con stock en la bodega asignada al usuario. """
         if self.entrega_id:
             warehouse = self.env.user.property_warehouse_id.lot_stock_id
             domain = [('exchange_ok', '=', True)]
             if warehouse:
-                domain.append(('stock_quant_ids.location_id', '=', warehouse.id))
+                product_ids = self.env['stock.quant'].search([
+                    ('location_id', '=', warehouse.id),
+                    ('quantity', '>', 0)
+                ]).mapped('product_id').ids
+                domain.append(('id', 'in', product_ids))
+
             return {'domain': {'product_id': domain}}
