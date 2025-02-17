@@ -75,6 +75,15 @@
         <field name="context">{'sucursel': '3'} </field>
     </record>
 
+    
+    <record id="action_entrega_equipos_o" model="ir.actions.act_window">
+        <field name="name">Entrega de Equipos</field>
+        <field name="res_model">entrega.equipos</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('sucursel','=','3')]</field>
+        <field name="context">{'sucursel': '3'} </field>
+    </record>
+
 
     <menuitem id="menu_entrega_equipos_root" name="Reemplazos" parent="taller_menu" sequence="44"/>
 
@@ -97,7 +106,7 @@
     <menuitem id="menu_entrega_equipos_p"
         name="Gestión de Entregas o"
         parent="menu_entrega_equipos_root"
-        action="action_entrega_equipos_pv"
+        action="action_entrega_equipos_o"
         sequence="45"
         groups="taller.group_operaciones"/>
 </odoo>
