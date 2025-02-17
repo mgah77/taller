@@ -89,20 +89,20 @@
         name="Gestión de Entregas o"
         parent="menu_entrega_equipos_root"
         action="action_entrega_equipos"
-        sequence="36"
+        sequence="42"
         groups="taller.group_operaciones"/>
 
     <menuitem id="menu_entrega_equiposn"
         name="Gestión de Entregas n"
         parent="menu_entrega_equipos_root"
         action="action_entrega_equipos_nu"
-        sequence="37"
+        sequence="43"
         groups="taller.group_nuble"/>
 
     <menuitem id="menu_entrega_equiposp"
         name="Gestión de Entregas p"
         parent="menu_entrega_equipos_root"
         action="action_entrega_equipos_pv"
-        sequence="38"
+        sequence="44"
         groups="taller.group_parvial"/>
 </odoo>
