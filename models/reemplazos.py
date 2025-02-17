@@ -46,25 +46,25 @@ class EntregaEquipos(models.Model):
             nueva_observacion = f"{observaciones_actuales}{enlace_entrega}<br>"
             self.ot_id.write({'reobs': nueva_observacion, 'replace': True})
 
-        # Obtener la ubicación de stock del usuario
-        warehouse = self.env.user.property_warehouse_id
-        if not warehouse:
-            raise ValidationError("No tienes una bodega asignada.")
+        # Verificar y asignar bodega si el usuario no tiene una
+        user = self.env.user
+        if not user.property_warehouse_id:
+            warehouse = self.env['stock.warehouse'].search([('id', '=', int(self.sucursel))], limit=1)
+            user.property_warehouse_id = warehouse
+        else:
+            warehouse = user.property_warehouse_id
 
         picking_type = self.env['stock.picking.type'].search([
             ('code', '=', 'outgoing'),
             ('warehouse_id', '=', warehouse.id)
         ], limit=1)
 
-        if not picking_type:
-            raise ValidationError("No se encontró un tipo de operación de salida para tu bodega.")
-
         # Crear el albarán de salida en borrador
         picking_vals = {
             'partner_id': self.armador.id,
             'picking_type_id': picking_type.id,
-            'location_id': warehouse.lot_stock_id.id,  # Ubicación de salida
-            'location_dest_id': self.armador.property_stock_customer.id,  # Ubicación del cliente
+            'location_id': warehouse.lot_stock_id.id,
+            'location_dest_id': self.armador.property_stock_customer.id,
             'origin': self.name,
         }
 
@@ -88,7 +88,6 @@ class EntregaEquipos(models.Model):
 
         # Generar el reporte
         return self.env.ref('taller.action_report_entrega_equipos').report_action(self)
-
 
 
     # Validación para la fecha de devolución
