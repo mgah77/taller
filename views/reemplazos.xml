@@ -63,7 +63,7 @@
         <field name="res_model">entrega.equipos</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">
-            [('sucursel', '=', 'viewer' or False)]
+            [('sucursel', '=', 'viewer')]
         </field>
     </record>
 
