@@ -49,8 +49,7 @@ class EntregaEquipos(models.Model):
         # Verificar y asignar bodega si el usuario no tiene una
         user = self.env.user
         if not user.property_warehouse_id:
-            warehouse = self.env['stock.warehouse'].search([('id', '=', int(self.sucursel))], limit=1)
-            user.property_warehouse_id = warehouse
+            warehouse = self.env['stock.warehouse'].search([('id', '=', int(self.sucursel))], limit=1)            
         else:
             warehouse = user.property_warehouse_id
 
