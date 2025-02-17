@@ -34,28 +34,61 @@ class EntregaEquipos(models.Model):
         return res    
 
     def action_print_entregas(self):
-        # Escribir el número de entrega en el campo reobs de la orden de trabajo
+        """ Genera el reporte y crea una salida de inventario en borrador. """
+        
+        # Escribir el número de entrega en el campo reobs de la OT
         if self.ot_id:
-            # Obtener el contenido actual del campo reobs
             observaciones_actuales = self.ot_id.reobs or ""
-
-                # Crear un enlace HTML al registro de la entrega
             enlace_entrega = (
                 f'<a href="/web#id={self.id}&model=entrega.equipos&view_type=form">'
                 f'Número de entrega: {self.name}</a>'
             )
-            
-            # Agregar el número de entrega al contenido existente
             nueva_observacion = f"{observaciones_actuales}{enlace_entrega}<br>"
-            
-            # Actualizar el campo reobs y establecer replace en True
             self.ot_id.write({
-                'reobs': nueva_observacion,  # Agrega el número de entrega
-                'replace': True  # Establece replace en True
+                'reobs': nueva_observacion,
+                'replace': True
             })
+
+        # Obtener la ubicación de stock del usuario
+        warehouse = self.env.user.property_warehouse_id
+        if not warehouse:
+            raise ValidationError("No tienes una bodega asignada.")
+
+        picking_type = self.env['stock.picking.type'].search([
+            ('code', '=', 'outgoing'),
+            ('warehouse_id', '=', warehouse.id)
+        ], limit=1)
+
+        if not picking_type:
+            raise ValidationError("No se encontró un tipo de operación de salida para tu bodega.")
+
+        # Crear el albarán de salida en borrador
+        picking_vals = {
+            'partner_id': self.armador.id,
+            'picking_type_id': picking_type.id,
+            'location_id': warehouse.lot_stock_id.id,
+            'location_dest_id': self.armador.property_stock_customer.id,  # Ubicación del cliente
+            'origin': self.name,
+            'move_lines': []
+        }
+
+        move_lines = []
+        for line in self.line_ids:
+            move_lines.append((0, 0, {
+                'name': line.product_id.name,
+                'product_id': line.product_id.id,
+                'product_uom_qty': line.cantidad,
+                'product_uom': line.product_id.uom_id.id,
+                'location_id': warehouse.lot_stock_id.id,
+                'location_dest_id': self.armador.property_stock_customer.id,
+            }))
+
+        picking_vals['move_lines'] = move_lines
+        picking = self.env['stock.picking'].create(picking_vals)
 
         # Generar el reporte
         return self.env.ref('taller.action_report_entrega_equipos').report_action(self)
+
 
     # Validación para la fecha de devolución
     @api.constrains('fecha_entrega', 'fecha_devolucion')
