@@ -17,6 +17,12 @@ class EntregaEquipos(models.Model):
         ('entregado', 'Entregado')
     ], string='Estado', default='borrador')
     sucursel = fields.Selection([('2','Ñuble'),('3','Par Vial')],string='Sucursal',default='2')
+    viewer = fields.Integer('Current User', compute="_compute_viewer")
+
+    def _compute_viewer(self):
+        for record in self:
+            record['viewer']=self.env.user.property_warehouse_id
+            return
 
     @api.model
     def create(self, vals):

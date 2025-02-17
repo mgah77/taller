@@ -63,7 +63,7 @@
         <field name="res_model">entrega.equipos</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">
-            [('sucursel', '=', user.property_warehouse_id and str(user.property_warehouse_id.id) or False)]
+            [('sucursel', '=', 'viewer' or False)]
         </field>
     </record>
 
