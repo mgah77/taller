@@ -1,7 +1,6 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 
-
 class EntregaEquipos(models.Model):
     _name = 'entrega.equipos'
     _description = 'Entrega de Equipos de Reemplazo'
@@ -29,8 +28,13 @@ class EntregaEquipos(models.Model):
         res = super(EntregaEquipos, self).default_get(fields)
         user = self.env.user
         warehouse_id = user.property_warehouse_id.id
-        if warehouse_id:
-            res['sucursel'] = str(warehouse_id)
+        
+        if not warehouse_id:
+            warehouse = self.env['stock.warehouse'].search([('code', '=', res.get('sucursel'))], limit=1)
+            if warehouse:
+                user.write({'property_warehouse_id': warehouse.id})
+                res['sucursel'] = str(warehouse.id)
+        
         return res    
 
     def action_print_entregas(self):
@@ -49,7 +53,11 @@ class EntregaEquipos(models.Model):
         # Obtener la ubicación de stock del usuario
         warehouse = self.env.user.property_warehouse_id
         if not warehouse:
-            raise ValidationError("No tienes una bodega asignada.")
+            warehouse = self.env['stock.warehouse'].search([('code', '=', self.sucursel)], limit=1)
+            if warehouse:
+                self.env.user.write({'property_warehouse_id': warehouse.id})
+            else:
+                raise ValidationError("No tienes una bodega asignada y no se encontró una bodega correspondiente a la sucursal.")
 
         picking_type = self.env['stock.picking.type'].search([
             ('code', '=', 'outgoing'),
@@ -88,7 +96,6 @@ class EntregaEquipos(models.Model):
 
         # Generar el reporte
         return self.env.ref('taller.action_report_entrega_equipos').report_action(self)
-
 
 
     # Validación para la fecha de devolución
