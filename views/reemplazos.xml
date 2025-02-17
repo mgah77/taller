@@ -58,7 +58,7 @@
         </field>
     </record>
 
-    <record id="action_entrega_equipos_pv" model="ir.actions.act_window">
+    <record id="action_entrega_equipos" model="ir.actions.act_window">
         <field name="name">Entrega de Equipos</field>
         <field name="res_model">entrega.equipos</field>
         <field name="view_mode">tree,form</field>
