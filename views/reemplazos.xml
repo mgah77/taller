@@ -75,12 +75,12 @@
         <field name="context">{'sucursel': '3'} </field>
     </record>
 
-
-    <record id="action_entrega_equipos_o" model="ir.actions.act_window">
-        <field name="name">Entrega de Equipos</field>
-        <field name="res_model">entrega.equipos</field>
-        <field name="view_mode">tree,form</field>
-    </record>
+<record id="action_entrega_equipos_o" model="ir.actions.act_window">
+    <field name="name">Entrega de Equipos</field>
+    <field name="res_model">entrega.equipos</field>
+    <field name="view_mode">tree,form</field>
+    <field name="groups_id" eval="[(6, 0, [ref('taller.group_operaciones')])]"/>
+</record>
 
     <menuitem id="menu_entrega_equipos_root" name="Reemplazos" parent="taller_menu" sequence="44"/>
 
