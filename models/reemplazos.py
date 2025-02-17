@@ -65,6 +65,7 @@ class EntregaEquipos(models.Model):
             'location_id': warehouse.lot_stock_id.id,
             'location_dest_id': self.armador.property_stock_customer.id,
             'origin': self.name,
+            'state' : 'assigned',
         }
 
         picking = self.env['stock.picking'].create(picking_vals)
