@@ -88,14 +88,14 @@
 
 
     <menuitem id="menu_entrega_equipos_n"
-        name="Gestión de Entregas n"
+        name="Gestión de Entregas"
         parent="menu_entrega_equipos_root"
         action="action_entrega_equipos_nu"
         sequence="43"
         groups="taller.group_nuble"/>
 
     <menuitem id="menu_entrega_equipos_p"
-        name="Gestión de Entregas p"
+        name="Gestión de Entregas"
         parent="menu_entrega_equipos_root"
         action="action_entrega_equipos_pv"
         sequence="44"
@@ -103,7 +103,7 @@
 
     
     <menuitem id="menu_entrega_equipos_p"
-        name="Gestión de Entregas o"
+        name="Gestión de Entregas"
         parent="menu_entrega_equipos_root"
         action="action_entrega_equipos_o"
         sequence="45"
