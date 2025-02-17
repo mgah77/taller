@@ -65,7 +65,7 @@ class EntregaEquipos(models.Model):
             'location_id': warehouse.lot_stock_id.id,
             'location_dest_id': self.armador.property_stock_customer.id,
             'origin': self.name,
-            'state' : 'assigned',
+            'state': 'draft',  # Estado inicial
         }
 
         picking = self.env['stock.picking'].create(picking_vals)
@@ -85,6 +85,12 @@ class EntregaEquipos(models.Model):
             move_lines.append((0, 0, move_vals))
 
         picking.write({'move_ids_without_package': move_lines})
+
+        # Confirmar los movimientos de stock
+        picking.action_confirm()
+
+        # Reservar el stock (pasar a estado 'assigned')
+        picking.action_assign()
 
         # Generar el reporte
         return self.env.ref('taller.action_report_entrega_equipos').report_action(self)
