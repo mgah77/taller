@@ -92,4 +92,12 @@
         action="action_entrega_equipos_pv"
         sequence="44"
         groups="taller.group_parvial"/>
+
+    
+    <menuitem id="menu_entrega_equipos_p"
+        name="Gestión de Entregas o"
+        parent="menu_entrega_equipos_root"
+        action="action_entrega_equipos_pv"
+        sequence="45"
+        groups="taller.group_operaciones"/>
 </odoo>
