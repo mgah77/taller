@@ -58,12 +58,28 @@
         </field>
     </record>
 
-    <record id="action_entrega_equipos" model="ir.actions.act_window">
+
+    <record id="action_entrega_equipos_nu" model="ir.actions.act_window">
+        <field name="name">Entrega de Equipos</field>
+        <field name="res_model">entrega.equipos</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('sucursel','=','2')]</field>
+        <field name="context">{'sucursel': '2'} </field>
+    </record>
+    
+    <record id="action_entrega_equipos_pv" model="ir.actions.act_window">
         <field name="name">Entrega de Equipos</field>
         <field name="res_model">entrega.equipos</field>
         <field name="view_mode">tree,form</field>
         <field name="domain">[('sucursel','=','3')]</field>
         <field name="context">{'sucursel': '3'} </field>
+    </record>
+
+
+    <record id="action_entrega_equipos" model="ir.actions.act_window">
+        <field name="name">Entrega de Equipos</field>
+        <field name="res_model">entrega.equipos</field>
+        <field name="view_mode">tree,form</field>
     </record>
 
     <menuitem id="menu_entrega_equipos_root" name="Reemplazos" parent="taller_menu" sequence="44"/>
@@ -72,5 +88,20 @@
         name="Gestión de Entregas"
         parent="menu_entrega_equipos_root"
         action="action_entrega_equipos"
-        sequence="20"/>
+        sequence="20"
+        groups="taller.group_operaciones"/>
+
+    <menuitem id="menu_entrega_equipos"
+        name="Gestión de Entregas"
+        parent="menu_entrega_equipos_root"
+        action="action_entrega_equipos_nu"
+        sequence="21"
+        groups="taller.group_nuble"/>
+
+    <menuitem id="menu_entrega_equipos"
+        name="Gestión de Entregas"
+        parent="menu_entrega_equipos_root"
+        action="action_entrega_equipos_pv"
+        sequence="22"
+        groups="taller.group_parvial"/>
 </odoo>
