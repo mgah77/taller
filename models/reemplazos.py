@@ -66,25 +66,29 @@ class EntregaEquipos(models.Model):
             'location_id': warehouse.lot_stock_id.id,  # Ubicación de salida
             'location_dest_id': self.armador.property_stock_customer.id,  # Ubicación del cliente
             'origin': self.name,
-            'move_lines': []
         }
 
+        picking = self.env['stock.picking'].create(picking_vals)
+
+        # Crear movimientos de stock en el albarán
         move_lines = []
         for line in self.line_ids:
-            move_lines.append((0, 0, {
-                'name': line.product_id.name,
+            move_vals = {
+                'name': line.product_id.display_name,
                 'product_id': line.product_id.id,
                 'product_uom_qty': line.cantidad,
                 'product_uom': line.product_id.uom_id.id,
                 'location_id': warehouse.lot_stock_id.id,
                 'location_dest_id': self.armador.property_stock_customer.id,
-            }))
+                'picking_id': picking.id,
+            }
+            move_lines.append((0, 0, move_vals))
 
-        picking_vals['move_lines'] = move_lines
-        picking = self.env['stock.picking'].create(picking_vals)
+        picking.write({'move_ids_without_package': move_lines})
 
         # Generar el reporte
         return self.env.ref('taller.action_report_entrega_equipos').report_action(self)
+
 
 
     # Validación para la fecha de devolución
