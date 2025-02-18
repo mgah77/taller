@@ -119,7 +119,12 @@ class EntregaEquiposLine(models.Model):
     product_id = fields.Many2one(
         'product.product',
         string='Producto',
-        domain="[('exchange_ok', '=', True), ('qty_available', '>', 0), ('stock_quant_ids.location_id', '=', warehouse_location_id)]",
+        domain="""[
+            ('exchange_ok', '=', True),
+            ('qty_available', '>', 0),
+            ('stock_quant_ids.location_id', '=', warehouse_location_id),
+            ('id', 'not in', reserved_product_ids)
+        ]""",
         required=True,
     )
     cantidad = fields.Float(string='Cantidad', required=True, default=1)
@@ -134,6 +139,12 @@ class EntregaEquiposLine(models.Model):
         ('no_devuelto', 'No Devuelto'),
         ('devuelto', 'Devuelto')
     ], string='Estado', default='no_devuelto')
+    reserved_product_ids = fields.Many2many(
+        'product.product',
+        string='Productos Reservados',
+        compute='_compute_reserved_product_ids',
+        store=False,
+    )
 
     @api.depends('entrega_id.armador')
     def _compute_warehouse_location_id(self):
@@ -142,36 +153,41 @@ class EntregaEquiposLine(models.Model):
             warehouse = user.property_warehouse_id
 
             if warehouse:
-                # Si el usuario tiene una bodega asignada, usamos su ubicación de stock
                 record.warehouse_location_id = warehouse.lot_stock_id.id
             else:
-                # Si el usuario no tiene bodega, usamos el valor de sucursel para encontrar la bodega correspondiente
-                sucursel_value = record.entrega_id.sucursel  # Obtener el valor de sucursel
+                sucursel_value = record.entrega_id.sucursel
                 if sucursel_value:
-                    # Buscar la bodega correspondiente al valor de sucursel
                     warehouse = self.env['stock.warehouse'].search([('id', '=', int(sucursel_value))], limit=1)
                     if warehouse:
-                        # Usar la ubicación de stock de la bodega encontrada
                         record.warehouse_location_id = warehouse.lot_stock_id.id
                     else:
-                        # Si no se encuentra la bodega, dejar el campo vacío
                         record.warehouse_location_id = False
                 else:
-                    # Si no hay valor de sucursel, dejar el campo vacío
                     record.warehouse_location_id = False
+
+    @api.depends('warehouse_location_id')
+    def _compute_reserved_product_ids(self):
+        for record in self:
+            if record.warehouse_location_id:
+                reserved_moves = self.env['stock.move'].search([
+                    ('state', 'in', ['assigned', 'partially_available']),
+                    ('location_id', '=', record.warehouse_location_id.id),
+                    ('product_id.exchange_ok', '=', True),
+                ])
+                record.reserved_product_ids = reserved_moves.mapped('product_id').ids
+            else:
+                record.reserved_product_ids = []
 
     @api.onchange('product_id', 'cantidad')
     def _onchange_cantidad_stock(self):
         for record in self:
             if record.product_id and record.warehouse_location_id and record.cantidad > 0:
-                # Obtener la cantidad disponible en stock para el producto y la ubicación
                 stock_quant = self.env['stock.quant'].search([
                     ('product_id', '=', record.product_id.id),
                     ('location_id', '=', record.warehouse_location_id.id),
                 ], limit=1)
 
                 if stock_quant and record.cantidad > stock_quant.quantity:
-                    # Mostrar un mensaje de advertencia en la interfaz
                     return {
                         'warning': {
                             'title': "Stock insuficiente",
@@ -180,7 +196,6 @@ class EntregaEquiposLine(models.Model):
                         }
                     }
                 elif not stock_quant:
-                    # Mostrar un mensaje de advertencia si no hay stock
                     return {
                         'warning': {
                             'title': "Stock no encontrado",
@@ -192,7 +207,6 @@ class EntregaEquiposLine(models.Model):
     def _check_cantidad_stock(self):
         for record in self:
             if record.product_id and record.warehouse_location_id and record.cantidad > 0:
-                # Obtener la cantidad disponible en stock para el producto y la ubicación
                 stock_quant = self.env['stock.quant'].search([
                     ('product_id', '=', record.product_id.id),
                     ('location_id', '=', record.warehouse_location_id.id),
