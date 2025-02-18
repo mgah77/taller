@@ -69,10 +69,8 @@
                         </thead>
                         <tbody>
                             <tr t-foreach="doc.line_ids" t-as="line">
-                                <td><t t-esc="line.product_id.name"/></td>
-                                <div style="text-align:right; padding-right:20px">
-                                <td><t t-esc="line.cantidad"/></td>
-                                </div>
+                                <td><t t-esc="line.product_id.name"/></td>                                
+                                <td style="text-align:right; padding-right:20px"><t t-esc="line.cantidad"/></td>
                             </tr>
                         </tbody>
                     </table>
