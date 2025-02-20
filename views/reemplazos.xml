@@ -17,6 +17,7 @@
                 </header>
                 <sheet>
                     <group>
+                        <field name="responsable" readonly="1"/>
                         <field name="name" readonly="1"/>
                         <field name="armador" options="{'no_create': True}"/>
                         <field name="ot_id"/>
