@@ -14,7 +14,8 @@ class EntregaEquipos(models.Model):
     line_ids = fields.One2many('entrega.equipos.line', 'entrega_id', string='Equipos Entregados')
     state = fields.Selection([
         ('borrador', 'Borrador'),
-        ('entregado', 'Entregado')
+        ('entregado', 'Entregado'),
+        ('devuelto', 'Devuelto')
     ], string='Estado', default='borrador')
     sucursel = fields.Selection([('2', 'Ñuble'), ('3', 'Par Vial')], string='Sucursal', default='2')
     sucursel_readonly = fields.Selection([('2', 'Ñuble'), ('3', 'Par Vial')], string='Sucursal (Readonly)', compute="_compute_sucursel_readonly", store=True)
@@ -58,7 +59,8 @@ class EntregaEquipos(models.Model):
             )
             nueva_observacion = f"{observaciones_actuales}{enlace_entrega}<br>"
             self.ot_id.write({'reobs': nueva_observacion, 'replace': True})
-
+        
+        self.state = 'entregado'
         # Verificar y asignar bodega si el usuario no tiene una
         user = self.env.user
         if not user.property_warehouse_id:
