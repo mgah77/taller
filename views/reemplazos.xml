@@ -23,7 +23,7 @@
                         <field name="ot_id"/>
                         <field name="fecha_entrega"/>
                         <field name="fecha_devolucion"/>
-                        <field name="sucursel" groups="taller.group_operaciones"/>
+                        <field name="sucursel" readonly="1"/>
                     </group>
                     <notebook>
                         <page string="Equipos Entregados">
