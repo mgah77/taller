@@ -16,7 +16,8 @@
                     <field name="state" widget="statusbar" />
                 </header>
                 <sheet>
-                    <group>
+                    <group>                    
+                        <field name="sucursel_readonly" invisible="1"/>
                         <field name="responsable" readonly="1"/>
                         <field name="name" readonly="1"/>
                         <field name="armador" options="{'no_create': True}"/>
