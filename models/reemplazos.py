@@ -18,7 +18,7 @@ class EntregaEquipos(models.Model):
     ], string='Estado', default='borrador')
     sucursel = fields.Selection([('2','Ñuble'),('3','Par Vial')],string='Sucursal',default='2')
     viewer = fields.Integer('Current User', compute="_compute_viewer")
-    responsable = fields.Many2one('res.users', string='Responsable', default=lambda self: self.env.user, readonly=True, default="Sala de Ventas")
+    responsable = fields.Many2one('res.users', string='Responsable', default=lambda self: self.env.user, readonly=True)
 
     def _compute_viewer(self):
         for record in self:
