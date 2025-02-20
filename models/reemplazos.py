@@ -123,8 +123,7 @@ class EntregaEquiposLine(models.Model):
         domain="""[
             ('exchange_ok', '=', True),
             ('qty_available', '>', 0),
-            ('stock_quant_ids.location_id', '=', warehouse_location_id),
-            ('id', 'not in', reserved_product_ids)
+            ('stock_quant_ids.location_id', '=', warehouse_location_id),            
         ]""",
         required=True,
     )
@@ -165,19 +164,6 @@ class EntregaEquiposLine(models.Model):
                         record.warehouse_location_id = False
                 else:
                     record.warehouse_location_id = False
-
-    @api.depends('warehouse_location_id')
-    def _compute_reserved_product_ids(self):
-        for record in self:
-            if record.warehouse_location_id:
-                reserved_moves = self.env['stock.move'].search([
-                    ('state', 'in', ['assigned', 'partially_available']),
-                    ('location_id', '=', record.warehouse_location_id.id),
-                    ('product_id.exchange_ok', '=', True),
-                ])
-                record.reserved_product_ids = reserved_moves.mapped('product_id').ids
-            else:
-                record.reserved_product_ids = []
 
     @api.onchange('product_id', 'cantidad')
     def _onchange_cantidad_stock(self):
