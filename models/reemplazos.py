@@ -139,12 +139,7 @@ class EntregaEquiposLine(models.Model):
         ('no_devuelto', 'No Devuelto'),
         ('devuelto', 'Devuelto')
     ], string='Estado', default='no_devuelto')
-    reserved_product_ids = fields.Many2many(
-        'product.product',
-        string='Productos Reservados',
-        compute='_compute_reserved_product_ids',
-        store=False,
-    )
+    
 
     @api.depends('entrega_id.armador')
     def _compute_warehouse_location_id(self):
