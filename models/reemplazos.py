@@ -8,7 +8,7 @@ class EntregaEquipos(models.Model):
 
     name = fields.Char(string='Número de Entrega', required=True, copy=False, readonly=True, default='Nuevo')
     armador = fields.Many2one('res.partner', string='Armador',domain="[('type', '!=', 'private'), ('is_company', '=', True), ('type','=','contact'), ('is_customer','=',True)]",required=True)
-    ot_id = fields.Many2one('taller.ot', string='Orden de Trabajo', domain="[('armador', '=', armador), ('sucursel', '=', sucursel)]", required=True)
+    ot_id = fields.Many2one('taller.ot', string='Orden de Trabajo', domain="[('armador', '=', armador), ('sucursel', '=', sucursel_readonly)]", required=True)
     fecha_entrega = fields.Date(string='Fecha de Entrega', required=True)
     fecha_devolucion = fields.Date(string='Fecha de Devolución', required=True)
     line_ids = fields.One2many('entrega.equipos.line', 'entrega_id', string='Equipos Entregados')
@@ -16,7 +16,8 @@ class EntregaEquipos(models.Model):
         ('borrador', 'Borrador'),
         ('entregado', 'Entregado')
     ], string='Estado', default='borrador')
-    sucursel = fields.Selection([('2', 'Ñuble'), ('3', 'Par Vial')], string='Sucursal', default='2', readonly=False )
+    sucursel = fields.Selection([('2', 'Ñuble'), ('3', 'Par Vial')], string='Sucursal', default='2')
+    sucursel_readonly = fields.Selection([('2', 'Ñuble'), ('3', 'Par Vial')], string='Sucursal (Readonly)', compute="_compute_sucursel_readonly", store=True)
     viewer = fields.Integer('Current User', compute="_compute_viewer")
     responsable = fields.Many2one('res.users', string='Responsable', default=lambda self: self.env.user, readonly=True)
 
@@ -24,6 +25,11 @@ class EntregaEquipos(models.Model):
         for record in self:
             record['viewer']=self.env.user.property_warehouse_id
             return
+        
+    @api.depends('sucursel')
+    def _compute_sucursel_readonly(self):
+        for record in self:
+            record.sucursel_readonly = record.sucursel
 
     @api.model
     def create(self, vals):
