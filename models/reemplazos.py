@@ -7,7 +7,7 @@ class EntregaEquipos(models.Model):
     _description = 'Entrega de Equipos de Reemplazo'
 
     name = fields.Char(string='Número de Entrega', required=True, copy=False, readonly=True, default='Nuevo')
-    armador = fields.Many2one('res.partner', string='Armador',domain="[('type', '!=', 'private'), ('is_company', '=', True), ('type','=','contact'), ('is_customer','=',True)]",required=True)
+    armador = fields.Many2one('res.partner', string='Armador', domain="[('type', '!=', 'private'), ('is_company', '=', True), ('type','=','contact'), ('is_customer','=',True)]", required=True)
     ot_id = fields.Many2one('taller.ot', string='Orden de Trabajo', domain="[('armador', '=', armador), ('sucursel', '=', sucursel_readonly)]", required=True)
     fecha_entrega = fields.Date(string='Fecha de Entrega', required=True)
     fecha_devolucion = fields.Date(string='Fecha de Devolución', required=True)
@@ -24,13 +24,18 @@ class EntregaEquipos(models.Model):
 
     def _compute_viewer(self):
         for record in self:
-            record['viewer']=self.env.user.property_warehouse_id
+            record['viewer'] = self.env.user.property_warehouse_id
             return
-        
-    @api.depends('sucursel')
+
+    @api.depends('sucursel', 'responsable.property_warehouse_id')
     def _compute_sucursel_readonly(self):
         for record in self:
-            record.sucursel_readonly = record.sucursel
+            # Si el usuario tiene una bodega asignada, usamos el valor de la bodega
+            if record.responsable.property_warehouse_id:
+                record.sucursel_readonly = str(record.responsable.property_warehouse_id.id)
+            else:
+                # Si no tiene bodega asignada, usamos el valor de sucursel
+                record.sucursel_readonly = record.sucursel
 
     @api.model
     def create(self, vals):
@@ -45,7 +50,7 @@ class EntregaEquipos(models.Model):
         warehouse_id = user.property_warehouse_id.id
         if warehouse_id:
             res['sucursel'] = str(warehouse_id)
-        return res    
+        return res
 
     def action_print_entregas(self):
         """Genera el reporte y crea una salida de inventario en borrador."""
@@ -109,7 +114,6 @@ class EntregaEquipos(models.Model):
 
         # Generar el reporte
         return self.env.ref('taller.action_report_entrega_equipos').report_action(self)
-
 
     # Validación para la fecha de devolución
     @api.constrains('fecha_entrega', 'fecha_devolucion')
