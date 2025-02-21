@@ -8,7 +8,7 @@ class EntregaEquipos(models.Model):
 
     name = fields.Char(string='Número de Entrega', required=True, copy=False, readonly=True, default='Nuevo')
     armador = fields.Many2one('res.partner', string='Armador',domain="[('type', '!=', 'private'), ('is_company', '=', True), ('type','=','contact'), ('is_customer','=',True)]",required=True)
-    ot_id = fields.Many2one('taller.ot', string='Orden de Trabajo', domain="[('armador', '=', armador), ('sucursel', '=', viewer)]", required=True)
+    ot_id = fields.Many2one('taller.ot', string='Orden de Trabajo', domain="[('armador', '=', armador), ('sucursel', '=', sucursel_readonly)]", required=True)
     fecha_entrega = fields.Date(string='Fecha de Entrega', required=True)
     fecha_devolucion = fields.Date(string='Fecha de Devolución', required=True)
     line_ids = fields.One2many('entrega.equipos.line', 'entrega_id', string='Equipos Entregados')
@@ -24,11 +24,7 @@ class EntregaEquipos(models.Model):
 
     def _compute_viewer(self):
         for record in self:
-            temp = self.env.user.property_warehouse_id
-            if temp == 0:
-                record['viewer']= str(sucursel)
-            else:
-                record['viewer']=self.env.user.property_warehouse_id
+            record['viewer']=self.env.user.property_warehouse_id
             return
         
     @api.depends('sucursel')
