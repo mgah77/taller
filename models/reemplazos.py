@@ -24,7 +24,11 @@ class EntregaEquipos(models.Model):
 
     def _compute_viewer(self):
         for record in self:
-            record['viewer']=self.env.user.property_warehouse_id
+            temp = self.env.user.property_warehouse_id
+            if temp == 0:
+                record['viewer']= str(sucursel)
+            else:
+                record['viewer']=self.env.user.property_warehouse_id
             return
         
     @api.depends('sucursel')
