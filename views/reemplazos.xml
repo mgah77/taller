@@ -53,6 +53,7 @@
         <field name="arch" type="xml">
             <tree string="Entrega de Equipos">
                 <field name="name"/>
+                <field name="sucursel" groups="taller.group_operaciones"/>
                 <field name="armador"/>
                 <field name="ot_id"/>
                 <field name="fecha_entrega"/>
