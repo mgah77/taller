@@ -12,6 +12,7 @@ class EntregaEquipos(models.Model):
     fecha_entrega = fields.Date(string='Fecha de Entrega', required=True)
     fecha_devolucion = fields.Date(string='Fecha de Devolución', required=True)
     line_ids = fields.One2many('entrega.equipos.line', 'entrega_id', string='Equipos Entregados')
+    return_ids = fields.One2many('return.equipos.line', 'return_id', string='Equipos Devueltos')
     state = fields.Selection([
         ('borrador', 'Borrador'),
         ('entregado', 'Entregado'),
@@ -220,3 +221,19 @@ class EntregaEquiposLine(models.Model):
                     raise ValidationError(
                         f"No se encontró stock para el producto {record.product_id.name} en la ubicación seleccionada."
                     )
+
+class ReturnEquiposLine(models.Model):
+    _name = 'return.equipos.line'
+    _description = 'Devolucion de Equipos'
+
+    product_id = fields.Many2one(
+        'product.product',
+        string='Producto',
+        domain="""[
+            ('exchange_ok', '=', True),      
+        ]""",
+        required=True,
+    )
+    cantidad = fields.Float(string='Cantidad', default=0)
+    fecha = fields.Date(string='Fecha de Entrega' default=fields.Date.context_today)
+    return_id = fields.Many2one('entrega.equipos', string='Retorno')

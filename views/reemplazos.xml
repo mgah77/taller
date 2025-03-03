@@ -46,7 +46,14 @@
                             </field>
                         </page>
                         <page string="Equipos Devueltos">
-                        
+                            <field name="return_ids">
+                                <tree>                                    
+                                    <field name="product_id" readonly="1"/>
+                                    <field name="cantidad" readonly="1"/>
+                                    <field name="fecha" readonly="1"/>
+                                </tree>
+
+                            </field>
                         </page>
                     </notebook>
                     <div class="oe_button_box oe_form_buttons" style="display: flex; justify-content: space-between;">
