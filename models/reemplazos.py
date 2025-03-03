@@ -228,11 +228,11 @@ class ReturnEquiposLine(models.Model):
     product_id = fields.Many2one(
         'product.product',
         string='Producto',
-        domain="""[
+        domain=[
             ('exchange_ok', '=', True),      
-        ]""",
+        ],
         required=True,
     )
     cantidad = fields.Float(string='Cantidad', default=0)
-    fecha = fields.Date(string='Fecha de Entrega' default=fields.Date.context_today)
+    fecha = fields.Date(string='Fecha de Entrega', default=fields.Date.context_today)
     return_id = fields.Many2one('entrega.equipos', string='Retorno')
