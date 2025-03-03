@@ -28,7 +28,7 @@
                             <field name="ot_id" attrs="{'readonly': ['|', ('state', '=', 'entregado'), ('state', '=', 'devuelto')]}"/>
                             <field name="fecha_entrega" attrs="{'readonly': ['|', ('state', '=', 'entregado'), ('state', '=', 'devuelto')]}"/>
                             <field name="fecha_devolucion"/>
-                            <field name="sucursel" groups="taller.group_operaciones"/>
+                            <field name="sucursel" groups="taller.group_operaciones" attrs="{'readonly': ['|', ('state', '=', 'entregado'), ('state', '=', 'devuelto')]}"/>
                         </group>
                         <group>
                             <field name="observaciones" placeholder="Ingrese sus observaciones aquí" />
