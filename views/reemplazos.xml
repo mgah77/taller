@@ -38,9 +38,13 @@
                                 </tree>
                             </field>
                         </page>
+                        <page string="Equipos Devueltos">
+                        
+                        </page>
                     </notebook>
                     <div class="oe_button_box oe_form_buttons" style="display: flex; justify-content: space-between;">
-                        <button name="action_print_entregas" string="Imprimir Documento" type="object" class="btn-primary"/>
+                        <button name="action_print_entregas" string="Imprimir Documento" type="object" class="btn-primary" attrs="{'invisible': ['|', ('state', '=', 'entregado'), ('state', '=', 'devuelto')]}"/>
+                        <button name="action_print_entregas" string="Imprimir Documento" type="object" class="btn-secondary" attrs="{'invisible': ['|', ('state', '=', 'borrador'), ('state', '=', 'devuelto')]}"/>
                     </div>
                 </sheet>
             </form>
