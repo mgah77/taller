@@ -21,6 +21,7 @@ class EntregaEquipos(models.Model):
     sucursel_readonly = fields.Selection([('2', 'Ñuble'), ('3', 'Par Vial')], string='Sucursal (Readonly)', compute="_compute_sucursel_readonly", store=True)
     viewer = fields.Integer('Current User', compute="_compute_viewer")
     responsable = fields.Many2one('res.users', string='Responsable', default=lambda self: self.env.user, readonly=True)
+    observaciones = fields.Html('Observaciones')
 
     def _compute_viewer(self):
         for record in self:

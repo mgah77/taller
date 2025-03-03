@@ -16,16 +16,22 @@
                     <field name="state" widget="statusbar" />
                 </header>
                 <sheet>
-                    <group>                    
-                        <field name="sucursel_readonly" invisible="1"/>
-                        <field name="viewer" invisible="1"/>
-                        <field name="responsable" readonly="1"/>
-                        <field name="name" readonly="1"/>
-                        <field name="armador" options="{'no_create': True}"/>
-                        <field name="ot_id"/>
-                        <field name="fecha_entrega"/>
-                        <field name="fecha_devolucion"/>
-                        <field name="sucursel" groups="taller.group_operaciones"/>
+                    <group>
+                                         
+                            <field name="sucursel_readonly" invisible="1"/>
+                            <field name="viewer" invisible="1"/>
+                            <field name="responsable" readonly="1"/>
+                            <field name="name" readonly="1"/>
+                            <field name="armador" options="{'no_create': True}"/>
+                        <group>    
+                            <field name="ot_id"/>
+                            <field name="fecha_entrega"/>
+                            <field name="fecha_devolucion"/>
+                            <field name="sucursel" groups="taller.group_operaciones"/>
+                        </group>
+                        <group>
+                            <field name="observaciones" placeholder="Ingrese sus observaciones aquí" />
+                        </group>
                     </group>
                     <notebook>
                         <page string="Equipos Entregados">
