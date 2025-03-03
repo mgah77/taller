@@ -51,6 +51,7 @@
                                     <field name="product_id" readonly="1" />
                                     <field name="cantidad" readonly="1" />
                                     <field name="fecha" readonly="1" />
+                                    <field name="recepciona" readonly="1" />
                                 </tree>
                             </field>
                         </page>

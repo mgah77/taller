@@ -237,3 +237,4 @@ class ReturnEquiposLine(models.Model):
     cantidad = fields.Float(string='Cantidad', default=0)
     fecha = fields.Date(string='Fecha de Entrega', default=fields.Date.context_today)
     return_id = fields.Many2one('entrega.equipos', string='Retorno')
+    recepciona = fields.Many2one('res.users', string='Recepciona', default=lambda self: self.env.user, readonly=True)
