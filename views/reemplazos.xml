@@ -11,7 +11,7 @@
         <field name="name">entrega.equipos.form</field>
         <field name="model">entrega.equipos</field>
         <field name="arch" type="xml">
-            <form string="Entrega de Equipos">
+            <form string="Entrega de Equipos" create="false" delete="false">
                 <header>
                     <field name="state" widget="statusbar" />
                 </header>
