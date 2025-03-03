@@ -125,6 +125,9 @@ class EntregaEquipos(models.Model):
                         "La fecha de devolución no puede ser menor que la fecha de entrega."
                     )
 
+    def action_devolucion(self):
+        return
+
 class EntregaEquiposLine(models.Model):
     _name = 'entrega.equipos.line'
     _description = 'Línea de Entrega de Equipos'
@@ -149,6 +152,7 @@ class EntregaEquiposLine(models.Model):
     entrega_id = fields.Many2one('entrega.equipos', string='Entrega')
     state = fields.Selection([
         ('no_devuelto', 'No Devuelto'),
+        ('parcial', 'Parcial'),
         ('devuelto', 'Devuelto')
     ], string='Estado', default='no_devuelto')
     
