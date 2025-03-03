@@ -11,7 +11,7 @@
             <field name="name">Orden de Trabajo</field>
             <field name="model">taller.ot</field>
             <field name="arch" type="xml">
-                <form string="Orden de trabajo" delete="false">
+                <form string="Orden de trabajo" delete="false" create="false">
                 <header>
                   <field name="state" widget="statusbar" />
                 </header>
