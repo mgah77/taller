@@ -21,12 +21,12 @@
                             <field name="viewer" invisible="1"/>
                             <field name="responsable" readonly="1"/>
                             <field name="name" readonly="1"/>
-                            <field name="armador" options="{'no_create': True}" attrs="{'readonly': [('state', '=', 'entregado')]}"/>
+                            <field name="armador" options="{'no_create': True}" attrs="{'readonly': ['|', ('state', '=', 'entregado'), ('state', '=', 'devuelto')]}"/>
                     </group>
                     <group>    
                         <group>    
-                            <field name="ot_id"/>
-                            <field name="fecha_entrega"/>
+                            <field name="ot_id" attrs="{'readonly': ['|', ('state', '=', 'entregado'), ('state', '=', 'devuelto')]}"/>
+                            <field name="fecha_entrega" attrs="{'readonly': ['|', ('state', '=', 'entregado'), ('state', '=', 'devuelto')]}"/>
                             <field name="fecha_devolucion"/>
                             <field name="sucursel" groups="taller.group_operaciones"/>
                         </group>
