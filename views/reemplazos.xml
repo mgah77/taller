@@ -16,13 +16,14 @@
                     <field name="state" widget="statusbar" />
                 </header>
                 <sheet>
-                    <group>
-                                         
+                    <group>                                         
                             <field name="sucursel_readonly" invisible="1"/>
                             <field name="viewer" invisible="1"/>
                             <field name="responsable" readonly="1"/>
                             <field name="name" readonly="1"/>
                             <field name="armador" options="{'no_create': True}"/>
+                    </group>
+                    <group>    
                         <group>    
                             <field name="ot_id"/>
                             <field name="fecha_entrega"/>
