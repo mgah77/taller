@@ -12,6 +12,7 @@ class EntregaEquipos(models.Model):
     fecha_entrega = fields.Date(string='Fecha de Entrega', required=True)
     fecha_devolucion = fields.Date(string='Fecha de Devolución', required=True)
     line_ids = fields.One2many('entrega.equipos.line', 'entrega_id', string='Equipos Entregados')
+    return_ids = fields.One2many('return.equipos.line', 'return_id', string='Equipos Devueltos')
     state = fields.Selection([
         ('borrador', 'Borrador'),
         ('entregado', 'Entregado'),
