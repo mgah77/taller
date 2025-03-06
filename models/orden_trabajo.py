@@ -116,6 +116,7 @@ class Taller_ot_line(models.Model):
     nave = fields.Char('Nave', compute="_compute_nave")
     depto = fields.Many2one('taller.depto.rel', string='Departamento', related='item.depto', store=True)
     armador = fields.Many2one('res.partner', string='Armador', related='ot_line_id.armador')
+    nave_line = fields.Char('Nave',default='MN ',compute = "_compute_nave", store=True)
     state = fields.Selection([
         ('borr','Borrador'),
         ('tall','En Taller'),        
@@ -142,6 +143,11 @@ class Taller_ot_line(models.Model):
     def _compute_branch1(self):
         for line in self:
             line.branch_s = line.ot_line_id.sucursel
+        return
+
+    def _compute_nave(self):
+        for line in self:
+            line.nave_line = line.ot_line_id.nave
         return
 
     def _compute_branch(self):
