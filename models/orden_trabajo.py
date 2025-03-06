@@ -116,7 +116,7 @@ class Taller_ot_line(models.Model):
     nave = fields.Char('Nave', compute="_compute_nave")
     depto = fields.Many2one('taller.depto.rel', string='Departamento', related='item.depto', store=True)
     armador = fields.Many2one('res.partner', string='Armador', related='ot_line_id.armador')
-    nave_line = fields.Char('Nave',default='MN ',compute = "_compute_nave", store=True)
+    nave_line = fields.Char(related='ot_line_id.nave', store=True)
     state = fields.Selection([
         ('borr','Borrador'),
         ('tall','En Taller'),        
@@ -157,11 +157,6 @@ class Taller_ot_line(models.Model):
                 line.sucursal = '2'
             elif line.branch == 3:
                 line.sucursal = '3'
-
-    @api.depends('ot_line_id')
-    def _compute_nave(self):
-        for line in self:
-            line.nave = line.ot_line_id.nave
 
     def _compute_ot(self):
         for line in self:
