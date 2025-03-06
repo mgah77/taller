@@ -131,7 +131,7 @@ class ExcelWizard(models.TransientModel):
                 else:
                     worksheet.write(row, 1, balsa.name, yellow)                
                 worksheet.write(row, 2, str(balsa.fecha.strftime("%d-%m-%y")), format2)
-                worksheet.write(row, 3, balsa.nave, format2)
+                worksheet.write(row, 3, balsa.nave_line, format2)
                 worksheet.write(row, 4, " ")
                 row += 1               
         row = 5
@@ -143,7 +143,7 @@ class ExcelWizard(models.TransientModel):
                     worksheet.write(row, 5, conte.name, red)
                 else:
                     worksheet.write(row, 5, conte.name, yellow)
-                worksheet.write(row, 6, conte.nave, format2)
+                worksheet.write(row, 6, conte.nave_line, format2)
                 worksheet.write(row, 7, " ")
                 row += 1
         row = 5        
@@ -155,7 +155,7 @@ class ExcelWizard(models.TransientModel):
                     worksheet.write(row, 8, valvu.name, red)
                 else:
                     worksheet.write(row, 8, valvu.name, yellow)
-                worksheet.write(row, 9, valvu.nave, format2)
+                worksheet.write(row, 9, valvu.nave_line, format2)
                 worksheet.write(row, 10, " ")
                 row += 1
         row = 5
@@ -168,7 +168,7 @@ class ExcelWizard(models.TransientModel):
                 else:
                     worksheet.write(row, 11, extin.name, yellow)
                 worksheet.write(row, 12, str(extin.fecha.strftime("%d-%m-%y")), format2)
-                worksheet.write(row, 13, extin.nave, format2)
+                worksheet.write(row, 13, extin.nave_line, format2)
                 worksheet.write(row, 14, " ")
                 row += 1
         row = 5        
@@ -181,7 +181,7 @@ class ExcelWizard(models.TransientModel):
                 else:
                     worksheet.write(row, 15, segur.name, yellow)
                 worksheet.write(row, 16, str(segur.fecha.strftime("%d-%m-%y")), format2)
-                worksheet.write(row, 17, segur.nave, format2)
+                worksheet.write(row, 17, segur.nave_line, format2)
                 worksheet.write(row, 18, segur.item.alias, format2)
                 worksheet.write(row, 19, " ")
                 row += 1
@@ -195,7 +195,7 @@ class ExcelWizard(models.TransientModel):
                 else:
                     worksheet.write(row, 20, bcoco.name, yellow)
                 worksheet.write(row, 21, str(bcoco.fecha.strftime("%d-%m-%y")), format2)
-                worksheet.write(row, 22, bcoco.nave, format2)     
+                worksheet.write(row, 22, bcoco.nave_line, format2)     
                 worksheet.write(row, 23, " ") 
                 row += 1  
         row = 5
@@ -208,7 +208,7 @@ class ExcelWizard(models.TransientModel):
                         worksheet.write(row, 24, texti.name, red)
                     else:
                         worksheet.write(row, 24, texti.name, yellow)
-                    worksheet.write(row, 25, texti.nave, format2)
+                    worksheet.write(row, 25, texti.nave_line, format2)
                     worksheet.write(row, 26, str(texti.fecha.strftime("%d-%m-%y")), format2)
                     worksheet.write(row, 27, texti.cant, format2) 
                     worksheet.write(row, 28, texti.item.alias, format2)
@@ -224,7 +224,7 @@ class ExcelWizard(models.TransientModel):
                     worksheet.write(row, 24, texti.name, red)
                 else:
                     worksheet.write(row, 24, texti.name, yellow)
-                worksheet.write(row, 25, texti.nave, format2)
+                worksheet.write(row, 25, texti.nave_line, format2)
                 worksheet.write(row, 26, str(texti.fecha.strftime("%d-%m-%y")), format2)
                 worksheet.write(row, 27, texti.cant, format2) 
                 worksheet.write(row, 28, texti.item.alias, format2)
