@@ -12,7 +12,7 @@
                                 <field name ="depto" string="Detalle"/>
                                 <field name ="alias" invisible="1"/>
                                 <field name ="fecha" string="Fecha Entrega"/>
-                                <field name ="nave"/>
+                                <field name ="nave_line"/>
                                 <field name ="state" />
                                 <field name ="branch" invisible="1"/>
                                 <field name ="branch_s" invisible="1"/>
@@ -44,7 +44,7 @@
                                             <field name ="depto" invisible="1" />
                                             <field name ="alias" invisible="1" />                                           
                                                                                         
-                                            <field name ="name"/> | <field name ="fecha" widget="date_index"/> | <field name ="nave"/>
+                                            <field name ="name"/> | <field name ="fecha" widget="date_index"/> | <field name ="nave_line"/>
                                             <t t-if="record.alias.raw_value">
                                                <br/>  <field name ="alias"/>
                                             </t>

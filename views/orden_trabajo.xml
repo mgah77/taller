@@ -98,7 +98,7 @@
                                     <field name ="name"/>
                                     <field name ="sucursel" groups="taller.group_operaciones"/>
                                     <field name ="armador"/>
-                                    <field name ="nave_line"/>
+                                    <field name ="nave"/>
                                     <field name ="fecha_entr"/>
                                     <field name ="state"/>
 
