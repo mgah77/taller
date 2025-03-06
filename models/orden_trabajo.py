@@ -158,6 +158,7 @@ class Taller_ot_line(models.Model):
             elif line.branch == 3:
                 line.sucursal = '3'
 
+    @api.depends('ot_line_id')
     def _compute_nave(self):
         for line in self:
             line.nave = line.ot_line_id.nave
