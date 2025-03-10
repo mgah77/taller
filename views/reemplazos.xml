@@ -81,6 +81,28 @@
         </field>
     </record>
 
+    <record id="view_wizard_devolucion_form" model="ir.ui.view">
+        <field name="name">wizard.devolucion.form</field>
+        <field name="model">wizard.devolucion</field>
+        <field name="arch" type="xml">
+            <form string="Ingrese Artículos a Devolver">
+                <group>
+                    <field name="entrega_id" invisible="1"/>
+                    <field name="line_ids">
+                        <tree>
+                            <field name="product_id" readonly="1"/>
+                            <field name="cantidad_devuelta"/>
+                        </tree>
+                    </field>
+                </group>
+                <footer>
+                    <button string="Cancelar" class="btn-secondary" special="cancel"/>
+                    <button string="Aceptar" class="btn-primary" type="object" name="action_confirm"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
 
     <record id="action_entrega_equipos_nu" model="ir.actions.act_window">
         <field name="name">Entrega de Equipos</field>

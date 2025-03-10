@@ -9,3 +9,5 @@ access_taller_maniobras_wizard,access.taller.maniobras.wizard,model_taller_manio
 access_entrega_equipos,access.entrega.equipos,model_entrega_equipos,group_taller,1,1,1,1
 access_entrega_equipos_line,access.entrega.equipos.line,model_entrega_equipos_line,group_taller,1,1,1,1
 access_return_equipos_line,access.return.equipos.line,model_return_equipos_line,group_taller,1,1,1,1
+access_wizard_devolucion_line,access.wizard.devolucion.line,model_wizard_devolucion_line,group_taller,1,1,1,1
+access_wizard_devolucion,access.wizard.devolucion,model_wizard_devolucion,group_taller,1,1,1,1
