@@ -25,7 +25,7 @@ class WizardDevolucion(models.TransientModel):
                 if devuelto < line.cantidad:
                     line_vals.append((0, 0, {
                         'product_id': line.product_id.id,
-                        'cantidad': 0,  # Por defecto 0
+                        'cantidad_devuelta': 0,  # Por defecto 0
                     }))
             res['line_ids'] = line_vals
         return res
