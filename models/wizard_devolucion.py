@@ -37,7 +37,7 @@ class WizardDevolucion(models.TransientModel):
             if line.cantidad_devuelta > 0:
                 self.env['return.equipos.line'].create({
                     'return_id': self.entrega_id.id,
-                    'product_id': line.product_id.id,
+                    'product_id': line.product_id,
                     'cantidad': line.cantidad_devuelta,
                 })
         return {'type': 'ir.actions.act_window_close'}
