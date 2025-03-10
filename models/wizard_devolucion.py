@@ -35,7 +35,7 @@ class WizardDevolucion(models.TransientModel):
         for line in self.line_ids:
             if line.cantidad_devuelta > 0:
                 self.env['return.equipos.line'].create({
-                    'entrega_id': self.entrega_id.id,
+                    'return_id': self.entrega_id.id,
                     'product_id': line.product_id.id,
                     'cantidad_devuelta': line.cantidad_devuelta,
                 })
