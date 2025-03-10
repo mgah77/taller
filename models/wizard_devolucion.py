@@ -21,11 +21,11 @@ class WizardDevolucion(models.TransientModel):
                 devuelto = sum(self.env['return.equipos.line'].search([
                     ('return_id', '=', entrega.id),
                     ('product_id', '=', line.product_id.id)
-                ]).mapped('cantidad_devuelta'))
+                ]).mapped('cantidad'))
                 if devuelto < line.cantidad:
                     line_vals.append((0, 0, {
                         'product_id': line.product_id.id,
-                        'cantidad_devuelta': 0,  # Por defecto 0
+                        'cantidad': 0,  # Por defecto 0
                     }))
             res['line_ids'] = line_vals
         return res
@@ -37,7 +37,7 @@ class WizardDevolucion(models.TransientModel):
                 self.env['return.equipos.line'].create({
                     'return_id': self.entrega_id.id,
                     'product_id': line.product_id.id,
-                    'cantidad_devuelta': line.cantidad_devuelta,
+                    'cantidad': line.cantidad_devuelta,
                 })
         return {'type': 'ir.actions.act_window_close'}
 
