@@ -31,12 +31,13 @@ class WizardDevolucion(models.TransientModel):
         return res
 
     def action_confirm(self):
+        # Guardar las cantidades devueltas en return.equipos.line
         for line in self.line_ids:
-            if line.cantidad_devuelta > 0 and line.product_id:
+            if line.cantidad_devuelta > 0:
                 self.env['return.equipos.line'].create({
-                    'return_id': self.entrega_id.id,  # Se usa return_id en vez de entrega_id
-                    'product_id': line.product_id.id,  # Se asegura que product_id tenga valor
-                    'cantidad': line.cantidad_devuelta,  # Se usa cantidad en vez de cantidad_devuelta
+                    'return_id': self.entrega_id.id,
+                    'product_id': line.product_id.id,
+                    'cantidad': line.cantidad_devuelta,
                 })
         return {'type': 'ir.actions.act_window_close'}
 
