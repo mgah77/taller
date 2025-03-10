@@ -19,7 +19,7 @@ class WizardDevolucion(models.TransientModel):
             for line in entrega.line_ids:
                 # Buscar si el producto ya ha sido devuelto
                 devuelto = sum(self.env['return.equipos.line'].search([
-                    ('entrega_id', '=', entrega.id),
+                    ('return_id', '=', entrega.id),
                     ('product_id', '=', line.product_id.id)
                 ]).mapped('cantidad_devuelta'))
                 if devuelto < line.cantidad:
