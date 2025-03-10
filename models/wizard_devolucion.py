@@ -29,10 +29,8 @@ class WizardDevolucionLine(models.TransientModel):
 
     @api.model
     def default_get(self, fields):
-        print("Contexto:", self.env.context)  # Depuración
         res = super(WizardDevolucionLine, self).default_get(fields)
         if self.env.context.get('active_id'):
-            print("Active ID:", self.env.context['active_id'])  # Depuración
             entrega = self.env['entrega.equipos'].browse(self.env.context['active_id'])
             res['wizard_id'] = entrega.id
             lines = []
