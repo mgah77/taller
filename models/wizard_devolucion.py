@@ -29,25 +29,26 @@ class WizardDevolucionLine(models.TransientModel):
 
     @api.model
     def default_get(self, fields):
-        print("Contexto:", self.env.context)  # Depuración
         res = super(WizardDevolucionLine, self).default_get(fields)
         if self.env.context.get('active_id'):
-            print("Active ID:", self.env.context['active_id'])  # Depuración
             entrega = self.env['entrega.equipos'].browse(self.env.context['active_id'])
-            res['wizard_id'] = entrega.id
             lines = []
 
-            # Obtener las cantidades ya devueltas para cada producto
-            devoluciones = self.env['return.equipos.line'].search([('entrega_id', '=', entrega.id)])
-            devoluciones_por_producto = {d.product_id.id: d.cantidad_devuelta for d in devoluciones}
+            # Obtener cantidades devueltas correctamente
+            devoluciones = self.env['return.equipos.line'].search([('return_id', '=', entrega.id)])
+            devoluciones_por_producto = {d.product_id.id: d.cantidad for d in devoluciones}
 
             for line in entrega.line_ids:
                 cantidad_devuelta = devoluciones_por_producto.get(line.product_id.id, 0.0)
                 if line.cantidad > cantidad_devuelta:
                     lines.append((0, 0, {
+                        'wizard_id': self.id,  # Se asigna correctamente
                         'product_id': line.product_id.id,
                         'cantidad_entregada': line.cantidad,
                         'cantidad_devuelta': 0.0,
                     }))
-            res['line_ids'] = lines
+            
+            if lines:
+                res['line_ids'] = lines
+        
         return res

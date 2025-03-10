@@ -134,7 +134,7 @@ class EntregaEquipos(models.Model):
             'view_mode': 'form',
             'view_id': self.env.ref('taller.view_wizard_devolucion_form').id,
             'target': 'new',
-            'context': {'active_id': self.id},
+            'context': {'active_id': self.id},  # Pasar el ID de la entrega actual
         }
 
 class EntregaEquiposLine(models.Model):
