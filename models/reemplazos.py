@@ -128,7 +128,14 @@ class EntregaEquipos(models.Model):
                     )
 
     def action_devolucion(self):
-        return
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': 'wizard.devolucion',
+            'view_mode': 'form',
+            'view_id': self.env.ref('taller.view_wizard_devolucion_form').id,
+            'target': 'new',
+            'context': {'active_id': self.id},
+        }
 
 class EntregaEquiposLine(models.Model):
     _name = 'entrega.equipos.line'
