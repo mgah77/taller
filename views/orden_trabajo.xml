@@ -65,6 +65,7 @@
                                 <field name ="serie"/>
                                 <field name ="cant"/>
                                 <field name ="depto"/>
+                                <field name ="responsable" domain="[('taller', '=', True)]" options="{'no_create': True}"/>
                                 <field name ="state" attrs="{'invisible': [('state', '=', 'borr')]}"/>
                             </tree>
                             </field>
