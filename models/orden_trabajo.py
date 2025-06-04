@@ -117,6 +117,7 @@ class Taller_ot_line(models.Model):
     depto = fields.Many2one('taller.depto.rel', string='Departamento', related='item.depto', store=True)
     armador = fields.Many2one('res.partner', string='Armador', related='ot_line_id.armador')
     nave_line = fields.Char(related='ot_line_id.nave', store=True)
+    responsable = fields.Many2one('res.partner',string='Responsable' , domain="[('partner_share', '=', False)]")
     state = fields.Selection([
         ('borr','Borrador'),
         ('tall','En Taller'),        
