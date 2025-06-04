@@ -22,6 +22,7 @@
                         <field name="name" />
                         <field name="fecha_recep" attrs="{'readonly': [('state', '!=', 'borr')]}"/>
                         <field name="armador" options="{'no_create': True}" attrs="{'readonly': [('state', '!=', 'borr')]}"/>
+                        <field name="armador.document_number" string="RUT" options="{'no_create': True}" attrs="{'readonly': [('state', '!=', 'borr')]}"/>
                         <field name="fecha_entr" />
                         <field name="nave" />
                         <field name="obs" placeholder="Ingresar observaciones..."/>
