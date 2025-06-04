@@ -204,9 +204,8 @@ class Taller_ot_line(models.Model):
 
     @api.onchange('state')
     def onchange_state(self):
-        if self.state == 'entr' and self.responsable is None:
+        if self.state == 'entr' and not self.responsable:
             raise ValidationError("Falta asignar responsable del trabajo.")
-            return
         if self.state == 'cert' and self.state_old not in ['tall']:
             raise ValidationError("No deberia volver a Certificado, por favor descarte los cambios.")
             return
