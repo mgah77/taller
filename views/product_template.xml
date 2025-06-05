@@ -8,6 +8,9 @@
               <field name="depto"/>
               <field name="alias"/>
             </xpath>
+            <xpath expr="//field[@name='standard_price']" position="attributes">
+                <attribute name="groups">taller.group_admin</attribute>
+            </xpath>
         </field>
     </record>
 </odoo>
