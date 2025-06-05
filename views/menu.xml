@@ -88,6 +88,7 @@
   id="taller_menu"
   name="Taller"
   parent=""
+  groups="taller.group_taller"
   sequence="35" />
 
 <menuitem
