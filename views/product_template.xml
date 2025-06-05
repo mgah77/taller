@@ -17,6 +17,9 @@
         <field name="arch" type="xml">
         <xpath expr="//kanban" position="attributes">
             <attribute name="groups">taller.group_nuble,taller.group_parvial</attribute>
+            <attribute name="edit">false</attribute>
+            <attribute name="create">false</attribute>
+            <attribute name="delete">false</attribute>
             <attribute name="open_action">false</attribute>
         </xpath>
         </field>
