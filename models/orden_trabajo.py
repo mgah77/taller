@@ -240,3 +240,5 @@ class Taller_ot_line(models.Model):
                 else:
                     # Opcional: Si no todas tienen 'entr', establecer otro estado o dejarlo sin cambios
                     pass
+            else:
+                pass
