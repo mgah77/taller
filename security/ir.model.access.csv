@@ -11,3 +11,4 @@ access_entrega_equipos_line,access.entrega.equipos.line,model_entrega_equipos_li
 access_return_equipos_line,access.return.equipos.line,model_return_equipos_line,group_taller,1,1,1,1
 access_wizard_devolucion_line,access.wizard.devolucion.line,model_wizard_devolucion_line,group_taller,1,1,1,1
 access_wizard_devolucion,access.wizard.devolucion,model_wizard_devolucion,group_taller,1,1,1,1
+access_product_product_group_parvial,access_product_product_group_parvial,model_product_product,taller.group_nuble,1,1,0,1
