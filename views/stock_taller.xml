@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-
+    <!-- Vista tree para stock por bodega de usuario -->
+    <record id="view_product_warehouse_tree" model="ir.ui.view">
+        <field name="name">product.template.warehouse.tree</field>
+        <field name="model">product.template</field>
+        <field name="arch" type="xml">
+            <tree string="Productos de mi bodega" editable="false">
+                <field name="default_code"/>
+                <field name="name"/>
+                <field name="categ_id"/>
+                <field name="list_price"/>
+                <field name="qty_available" widget="float"/>
+                <field name="virtual_available" widget="float"/>
+            </tree>
+        </field>
+    </record>
+    
     <!-- Acción de ventana -->
     <record id="action_product_warehouse_view" model="ir.actions.act_window">
         <field name="name">Productos de mi bodega</field>
