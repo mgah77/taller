@@ -30,7 +30,6 @@
     </record>
 
 
-
     <!-- Menú -->
     <menuitem id="menu_stock_user_warehouse" 
               name="Stock" 
