@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
+
+    <!-- Acción de ventana -->
+    <record id="action_stock_quant_user_warehouse" model="ir.actions.act_window">
+        <field name="name">Mi Inventario</field>
+        <field name="res_model">stock.quant</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="view_stock_quant_user_warehouse_tree"/>
+        <field name="search_view_id" ref="stock.view_stock_quant_search"/>
+        <field name="domain">[('product_id.sale_ok', '=', True)]</field>
+        <field name="context">{'search_default_locationgroup': 2, 'search_default_internal_loc': 2}</field>
+    </record>
+
+    
     <!-- Vista tree para stock por bodega de usuario -->
     <record id="view_stock_quant_user_warehouse_tree" model="ir.ui.view">
         <field name="name">stock.quant.user.warehouse.tree</field>
@@ -17,16 +31,7 @@
         </field>
     </record>
 
-    <!-- Acción de ventana -->
-    <record id="action_stock_quant_user_warehouse" model="ir.actions.act_window">
-        <field name="name">Mi Inventario</field>
-        <field name="res_model">stock.quant</field>
-        <field name="view_mode">tree</field>
-        <field name="view_id" ref="view_stock_quant_user_warehouse_tree"/>
-        <field name="search_view_id" ref="stock.view_stock_quant_search"/>
-        <field name="domain">[('product_id.sale_ok', '=', True)]</field>
-        <field name="context">{'search_default_locationgroup': 2, 'search_default_internal_loc': 2}</field>
-    </record>
+
 
     <!-- Menú -->
     <menuitem id="menu_stock_user_warehouse" 
