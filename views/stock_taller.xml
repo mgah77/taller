@@ -35,6 +35,6 @@
     <menuitem id="menu_stock_user_warehouse" 
               name="Stock" 
               parent="stock.menu_stock_root" 
-              action="action_product_warehouse_view" 
+              action="taller.action_product_warehouse_view" 
               sequence="20"/>
 </odoo>
