@@ -49,7 +49,7 @@
       <menuitem id="menu_stock_user_warehouse_n" 
               name="Stock" 
               parent="stock.menu_stock_root" 
-              action="taller.action_product_warehouse_view_n " 
+              action="taller.action_product_warehouse_view_n" 
               groups="taller.group_nuble"
               sequence="21"/>
 </odoo>
