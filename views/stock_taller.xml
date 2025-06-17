@@ -6,9 +6,19 @@
         <field name="name">Stock</field>
         <field name="res_model">stock.quant</field>
         <field name="view_mode">tree</field>
-        <field name="view_id" ref="stock.view_stock_quant_tree"/>
+        <field name="view_id" ref="taller.view_stock_quant_tree"/>
         <field name="search_view_id" ref="stock.quant_search_view"/>
         <field name="domain">[('location_id.warehouse_id', '=', 3),('product_id.product_tmpl_id.sale_ok', '=', True)]</field>
+
+    </record>
+
+        <record id="action_product_warehouse_view_n" model="ir.actions.act_window">
+        <field name="name">Stock</field>
+        <field name="res_model">stock.quant</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="taller.view_stock_quant_tree"/>
+        <field name="search_view_id" ref="stock.quant_search_view"/>
+        <field name="domain">[('location_id.warehouse_id', '=', 2),('product_id.product_tmpl_id.sale_ok', '=', True)]</field>
 
     </record>
 
@@ -34,5 +44,12 @@
               parent="stock.menu_stock_root" 
               action="taller.action_product_warehouse_view" 
               groups="taller.group_parvial"
+              sequence="20"/>
+
+      <menuitem id="menu_stock_user_warehouse_n" 
+              name="Stock" 
+              parent="stock.menu_stock_root" 
+              action="taller.action_product_warehouse_view_n " 
+              groups="taller.group_nuble"
               sequence="20"/>
 </odoo>
