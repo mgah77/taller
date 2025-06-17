@@ -8,7 +8,7 @@
         <field name="view_mode">tree</field>
         <field name="view_id" ref="stock.view_stock_quant_tree"/>
         <field name="search_view_id" ref="stock.quant_search_view"/>
-        <field name="domain">[('location_id.warehouse_id', '=', user.property_warehouse_id.id)]</field>
+        <field name="domain">[('location_id.warehouse_id', '=', 3)]</field>
 
     </record>
 
@@ -33,5 +33,6 @@
               name="Stock" 
               parent="stock.menu_stock_root" 
               action="taller.action_product_warehouse_view" 
+              groups="taller.group_parvial"
               sequence="20"/>
 </odoo>
