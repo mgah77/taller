@@ -10,11 +10,5 @@
         </field>
     </record>
 
-    <record id="default_country_id_46" model="ir.default">
-        <field name="model">res.partner</field>
-        <field name="field_name">country_id</field>
-        <field name="value" eval="46"/>
-    </record>
-
 
 </odoo>
