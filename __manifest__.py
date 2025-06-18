@@ -19,6 +19,7 @@
          'views/partner.xml',
          'views/reemplazos.xml',
          'views/stock_taller.xml',
+         'views/stock_move.xml',
          'report/entrega_reemplazo.xml',
          'wizard/taller_excel.xml',
          'wizard/maniobras.xml',
