@@ -54,6 +54,6 @@ class ProductZeroStockWarehouse(models.Model):
     @api.model
     def _search(self, args, offset=0, limit=None, order=None, count=False):
         ctx = self.env.context
-        if ctx.get('warehouse_filter_by_user') and self.env.user.warehouse_id:
-            args = [('warehouse_id', '=', self.env.user.warehouse_id.id)] + (args or [])
+        if ctx.get('warehouse_filter_by_user') and self.env.user.property_warehouse_id:
+            args = [('warehouse_id', '=', self.env.user.property_warehouse_id.id)] + (args or [])
         return super()._search(args, offset=offset, limit=limit, order=order, count=count)
