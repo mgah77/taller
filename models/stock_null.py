@@ -1,59 +1,89 @@
-# -*- coding: utf-8 -*-
-from odoo import api, fields, models, tools
+from odoo import api, fields, models
 
+class ProductZeroStock(models.Model):
+    """
+    No creamos un modelo nuevo: extendemos product.product y le
+    damos un campo booleano virtual que indica si, para el usuario
+    actual, el producto está con stock = 0 en SU bodega.
+    """
+    _inherit = "product.product"
 
-class ProductZeroStockWarehouse(models.Model):
-    """Vista (solo lectura) que muestra los productos sin stock por bodega."""
-    _name = 'product.zero.stock.warehouse'
-    _description = 'Productos sin Stock por Bodega'
-    _auto = False  # se crea como vista SQL
-    _rec_name = 'display_name'
-    _order = 'default_code'
+    zero_stock_user = fields.Boolean(
+        string="Stock 0 (mi bodega)",
+        compute="_compute_zero_stock_user",
+        search="_search_zero_stock_user",
+        store=False,
+    )
 
-    # Campos
-    product_id = fields.Many2one('product.product', string='Producto', readonly=True)
-    default_code = fields.Char(related='product_id.default_code', string='Referencia', readonly=True)
-    name = fields.Char(related='product_id.name', string='Nombre', readonly=True)
-    categ_id = fields.Many2one(related='product_id.categ_id', string='Categoría', readonly=True)
-    warehouse_id = fields.Many2one('stock.warehouse', string='Bodega', readonly=True)
-    qty_available = fields.Float(string='Stock', readonly=True)
-    display_name = fields.Char(compute='_compute_display_name', store=False)
+    # ---------------------------------------------------------------------
+    # CÓMPUTO: marca True si el stock en la bodega del usuario es 0
+    # ---------------------------------------------------------------------
+    def _compute_zero_stock_user(self):
+        user_wh = self.env.user.property_warehouse_id
+        if not user_wh:
+            # Sin bodega asignada → nada se marca
+            for prod in self:
+                prod.zero_stock_user = False
+            return
 
-    @api.depends('default_code', 'name')
-    def _compute_display_name(self):
-        for rec in self:
-            rec.display_name = f"[{rec.default_code}] {rec.name}" if rec.default_code else rec.name
+        # Ubicaciones internas de esa bodega
+        loc_ids = self.env['stock.location'].search([
+            ('usage', '=', 'internal'),
+            ('warehouse_id', '=', user_wh.id)
+        ]).ids
 
-    def _query(self):
-        """Productos 'product', vendibles, con stock = 0, por bodega interna."""
-        return """
-            SELECT
-                MIN(sq.id) AS id,
-                sq.product_id AS product_id,
-                sl.warehouse_id AS warehouse_id,
-                SUM(sq.quantity) AS qty_available
-            FROM stock_quant sq
-            JOIN stock_location sl ON sl.id = sq.location_id
-            JOIN product_product pp ON pp.id = sq.product_id
-            JOIN product_template pt ON pt.id = pp.product_tmpl_id
-            WHERE pt.sale_ok = TRUE
-              AND pt.type = 'product'
-              AND pt.active = TRUE
-              AND sl.usage = 'internal'
-              AND sl.active = TRUE
-            GROUP BY sq.product_id, sl.warehouse_id
-            HAVING COALESCE(SUM(sq.quantity), 0) = 0
-        """
+        # Sumar cantidades > 0 por producto en esas ubicaciones
+        groups = self.env['stock.quant'].read_group(
+            [
+                ('product_id', 'in', self.ids),
+                ('location_id', 'in', loc_ids),
+            ],
+            ['product_id', 'quantity:sum'],
+            ['product_id'],
+        )
+        qty_map = {g['product_id'][0]: g['quantity'] for g in groups}
 
-    def init(self):
-        tools.drop_view_if_exists(self.env.cr, self._table)
-        self.env.cr.execute(f"""
-            CREATE OR REPLACE VIEW {self._table} AS ({self._query()})
-        """)
+        for prod in self:
+            prod.zero_stock_user = qty_map.get(prod.id, 0.0) == 0.0
 
+    # ---------------------------------------------------------------------
+    # BÚSQUEDA: devuelve el dominio equivalente a “stock 0 en mi bodega”
+    # ---------------------------------------------------------------------
     @api.model
-    def _search(self, args, offset=0, limit=None, order=None, count=False):
-        ctx = self.env.context
-        if ctx.get('warehouse_filter_by_user') and self.env.user.property_warehouse_id:
-            args = [('warehouse_id', '=', self.env.user.property_warehouse_id.id)] + (args or [])
-        return super()._search(args, offset=offset, limit=limit, order=order, count=count)
+    def _search_zero_stock_user(self, operator, value):
+        """
+        Permite poner ('zero_stock_user', '=', True) en un dominio.
+        Solo se aceptan operadores =  or  !=
+        """
+        assert operator in ('=', '!=', 'in', 'not in')
+        user_wh = self.env.user.property_warehouse_id
+        if not user_wh:
+            # Sin bodega: no devolver nada (o todo, depende del operador)
+            return [('id', '!=', 0)] if (operator, value) in [('=', True), ('!=', False)] else [('id', '=', 0)]
+
+        # Paso 1: base = productos vendibles y almacenables
+        base_domain = [
+            ('type', '=', 'product'),
+            ('sale_ok', '=', True),
+        ]
+        prods = self.search(base_domain).ids
+
+        # Paso 2: productos con stock > 0 en la bodega del usuario
+        loc_ids = self.env['stock.location'].search([
+            ('usage', '=', 'internal'),
+            ('warehouse_id', '=', user_wh.id)
+        ]).ids
+        groups = self.env['stock.quant'].read_group(
+            [('product_id', 'in', prods), ('location_id', 'in', loc_ids)],
+            ['product_id', 'quantity:sum'],
+            ['product_id'],
+        )
+        with_stock = {g['product_id'][0] for g in groups if g['quantity']}
+
+        # Paso 3: stock 0 = base - with_stock
+        zero_stock_ids = list(set(prods) - with_stock)
+
+        if operator in ('=', 'in'):
+            return [('id', 'in', zero_stock_ids)]
+        else:  # '!=' or 'not in'
+            return [('id', 'not in', zero_stock_ids)]

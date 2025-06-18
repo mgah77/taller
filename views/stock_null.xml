@@ -1,34 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
-    <!-- Vista tree: sólo lectura, sin enlaces -->
+ 
     <record id="view_product_zero_stock_tree" model="ir.ui.view">
-        <field name="name">product.zero.stock.warehouse.tree</field>
-        <field name="model">product.zero.stock.warehouse</field>
+        <field name="name">product.zero.stock.tree</field>
+        <field name="model">product.product</field>
+        <field name="priority" eval="20"/>
         <field name="arch" type="xml">
-            <tree create="false" edit="false" delete="false">
+            <tree string="Productos sin stock"
+                  create="false" edit="false" delete="false">
                 <field name="default_code"/>
                 <field name="name"/>
-                <field name="categ_id"/>
-                <field name="qty_available"/>
+                <field name="lst_price"/>
+                <field name="qty_available" widget="float"/>
             </tree>
         </field>
     </record>
 
-    <!-- Acción -->
+    
     <record id="action_product_zero_stock" model="ir.actions.act_window">
-        <field name="name">Productos sin Stock</field>
-        <field name="res_model">product.zero.stock.warehouse</field>
+        <field name="name">Productos sin stock (mi bodega)</field>
+        <field name="res_model">product.product</field>
         <field name="view_mode">tree</field>
-        <!-- Sólo la bodega asignada al usuario -->
-        <field name="domain">[]</field>
-        <field name="context">{'warehouse_filter_by_user': True}</field>
+        <field name="view_id" ref="view_product_zero_stock_tree"/>
+        <field name="domain">[('zero_stock_user', '=', True)]</field>
+        <field name="context">{}</field>
+        <!-- search_view_id opcional, para usar la búsqueda estándar -->
     </record>
 
-    <!-- Menú hijo de Inventario -->
+   
     <menuitem id="menu_product_zero_stock"
-              name="Productos sin Stock"
-              parent="stock.menu_stock_root"
+              name="Productos sin stock"
+              parent="stock.menu_stock_warehouse_mgmt"
               action="action_product_zero_stock"
-              sequence="60"/>
+              sequence="100"/>
 </odoo>

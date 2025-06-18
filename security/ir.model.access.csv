@@ -12,4 +12,4 @@ access_return_equipos_line,access.return.equipos.line,model_return_equipos_line,
 access_wizard_devolucion_line,access.wizard.devolucion.line,model_wizard_devolucion_line,group_taller,1,1,1,1
 access_wizard_devolucion,access.wizard.devolucion,model_wizard_devolucion,group_taller,1,1,1,1
 access_product_product_group_parvial,access_product_product_group_parvial,product.model_product_product,taller.group_nuble,1,1,0,1
-access_zero_stock_ro,Acceso solo lectura a productos sin stock,model_product_zero_stock_warehouse,group_taller,1,1,1,1
+access_product_zero_stock_user,access_product_zero_stock_user,model_product_product,base.group_user,1,0,0,0
