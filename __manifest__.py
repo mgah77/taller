@@ -20,7 +20,7 @@
          'views/reemplazos.xml',
          'views/stock_taller.xml',
          'views/stock_move.xml',
-         'views/stock_null',
+         'views/stock_null.xml',
          'report/entrega_reemplazo.xml',
          'wizard/taller_excel.xml',
          'wizard/maniobras.xml',
