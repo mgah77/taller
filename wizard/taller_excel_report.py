@@ -45,6 +45,7 @@ class ExcelWizard(models.TransientModel):
            'report_type': 'xlsx',
        }
    def get_xlsx_report(self, data, response):
+        partners = self.env['taller.ot.line'].browse([])
         partners = self.env['taller.ot.line'].search(['|', ('state', '=', 'tall'), ('state', '=', 'cert')])
         balsas = partners.search([('depto.name','=','Balsas'),('branch','=','viewer')], order="fecha asc")
         conten = partners.search([('depto.name','=','Contenedores'),('branch','=','viewer')], order="fecha asc")
