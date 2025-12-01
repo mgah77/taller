@@ -37,6 +37,18 @@
         <field name="domain">[('location_id.warehouse_id', '=', 2),('product_id.product_tmpl_id.sale_ok', '=', True)]</field>
 
     </record>
+    <record id="view_stock_quant_search_group_categ" model="ir.ui.view">
+        <field name="name">stock.quant.search.group.categ</field>
+        <field name="model">stock.quant</field>
+        <field name="inherit_id" ref="stock.quant_search_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <filter name="group_by_product_categ"
+                        string="Familia"
+                        context="{'group_by': 'product_categ_id'}"/>
+            </xpath>
+        </field>
+    </record>
 
 
     <!-- Menú -->
