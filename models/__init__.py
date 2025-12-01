@@ -6,3 +6,4 @@ from . import partner
 from . import reemplazos
 from . import wizard_devolucion
 from . import stock_null
+from . import stock_taller
