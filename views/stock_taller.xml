@@ -79,7 +79,7 @@
      <menuitem id="menu_stock_user_warehouse_wh" 
               name="Stock" 
               parent="stock.menu_stock_root" 
-              action="taller.action_product_warehouse_view_n" 
+              action="taller.action_product_warehouse_view_wh" 
               groups="parches_insumar.group_bodega"
               sequence="22"/>
 </odoo>
